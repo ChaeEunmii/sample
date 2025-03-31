@@ -1,0 +1,94 @@
+/* LNBMenu.css */
+.lnb-layout{
+    display: flex;
+    width: 100%;
+    max-width: 240px; 
+    flex-direction: column;
+    background-color: #f2f2f2;
+}
+.lnb-layout .lnb-head{
+    width:100%;
+}
+.lnb-container {
+    display: flex;
+    width: 100%;
+    gap: 20px;
+  }
+  
+  .menu-levels {
+    display: flex;
+    flex-direction: row;  /* 메뉴를 가로로 배치 */
+    flex: 1;
+  }
+  .first-level.expanded + .menu-levels{
+    flex-shrink: 0;
+    flex-grow: 0;
+  }
+  
+  .menu-level {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .first-level {
+    width: 40px; /* 1뎁스가 접혔을 때 너비 */
+    transition: width 0.3s ease;
+  }
+  .first-level.collapsed {
+    width: 40px; /* 1뎁스가 접혔을 때 너비 */
+  }
+  .first-level.expanded {
+    /* 1뎁스 펼쳐질 때 너비 */
+    flex: 1;
+  }
+  .second-level,
+  .third-level,
+  .fourth-level {
+    /* 2, 3, 4뎁스 메뉴가 가로로 펼쳐지도록 */
+    width: 100%;
+  }
+  
+  .menu-item {
+    padding: 10px;
+    background-color: #ddd;
+    margin: 5px 0;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .menu-item:hover {
+    background-color: #bbb;
+  }
+  
+  .back-btn {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .back-btn:hover {
+    background-color: #555;
+  }
+  
+  .fourth-level {
+    margin-left: 20px; /* 4뎁스 메뉴가 3뎁스보다 들여쓰기 */
+  }
+  
+  .fourth-level .menu-item {
+    background-color: #eee;
+  }
+  
+  .fourth-level .menu-item:hover {
+    background-color: #ddd;
+  }
+  
+  .sub-menu {
+    margin-left: 20px;
+    background-color: #f0f0f0;
+    padding: 5px;
+  }
+  
