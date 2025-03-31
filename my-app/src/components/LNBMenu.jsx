@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './LNBMenu.css';
+// import './LNBMenu.css';
 
 const LNBMenu = () => {
   const [activeLevel, setActiveLevel] = useState(0);  // 0: 초기 상태, 1: 1뎁스, 2: 2뎁스

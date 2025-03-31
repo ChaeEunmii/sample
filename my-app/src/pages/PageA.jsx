@@ -1,6 +1,6 @@
 import React from 'react';
 import LNB from 'components/LNB'; 
-//import LNBMenu from 'components/LNBMenu'; 
+import LNBMenu from 'components/LNBMenu'; 
 
 
 function PageA() {
@@ -8,6 +8,12 @@ function PageA() {
     <>
       <div className="test-wrap">
         <LNB/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <LNBMenu/>
       </div>
     </>
   );
