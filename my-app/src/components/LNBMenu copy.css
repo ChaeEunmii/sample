@@ -8,6 +8,7 @@
 }
 .lnb-layout .lnb-head{
     width:100%;
+    text-align: center;
 }
 .lnb-container {
     display: flex;
@@ -34,9 +35,22 @@
     width: 40px; /* 1뎁스가 접혔을 때 너비 */
     transition: width 0.3s ease;
   }
+  .first-level .menu-item > i{
+    font-style: normal;
+  }
   .first-level.collapsed {
     width: 40px; /* 1뎁스가 접혔을 때 너비 */
+    display: block !important;
   }
+  .first-level.expanded .menu-item > span,
+  .first-level.collapsed .menu-item > i{
+    display: block;
+  }
+  .first-level.collapsed .menu-item > span,
+  .first-level.expanded .menu-item > i{
+    display: none;
+  }
+
   .first-level.expanded {
     /* 1뎁스 펼쳐질 때 너비 */
     flex: 1;
@@ -51,14 +65,9 @@
   .menu-item {
     padding: 10px;
     background-color: #ddd;
-    margin: 5px 0;
     cursor: pointer;
-    border-radius: 5px;
   }
   
-  .menu-item:hover {
-    background-color: #bbb;
-  }
   
   .back-btn {
     background-color: #333;
@@ -87,7 +96,6 @@
   }
   
   .sub-menu {
-    margin-left: 20px;
     background-color: #f0f0f0;
     padding: 5px;
   }

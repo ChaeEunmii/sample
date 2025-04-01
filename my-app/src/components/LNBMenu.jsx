@@ -61,9 +61,7 @@ const LNBMenu = () => {
 
   return (
     <>
-      <div>
-        <button onClick={handleToggleMenu}>시작하기</button> {/* "시작하기" 버튼 클릭 시 메뉴를 토글 */}
-      </div>
+      {!showFirstLevel && <button onClick={handleToggleMenu}>시작하기</button>}
       <div className="lnb-layout">
         <div className="lnb-head">
           {collapsed ? (
