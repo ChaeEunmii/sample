@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import 'components/LNBMenu.css'
+import 'components/LNBMenu.css';
 
 const LNBMenu = () => {
+  const [showFirstLevel, setShowFirstLevel] = useState(false); // 1뎁스를 보이거나 숨기기 위한 상태 추가
   const [active1, setActive1] = useState(null);
   const [active2, setActive2] = useState(null);
   const [expanded4, setExpanded4] = useState(null);
@@ -54,9 +55,15 @@ const LNBMenu = () => {
     }
   };
 
+  const handleToggleMenu = () => {
+    setShowFirstLevel(!showFirstLevel); // "시작하기" 버튼 클릭 시 1뎁스를 보이거나 숨기기
+  };
+
   return (
     <>
-      <div>시작하기</div>
+      <div>
+        <button onClick={handleToggleMenu}>시작하기</button> {/* "시작하기" 버튼 클릭 시 메뉴를 토글 */}
+      </div>
       <div className="lnb-layout">
         <div className="lnb-head">
           {collapsed ? (
@@ -68,14 +75,16 @@ const LNBMenu = () => {
 
         <div className="lnb-container">
           {/* 1뎁스 */}
-          <div className={`menu-level first-level ${collapsed ? 'collapsed' : 'expanded'}`}>
-            {menu.map((item, index) => (
-              <div key={index} onClick={() => handleClick(item, 1, index)} className="menu-item">
-                <i className="icon-firstletter">한</i>
-                <span>{item.title}</span>
-              </div>
-            ))}
-          </div>
+          {showFirstLevel && (
+            <div className={`menu-level first-level ${collapsed ? 'collapsed' : 'expanded'}`}>
+              {menu.map((item, index) => (
+                <div key={index} onClick={() => handleClick(item, 1, index)} className="menu-item">
+                  <i className="icon-firstletter">한</i>
+                  <span>{item.title}</span>
+                </div>
+              ))}
+            </div>
+          )}
 
           {/* 2뎁스 */}
           {collapsed && active1 !== null && menu[active1].subMenu && (
@@ -110,7 +119,7 @@ const LNBMenu = () => {
             </div>
           )}
         </div>
-      </div>  
+      </div>
     </>
   );
 };

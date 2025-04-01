@@ -35,6 +35,9 @@
     width: 40px; /* 1뎁스가 접혔을 때 너비 */
     transition: width 0.3s ease;
   }
+  .first-level .menu-item > i{
+    font-style: normal;
+  }
   .first-level.collapsed {
     width: 40px; /* 1뎁스가 접혔을 때 너비 */
     display: block !important;
@@ -65,9 +68,6 @@
     cursor: pointer;
   }
   
-  .menu-item:hover {
-    background-color: #bbb;
-  }
   
   .back-btn {
     background-color: #333;
