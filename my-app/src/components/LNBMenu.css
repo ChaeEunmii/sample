@@ -8,6 +8,7 @@
 }
 .lnb-layout .lnb-head{
     width:100%;
+    text-align: center;
 }
 .lnb-container {
     display: flex;
@@ -36,7 +37,17 @@
   }
   .first-level.collapsed {
     width: 40px; /* 1뎁스가 접혔을 때 너비 */
+    display: block !important;
   }
+  .first-level.expanded .menu-item > span,
+  .first-level.collapsed .menu-item > i{
+    display: block;
+  }
+  .first-level.collapsed .menu-item > span,
+  .first-level.expanded .menu-item > i{
+    display: none;
+  }
+
   .first-level.expanded {
     /* 1뎁스 펼쳐질 때 너비 */
     flex: 1;

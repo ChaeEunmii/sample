@@ -7,12 +7,12 @@ function PageA() {
   return (
     <>
       <div className="test-wrap">
-        <LNB/>
+        {/* <LNB/>
         <br/>
         <br/>
         <br/>
         <br/>
-        <br/>
+        <br/> */}
         <LNBMenu/>
       </div>
     </>

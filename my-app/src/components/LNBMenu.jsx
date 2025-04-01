@@ -1,113 +1,109 @@
 import React, { useState } from 'react';
-// import './LNBMenu.css';
-
+import 'components/LNBMenu.css'
 const LNBMenu = () => {
-  const [activeLevel, setActiveLevel] = useState(0);  // 0: 초기 상태, 1: 1뎁스, 2: 2뎁스
-  const [activeFirstLevel, setActiveFirstLevel] = useState(null); // 1뎁스 클릭된 항목
-  const [activeSecondLevel, setActiveSecondLevel] = useState(null); // 2뎁스 클릭된 항목
-  const [expandedFourthLevel, setExpandedFourthLevel] = useState(null); // 4뎁스 펼쳐짐 상태
-  const [isCollapsed, setIsCollapsed] = useState(false); // 1뎁스가 접혔는지 여부
+  const [active1, setActive1] = useState(null);
+  const [active2, setActive2] = useState(null);
+  const [expanded4, setExpanded4] = useState(null);
+  const [collapsed, setCollapsed] = useState(false);
 
   const menu = [
     {
       title: '1뎁스 메뉴 1',
       subMenu: [
-        { title: '2뎁스 메뉴 1', subMenu: [{ title: '3뎁스 메뉴 1', subMenu: [{ title: '4뎁스 메뉴 1' }, { title: '4뎁스 메뉴 2' }] }, { title: '3뎁스 메뉴 2' }] },
-        { title: '2뎁스 메뉴 2', subMenu: [{ title: '3뎁스 메뉴 3', subMenu: [{ title: '4뎁스 메뉴 1' }, { title: '4뎁스 메뉴 2' }] }, { title: '3뎁스 메뉴 4', subMenu: [{ title: '4뎁스 메뉴 1' }, { title: '4뎁스 메뉴 2' }]  }] }
+        { title: '2뎁스 메뉴 1', subMenu: [{ title: '3뎁스 메뉴 1', subMenu: [{ title: '4뎁스 메뉴 1', url: '/page1' }, { title: '4뎁스 메뉴 2', url: '/page2' }] }, { title: '3뎁스 메뉴 2', url: '/page3' }] },
+        { title: '2뎁스 메뉴 2', subMenu: [{ title: '3뎁스 메뉴 3', url: '/page4' }, { title: '3뎁스 메뉴 4', subMenu: [{ title: '4뎁스 메뉴 1', url: '/page5' }, { title: '4뎁스 메뉴 2', url: '/page6' }] }] }
       ]
     },
     {
       title: '1뎁스 메뉴 2',
-      subMenu: [
-        { title: '2뎁스 메뉴 3', subMenu: [{ title: '3뎁스 메뉴 5' }] }
-      ]
+      url: '/main-page' // 1뎁스에 하위 메뉴 없음 → 바로 URL 이동
     }
   ];
 
-  const handleFirstLevelClick = (itemIndex) => {
-    setActiveLevel(1);
-    setActiveFirstLevel(itemIndex);
-    setIsCollapsed(true); // 1뎁스가 접히도록 설정
+  const handleClick = (item, level, index) => {
+    if (item.url) {
+      window.location.href = item.url;
+      return;
+    }
+
+    if (level === 1) {
+      setActive1(index);
+      setActive2(null);
+      setCollapsed(true);
+    } else if (level === 2) {
+      setActive2(index);
+    } else if (level === 4) {
+      setExpanded4(expanded4 === index ? null : index);
+    }
   };
 
-  const handleSecondLevelClick = (subMenuIndex) => {
-    setActiveLevel(2);
-    setActiveSecondLevel(subMenuIndex);
-  };
-
-  const handleFourthLevelClick = (subMenuIndex) => {
-    // 4뎁스 아코디언 형태로 펼쳐짐
-    setExpandedFourthLevel(expandedFourthLevel === subMenuIndex ? null : subMenuIndex);
-  };
-
-  const handleBackClick = () => {
-    if (activeLevel === 2) {
-      // 2뎁스에서 뒤로가기 -> 1뎁스로
-      setActiveLevel(1);
-      setActiveSecondLevel(null);
-    } else if (activeLevel === 1) {
-      // 1뎁스에서 뒤로가기 -> 초기 상태로
-      setIsCollapsed(false);
-      setActiveLevel(0);
-      setActiveFirstLevel(null);
+  const onBack = () => {
+    if (active2 !== null) {
+      setActive2(null);
+    } else if (active1 !== null) {
+      setActive1(null);
+      setCollapsed(false);
     }
   };
 
   return (
     <>
+      <div>시작하기</div>
       <div className="lnb-layout">
         <div className="lnb-head">
-          {!isCollapsed ? <div>SPC+ESWA</div> : <button onClick={handleBackClick} className="back-btn">뒤로가기</button>}
+          {collapsed ? (
+            <button onClick={onBack} className="back-btn">뒤로가기</button>
+          ) : (
+            <div>SPC+ESWA</div>
+          )}
         </div>
+
         <div className="lnb-container">
-          {/* 1뎁스 메뉴 */}
-          <div className={`menu-level first-level ${isCollapsed ? 'collapsed' : 'expanded'}`}>
+          {/* 1뎁스 */}
+          <div className={`menu-level first-level ${collapsed ? 'collapsed' : 'expanded'}`}>
             {menu.map((item, index) => (
-              <div key={index} onClick={() => handleFirstLevelClick(index)} className="menu-item">
-                {item.title}
+              <div key={index} onClick={() => handleClick(item, 1, index)} className="menu-item">
+                <i class="icon-firstletter">한</i>
+                <span>{item.title}</span>
               </div>
             ))}
           </div>
-          <div className="menu-levels">
-            {/* 2뎁스 메뉴 + 3뎁스 + 4뎁스 (아코디언 형태로 펼쳐짐) */}
-            {activeLevel === 1 && isCollapsed && (
-              <div className="menu-level second-level">
-                {/* <button onClick={handleBackClick} className="back-btn">뒤로가기</button> */}
-                {menu[activeFirstLevel].subMenu.map((item, index) => (
-                  <div key={index} onClick={() => handleSecondLevelClick(index)} className="menu-item">
+
+          {/* 2뎁스 */}
+          {collapsed && active1 !== null && menu[active1].subMenu && (
+            <div className="menu-level second-level">
+              {menu[active1].subMenu.map((item, index) => (
+                <div key={index} onClick={() => handleClick(item, 2, index)} className="menu-item">
+                  {item.title}
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* 3뎁스 + 4뎁스 */}
+          {active2 !== null && menu[active1].subMenu[active2].subMenu && (
+            <div className="menu-level third-level">
+              {menu[active1].subMenu[active2].subMenu.map((item, index) => (
+                <div key={index} className="menu-item">
+                  <div onClick={() => handleClick(item, 4, index)}>
                     {item.title}
                   </div>
-                ))}
-              </div>
-            )}
-
-            {/* 3뎁스 + 4뎁스 메뉴 (2뎁스가 클릭되면 바로 펼쳐지도록) */}
-            {activeLevel === 2 && (
-              <div className="menu-level third-level">
-                {/* <button onClick={handleBackClick} className="back-btn">뒤로가기</button> */}
-                {menu[activeFirstLevel].subMenu[activeSecondLevel].subMenu.map((item, index) => (
-                  <div key={index} className="menu-item">
-                    <div onClick={() => handleFourthLevelClick(index)}>
-                      {item.title}
+                  {expanded4 === index && item.subMenu && (
+                    <div className="sub-menu">
+                      {item.subMenu.map((subItem, subIndex) => (
+                        <div key={subIndex} onClick={() => handleClick(subItem, 4, subIndex)} className="menu-item">
+                          {subItem.title}
+                        </div>
+                      ))}
                     </div>
-                    {/* 4뎁스 항목이 펼쳐질 때 추가 항목을 표시 */}
-                    {expandedFourthLevel === index && item.subMenu && (
-                      <div className="sub-menu">
-                        {item.subMenu.map((subItem, subIndex) => (
-                          <div key={subIndex} className="menu-item">{subItem.title}</div>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>  
+                  )}
+                </div>
+              ))}
+            </div>
+          )}
         </div>
-      </div>
-      
+      </div>  
     </>
-    
   );
 };
 
