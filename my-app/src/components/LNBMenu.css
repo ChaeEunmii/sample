@@ -62,9 +62,7 @@
   .menu-item {
     padding: 10px;
     background-color: #ddd;
-    margin: 5px 0;
     cursor: pointer;
-    border-radius: 5px;
   }
   
   .menu-item:hover {
@@ -98,7 +96,6 @@
   }
   
   .sub-menu {
-    margin-left: 20px;
     background-color: #f0f0f0;
     padding: 5px;
   }

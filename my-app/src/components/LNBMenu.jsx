@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import 'components/LNBMenu.css'
+
 const LNBMenu = () => {
   const [active1, setActive1] = useState(null);
   const [active2, setActive2] = useState(null);
@@ -17,7 +18,14 @@ const LNBMenu = () => {
     {
       title: '1뎁스 메뉴 2',
       url: '/main-page' // 1뎁스에 하위 메뉴 없음 → 바로 URL 이동
-    }
+    },
+    {
+      title: '1뎁스 메뉴 3',
+      subMenu: [
+        { title: '2뎁스 메뉴 3', subMenu: [{ title: '3뎁스 메뉴 1', subMenu: [{ title: '4뎁스 메뉴 1', url: '/page1' }, { title: '4뎁스 메뉴 2', url: '/page2' }] }, { title: '3뎁스 메뉴 2', url: '/page3' }] },
+        { title: '2뎁스 메뉴 4', subMenu: [{ title: '3뎁스 메뉴 3', url: '/page4' }, { title: '3뎁스 메뉴 4', subMenu: [{ title: '4뎁스 메뉴 1', url: '/page5' }, { title: '4뎁스 메뉴 2', url: '/page6' }] }] }
+      ]
+    },
   ];
 
   const handleClick = (item, level, index) => {
@@ -63,7 +71,7 @@ const LNBMenu = () => {
           <div className={`menu-level first-level ${collapsed ? 'collapsed' : 'expanded'}`}>
             {menu.map((item, index) => (
               <div key={index} onClick={() => handleClick(item, 1, index)} className="menu-item">
-                <i class="icon-firstletter">한</i>
+                <i className="icon-firstletter">한</i>
                 <span>{item.title}</span>
               </div>
             ))}
@@ -71,7 +79,7 @@ const LNBMenu = () => {
 
           {/* 2뎁스 */}
           {collapsed && active1 !== null && menu[active1].subMenu && (
-            <div className="menu-level second-level">
+            <div className={`menu-level second-level ${active2 !== null ? 'collapsed' : ''}`}>
               {menu[active1].subMenu.map((item, index) => (
                 <div key={index} onClick={() => handleClick(item, 2, index)} className="menu-item">
                   {item.title}
