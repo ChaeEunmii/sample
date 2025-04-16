@@ -1,0 +1,230 @@
+:root {
+	--lnb-test: 280px;  /* CSS 전역 변수 선언 */
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+ul, li, ol, li{
+    list-style-type: none;
+}
+.test-wrap{
+    display: flex;
+    gap: 20px;
+}
+/* lnb-layout-wrap */
+.lnb-layout-wrap{
+    border: 1px solid #ababab;
+    width: var(--lnb-test);
+    height: 800px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+.lnb-layout-wrap .lnb-head{
+    flex-grow: 0;
+    flex-shrink: 0;
+    height: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #ababab;
+}
+.lnb-layout-wrap .lnb-head .head-name{
+    font-size: 16px;
+    color: #656668;
+    font-weight: 700;
+    text-align: center;
+    padding: 0 20px;
+    position: relative;
+}
+.lnb-layout-wrap .lnb-head .head-name:before {
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: #eee;
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.lnb-layout-wrap .lnb-head .back-btn{
+    border: none;
+    background: #FFFFFF;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 700;
+    color: #656668;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.lnb-layout-wrap .lnb-body{
+    flex: 1;
+    overflow: hidden;
+}
+/* depth01 */
+.depth01.accordion{
+    width:100%;
+    height:100%;
+    position: relative;
+}
+.depth01.accordion .card{
+    border-radius: 0 !important;
+    border: none;
+    position: unset;
+    background: none;
+}
+.depth01 > .card > .card-header {
+    padding: 0;
+    border: none;
+    background: none;
+}
+.depth01 > .card > .card-header > button{
+    width: 100%;
+    display: block;
+    position: relative;
+    padding: 8px 24px;
+    font-size: 16px;
+    font-weight: normal;
+    min-height: 40px;
+    color: #222;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    transition: padding-left 0.5s;
+    border:none;
+    background: none;
+    text-align: left;
+}
+.depth01:not(.inactive) > .card > .card-header > button:hover{
+    background:#00ADC2;
+    color: #ffffff;
+}
+.depth01 > .card > .card-header > .menu-item i.first-letter {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    text-align: center;
+    font-style: normal;
+}
+.depth01 > .card > .card-header > .menu-item i.first-letter {
+    width: 30px;
+    height: 30px;
+    overflow: hidden;
+    padding:0 2px;
+    line-height: 28px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #C9C9C9;
+    border:1px solid #C9C9C9;
+    display: none;
+    /* transition: opacity 0.5s ease-in-out; */
+    transition: none !important;
+}
+.depth01 > .card > .card-header > .menu-item i.first-letter:hover{
+    border-color:#00ADC2;
+    color: #00ADC2;
+}
+.depth01 > .card > .card-header > .menu-item.is-active i.first-letter{
+    background-color: #00ADC2;
+    border:1px solid #00ADC2;
+    color:#FFFFFF;
+}
+.depth01.inactive > .card > .card-header > .menu-item i.first-letter{
+    display: block;
+}
+.depth01 > .card > .card-header > .menu-item i.first-letter,
+.depth01.inactive > .card > .card-header > .menu-item i.first-letter + .first-menu{
+    display: none;
+}
+.depth01.inactive > .card > .card-header > .menu-item i.first-letter,
+.depth01 > .card > .card-header > .menu-item i.first-letter + .first-menu{
+    display: block;
+}
+.depth01 > .card > .card-header > .menu-item.is-active{
+    pointer-events: none;
+}
+/* depth02 */
+.depth02{
+    display: none;
+    width: calc(var(--lnb-test) - 40px);
+    right: calc(var(--lnb-test) - 40px) * -0.1;
+    position: absolute;
+    top: 0;
+    /* transition: right 0.4s, width 0.4s; */
+    transition: none !important;
+    z-index: 1;
+    background-color: #F9FAFC;
+    min-height: 100%;
+    overflow: hidden;
+    overflow-y: auto;
+}
+.depth02.show{
+    display: block;
+    right: 0;
+    border-left:1px solid #dcdcdc;
+}
+.depth02 .card-body,
+.depth02 .accordion-body{
+    padding:0;
+}
+.depth02 .accordion-body{
+    background:#FFFFFF;
+}
+.depth02 .accordion-button,
+.depth02 .accordion-button:focus{
+    outline: none !important;
+    box-shadow: none !important; /* 부트스트랩이라면 이것도 같이 제거 */
+    padding: 8px 18px;
+    min-height: 40px;
+}
+.depth02 .accordion-button[aria-expanded="true"]{
+    background: #00ADC2;
+    color:#ffffff;
+}
+.depth02 .accordion-button:not(.collapsed)::after{
+    filter: invert(100%) brightness(200%);
+}
+.depth02 .accordion > .accordion-item,
+.depth02 .accordion > .accordion-item .accordion-button:not([aria-expanded="true"]){
+    background: none;
+    border-bottom: none;
+}
+.depth02 .accordion .accordion-header > .accordion-button::after{
+    background-size: 16px;
+    background-position: center;
+}
+/* depth03 */
+ul.depth03{
+    padding: 0;
+    margin: 0;
+}
+ul.depth03 > li{
+    padding: 8px 8px 8px 24px;
+}
+ul.depth03 > li:hover{
+    color: #00ADC2;
+}
+ul.depth03 > li.current{
+    position: relative;
+    color: #00ADC2;
+}
+ul.depth03 > li.current::before{
+    content: '';
+    width: 4px;
+    height: 4px;
+    border-radius: 100%;
+    background: #00ADC2;
+    position: absolute; 
+    top: 16px;
+    left: 8px;
+}
+
+/* no-child */
+.accordion-header.no-child .accordion-button::after{
+    display: none;
+}
