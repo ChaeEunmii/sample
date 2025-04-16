@@ -99,7 +99,7 @@ ul, li, ol, li{
     background: none;
     text-align: left;
 }
-.depth01:not(.inactive) > .card > .card-header > button:hover{
+.depth01:not(.is-collapsed) > .card > .card-header > button:hover{
     background:#00ADC2;
     color: #ffffff;
 }
@@ -134,14 +134,14 @@ ul, li, ol, li{
     border:1px solid #00ADC2;
     color:#FFFFFF;
 }
-.depth01.inactive > .card > .card-header > .menu-item i.first-letter{
+.depth01.is-collapsed > .card > .card-header > .menu-item i.first-letter{
     display: block;
 }
 .depth01 > .card > .card-header > .menu-item i.first-letter,
-.depth01.inactive > .card > .card-header > .menu-item i.first-letter + .first-menu{
+.depth01.is-collapsed > .card > .card-header > .menu-item i.first-letter + .first-menu{
     display: none;
 }
-.depth01.inactive > .card > .card-header > .menu-item i.first-letter,
+.depth01.is-collapsed > .card > .card-header > .menu-item i.first-letter,
 .depth01 > .card > .card-header > .menu-item i.first-letter + .first-menu{
     display: block;
 }
