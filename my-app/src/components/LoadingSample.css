@@ -1,0 +1,98 @@
+/* loading-wrap */
+.loading-wrap *{
+    box-sizing: border-box;
+}
+.loading-wrap svg{
+    max-width: 100%;
+    vertical-align: middle;
+}
+.loading-wrap{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+}
+.loading-wrap .dim-bg{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:rgba(0, 0, 0, 0.4);
+}
+.svg-loading-wrapper {
+    width: 132px;
+    height: 132px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+}
+.svg-loading {
+    transform: rotate(-90deg); /* Fix the orientation */
+}
+.svg-loading-label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+.svg-loading-label__progress {
+    font-size: 18px;
+    font-weight: 600;
+}
+.svg-loading-label__progress {
+    display: block;
+}
+/* Animated spinner */
+.svg-loading-indicator--spinner {
+    animation: spinner .75s linear infinite;
+    transform-origin: center;
+}
+/* Spinner animation */
+@keyframes spinner {
+    0% {
+        transform: rotate(0)
+    }
+    100% {
+        transform: rotate(360deg)
+    }
+}
+/* Bottom Text */
+.svg-loading-bottom-text {
+    font-size: 16px;
+    font-weight: 500;
+    width: 100%;
+    text-align: center;
+    color: #ffffff;
+    margin-top: 6px;
+}
+.svg-loading-bottom-text{
+    display: block;
+}
+/* Animated dot */
+.svg-loading-bottom-text .circles {display: inline-block;}
+.svg-loading-bottom-text .circles i {
+    animation:scaleBounce .3s alternate infinite;
+    display:inline-block;
+    margin:0 2px;
+    width:2px;
+    height:2px;
+    background:#FFFFFF;
+    border-radius:50em;
+}
+.svg-loading-bottom-text .circles i:nth-child(2) {
+    animation-delay:.1s;
+}
+.svg-loading-bottom-text .circles i:nth-child(3) {
+    animation-delay:.2s;
+}
+/* Dot animation */
+@keyframes scaleBounce{
+    from {transform:scale(.7)}
+    to {transform:scale(1.3)}
+}
