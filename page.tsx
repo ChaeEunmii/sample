@@ -1,6 +1,6 @@
 'use client';
 
-import { TextButton } from '@shared/ui';
+import { Button, Stack } from '@shared/ui';
 import { useNotification } from '@shared/contexts/NotificationContext';
 
 // 임시 상품 데이터
@@ -9,7 +9,7 @@ import { Products } from '@views/product/dummy/ProdData';
 export default function Page() {
   const { showNotification } = useNotification();
 
-  const handleShowToast = (id: string) => {
+  const handleWishShowNotification = (id: string) => {
     const product = Products.find((prod) => prod.id === id);
     if (!product) return;
 
@@ -20,9 +20,25 @@ export default function Page() {
     });
   };
 
+  const handleCartShowNotification = (id: string) => {
+    const product = Products.find((prod) => prod.id === id);
+    if (!product) return;
+
+    showNotification('장바구니 추가', {
+      image: { src: product.image.src, alt: product.name },
+      buttonLabel: '주문하기',
+      onButtonClick: () => console.log('주문하기 이동'),
+    });
+  };
+
   return (
-    <div>
-      <TextButton onClick={() => handleShowToast('prod4')}>위시리스트</TextButton>
-    </div>
+    <Stack>
+      <Button size="small" onClick={() => handleWishShowNotification('prod4')}>
+        위시리스트 추가
+      </Button>
+      <Button size="small" onClick={() => handleCartShowNotification('prod3')}>
+        장바구니 추가
+      </Button>
+    </Stack>
   );
 }
