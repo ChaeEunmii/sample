@@ -1,0 +1,73 @@
+'use client';
+
+import { TitleArea, Heading } from '@/shared/ui';
+import { PRIVACY_TERMS } from '@views/policy/terms-data';
+
+export default function PrivateTerm() {
+  return (
+    <div className="ut-docs-private">
+      <TitleArea align="center">
+        <Heading as="h3" size="6" weight="bold">
+          {PRIVACY_TERMS.title}
+        </Heading>
+      </TitleArea>
+      <div className="ut-docs ut-mt-l">
+        {PRIVACY_TERMS.overview}
+        <div className="ut-docs-index-box">
+          <h4 className="ut-docs-title ut-text-center">목차</h4>
+          <ul className="ut-docs-index">
+            {PRIVACY_TERMS.clauses.map((clause, index) => (
+              <li key={index}>
+                <a href={`#privacy-${index + 1}`}>{clause.title}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+        {PRIVACY_TERMS.clauses.map((clause, index) => (
+          <div key={index} id={`privacy-${index + 1}`}>
+            <h3 className="ut-docs-title">{clause.title}</h3>
+            <div className="ut-docs">{clause.content}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+
+
+
+
+@use '@shared/styles/abstracts' as *;
+.root {
+  margin: 0 auto;
+  @include tablet {
+    max-width: rem(780px);
+  }
+  @include laptop {
+    position: relative;
+    transform: translateX(-50%);
+    left: calc(50% - 90px);
+    margin: 0;
+    padding-top: var(--spacing-x8);
+  }
+  .content {
+    margin-top: var(--spacing-x7);
+  }
+}
+
+
+
+
+import styles from './PrivateTerms.module.scss';
+import PrivateTerm from './PrivateTerm';
+
+export default function PrivateTerms() {
+  return (
+    <div className={styles.root}>
+      <PrivateTerm />
+    </div>
+  );
+}
+
+
