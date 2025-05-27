@@ -1,3 +1,5 @@
+PrivateTerm.tsx
+
 'use client';
 
 import { TitleArea, Heading } from '@/shared/ui';
@@ -37,6 +39,7 @@ export default function PrivateTerm() {
 
 
 
+PrivateTerms.module.scss
 
 @use '@shared/styles/abstracts' as *;
 .root {
@@ -58,6 +61,8 @@ export default function PrivateTerm() {
 
 
 
+
+PrivateTerm.tsx
 
 import styles from './PrivateTerms.module.scss';
 import PrivateTerm from './PrivateTerm';
