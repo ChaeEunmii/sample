@@ -1,0 +1,93 @@
+@use '@shared/styles/abstracts' as *;
+
+/* SocialButton */
+.root {
+  position: relative;
+  @include flex(inline-flex, center, center) {
+    gap: var(--spacing-x2);
+  }
+  width: 100%;
+  padding: var(--spacing-x2) var(--spacing-x6);
+  height: rem(44px);
+  font-size: var(--font-size-14);
+  line-height: var(--line-height-fit);
+  font-weight: var(--font-weight-bold);
+  border: var(--border-width-base) solid transparent;
+  border-radius: var(--border-radius-base);
+  &.vertical {
+    width: rem(80px);
+    height: rem(64px);
+    flex-direction: column;
+    gap: var(--spacing-x2);
+  }
+  &:disabled {
+    color: var(--color-white);
+    border-color: var(--color-gray-6);
+    background-color: var(--color-gray-6);
+  }
+  &:has(> :global(.ut-blind)) {
+    width: auto;
+    padding: 0;
+    aspect-ratio: 1;
+  }
+}
+
+// Size
+.large {
+  height: rem(52px);
+  font-size: var(--font-size-16);
+}
+.small {
+  gap: var(--spacing-x1);
+  height: rem(36px);
+  font-size: var(--font-size-13);
+  font-weight: var(--font-weight-regular);
+}
+.xsmall {
+  gap: var(--spacing-x1);
+  width: auto;
+  height: rem(32px);
+  font-size: var(--font-size-12);
+  font-weight: var(--font-weight-regular);
+}
+
+// Variant
+.primary {
+  color: var(--color-gray-9);
+  border-color: var(--color-gray-1);
+  background-color: var(--color-gray-1);
+}
+.secondary {
+  color: var(--color-gray-1);
+  border-color: var(--color-gray-1);
+}
+.naver {
+  color: var(--color-white);
+  border-color: #18b265;
+  background-color: #18b265;
+}
+.kakao {
+  color: #371c1d;
+  border-color: #f9e000;
+  background-color: #f9e000;
+}
+.phone {
+  color: var(--color-white);
+  border-color: #0f8155;
+  background-color: #0f8155;
+}
+.toss {
+  color: var(--color-white);
+  border-color: #2c65f6;
+  background-color: #2c65f6;
+}
+.apple {
+  color: var(--color-white);
+  border-color: #000000;
+  background-color: #000000;
+}
+.facebook {
+  color: var(--color-white);
+  border-color: #2c65f6;
+  background-color: #2c65f6;
+}
