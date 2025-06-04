@@ -57,3 +57,83 @@ export const CaptchaBox: React.FC<CaptchaBoxProps> = ({
     </div>
   );
 };
+
+
+
+// LoginForm.tsx
+
+import React, { useState, useEffect } from 'react';
+import { CaptchaBox } from './CaptchaBox';
+
+export const LoginForm = () => {
+  const [form, setForm] = useState({
+    username: '',
+    password: '',
+    captcha: '',
+  });
+
+  const [captchaImageUrl, setCaptchaImageUrl] = useState('');
+  const [captchaToken, setCaptchaToken] = useState('');
+
+  // 보안문자 이미지 불러오기
+  const fetchCaptcha = () => {
+    // 임시 예시: 백엔드에서 이미지 URL과 토큰을 받아온다고 가정
+    const randomId = Math.random().toString(36).substring(2);
+    setCaptchaToken(randomId);
+    setCaptchaImageUrl(`/api/captcha/image/${randomId}`);
+  };
+
+  useEffect(() => {
+    fetchCaptcha(); // 초기 보안문자 불러오기
+  }, []);
+
+  const handleChange = (field: keyof typeof form, value: string) => {
+    setForm((prev) => ({ ...prev, [field]: value }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    // 서버로 form + captchaToken 함께 전송
+    const payload = {
+      ...form,
+      captchaToken,
+    };
+
+    console.log('제출할 데이터:', payload);
+    // fetch('/api/login', { method: 'POST', body: JSON.stringify(payload) }) ...
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <label>
+        아이디
+        <input
+          type="text"
+          value={form.username}
+          onChange={(e) => handleChange('username', e.target.value)}
+        />
+      </label>
+
+      <label>
+        비밀번호
+        <input
+          type="password"
+          value={form.password}
+          onChange={(e) => handleChange('password', e.target.value)}
+        />
+      </label>
+
+      {/* 📌 보안문자 입력 필드 */}
+      <CaptchaBox
+        imageUrl={captchaImageUrl}
+        value={form.captcha}
+        onChange={(val) => handleChange('captcha', val)}
+        onRefresh={fetchCaptcha}
+        onPlayAudio={() => alert('소리듣기 실행')}
+      />
+
+      <button type="submit">로그인</button>
+    </form>
+  );
+};
