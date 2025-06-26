@@ -1,0 +1,12 @@
+@use '@shared/styles/abstracts' as *;
+
+/* BrandProductSectionList */
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-top: var(--ncp-spacing-x12);
+  &:first-child {
+    margin-top: 0;
+  }
+}

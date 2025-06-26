@@ -1,0 +1,111 @@
+@use '@shared/styles/abstracts' as *;
+
+/* SelectCollectionDrawer */
+.root {
+  --collection-thumb-width: #{rem(64px)};
+  --collection-thumb-height: #{rem(64px)};
+  --collection-select-gap: #{rem(16px)};
+}
+
+// 새로운 컬렉션 추가버튼
+.new {
+  @include flex($v: center);
+  gap: var(--ncp-spacing-x8);
+  margin-bottom: var(--collection-select-gap);
+  .addImg {
+    background-color: var(--ncp-color-bg-1);
+    border-radius: var(--ncp-border-radius-base);
+    width: var(--collection-thumb-width);
+    height: var(--collection-thumb-height);
+    @include flex($v: center, $h: center);
+    > i {
+      font-size: rem(48px);
+    }
+  }
+  .titWrap {
+    @include flex($d: column);
+    gap: var(--ncp-spacing-x2);
+    .tit {
+      font-size: var(--ncp-font-size-14);
+      line-height: var(--ncp-line-height-20);
+      font-weight: var(--ncp-font-weight-semibold);
+    }
+    .desc {
+      font-size: var(--ncp-font-size-13);
+      line-height: var(--ncp-line-height-18);
+      color: var(--ncp-color-gray-500);
+    }
+  }
+}
+
+// list
+.list {
+  @include flex($d: column);
+  gap: var(--collection-select-gap);
+  .item {
+    .side {
+      @include flex($v: center);
+      gap: 16px;
+      .infoWrap {
+        flex: 1;
+        @include flex($d: column);
+        gap: 4px;
+      }
+      .img {
+        width: var(--collection-thumb-width);
+        height: var(--collection-thumb-height);
+        border-radius: var(--ncp-border-radius-base);
+        overflow: hidden;
+      }
+    }
+  }
+  .label {
+    font-size: var(--ncp-font-size-14);
+    line-height: var(--ncp-line-height-20);
+    font-weight: var(--ncp-font-weight-semibold);
+    i {
+      margin-left: var(--ncp-spacing-x2);
+      color: var(--ncp-color-gray-500);
+    }
+  }
+  .infos {
+    & > li {
+      @include flex($display: inline-flex);
+      padding-right: 13px;
+      font-size: var(--ncp-font-size-13);
+      line-height: var(--ncp-line-height-18);
+      color: var(--ncp-color-gray-700);
+      position: relative;
+      &:last-child {
+        padding-right: 0;
+        &::before {
+          display: none;
+        }
+      }
+      &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        right: rem(6px);
+        width: rem(1px);
+        height: rem(10px);
+        transform: translateY(-50%);
+        background-color: var(--ncp-color-gray-150);
+      }
+    }
+  }
+}
+
+// footer
+.footer {
+  width: 100%;
+  .info {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 500;
+    text-align: center;
+  }
+  .btns {
+    margin-top: 16px;
+  }
+}

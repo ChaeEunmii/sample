@@ -1,0 +1,67 @@
+@use '@shared/styles/abstracts' as *;
+
+/* BrandProductSection */
+.brandHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ncp-spacing-x6);
+  margin-bottom: var(--ncp-spacing-x6);
+  .header {
+    display: flex;
+    align-items: center;
+    gap: var(--ncp-spacing-x6);
+  }
+}
+
+.logo {
+  width: rem(60px);
+  height: rem(60px);
+  border-radius: var(--ncp-border-radius-max);
+  object-fit: cover;
+  border: var(--ncp-border-width-base) solid var(--ncp-color-gray-100);
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ncp-spacing-x1);
+}
+.nameWrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--ncp-spacing-x4);
+}
+
+.brandName {
+  font-size: var(--ncp-font-size-15);
+  line-height: var(--ncp-line-height-22);
+  font-weight: var(--ncp-font-weight-semibold);
+}
+
+.badge {
+  background-color: var(--ncp-color-gray-100);
+  color: var(--ncp-color-gray-850);
+  font-size: var(--ncp-font-size-10);
+  line-height: var(--ncp-line-height-fit);
+  border-radius: var(--ncp-border-radius-s);
+  padding: rem(5px) rem(6px);
+}
+//브랜드명 (한글)
+.nameKor {
+  font-size: var(--ncp-font-size-13);
+  line-height: var(--ncp-line-height-18);
+  color: var(--ncp-color-gray-500);
+}
+
+// 비어잇을때
+.empty {
+  @include flex($h: center, $v: center);
+  gap: var(--ncp-spacing-x2);
+  padding-block: var(--ncp-spacing-x8);
+  border-radius: var(--ncp-border-radius-base);
+  background-color: var(--ncp-color-bg-2);
+  color: var(--ncp-color-gray-500);
+  font-size: var(--ncp-font-size-13);
+  line-height: var(--ncp-line-height-22);
+}

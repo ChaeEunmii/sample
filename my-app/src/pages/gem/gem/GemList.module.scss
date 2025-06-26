@@ -1,0 +1,40 @@
+@use '@shared/styles/abstracts' as *;
+
+/* ProductList */
+.layout {
+  .sticky {
+    position: sticky;
+    //top: rem(52px); // header 높이만큼
+    top: var(--ncp-layout-header-height);
+    margin-inline: calc((var(--ncp-layout-padding-x) * -1));
+    z-index: 5;
+    background: var(--ncp-color-background);
+    overflow: hidden;
+    .tabs {
+      margin-block: var(--ncp-spacing-x12) var(--ncp-spacing-x10);
+      > div {
+        padding: 0 var(--ncp-layout-padding-x);
+        margin-bottom: 0;
+        margin-inline: 0;
+      }
+    }
+  }
+  .content {
+    padding-block: var(--ncp-spacing-x12);
+    .top {
+      margin-bottom: var(--ncp-spacing-x12);
+    }
+  }
+  .product {
+    margin-bottom: 40px;
+  }
+  .brand {
+    margin-bottom: 40px;
+  }
+  .collection {
+    margin-bottom: 40px;
+  }
+  .people {
+    margin-bottom: 40px;
+  }
+}

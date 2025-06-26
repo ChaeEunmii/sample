@@ -1,0 +1,118 @@
+@use '@shared/styles/abstracts' as *;
+
+/* CollectionItem */
+.root {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  border-radius: var(--ncp-border-radius-base);
+  overflow: hidden;
+
+  .headWrap {
+    padding: 20px 16px 16px 16px;
+    @include flex($h: space-between);
+    gap: 16px;
+    .head {
+      @include flex($d: column);
+      gap: 8px;
+    }
+    .tit {
+      @include flex($v: center);
+      gap: rem(6px);
+      font-size: var(--ncp-font-size-16);
+      line-height: var(--ncp-line-height-22);
+      font-weight: var(--ncp-font-weight-bold);
+      .ctrl {
+        color: var(--ncp-color-gray-500);
+        padding: 0;
+        margin: 0;
+      }
+    }
+    .cont {
+      @include flex();
+      gap: 16px;
+    }
+    .infos {
+      & li {
+        display: inline-block;
+        font-size: var(--ncp-font-size-13);
+        line-height: var(--ncp-line-height-18);
+        font-weight: var(--ncp-font-weight-regular);
+        color: var(--ncp-color-gray-700);
+        position: relative;
+        padding-left: 13px;
+        &:first-child {
+          padding-left: 0;
+          &::before {
+            display: none;
+          }
+        }
+        &::before {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 6px;
+          width: 1px;
+          height: 10px;
+          transform: translateY(-50%);
+          background-color: #e3e3e3;
+        }
+      }
+    }
+  }
+  .user {
+    @include flex($v: center);
+    gap: rem(6px);
+    .name {
+      font-size: 13px;
+      list-style: 18px;
+      font-weight: 600;
+    }
+    .userImg {
+      width: rem(20px);
+      height: rem(20px);
+    }
+  }
+}
+.products {
+  @include flex();
+  gap: rem(2px);
+  li {
+    flex: 1;
+    aspect-ratio: 1 / 1;
+    width: 100%; /* 또는 원하는 width (ex. 200px) */
+    overflow: hidden;
+    position: relative;
+    background: var(--ncp-color-gray-100);
+    .prdImg {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    // 일단 4번째 값에 블러처리
+    &.overflow:nth-child(4) {
+      //그안에 나머지 +숫자값 스타일
+      .rest {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: var(--ncp-font-size-14);
+        line-height: var(--ncp-line-height-20);
+        font-weight: var(--ncp-font-weight-semibold);
+        color: #ffffff;
+      }
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: var(--ncp-color-alpha-b30);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+      }
+    }
+  }
+}
