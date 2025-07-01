@@ -1,0 +1,36 @@
+import { useState } from 'react';
+import styles from './Avatar.module.scss';
+import { Image } from '@shared/ui';
+import clsx from 'clsx';
+
+interface AvatarProps extends React.HTMLAttributes<HTMLSpanElement> {
+  type?: 'user' | 'brand' | string;
+  src: string;
+  alt?: string;
+  size?: '1' | '2' | '3' | '4';
+  className?: string;
+}
+
+const DEFAULT_IMAGE_MAP: Record<string, string> = {
+  user: '/images/default-user.png',
+  brand: '/images/default-brand.png',
+};
+
+export const Avatar = ({ type = 'user', src, alt, size = '3', className }: AvatarProps) => {
+  const [imgSrc, setImgSrc] = useState(src);
+
+  const handleError = () => {
+    const fallback = DEFAULT_IMAGE_MAP[type] || '/images/default-user.png';
+    setImgSrc(fallback);
+  };
+
+  return (
+    <span
+      className={clsx(styles.root, type && styles[type], size && styles[`size${size}`], className)}
+    >
+      <Image src={imgSrc} alt={alt} className={styles.image} onError={handleError} />
+    </span>
+  );
+};
+
+Avatar.displayName = 'Avatar';
