@@ -1,0 +1,65 @@
+@use '@shared/styles/abstracts' as *;
+
+/* AddProductDialog */
+/* sticky(top) custom */
+.stickyTop {
+  position: sticky;
+  top: 0;
+  padding-inline: var(--ncp-layout-padding-x);
+  padding-top: var(--ncp-spacing-x8);
+  z-index: 11;
+  background: var(--ncp-color-background);
+  overflow: hidden;
+}
+/* bgGray */
+.bgGray {
+  background-color: var(--ncp-color-bg-1);
+  padding-inline: 0;
+  padding-bottom: 0;
+  & :is([class*='Dialog_header']) {
+    background-color: var(--ncp-color-background);
+    padding-inline: var(--ncp-layout-padding-x);
+  }
+  & :is([class*='Dialog_body']) {
+    padding-bottom: 0;
+  }
+  & :is([class*='Dialog_footer']) {
+    margin-inline: 0;
+    background-color: var(--ncp-color-background);
+  }
+  .contents {
+    padding-inline: var(--ncp-layout-padding-x);
+    padding-block: var(--ncp-spacing-x12);
+  }
+}
+/* btnArea*/
+.btnArea {
+  flex: 1;
+  margin-top: 0;
+}
+/* count */
+.count {
+  width: 100%;
+  text-align: center;
+  font-size: var(--ncp-font-size-14);
+  line-height: var(--ncp-line-height-20);
+  font-weight: var(--ncp-font-weight-medium);
+  margin-bottom: var(--ncp-spacing-x4);
+  > em {
+    font-size: var(--ncp-font-size-13);
+    line-height: var(--ncp-line-height-18);
+    font-weight: var(--ncp-font-weight-regular);
+    margin-left: var(--ncp-spacing-x2);
+  }
+  &.noSelected {
+    > em {
+      color: var(--ncp-color-gray-500);
+    }
+  }
+  & + .btns {
+    margin-top: 0;
+    width: 100%;
+    @include flex();
+    gap: var(--ncp-spacing-x4);
+  }
+}

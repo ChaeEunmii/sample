@@ -1,0 +1,46 @@
+@use '@shared/styles/abstracts' as *;
+
+/* CreateStep1 */
+/* sticky(top) custom */
+.stickyTop {
+  position: sticky;
+  top: var(--ncp-layout-header-height);
+  margin-inline: calc((var(--ncp-layout-padding-x) * -1));
+  padding-inline: var(--ncp-layout-padding-x);
+  // padding-top: var(--ncp-spacing-x8);
+  // padding-bottom: var(--ncp-spacing-x10);
+  z-index: 11;
+  background: var(--ncp-color-background);
+  overflow: hidden;
+  .tabs {
+    padding-inline: var(--ncp-layout-padding-x);
+    > div {
+      padding: 0 var(--ncp-layout-padding-x);
+      margin-bottom: 0;
+      margin-inline: 0;
+    }
+  }
+}
+/* sticky(bottom) custom */
+.stickyBottom {
+  position: sticky;
+  bottom: var(--ncp-layout-button-offset);
+  margin: 0 calc((var(--ncp-layout-padding-x) * -1));
+  padding: var(--ncp-spacing-x6) var(--ncp-spacing-x8);
+  border-top: var(--ncp-border-width-base) solid var(--ncp-color-gray-100);
+  background-color: var(--ncp-color-background);
+  will-change: transform;
+  z-index: 11;
+  .flexColumn {
+    @include flex($d: column);
+    gap: var(--ncp-spacing-x8);
+  }
+}
+
+// 컨텐츠영역
+.content {
+  padding-block: var(--ncp-spacing-x12);
+  .top {
+    margin-bottom: var(--ncp-spacing-x12);
+  }
+}

@@ -1,0 +1,64 @@
+@use '@shared/styles/abstracts' as *;
+
+/* CreateStep3 */
+/* sticky(top) custom */
+.stickyTop {
+  position: sticky;
+  top: var(--ncp-layout-header-height);
+  margin-inline: calc((var(--ncp-layout-padding-x) * -1));
+  padding-inline: var(--ncp-layout-padding-x);
+  padding-top: var(--ncp-spacing-x8);
+  padding-bottom: var(--ncp-spacing-x10);
+  z-index: 11;
+  background: var(--ncp-color-background);
+  overflow: hidden;
+}
+/* control */
+.control {
+  width: 100%;
+  position: relative;
+  // 흰색 디자인
+  &::before {
+    content: '';
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #fff 82.29%);
+    position: absolute;
+    width: 100%;
+    height: rem(96px);
+    top: rem(-96px);
+    z-index: 1;
+  }
+  & + * {
+    margin-top: var(--ncp-spacing-x12);
+  }
+}
+.count {
+  font-size: var(--ncp-font-size-14);
+  line-height: var(--ncp-line-height-20);
+  font-weight: var(--ncp-font-weight-medium);
+  color: var(--ncp-color-gray-700);
+  > em {
+    font-weight: var(--ncp-font-weight-medium);
+  }
+}
+.info {
+  margin-top: var(--ncp-spacing-x4);
+}
+
+/* switchBox */
+.switchBox {
+  border-radius: var(--ncp-border-radius-base);
+  background-color: var(--ncp-color-bg-1);
+  padding-inline: var(--ncp-spacing-x8);
+  padding-block: rem(14px);
+  @include flex($v: center, $h: space-between);
+  .tit {
+    font-size: var(--ncp-font-size-14);
+    line-height: var(--ncp-line-height-20);
+    font-weight: var(--ncp-font-weight-semibold);
+  }
+}
+
+/* btnArea */
+.btnArea {
+  border-top: none;
+}

@@ -1,0 +1,33 @@
+@use '@shared/styles/abstracts' as *;
+
+/* BrandCard */
+
+// 카드 커스텀
+.cardCustom {
+  position: relative;
+  background-color: var(--ncp-color-background);
+  border-radius: var(--ncp-border-radius-base);
+  overflow: hidden;
+  // 체크박스 위치
+  .checkbox {
+    position: absolute;
+    top: rem(8px);
+    left: rem(8px);
+    z-index: 2;
+  }
+  // 기존 사용하던 prodCard Custom
+  .prodCustom {
+    &:is([class*='ProdCard_root']) {
+      background-color: var(--ncp-color-background);
+      gap: 0;
+      & :is([class*='ProdCard_thumb']) {
+        border-radius: 0;
+      }
+      & :is([class*='ProdCard_detail']) {
+        padding-inline: var(--ncp-spacing-x8);
+        padding-block: var(--ncp-spacing-x6);
+        min-height: rem(124px);
+      }
+    }
+  }
+}

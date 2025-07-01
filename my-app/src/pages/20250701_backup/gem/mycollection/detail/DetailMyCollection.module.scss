@@ -1,0 +1,26 @@
+@use '@shared/styles/abstracts' as *;
+
+/* MycollectionList */
+.layout {
+  // 상단 고정영역
+  .sticky {
+    position: sticky;
+    top: var(--ncp-layout-header-height);
+    margin-inline: calc((var(--ncp-layout-padding-x) * -1));
+    z-index: 5; //11로 변경하면 우상단 헤더 drop이 가려짐
+    background: var(--ncp-color-background);
+    overflow: hidden;
+    .tabs {
+      margin: var(--ncp-spacing-x6) 0 var(--ncp-spacing-x10) 0;
+      > div {
+        padding: 0 var(--ncp-layout-padding-x);
+        margin-bottom: 0;
+        margin-inline: 0;
+      }
+    }
+  }
+  // 컨텐츠영역
+  .content {
+    padding-block: var(--ncp-spacing-x12);
+  }
+}

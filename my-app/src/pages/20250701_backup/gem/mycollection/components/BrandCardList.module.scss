@@ -1,0 +1,17 @@
+@use '@shared/styles/abstracts' as *;
+
+/* BrandCardList */
+.root {
+}
+
+// 카드 커스텀
+.cardCustom {
+  position: relative;
+  // 체크박스 위치
+  .checkbox {
+    position: absolute;
+    top: rem(8px);
+    left: rem(8px);
+    z-index: 2;
+  }
+}

@@ -1,0 +1,12 @@
+@use '@shared/styles/abstracts' as *;
+
+/* CollectionList */
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: var(--ncp-spacing-x12);
+  &:first-child {
+    margin-top: 0;
+  }
+}
