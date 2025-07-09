@@ -1,0 +1,4 @@
+const list = data.map((item) => {
+  const { href, ...rest } = item;
+  return rest;
+});
