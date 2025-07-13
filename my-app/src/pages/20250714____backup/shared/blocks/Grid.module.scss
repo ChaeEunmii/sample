@@ -1,0 +1,45 @@
+@use '@shared/styles/abstracts' as *;
+
+.root {
+  --grid-columns: 1;
+  --grid-gutter: var(--ncp-spacing-x4);
+  --grid-item-align: stretch;
+
+  @include grid($c: var(--grid-columns));
+  column-gap: var(--grid-gutter);
+  row-gap: var(--grid-row-gap, var(--grid-gutter));
+
+  &.autofit {
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(
+        calc(
+          (
+              min(100vw, var(--ncp-layout-max-width)) - (var(--ncp-main-padding-x) * 2) -
+                ((var(--grid-columns) - 1) * var(--grid-gutter))
+            ) /
+            var(--grid-columns)
+        ),
+        1fr
+      )
+    );
+  }
+
+  &.flush {
+    margin-inline: calc(var(--ncp-main-padding-x) * -1);
+  }
+}
+.item {
+  grid-column: span var(--grid-span, 1);
+  align-self: var(--grid-item-align);
+
+  &.top {
+    --grid-item-align: start;
+  }
+  &.center {
+    --grid-item-align: center;
+  }
+  &.bottom {
+    --grid-item-align: end;
+  }
+}

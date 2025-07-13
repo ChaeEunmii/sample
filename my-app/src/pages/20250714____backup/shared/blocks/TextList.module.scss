@@ -1,0 +1,87 @@
+@use '@shared/styles/abstracts' as *;
+@use 'sass:list';
+
+/* TextList */
+.root {
+  --text-list-bullet: '\2022';
+  --text-list-bullet-width: #{rem(10px)};
+  --text-list-bullet-color: inherit;
+  --text-list-bullet-size: inherit;
+  --text-list-spacing: var(--ncp-spacing-x4);
+  margin-top: var(--ncp-spacing-x4);
+  color: var(--ncp-color-gray-700);
+  line-height: var(--ncp-line-height-reading);
+  &:first-child {
+    margin-top: 0;
+  }
+  .sub {
+    margin-top: var(--ncp-spacing-x3);
+  }
+  li {
+    margin-top: var(--text-list-spacing);
+    padding-left: var(--text-list-bullet-width);
+    &:first-child {
+      margin-top: 0;
+    }
+    &::before {
+      content: var(--text-list-bullet);
+      color: var(--text-list-bullet-color);
+      width: var(--text-list-bullet-width);
+      font-size: var(--text-list-bullet-size);
+      margin-left: calc(var(--text-list-bullet-width) * -1);
+      display: inline-block;
+    }
+  }
+}
+
+// variant
+.level2 {
+  --text-list-spacing: var(--ncp-spacing-x2);
+  font-size: var(--ncp-font-size-13);
+}
+.level3 {
+  --text-list-spacing: var(--ncp-spacing-x3);
+  font-size: var(--ncp-font-size-12);
+  line-height: var(--ncp-line-height-16);
+}
+.info {
+  --text-list-spacing: var(--ncp-spacing-x3);
+  color: var(--ncp-color-gray-500);
+  font-size: var(--ncp-font-size-12);
+  line-height: var(--ncp-line-height-16);
+}
+.caution {
+  --text-list-bullet: '*';
+  --text-list-bullet-width: #{rem(10px)};
+  --text-list-bullet-color: var(--ncp-color-gray-350);
+  color: var(--ncp-color-gray-500);
+  font-size: var(--ncp-font-size-13);
+  line-height: var(--ncp-line-height-18);
+  li::before {
+    position: relative;
+    top: 2px;
+  }
+}
+.clear {
+  --text-list-bullet: '';
+  --text-list-bullet-width: 0;
+  --text-list-spacing: var(--ncp-spacing-x2);
+  margin-top: 0;
+  color: var(--ncp-color-900);
+}
+
+// margin
+.mt2 {
+  margin-top: var(--ncp-spacing-x6);
+}
+
+//liFlex
+.liFlex {
+  & > li {
+    display: flex;
+    &::before {
+      flex-shrink: 0;
+      flex-grow: 0;
+    }
+  }
+}

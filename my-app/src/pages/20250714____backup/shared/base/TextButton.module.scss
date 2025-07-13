@@ -1,0 +1,42 @@
+@use '@shared/styles/abstracts' as *;
+@use 'sass:map';
+@use 'sass:list';
+
+/* TextButton */
+.root {
+  padding-inline: var(--ncp-spacing-indent);
+  @include flex($display: inline-flex, $v: center);
+  gap: var(--ncp-spacing-x1);
+  font-weight: var(--ncp-font-weight-medium);
+  &:disabled {
+    opacity: 0.5;
+  }
+}
+
+// Variant
+.underline {
+  text-decoration: underline;
+  text-underline-position: under;
+}
+.bold {
+  font-weight: var(--ncp-font-weight-medium);
+}
+
+// Size
+// (font-size, line-height)
+// prettier-ignore
+$text-styles: (
+  1: (13, 18),
+  2: (14, 20),
+  3: (12, 16),
+);
+
+@each $key, $pair in $text-styles {
+  $font-size-key: list.nth($pair, 1);
+  $line-height-key: list.nth($pair, 2);
+
+  .size#{$key} {
+    font-size: var(--ncp-font-size-#{$font-size-key});
+    line-height: var(--ncp-line-height-#{$line-height-key});
+  }
+}

@@ -1,0 +1,11 @@
+@use '@shared/styles/abstracts' as *;
+
+/* ChangeApply */
+.info {
+  column-gap: var(--ncp-spacing-x10);
+}
+
+.title {
+  @include flex($d: column);
+  gap: var(--ncp-spacing-x4);
+}

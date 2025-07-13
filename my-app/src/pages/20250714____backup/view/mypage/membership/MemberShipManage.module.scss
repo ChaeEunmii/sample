@@ -1,0 +1,44 @@
+@use '@shared/styles/abstracts' as *;
+
+/* MemberShipManage */
+.layout {
+}
+.tooltip {
+  width: rem(230px);
+}
+
+/* benefitsStack */
+.benefitsStack {
+  @include flex($d: column);
+  gap: var(--ncp-spacing-x4);
+  margin-top: var(--ncp-spacing-x10);
+  &:first-child {
+    margin-top: 0;
+  }
+  & > li {
+    background-color: var(--ncp-color-bg-1);
+    border-radius: var(--ncp-border-radius-base);
+    padding: var(--ncp-spacing-x8);
+    @include flex($v: center, $w: wrap, $h: space-between);
+    gap: var(--ncp-spacing-x4);
+    .heading {
+      font-size: var(--ncp-font-size-13);
+      line-height: var(--ncp-line-height-18);
+      font-weight: var(--ncp-font-weight-medium);
+    }
+    .cont {
+      @include flex($display: inline-flex, $v: baseline);
+      gap: var(--ncp-spacing-x2);
+      .numb {
+        font-size: var(--ncp-font-size-18);
+        line-height: var(--ncp-line-height-24);
+        font-weight: var(--ncp-font-weight-semibold);
+      }
+      .unit {
+        font-size: var(--ncp-font-size-12);
+        line-height: var(--ncp-line-height-16);
+        font-weight: var(--ncp-font-weight-semibold);
+      }
+    }
+  }
+}
