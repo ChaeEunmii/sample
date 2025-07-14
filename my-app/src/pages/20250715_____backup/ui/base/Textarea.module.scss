@@ -1,0 +1,31 @@
+@use '@shared/styles/abstracts' as *;
+
+/* Textarea */
+.root {
+  position: relative;
+  border: var(--ncp-border-width-base) solid transparent;
+  background-color: var(--ncp-color-gray-field);
+  .field {
+    width: 100%;
+    height: 100%;
+    padding: 16px;
+    outline: 0;
+
+    &.isCount {
+      padding-bottom: 36px;
+    }
+  }
+  &.disabled {
+    color: var(--ncp-color-gray-850);
+  }
+  &.invalid {
+    border-color: var(--ncp-color-accent-alert);
+  }
+}
+
+.count {
+  position: absolute;
+  right: var(--ncp-spacing-x8);
+  bottom: var(--ncp-spacing-x8);
+  background-color: var(--ncp-color-background);
+}

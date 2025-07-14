@@ -1,0 +1,9 @@
+@use '@shared/styles/abstracts' as *;
+
+.root {
+  @include position($i: 10);
+  background-color: var(--ncp-color-background);
+  &:focus {
+    outline: none;
+  }
+}

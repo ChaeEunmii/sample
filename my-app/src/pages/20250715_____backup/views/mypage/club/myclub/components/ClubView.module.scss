@@ -1,0 +1,135 @@
+@use '@shared/styles/abstracts' as *;
+
+/* ClubView 공통 */
+.collapse {
+  //   border-top: 1px solid var(--ncp-color-gray-100);
+  .tit {
+    font-size: var(--ncp-font-size-16);
+    line-height: var(--ncp-line-height-22);
+    font-weight: var(--ncp-font-weight-bold);
+  }
+  :is([class^='Box_root']) {
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}
+
+// ClubTitle : 마이클럽메인, 가입화면 상단 타이틀
+.clubTitle {
+  margin-bottom: var(--ncp-spacing-x12);
+  .title {
+    margin-bottom: 0;
+    align-items: center;
+    &:first-child {
+      margin-top: var(--ncp-spacing-x6);
+    }
+  }
+  .image {
+    border-radius: var(--ncp-border-radius-base);
+    margin-top: var(--ncp-spacing-x12);
+  }
+  .date {
+    font-size: var(--ncp-font-size-13);
+    line-height: var(--ncp-line-height-18);
+    font-weight: var(--ncp-font-weight-regular);
+    color: var(--ncp-color-gray-500);
+  }
+  //variant
+  &.join,
+  &.edit {
+    .title {
+      margin-top: var(--ncp-spacing-x16);
+    }
+    .image {
+      margin-top: var(--ncp-spacing-x16);
+    }
+  }
+}
+
+// OtherClubsView :다른클럽 둘러보기
+.otherView {
+  padding-block: var(--ncp-spacing-x10);
+  // TitleBar
+  .title {
+    margin-top: 0;
+  }
+  // 클럽목록 스타일
+  .list {
+    @include grid($c: 2);
+    gap: 0 var(--ncp-spacing-x8);
+    & > li {
+      flex: 1;
+      position: relative;
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 0;
+        border-bottom: 1px solid var(--ncp-color-gray-100);
+      }
+      // 첫 번째 컬럼 아이템: 보더 너비 = 100% + gap
+      &:nth-child(2n - 1)::after {
+        width: calc(100% + var(--ncp-spacing-x8));
+      }
+      // 두 번째 컬럼 아이템: 보더 너비 = 100% (또는 보더 없음)
+      &:nth-child(2n)::after {
+        width: 100%;
+      }
+      // 마지막 2개는 보더 없음 (필요 시)
+      &:nth-last-child(-n + 2)::after {
+        content: none;
+      }
+      .link {
+        @include flex($v: center);
+        gap: var(--ncp-spacing-x4);
+        padding-block: var(--ncp-spacing-x8);
+        .thumb {
+          --avatar-size-width: #{rem(32px)};
+          --avatar-size-height: #{rem(32px)};
+        }
+
+        .name {
+          flex: 1;
+          font-size: var(--ncp-font-size-14);
+          line-height: var(--ncp-line-height-20);
+          font-weight: var(--ncp-font-weight-semibold);
+        }
+      }
+    }
+  }
+}
+
+/* 클럽 정보 Textlite 안에서 정보구조 레이아웃*/
+.lyCol {
+  flex: 1;
+  @include flex($h: space-between, $v: center);
+}
+.pointFlex {
+  @include flex($v: center);
+  gap: var(--ncp-spacing-x1);
+  color: var(--ncp-color-gray-900);
+  font-weight: var(--ncp-font-weight-medium);
+}
+
+/* 관심정보 : 테이블 스타일 */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  th,
+  td {
+    border-top: 1px solid var(--ncp-color-gray-100);
+    border-bottom: 1px solid var(--ncp-color-gray-100);
+    padding: var(--ncp-spacing-x6) var(--ncp-spacing-x8);
+    font-size: var(--ncp-font-size-14);
+    line-height: var(--ncp-line-height-20);
+  }
+  th {
+    background-color: var(--ncp-color-bg-1);
+    font-weight: var(--ncp-font-weight-semibold);
+  }
+  td {
+    color: var(--ncp-color-gray-700);
+  }
+}

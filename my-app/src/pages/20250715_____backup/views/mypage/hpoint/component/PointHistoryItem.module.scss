@@ -1,0 +1,74 @@
+@use '@shared/styles/abstracts' as *;
+
+/* PointHistoryItem */
+.item {
+  --gray-info-font-size: var(--ncp-font-size-12);
+  --gray-info-line-height: var(--ncp-line-height-16);
+  --gray-info-font-weight: var(--ncp-font-weight-regular);
+  --gray-info-color: var(--ncp-color-gray-500);
+
+  @include flex($d: column);
+  gap: var(--ncp-spacing-x2);
+  padding-inline: var(--ncp-spacing-indent);
+  padding-block: var(--ncp-spacing-x12);
+  border-top: var(--ncp-border-width-base) solid var(--ncp-color-gray-100);
+  &:first-child {
+    border: none;
+  }
+  .top {
+    @include flex($v: flex-start, $h: space-between);
+    gap: var(--ncp-spacing-x8);
+    .tit,
+    .point {
+      font-size: var(--ncp-font-size-14);
+      line-height: var(--ncp-line-height-20);
+      font-weight: var(--ncp-font-weight-medium);
+    }
+  }
+  .infos {
+    @include flex($h: space-between);
+    gap: var(--ncp-spacing-x8);
+    .left {
+      @include flex($d: column);
+      gap: var(--ncp-spacing-x2);
+      /* list */
+      .list {
+        & li {
+          display: inline-block;
+          font-size: var(--gray-info-font-size);
+          line-height: var(--gray-info-line-height);
+          font-weight: var(--gray-info-font-weight);
+          color: var(--gray-info-color);
+          position: relative;
+          padding-left: rem(13px);
+          &:first-child {
+            padding-left: 0;
+            &::before {
+              display: none;
+            }
+          }
+          &::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: rem(6px);
+            width: rem(1px);
+            height: rem(10px);
+            transform: translateY(-50%);
+            background-color: var(--ncp-color-gray-150);
+          }
+        }
+      }
+      .txt {
+        font-size: var(--gray-info-font-size);
+        line-height: var(--gray-info-line-height);
+        font-weight: var(--gray-info-font-weight);
+        color: var(--gray-info-color);
+      }
+    }
+    .right {
+      flex-shrink: 0;
+      flex-grow: 0;
+    }
+  }
+}
