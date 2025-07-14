@@ -1,0 +1,95 @@
+'use client';
+
+import {
+  Collapse,
+  Heading,
+  Carousel,
+  ButtonArea,
+  Button,
+  TextButton,
+} from '@shared/ui';
+import styles from './ClubView.module.scss';
+
+export interface ClubInterestItem {
+  label: string;
+  content: string;
+}
+
+interface ClubInterestProps {
+  data: ClubInterestItem[][]; // 슬라이드마다 들어갈 그룹 단위 데이터
+}
+
+export const ClubInterest = ({ data }: ClubInterestProps) => {
+  const slides = data.map((group, index) => (
+    <table className={styles.table} key={`group-${index}`}>
+      <colgroup>
+        <col width="120px" />
+        <col />
+      </colgroup>
+      <tbody>
+        {group.map(({ label, content }) => (
+          <tr key={label}>
+            <th scope="row">{label}</th>
+            <td>{content}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  ));
+
+  return (
+    <Collapse variant="section" className={styles.collapse}>
+      <Collapse.Control>
+        <Heading className={styles.tit}>관심정보</Heading>
+      </Collapse.Control>
+      <Collapse.Content>
+        <Carousel
+          slides={slides}
+          slidesPerView={1}
+          pagination="bullet"
+          boxing
+        />
+        <ButtonArea margin="1">
+          <Button>관심정보 수정</Button>
+        </ButtonArea>
+        <ButtonArea margin="2" align="right">
+          <TextButton variant="underline" color="gray3" size="1">
+            클럽 탈퇴하기
+          </TextButton>
+        </ButtonArea>
+      </Collapse.Content>
+    </Collapse>
+  );
+};
+
+
+
+'use client';
+
+import { ClubInterest, ClubInterestItem } from './ClubInterest';
+
+const exampleData: ClubInterestItem[][] = [
+  [
+    { label: '나이', content: '30대 후반' },
+    { label: '성별', content: '여성' },
+    { label: '관심 카테고리', content: '뷰티 / 건강' },
+    { label: '활동 지역', content: '서울 강남구' },
+  ],
+  [
+    { label: '브랜드 선호도', content: '미샤, 이니스프리' },
+    { label: '가입일', content: '2024.05.01' },
+    { label: '최근 참여 이벤트', content: '뷰티박스 체험단' },
+  ],
+  [
+    { label: '선호 쇼핑몰', content: '무신사' },
+    { label: '구매 주기', content: '월 1~2회' },
+  ],
+];
+
+export default function ClubInterestExample() {
+  return (
+    <div style={{ padding: '20px' }}>
+      <ClubInterest data={exampleData} />
+    </div>
+  );
+}
