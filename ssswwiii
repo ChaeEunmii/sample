@@ -1,0 +1,115 @@
+'use client';
+
+import { useState, useEffect, useRef } from 'react';
+import type { Swiper as SwiperType } from 'swiper';
+import 'swiper/css';
+import clsx from 'clsx';
+import styles from './MembershipPaySwiper.module.scss';
+import { CardSwiper } from '@widgets/payment/CardSwiper';
+
+interface PaymentMethod {
+  id: string;
+  label: string;
+  cardNumber: string;
+  brand: string;
+  disabled?: boolean;
+  options: {
+    coupons?: string[];
+    noInterestCoupons?: string[];
+    installments?: string[];
+  };
+}
+
+interface PaymentMethodSwiperProps {
+  methods: PaymentMethod[];
+  selectedCardId: string | null;
+  onSelect: (id: string) => void;
+  className?: string;
+  showAddCard?: boolean;
+  onSlideIndexChange?: (index: number) => void;
+  /** 1순위에서 선택된 카드 ID (2순위 표시용) */
+  primarySelectedCardId?: string;
+}
+
+export const MembershipPaySwiper = ({
+  methods,
+  selectedCardId,
+  onSelect,
+  className,
+  showAddCard = false,
+  onSlideIndexChange,
+  primarySelectedCardId,
+}: PaymentMethodSwiperProps) => {
+  const [isClient, setIsClient] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const swiperRef = useRef<SwiperType | null>(null);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  if (!isClient) return null;
+
+  const selectedIndex = methods.findIndex((m) => m.id === selectedCardId);
+
+  const handleSlideChange = (swiper: SwiperType, realIndex: number) => {
+    setCurrentIndex(realIndex);
+    const newId = methods[realIndex]?.id;
+    if (newId) onSelect(newId);
+    onSlideIndexChange?.(realIndex);
+  };
+
+  return (
+    <div className={clsx(styles.root, className)}>
+      <CardSwiper
+        methods={methods}
+        selectedCardId={selectedCardId}
+        selectedIndex={selectedIndex >= 0 ? selectedIndex : 0}
+        swiperRef={swiperRef}
+        onSlideChange={handleSlideChange}
+        onCardClick={(index) => {
+          const id = methods[index]?.id;
+          if (id) onSelect(id);
+          swiperRef.current?.slideTo(index);
+          setCurrentIndex(index);
+          onSlideIndexChange?.(index);
+        }}
+        showAddCard={showAddCard}
+        /** primarySelectedCardId 넘기기 */
+        primarySelectedCardId={primarySelectedCardId}
+      />
+    </div>
+  );
+};
+
+
+
+2. MembershipPayMethod.tsx
+
+2순위 MembershipPaySwiper에 primarySelectedCardId={selectedCardId} 전달만 하면 됨
+{radioValue !== 'noSelect' && (
+  <MembershipPaySwiper
+    methods={methods}
+    selectedCardId={selectedCardId}
+    onSelect={handleSelect}
+    showAddCard={true}
+    className={styles.cardSlider}
+    /** 1순위 선택된 카드 ID 표시용 */
+    primarySelectedCardId={selectedCardId}
+  />
+)}
+
+
+
+cardswipe
+{methods.map((card) => (
+  <div className={styles.card}>
+    {/* 카드 내용 */}
+    <div>{card.label}</div>
+    <div>{card.cardNumber}</div>
+
+    {primarySelectedCardId === card.id && (
+      <div className={styles.primaryBadge}>1순위</div>
+    )}
+  </div>
+))}
