@@ -1,0 +1,80 @@
+@use '@shared/styles/abstracts' as *;
+
+/* Radio */
+.root {
+  --radio-width: #{rem(20px)};
+  --radio-height: #{rem(20px)};
+  --radio-label-font-size: var(--radio-font-size, var(--ncp-font-size-14));
+  --radio-label-font-weight: var(--radio-font-weight, var(--ncp-font-weight-medium));
+  --radio-label-line-height: 1.444;
+  --radio-inset-top: calc(
+    (var(--radio-label-font-size) * var(--radio-label-line-height) - var(--radio-height)) / 2
+  );
+  --radio-inset: var(--radio-inset-top) 0 0 0;
+  --radio-label-gap: var(--ncp-spacing-x4); // radio 아이콘과 라벨 사이의 간격
+  --radio-border-color: var(--ncp-color-gray-150);
+  --radio-background-color: var(--ncp-color-background);
+
+  position: relative;
+  display: inline-flex;
+  font-size: var(--radio-label-font-size);
+  font-weight: var(--radio-label-font-weight);
+  line-height: var(--radio-label-line-height);
+  z-index: 0;
+
+  .label {
+    display: inline-flex;
+    align-items: inherit;
+    gap: var(--radio-label-gap);
+    width: 100%;
+    word-break: break-all;
+    cursor: pointer;
+    .icon {
+      flex: 0 0 auto;
+      @include flex(inline-flex, center, center);
+      position: relative;
+      inset: var(--radio-inset);
+      width: var(--radio-width);
+      height: var(--radio-height);
+      border: var(--ncp-border-width-base) solid var(--radio-border-color);
+      box-shadow: inset 0 0 0 var(--radio-inset-width) var(--radio-inset-color);
+      background-color: var(--radio-background-color);
+      border-radius: var(--ncp-border-radius-max);
+    }
+    :where(p) {
+      margin-top: 0;
+      line-height: var(--radio-height);
+    }
+  }
+  .input {
+    flex: 0 0 auto;
+    position: relative;
+    inset: var(--radio-inset);
+    width: var(--radio-width);
+    height: var(--radio-height);
+    margin-right: calc(var(--radio-width) * -1);
+    z-index: -1;
+  }
+  .input:checked + label {
+    --radio-inset-width: #{rem(5px)};
+    --radio-inset-color: currentColor;
+    --radio-border-color: currentColor;
+    --radio-background-color: #fff;
+    color: var(--ncp-color-gray-900);
+  }
+  .input:disabled + label {
+    --radio-border-color: var(--ncp-color-gray-150);
+    --radio-background-color: var(--ncp-color-gray-100);
+    color: var(--ncp-color-gray-500);
+    cursor: default;
+  }
+  .input:checked:disabled + label {
+    --radio-inset-color: var(--ncp-color-gray-100);
+    --radio-background-color: currentColor;
+  }
+  // 오류 스타일 제거
+  // .input[aria-invalid='true'] + label {
+  //   --radio-inset-color: var(--ncp-color-accent-alert);
+  //   --radio-border-color: var(--ncp-color-accent-alert);
+  // }
+}

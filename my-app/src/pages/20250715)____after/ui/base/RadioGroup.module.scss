@@ -1,0 +1,20 @@
+@use '@shared/styles/abstracts' as *;
+
+/* RadioGroup */
+.root {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--radio-group-gap, var(--ncp-spacing-x12));
+  &:global(.ncp-align-vertical) {
+    width: 100%;
+    align-items: stretch;
+  }
+}
+
+// 그리드 간격 스타일 아직 안나옴!!
+.grid {
+  --radio-group-gap: var(--ncp-spacing-x12);
+  @include grid($gap: var(--radio-group-gap)) {
+    grid-template-columns: repeat(var(--group-columns, auto-fit), 1fr);
+  }
+}
