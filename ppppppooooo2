@@ -1,0 +1,88 @@
+
+
+// 📁 MyVoucher.tsx 내부
+
+import UseVoucherDrawer from '@views/mypage/myvoucher/components/UseVoucherDrawer';
+import { useState } from 'react';
+
+export default function MyVoucher() {
+  // 🆕 선택된 바우처와 Drawer 열림 상태 관리
+  const [selectedVoucher, setSelectedVoucher] = useState<VoucherCardProps | null>(null);
+  const [isDrawerOpen, setDrawerOpen] = useState(false);
+
+  ...
+
+  return (
+    <Container showBack title="마이 바우처">
+      <Contents className={styles.layout}>
+        {/* 최상단 / 하단 탭 */}
+        <Tabs ... />
+        <Tabs ... />
+
+        {filteredListData.length > 0 ? (
+          <>
+            {/* 🆕 클릭 시 Drawer 띄우도록 */}
+            <VoucherCardList
+              data={filteredListData}
+              onCardClick={(card) => {
+                setSelectedVoucher(card);
+                setDrawerOpen(true);
+              }}
+            />
+            <div className={styles.btns}>
+              <Button size="small" suffixIcon="arrowDown" variant="tertiary" round>
+                더보기
+              </Button>
+            </div>
+          </>
+        ) : (
+          <div className={styles.hasEmpty}>
+            <Empty title="내역이 없어요" />
+          </div>
+        )}
+
+        <Line color="bg2" />
+        <Collapse ... />
+      </Contents>
+
+      <ButtonArea type="sticky">
+        <Button variant="primary" size="large">바우처 전체보기</Button>
+      </ButtonArea>
+
+      {/* 🆕 Drawer 추가 */}
+      <UseVoucherDrawer
+        isOpen={isDrawerOpen}
+        onClose={() => setDrawerOpen(false)}
+        voucherData={selectedVoucher ?? undefined}
+      />
+    </Container>
+  );
+}
+
+
+
+// 📁 UseVoucherDrawer.tsx 내부
+
+export default function UseVoucherDrawer({ isOpen, onClose, voucherData }: UseVoucherDrawerProps) {
+  const baseData = voucherData ?? mockVoucherCard;
+
+  const voucherStatus = baseData.status ?? 'available'; // 🆕 실제 상태 사용
+  const isAvailable = voucherStatus === 'available';
+
+  let detailItems: VoucherDetailInfoItem[];
+  switch (voucherStatus) {
+    case 'available':
+      detailItems = case1Items;
+      break;
+    case 'used':
+      detailItems = case2Items;
+      break;
+    case 'expired':
+      detailItems = case3Items;
+      break;
+    default:
+      detailItems = [];
+  }
+
+  ...
+}
