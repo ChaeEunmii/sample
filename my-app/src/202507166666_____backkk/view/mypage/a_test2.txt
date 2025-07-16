@@ -1,0 +1,109 @@
+<VoucherCardList
+  data={filteredListData}
+  onCardClick={(card) => {
+    alert(`[${card.title}] 바우처 클릭됨`);
+  }}
+/>;
+
+// 📁 VoucherCard.tsx (일부 수정)
+
+export const VoucherCard = ({
+  id,
+  href,
+  image,
+  subTitle,
+  title,
+  rsvp,
+  type = 'voucher',
+  infos,
+  options,
+  status = 'available',
+  bottomSlot,
+  className,
+  onClick, // ✅ 추가
+  ...props
+}: VoucherCardProps) => {
+  const showStatusOverlay = status !== 'available';
+
+  const handleClick = (e: React.MouseEvent) => {
+    onClick?.(); // ✅ 클릭 이벤트만 호출 (링크 우선되게 default behavior 유지)
+  };
+
+  return (
+    <>
+      <div
+        id={id}
+        className={clsx(styles.root, styles.horizontal, className)}
+        onClick={handleClick} // ✅ 카드 전체 클릭 시 실행
+        {...props}
+      >
+        {/* 썸네일 */}
+        <CardTag href={href} className={styles.thumb}>
+          {rsvp && (
+            <Flag
+              data={[{ color: 'black', label: 'RSVP' }]}
+              className={styles.flagTop}
+              radius="br"
+            />
+          )}
+          <Image src={image.src} alt={image.alt} />
+          {showStatusOverlay && (
+            <Text size="3" className={styles.pause}>
+              {statusLabelMap[status]}
+            </Text>
+          )}
+        </CardTag>
+
+        {/* 상세 정보 */}
+        <CardTag href={href} className={styles.detail}>
+          <div className={styles.top}>
+            {subTitle && (
+              <Text
+                as="span"
+                className={clsx(styles.subTit, type === 'experience' && styles.experience)}
+              >
+                {subTitle}
+              </Text>
+            )}
+            <Heading as="strong" className={styles.title}>
+              {title}
+            </Heading>
+            {renderOptions(type, options)}
+          </div>
+          <div className={styles.bottom}>
+            <div className={styles.meta}>{renderAmount(type, infos?.amount)}</div>
+            <ul className={styles.infos}>
+              {renderInfoText(type, status, infos) && (
+                <li>{renderInfoText(type, status, infos)}</li>
+              )}
+            </ul>
+          </div>
+        </CardTag>
+      </div>
+      {bottomSlot && <div className={styles.bottomSlot}>{bottomSlot}</div>}
+    </>
+  );
+};
+
+// 📁 VoucherCardList.tsx
+
+interface VoucherCardListProps {
+  data: VoucherCardProps[];
+  onCardClick?: (card: VoucherCardProps) => void;
+}
+
+export const VoucherCardList = ({ data, onCardClick }: VoucherCardListProps) => {
+  const renderCard = (item: VoucherCardProps, idx: number) => {
+    return (
+      <VoucherCard
+        key={item.id || idx}
+        {...item}
+        onClick={() => {
+          onCardClick?.(item); // ✅ 상위로 클릭 전달
+        }}
+      />
+    );
+  };
+
+  return <div className={styles.root}>{data.map(renderCard)}</div>;
+};
