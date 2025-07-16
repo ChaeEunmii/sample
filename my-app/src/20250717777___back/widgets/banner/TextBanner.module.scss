@@ -1,0 +1,11 @@
+@use '@shared/styles/abstracts' as *;
+
+.root {
+  @include grid($c: 2);
+  column-gap: var(--ncp-spacing-x8);
+}
+
+.link {
+  height: rem(60px);
+  justify-content: space-between;
+}

@@ -1,0 +1,36 @@
+@use '@shared/styles/abstracts' as *;
+
+// 배송지 영역
+.root {
+  position: relative;
+  padding: var(--ncp-spacing-x8);
+  background: #f9f9f9;
+  border-radius: rem(8px);
+}
+.info {
+  display: flex;
+  gap: var(--ncp-spacing-x8);
+
+  span {
+    position: relative;
+
+    &:not(:first-child):after {
+      content: '';
+      position: absolute;
+      left: rem(-8px);
+      top: 50%;
+      width: rem(1px);
+      height: rem(12px);
+      background: var(--ncp-color-gray-150);
+      transform: translateY(-50%);
+    }
+  }
+}
+.detailedAddress {
+  margin-top: var(--ncp-spacing-x2);
+}
+.changeButton {
+  position: absolute;
+  right: rem(16px);
+  top: rem(16px);
+}

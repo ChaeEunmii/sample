@@ -1,0 +1,28 @@
+@use '@shared/styles/abstracts' as *;
+
+.control {
+  padding-inline: unset;
+  gap: var(--ncp-spacing-x2);
+}
+.tab {
+  min-height: 0;
+  margin-bottom: 0;
+  flex: 1;
+  display: grid;
+  grid-template-rows: minmax(1px, auto) 1fr;
+
+  :has(> &) {
+    position: relative;
+    padding-block: 0;
+    @include flex($d: column);
+    overflow: hidden;
+  }
+
+  [class*='Tabs_tablist'] {
+    padding-bottom: var(--ncp-spacing-x8);
+  }
+
+  [class*='Tabs_panel'] {
+    @include scrollbar;
+  }
+}

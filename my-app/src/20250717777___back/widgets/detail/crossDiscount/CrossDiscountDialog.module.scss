@@ -1,0 +1,18 @@
+@use '@shared/styles/abstracts' as *;
+
+.root {
+  margin-block: var(--ncp-spacing-x16) var(--ncp-spacing-x20);
+}
+
+.info {
+  border: 1px solid var(--ncp-color-gray-150);
+  border-radius: var(--ncp-border-radius-base);
+  overflow: hidden;
+}
+
+.note {
+  margin-top: var(--ncp-spacing-x20);
+  padding: var(--ncp-spacing-x8);
+  background-color: var(--ncp-color-bg-1);
+  border-radius: var(--ncp-border-radius-base);
+}

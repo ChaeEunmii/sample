@@ -1,0 +1,111 @@
+@use '@shared/styles/abstracts' as *;
+@use 'sass:list';
+
+// prettier-ignore
+$text-styles: (
+  1: (13, 18),
+  2: (16, 22),
+  3: (20, 26),
+);
+
+.root {
+  --banner-border-radius: var(--ncp-border-radius-base);
+  position: relative;
+
+  &.flush {
+    --banner-border-radius: unset;
+    margin-inline: calc(var(--ncp-main-padding-x) * -1);
+  }
+
+  // 이미지 비율
+  &[data-ratio='square'] {
+    --banner-ratio: 1 / 1;
+  }
+
+  &[data-ratio='landscape'] {
+    --banner-ratio: 3 / 2;
+  }
+
+  &[data-ratio='portrait'] {
+    --banner-ratio: 4 / 5;
+  }
+}
+.inside {
+  --banner-dimmed: linear-gradient(0deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 168px);
+  --banner-dimmed-display: block;
+  --banner-text-align-y: flex-end;
+
+  aspect-ratio: var(--banner-ratio);
+  color: var(--ncp-color-white);
+  overflow: hidden;
+
+  &[data-ratio='square'] {
+    --banner-dimmed: var(--ncp-color-alpha-b30);
+    --banner-text-align-y: center;
+  }
+
+  .link {
+    justify-content: var(--banner-text-align-y);
+  }
+  .thumb {
+    @include position(absolute, 0, 0, 0, 0, 0);
+  }
+  .detail {
+    margin-top: 0;
+    padding: var(--ncp-spacing-x12) var(--ncp-spacing-x8);
+    color: var(--ncp-color-white);
+  }
+}
+
+.link {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+// Thumbnail
+.thumb {
+  position: relative;
+  aspect-ratio: var(--banner-ratio);
+  border-radius: var(--banner-border-radius);
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+
+  &:has(video) {
+    border-radius: 0 !important;
+  }
+
+  &::after {
+    @include position(absolute, 0, 0, 0, 0, 1);
+    display: var(--banner-dimmed-display, none);
+    content: '';
+    background: var(--banner-dimmed);
+  }
+}
+
+// Detail
+.detail {
+  margin-top: var(--ncp-spacing-x6);
+  padding-inline: var(--ncp-spacing-indent);
+  @include flex($d: column);
+  gap: var(--ncp-spacing-x4);
+
+  &.spacing1 {
+    padding-block: 0 var(--ncp-spacing-x18);
+  }
+}
+.caption {
+  font-weight: var(--ncp-font-weight-medium);
+  @include ellipsis(2);
+}
+// Flag
+.ad {
+  @include position($t: 0, $r: 0, $i: 1);
+}
+.flag {
+  padding-top: var(--ncp-spacing-x2);
+}

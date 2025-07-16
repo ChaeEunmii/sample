@@ -1,0 +1,16 @@
+@use '@shared/styles/abstracts' as *;
+
+.root {
+  padding: var(--ncp-spacing-x10) var(--ncp-spacing-x8);
+  background: var(--ncp-color-bg-1);
+}
+.title {
+  @include flex(flex, $v: flex-start);
+  column-gap: var(--ncp-spacing-x3);
+  p {
+    margin-top: 0;
+  }
+}
+.date {
+  margin-top: var(--ncp-spacing-x6);
+}

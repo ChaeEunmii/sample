@@ -1,0 +1,222 @@
+@use '@shared/styles/abstracts' as *;
+
+.root {
+  position: relative;
+  //체크박스
+  .check {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .child {
+    margin-top: var(--ncp-spacing-x12);
+    & > li {
+      &:first-child {
+        margin-top: 0;
+      }
+      & + li {
+        margin-top: var(--ncp-spacing-x12);
+      }
+    }
+  }
+  // 체크박스 스타일 기본
+  .agreeCheckBox {
+    --checkbox-label-font-size: var(--ncp-font-size-14);
+    --checkbox-label-line-height: var(--ncp-line-height-20);
+    --checkbox-label-font-weight: var(--ncp-font-weight-regular);
+    --checkbox-label-text-color: var(--ncp-color-gray-700);
+
+    color: var(--checkbox-label-text-color);
+    input[type='checkbox'] {
+      &:checked + label {
+        --checkbox-label-font-weight: var(--ncp-font-weight-medium);
+        --checkbox-label-text-color: var(--ncp-color-gray-900);
+      }
+    }
+    //boxed 타입
+    &.boxed {
+      --checkbox-label-font-size: var(--ncp-font-size-16);
+      --checkbox-label-line-height: var(--ncp-line-height-22);
+      --checkbox-label-font-weight: var(--ncp-font-weight-semibold);
+      color: var(--ncp-color-gray-500);
+    }
+  }
+  // 가로배치형에 부여한 클래스(마케팅 수신광고 동의)
+  .group {
+    // group 클래스 에서 필수값에 표시
+    .required {
+      position: relative;
+      &::before {
+        content: '';
+        position: absolute;
+        top: rem(2px);
+        right: rem(-4px);
+        width: rem(3px);
+        height: rem(3px);
+        background: var(--ncp-color-foreground);
+        border-radius: var(--ncp-border-radius-max);
+      }
+    }
+    > .child {
+      [class*='Checkbox_root'] {
+        --checkbox-width: #{rem(16px)};
+        --checkbox-height: #{rem(16px)};
+        --checkbox-label-font-size: var(--ncp-font-size-13);
+        --checkbox-label-line-height: var(--ncp-line-height-18);
+        --checkbox-label-font-weight: var(--ncp-font-weight-regular);
+        &:checked + label {
+          --checkbox-label-font-weight: var(--ncp-font-weight-medium);
+        }
+      }
+      margin-left: rem(28px);
+      display: flex;
+      gap: var(--ncp-spacing-x12);
+      line-height: 1;
+      margin-top: var(--ncp-spacing-x8);
+      & > li {
+        margin-top: 0;
+      }
+    }
+  }
+  // 헤더 텍스트
+  .headTxt {
+    margin-top: rem(40px);
+    margin-bottom: var(--ncp-spacing-x8);
+    font-size: var(--ncp-font-size-16);
+    line-height: var(--ncp-line-height-22);
+    font-weight: var(--ncp-font-weight-semibold);
+    > * {
+      display: block;
+      font-size: var(--ncp-font-size-16);
+      line-height: var(--ncp-line-height-22);
+      font-weight: var(--ncp-font-weight-semibold);
+      margin: 0;
+    }
+    // desc
+    > span {
+      display: block;
+      font-size: var(--ncp-font-size-14);
+      line-height: var(--ncp-line-height-24);
+      font-weight: var(--ncp-font-weight-regular);
+      color: var(--ncp-color-gray-700);
+      margin-top: var(--ncp-spacing-x4);
+    }
+    & + .child {
+      margin-top: 0;
+    }
+  }
+  // 풋터 텍스트
+  .footerTxt {
+    color: var(--ncp-color-gray-700);
+    margin-top: var(--ncp-spacing-x8);
+  }
+  //자세히보기 아이콘버튼
+  .detailBtn {
+    color: var(--ncp-color-gray-500);
+  }
+}
+
+/* variant 종류별 스타일 */
+// type1 (Dialog로 내용을 여는 유형)
+.type1 {
+}
+
+// type2 (그레이박스안에 내용이 들어가는 유형)
+.type2 {
+  .agreeCheckBox {
+    --checkbox-label-font-size: var(--ncp-font-size-16);
+    --checkbox-label-line-height: var(--ncp-line-height-22);
+    --checkbox-label-font-weight: var(--ncp-font-weight-semibold);
+    --checkbox-label-text-color: var(--ncp-color-gray-900);
+  }
+  // 가로배치형에 부여한 클래스(마케팅 수신광고 동의)
+  .group {
+    > .child {
+      [class*='Checkbox_root'] {
+        --checkbox-label-font-weight: var(--ncp-font-weight-medium);
+      }
+      margin-left: 0;
+    }
+  }
+  .onlyReadText {
+    font-size: var(--ncp-font-size-16);
+    line-height: var(--ncp-line-height-22);
+    font-weight: var(--ncp-font-weight-semibold);
+  }
+  .child {
+    margin-top: rem(40px);
+    & > li {
+      & + li {
+        margin-top: rem(40px);
+      }
+    }
+  }
+}
+
+// type3 (전체 동의 하단에 보더있는 유형) - 마이클럽, 멤버십 가입에서 사용중
+.type3 {
+  .allCheckType3 {
+    align-items: flex-start;
+    padding-bottom: var(--ncp-spacing-x12);
+    border-bottom: 1px solid var(--ncp-color-gray-100);
+    .agreeCheckBox {
+      --checkbox-label-font-size: var(--ncp-font-size-14);
+      --checkbox-label-line-height: var(--ncp-line-height-20);
+      --checkbox-label-font-weight: var(--ncp-font-weight-semibold);
+      --checkbox-label-text-color: var(--ncp-color-gray-900);
+    }
+    & .check {
+      flex-direction: column;
+    }
+  }
+  .child {
+    margin-top: rem(24px);
+    & > li {
+      & + li {
+        margin-top: rem(24px);
+      }
+    }
+  }
+}
+
+// 필수검사 실행모드시에 스타일
+.showRequiredText {
+  @include flex($d: column);
+  gap: var(--ncp-spacing-x4);
+  .requiredTxt {
+    font-size: var(--ncp-font-size-12);
+    line-height: var(--ncp-line-height-16);
+    font-weight: var(--ncp-font-weight-semibold);
+  }
+}
+
+// termsBox (type2에서 사용)
+.termsBox {
+  margin-top: var(--ncp-spacing-x6);
+  padding: var(--ncp-spacing-x12) var(--ncp-spacing-x8);
+  border-radius: var(--ncp-border-radius-base);
+  background: var(--ncp-color-bg-1);
+  dl {
+    display: grid;
+    grid-template-columns: minmax(20%, auto) 1fr;
+    gap: var(--ncp-spacing-x8) var(--ncp-spacing-x4);
+    margin: var(--ncp-spacing-x6) 0 var(--ncp-spacing-x4);
+    &:first-child {
+      margin-top: 0;
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
+    & > dt {
+      width: rem(72px);
+    }
+    & > dd {
+      color: var(--ncp-color-gray-700);
+    }
+  }
+}
+
+// 접힘 영역 숨기기
+.hidden {
+  display: none !important;
+}

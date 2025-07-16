@@ -1,0 +1,22 @@
+@use '@shared/styles/abstracts' as *;
+
+.root {
+  // 카드디자인은  CardSwiper에서 선언
+}
+
+// 카드하단 선택영역
+.shapeBottom {
+  //체크박스 디자인
+  input[type='checkbox'] {
+    & + label {
+      // font-size: var(--ncp-font-size-13);
+      // line-height: var(--ncp-line-height-18);
+      color: var(--ncp-color-gray-700);
+    }
+  }
+  margin: 0 auto;
+  width: rem(260px);
+  margin-top: var(--ncp-spacing-x6);
+  @include flex($d: column);
+  gap: 12px;
+}

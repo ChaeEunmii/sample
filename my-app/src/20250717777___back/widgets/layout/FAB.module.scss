@@ -1,0 +1,49 @@
+@use '@shared/styles/abstracts' as *;
+
+.root {
+  position: sticky;
+  bottom: 0;
+  display: var(--ncp-app-shift-y, block);
+  transition: opacity var(--ncp-transition-base);
+  will-change: transform;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 10;
+
+  &[data-ready='true'] {
+    opacity: 1;
+  }
+}
+
+.actions {
+  position: absolute;
+  bottom: var(--ncp-app-fab-bottom);
+  right: var(--ncp-spacing-x8);
+  padding-bottom: env(safe-area-inset-bottom);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  transform: translateY(var(--ncp-app-shift-y, 0));
+  transition: transform var(--ncp-transition-fast);
+  transition-delay: 0ms;
+  will-change: transform;
+}
+
+.item {
+  width: rem(48px);
+  height: rem(48px);
+  margin-bottom: var(--ncp-spacing-x6);
+  display: var(--ncp-app-fab-display);
+  color: var(--ncp-color-background);
+  border-radius: var(--ncp-border-radius-max);
+  background-color: var(--ncp-color-foreground);
+  box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.06);
+  pointer-events: all;
+  overflow: hidden;
+}
+
+.toTop {
+  display: var(--ncp-app-totop-display);
+  color: var(--ncp-color-foreground);
+  background-color: var(--ncp-color-background);
+}

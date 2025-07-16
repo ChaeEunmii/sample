@@ -1,0 +1,20 @@
+// prettier-ignore
+$display-margin-top: (
+  1: var(--ncp-spacing-x8),
+  2: var(--ncp-spacing-x12),
+  3: var(--ncp-spacing-x16),
+  4: var(--ncp-spacing-x20),
+  5: var(--ncp-layout-gutter-y),
+);
+
+.root {
+  [class*='Tabs_root'] {
+    margin-bottom: var(--ncp-spacing-x12);
+  }
+}
+
+@each $key, $value in $display-margin-top {
+  .mt#{$key} {
+    margin-top: $value;
+  }
+}

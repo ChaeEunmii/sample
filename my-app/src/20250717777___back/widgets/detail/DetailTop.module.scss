@@ -1,0 +1,57 @@
+@use '@shared/styles/abstracts' as *;
+
+.brandWrap {
+  @include flex(flex, space-between, center);
+  padding-block: var(--ncp-spacing-x6);
+  border-bottom: 1px solid var(--ncp-color-bg-1);
+
+  .info {
+    @include flex(inline-flex, $v: center);
+  }
+
+  .icons {
+    @include flex(inline-flex, $v: center);
+    column-gap: var(--ncp-spacing-x2);
+  }
+
+  .brand {
+    font-size: var(--ncp-font-size-12);
+    font-weight: var(--ncp-font-weight-medium);
+  }
+
+  .branch {
+    padding-left: var(--ncp-spacing-x4);
+    color: var(--ncp-color-gray-700);
+  }
+
+  .share {
+    margin: 0;
+  }
+}
+
+.title {
+  font-weight: var(--ncp-font-weight-medium);
+}
+.desc {
+  color: var(--ncp-color-gray-500);
+}
+.benefits {
+  margin-top: 12px;
+}
+.review {
+  margin-top: var(--ncp-spacing-x10);
+  @include flex(inline-flex, $v: center);
+  row-gap: var(--ncp-spacing-x2);
+  .rating {
+    margin-left: var(--ncp-spacing-x2);
+  }
+  .divider {
+    margin-inline: var(--ncp-spacing-x4);
+    width: 1px;
+    height: var(--ncp-spacing-x5);
+    background-color: var(--ncp-color-gray-150);
+  }
+  .reviewButton {
+    font-size: inherit;
+  }
+}

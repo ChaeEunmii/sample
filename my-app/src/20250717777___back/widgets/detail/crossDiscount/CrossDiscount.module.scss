@@ -1,0 +1,16 @@
+@use '@shared/styles/abstracts' as *;
+
+.root {
+  margin-block: var(--ncp-spacing-x16);
+  border: 1px solid var(--ncp-color-gray-150);
+  border-radius: var(--ncp-border-radius-base);
+  overflow: hidden;
+}
+.button {
+  @include flex(flex, $h: space-between);
+  border-color: var(--ncp-color-gray-150);
+  border-width: 1px 0 0 0;
+  font-size: var(--ncp-font-size-13);
+  font-weight: var(--ncp-font-weight-regular);
+  color: var(--ncp-color-gray-900);
+}
