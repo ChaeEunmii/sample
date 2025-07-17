@@ -1,0 +1,23 @@
+@use '@shared/styles/abstracts' as *;
+
+/* Tag */
+.root {
+  --tag-text-color: var(--ncp-color-foreground);
+  --tag-background-color: var(--ncp-color-bg-1);
+  --tag-selected-text-color: var(--ncp-color-background);
+  --tag-selected-background-color: var(--ncp-color-foreground);
+
+  height: rem(32px);
+  padding: var(--ncp-spacing-x3) var(--ncp-spacing-x6);
+  @include flex(inline-flex, center, center);
+  gap: var(--ncp-spacing-x2);
+  line-height: var(--ncp-line-height-fit);
+  color: var(--tag-text-color);
+  border-radius: var(--ncp-border-radius-max);
+  background-color: var(--tag-background-color);
+}
+
+.selected {
+  color: var(--tag-selected-text-color);
+  background-color: var(--tag-selected-background-color);
+}

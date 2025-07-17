@@ -1,0 +1,84 @@
+@use '@shared/styles/abstracts' as *;
+
+// Tooltip (트리거 포함)
+.root {
+  --tip-font-color: var(--ncp-color-background);
+  --tip-background-color: var(--ncp-color-foreground);
+
+  position: relative;
+  // z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  & .trigger {
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    padding: 0;
+    margin: rem(1px);
+    color: var(--ncp-color-gray-700);
+  }
+}
+.tip {
+  position: relative;
+  display: inline-flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: rem(8px);
+  font-size: var(--ncp-font-size-12);
+  line-height: var(--ncp-line-height-16);
+  font-weight: var(--ncp-font-weight-medium);
+  padding: var(--ncp-spacing-x5) var(--ncp-spacing-x6);
+  border-radius: var(--ncp-border-radius-s);
+  background-color: var(--tip-background-color);
+  color: var(--tip-font-color);
+  min-height: rem(24px);
+  //추가스타일
+  position: absolute;
+  z-index: 1;
+  width: max-content;
+  // 팁 닫기 버튼 스타일
+  & .close {
+    i {
+      color: var(--tip-font-color);
+      font-size: var(--ncp-font-size-16);
+    }
+  }
+  // 팁 내부 레이아웃
+  .wrap {
+    @include flex($d: column);
+    gap: rem(6px);
+    /* 타이틀이 있는경우 */
+    .title {
+      flex-basis: 100%;
+      display: block;
+    }
+  }
+}
+// 트리거중심으로 위치하기위한 arrow 분리
+.arrow {
+  width: 0;
+  height: 0;
+  position: absolute;
+  z-index: 1;
+
+  &.top {
+    border-left: rem(4px) solid transparent;
+    border-right: rem(4px) solid transparent;
+    border-top: rem(6px) solid var(--tip-background-color);
+  }
+  &.bottom {
+    border-left: rem(4px) solid transparent;
+    border-right: rem(4px) solid transparent;
+    border-bottom: rem(6px) solid var(--tip-background-color);
+  }
+  &.right {
+    border-top: rem(4px) solid transparent;
+    border-bottom: rem(4px) solid transparent;
+    border-right: rem(6px) solid var(--tip-background-color);
+  }
+  &.left {
+    border-top: rem(4px) solid transparent;
+    border-bottom: rem(4px) solid transparent;
+    border-left: rem(6px) solid var(--tip-background-color);
+  }
+}

@@ -1,0 +1,64 @@
+@use '@shared/styles/abstracts' as *;
+
+// ClubBox
+.root {
+  margin-top: rem(60px);
+  &:first-child {
+    margin-top: 0;
+  }
+  .title {
+    align-items: center;
+    margin-top: 0;
+    margin-bottom: var(--ncp-spacing-x4);
+  }
+  .bottom {
+    margin-top: var(--ncp-spacing-x12);
+  }
+  .visual {
+    position: relative;
+    .keycopy {
+      position: absolute;
+      top: 50%;
+      left: var(--ncp-spacing-x10);
+      transform: translateY(-50%);
+      color: var(--ncp-color-background);
+      @include flex($d: column);
+      gap: var(--ncp-spacing-x4);
+      margin-top: rem(11px); // (디자인상 위쪽에 뜨는공간)/2 만큼 띄움
+      .head {
+        @include flex($d: column);
+        gap: var(--ncp-spacing-x1);
+        & > em {
+          font-size: var(--ncp-font-size-13);
+          line-height: var(--ncp-line-height-18);
+          font-weight: var(--ncp-font-weight-regular);
+        }
+        & > strong {
+          font-size: var(--ncp-font-size-20);
+          line-height: var(--ncp-line-height-26);
+          font-weight: var(--ncp-font-weight-bold);
+        }
+      }
+      .date {
+        font-size: var(--ncp-font-size-12);
+        line-height: var(--ncp-line-height-16);
+        font-weight: var(--ncp-font-weight-regular);
+        color: rgba(255, 255, 255, 0.8);
+      }
+    }
+  }
+  .benefits {
+    & :first-child {
+      margin-top: 0;
+    }
+    .bCon {
+      font-size: var(--ncp-font-size-13);
+      line-height: var(--ncp-line-height-22);
+      font-weight: var(--ncp-font-weight-medium);
+      color: var(--ncp-color-gray-900);
+    }
+  }
+  .colcont {
+    padding-bottom: 0;
+  }
+}

@@ -1,0 +1,56 @@
+@use '@shared/styles/abstracts' as *;
+
+/* Switch */
+.root {
+  --switch-background-color: var(--ncp-color-gray-500);
+  --switch-thumb-color: var(--ncp-color-background);
+  --switch-active-background-color: var(--ncp-color-foreground);
+  --switch-active-thumb-color: var(--ncp-color-background);
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+}
+.input {
+  position: absolute;
+  inset: 0;
+}
+.label {
+  display: block;
+  position: relative;
+  width: rem(40px);
+  height: rem(24px);
+  background: var(--switch-background-color);
+  border-radius: var(--ncp-border-radius-max);
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: calc(100% - 6px);
+    margin: 3px;
+    aspect-ratio: 1;
+    border-radius: 100%;
+    background: var(--switch-thumb-color);
+    transition: transform var(--ncp-transition-base);
+  }
+}
+.input:checked + label {
+  background-color: var(--switch-active-background-color);
+}
+.input:checked + label::before {
+  background-color: var(--switch-active-thumb-color);
+  transform: translateX(calc(100% - 2px));
+}
+.input:disabled + label {
+  --switch-background-color: var(--ncp-color-gray-250);
+  --switch-active-background-color: var(--ncp-color-gray-250);
+  cursor: default;
+}
+
+// Variant
+.point {
+  --switch-background-color: var(--ncp-color-gray-500);
+  --switch-thumb-color: var(--ncp-color-background);
+  --switch-active-background-color: var(--ncp-color-accent-1);
+  --switch-active-thumb-color: var(--ncp-color-background);
+}

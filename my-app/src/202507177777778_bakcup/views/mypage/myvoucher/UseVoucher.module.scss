@@ -1,0 +1,8 @@
+@use '@shared/styles/abstracts' as *;
+
+/* UseVoucherDrawer */
+.voucher {
+  & + * {
+    margin-top: var(--ncp-spacing-x10);
+  }
+}
