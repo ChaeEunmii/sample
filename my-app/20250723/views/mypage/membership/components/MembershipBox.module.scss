@@ -1,0 +1,86 @@
+@use '@shared/styles/abstracts' as *;
+
+/* MembershipBox */
+.root {
+  position: relative;
+  background-color: var(--ncp-color-background);
+  border-radius: var(--ncp-border-radius-base);
+  border: var(--ncp-border-width-base) solid var(--ncp-color-gray-100);
+  padding-inline: var(--ncp-spacing-x10);
+  padding-block: var(--ncp-spacing-x12) var(--ncp-spacing-x10);
+  margin-top: var(--ncp-spacing-x18);
+  &:first-child {
+    // badge 위로 튀어나온만큼만 주기 (마진없음상태와같음)
+    margin-top: var(--ncp-spacing-x6);
+  }
+  .top {
+    @include flex($h: space-between);
+    margin-bottom: var(--ncp-spacing-x4);
+  }
+  .badge {
+    position: absolute;
+    top: 0;
+    left: rem(12px);
+    transform: translateY(-50%);
+    min-height: rem(26px);
+    font-size: var(--ncp-font-size-12);
+    line-height: var(--ncp-line-height-16);
+    font-weight: var(--ncp-font-weight-semibold);
+    background-color: var(--ncp-color-foreground);
+    color: var(--ncp-color-white);
+    border-radius: var(--ncp-border-radius-max);
+    padding-inline: var(--ncp-spacing-x8);
+    padding-block: var(--ncp-spacing-x3);
+  }
+  .name {
+    font-size: var(--ncp-font-size-20);
+    line-height: var(--ncp-line-height-26);
+    font-weight: var(--ncp-font-weight-bold);
+  }
+  .priceInfo {
+    @include flex($display: inline-flex, $d: column, $v: flex-end);
+    gap: var(--ncp-spacing-x2);
+    .price {
+      @include flex($v: flex-end);
+      gap: var(--ncp-spacing-x2);
+      margin-top: 0;
+      font-size: var(--ncp-font-size-24);
+      line-height: var(--ncp-line-height-30);
+      font-weight: var(--ncp-font-weight-bold);
+      .unit {
+        font-size: var(--ncp-font-size-20);
+        line-height: var(--ncp-line-height-26);
+      }
+    }
+  }
+  .membershiipLists {
+    padding-block: var(--ncp-spacing-x2);
+    & > li {
+      width: 100%;
+      padding-block: var(--ncp-spacing-x8);
+      border-top: var(--ncp-border-width-base) solid var(--ncp-color-gray-100);
+      &:first-child {
+        border-top: none;
+      }
+      [role='heading'] {
+        @include flex($v: center);
+        gap: var(--ncp-spacing-x4);
+        font-size: var(--ncp-font-size-13);
+        line-height: var(--ncp-line-height-18);
+        font-weight: var(--ncp-font-weight-semibold);
+      }
+      .txt {
+        font-size: var(--ncp-font-size-13);
+        line-height: var(--ncp-line-height-18);
+        font-weight: var(--ncp-font-weight-medium);
+      }
+    }
+  }
+  .boxBtns {
+    margin-top: var(--ncp-spacing-x8);
+    button {
+      background-color: var(--hpoint-main-accent-button);
+      border-color: var(--hpoint-main-accent-button);
+    }
+  }
+}
