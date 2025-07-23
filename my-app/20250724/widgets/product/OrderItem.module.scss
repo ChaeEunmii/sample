@@ -1,0 +1,401 @@
+@use '@shared/styles/abstracts' as *;
+
+/* OrdersList */
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ncp-spacing-x16);
+  margin-bottom: var(--ncp-spacing-x12);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  // [case] 여러곳으로 배송지 설정 페이지인 경우
+  &.isMultiDelivery {
+    gap: var(--ncp-spacing-x8);
+    margin-top: var(--ncp-spacing-x8);
+  }
+
+  // [case] 주문서 페이지 > 사은품인 경우
+  &.isOrderGift {
+    gap: var(--ncp-spacing-x10);
+    .item {
+      .itemInfo {
+        gap: var(--ncp-spacing-x6);
+      }
+      // 왼쪽: 이미지 + 옵션변경 버튼
+      .left {
+        gap: var(--ncp-spacing-x4);
+        width: rem(64px);
+      }
+      .thumb {
+        width: rem(64px);
+        height: rem(64px);
+      }
+      .thumbLabel {
+        display: none;
+      }
+      // 오른쪽: 상품 상세 내용 등
+      .prodTitle {
+        padding-right: 0;
+
+        strong {
+          @include ellipsis(2);
+          font-weight: var(--ncp-font-weight-medium);
+        }
+      }
+      .quantity {
+        padding-left: 0;
+        &::before {
+          display: none;
+        }
+      }
+    }
+  }
+
+  // [case] 주문서 페이지 > 가운데 정렬인 경우
+  &.isVerticalCenter {
+    .item {
+      .itemInfo {
+        align-items: center;
+      }
+      .thumbLabel {
+        display: none;
+      }
+    }
+  }
+}
+
+// gap
+.gap32 {
+  gap: var(--ncp-spacing-x16);
+}
+
+.gap40 {
+  gap: var(--ncp-spacing-x20);
+}
+
+/* OrderItem */
+.item {
+  // [case] 여러곳으로 배송지 설정 > 여러개 사은품인 경우 > 동일한 bundleId 중 첫번째 항목 찾기(상단 라인 추가)
+  &.bundleLine {
+    padding-top: var(--ncp-spacing-x8);
+    border-top: var(--ncp-border-width-base) solid var(--ncp-color-gray-150);
+  }
+  // [case] 여러곳으로 배송지 설정 > 여러개 사은품인 경우 > 동일한 bundleId면 두번째 항목부터 왼쪽 여백
+  &.selectable {
+    padding-left: var(--ncp-spacing-x16);
+  }
+
+  // [case] 프로모션이 있으면 해당 영역에 bg 적용
+  &.promotionBg {
+    padding: var(--ncp-spacing-x8);
+    background: var(--ncp-color-bg-1);
+    border-radius: var(--ncp-border-radius-base);
+  }
+
+  // [case] 장바구니 > 프로모션 > 묶음 상품인 경우 > 동일한 bundleId면 두번째 항목부터 위로 -48px(gap + promotionBg에 들어간 하단 패딩) 당기고 상단 border-radius 제거
+  &.bundleOverlap {
+    margin-top: -48px;
+    padding-top: var(--ncp-spacing-x16);
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+
+  // [case] 장바구니 > 프로모션 > 묶음 상품인 경우 > 동일한 bundleId면 제일 마지막 항목에 border-radius 추가
+  &.borderRadius {
+    border-bottom-left-radius: var(--ncp-border-radius-base);
+    border-bottom-right-radius: var(--ncp-border-radius-base);
+  }
+}
+.wrap {
+  position: relative;
+  display: flex;
+  gap: var(--ncp-spacing-x6);
+}
+.itemWrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: var(--ncp-spacing-x12);
+}
+.itemInfo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--ncp-spacing-x8);
+}
+// 왼쪽: 이미지 + 옵션변경 버튼
+.left {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--ncp-spacing-x4);
+  width: rem(90px);
+}
+.thumb {
+  position: relative;
+  width: rem(90px);
+  height: rem(90px);
+  border-radius: var(--ncp-border-radius-base);
+  overflow: hidden;
+
+  &.opacity {
+    position: relative;
+
+    &:before {
+      content: '';
+      position: absolute;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: #0000005c;
+    }
+  }
+}
+// [case] 상품 이미지 사이즈
+.smallThumb {
+  width: rem(64px);
+
+  .thumb {
+    width: rem(64px);
+    height: rem(64px);
+  }
+}
+.thumbLabel {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: rem(34px);
+  text-align: center;
+
+  span {
+    z-index: 1;
+    color: var(--ncp-color-background) !important;
+    letter-spacing: var(--ncp-letter-spacing-base);
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.36);
+    backdrop-filter: blur(rem(8px));
+    -webkit-backdrop-filter: blur(rem(8px));
+  }
+
+  // [case] 솔드 아웃일 경우
+  &.soldout {
+    left: var(--ncp-spacing-x4);
+    top: var(--ncp-spacing-x4);
+    bottom: auto;
+    width: auto;
+    height: rem(20px);
+    padding: 0 var(--ncp-spacing-x3);
+    border-radius: var(--ncp-border-radius-s);
+    overflow: hidden;
+  }
+
+  // [case] 현배송지 구매불가
+  &.delivery {
+    width: 100%;
+    height: 100%;
+  }
+}
+// 옵션변경 버튼
+.optionButton {
+  color: var(--ncp-color-foreground) !important;
+}
+
+// 오른쪽: 상품 상세 내용 등
+.right {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  flex: 1;
+  gap: var(--ncp-spacing-x8);
+  .prodTitle {
+    > div {
+      margin-bottom: 0;
+    }
+  }
+}
+.detail {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--ncp-spacing-x4);
+  width: 100%;
+}
+.prodTitle {
+  padding-right: 28px;
+}
+.gift {
+  gap: var(--ncp-spacing-x3);
+  grid-template-columns: minmax(auto, auto) 1fr;
+  margin: 0;
+  font-size: var(--ncp-font-size-13);
+}
+.optionInfo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ncp-spacing-x2);
+  color: var(--ncp-color-gray-500);
+
+  .size {
+    display: flex;
+    gap: var(--ncp-spacing-x6);
+
+    span + span {
+      position: relative;
+
+      &:after {
+        content: '/';
+        position: absolute;
+        left: -8px;
+        color: var(--ncp-color-gray-500);
+      }
+    }
+  }
+
+  .place {
+    gap: var(--ncp-spacing-x2);
+
+    dt {
+      font-weight: var(--ncp-font-weight-medium);
+    }
+  }
+
+  .fieldOption {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--ncp-spacing-x2);
+  }
+}
+
+// 상품 가격 옆, 주문 개수 노출되는 경우(주문서 > 주문상품)
+.pricebox {
+  display: flex;
+  align-items: center;
+  gap: var(--ncp-spacing-x3);
+  margin-top: -12px; // 주문서 > 주문상품
+
+  .price {
+    > strong {
+      font-size: var(--ncp-font-size-13);
+      color: var(--ncp-color-gray-500);
+    }
+
+    del {
+      font-size: var(--ncp-font-size-12);
+    }
+  }
+}
+
+.price {
+  display: block;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: var(--ncp-spacing-x2);
+
+  > strong {
+    margin-right: var(--ncp-spacing-x2);
+  }
+
+  del {
+    display: inline-block;
+    flex-basis: auto;
+    padding-top: var(--ncp-spacing-x1);
+    vertical-align: top;
+  }
+}
+.quantity {
+  position: relative;
+  padding-left: 7px;
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: rem(1px);
+    height: rem(10px);
+    background: var(--ncp-color-gray-150);
+    transform: translateY(-50%);
+  }
+}
+.benefitButton {
+  height: rem(24px);
+  margin-top: var(--ncp-spacing-x4);
+  padding-left: var(--ncp-spacing-x5);
+  padding-right: var(--ncp-spacing-x3);
+  font-weight: var(--ncp-font-weight-semibold);
+  background: var(--ncp-color-bg-2);
+  border-color: transparent;
+}
+
+// 설치 배송비 별도 부과
+.install {
+  position: relative;
+  margin: 0;
+  // padding-left: var(--ncp-spacing-x5);
+  color: var(--ncp-color-gray-500);
+
+  // &::before {
+  //   content: '';
+  //   position: absolute;
+  //   left: 0;
+  //   top: 5px;
+  //   width: rem(8px);
+  //   height: rem(8px);
+  //   background-image: url("data:image/svg+xml,%3Csvg width='8' height='8' viewBox='0 0 8 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6.82156 5.69281C6.79624 5.73508 6.76283 5.77193 6.72325 5.80128C6.68367 5.83063 6.6387 5.85189 6.5909 5.86384C6.5431 5.8758 6.49342 5.87822 6.44468 5.87097C6.39595 5.86371 6.34912 5.84692 6.30688 5.82156L4.375 4.66219V6.75C4.375 6.84946 4.33549 6.94484 4.26517 7.01516C4.19484 7.08549 4.09946 7.125 4 7.125C3.90055 7.125 3.80516 7.08549 3.73484 7.01516C3.66451 6.94484 3.625 6.84946 3.625 6.75V4.66219L1.69313 5.82156C1.6509 5.8469 1.60409 5.86368 1.55538 5.87093C1.50667 5.87818 1.45701 5.87577 1.40923 5.86383C1.36145 5.85189 1.31649 5.83065 1.27692 5.80134C1.23735 5.77202 1.20394 5.7352 1.1786 5.69297C1.12742 5.60769 1.11221 5.50556 1.13633 5.40907C1.16045 5.31258 1.22191 5.22962 1.30719 5.17844L3.27125 4L1.30719 2.82156C1.22191 2.77038 1.16045 2.68742 1.13633 2.59093C1.11221 2.49444 1.12742 2.39231 1.1786 2.30703C1.22977 2.22175 1.31273 2.16029 1.40923 2.13617C1.50572 2.11206 1.60784 2.12726 1.69313 2.17844L3.625 3.33781V1.25C3.625 1.15054 3.66451 1.05516 3.73484 0.984835C3.80516 0.914509 3.90055 0.875 4 0.875C4.09946 0.875 4.19484 0.914509 4.26517 0.984835C4.33549 1.05516 4.375 1.15054 4.375 1.25V3.33781L6.30688 2.17844C6.3491 2.1531 6.39591 2.13632 6.44462 2.12907C6.49333 2.12182 6.543 2.12423 6.59077 2.13617C6.63855 2.14811 6.68351 2.16935 6.72308 2.19866C6.76266 2.22798 6.79607 2.2648 6.82141 2.30703C6.84675 2.34926 6.86352 2.39607 6.87078 2.44478C6.87803 2.49349 6.87561 2.54315 6.86367 2.59093C6.85173 2.63871 6.8305 2.68367 6.80118 2.72324C6.77187 2.76281 6.73504 2.79622 6.69281 2.82156L4.72875 4L6.69281 5.17844C6.77808 5.22959 6.83955 5.31251 6.86369 5.40897C6.88784 5.50543 6.87268 5.60752 6.82156 5.69281Z' fill='%23B5B5B5'/%3E%3C/svg%3E%0A");
+  //   background-size: contain;
+  //   background-repeat: no-repeat;
+  // }
+}
+// 삭제 버튼
+.closeButton {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 0;
+}
+
+// 썸네일 플래그
+.thumbflag {
+  @include position($t: 0, $l: 0);
+  z-index: 1;
+}
+// 상품 구매일
+.buyDate {
+  position: relative;
+  padding-left: 7px;
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: rem(1px);
+    height: rem(10px);
+    background: var(--ncp-color-gray-150);
+    transform: translateY(-50%);
+  }
+}
+
+// 상품 정보 상단 슬롯
+.topSlot {
+  width: 100%;
+}

@@ -1,0 +1,21 @@
+@use '@shared/styles/abstracts' as *;
+
+// GoToHomeBox
+.root {
+  width: 100%;
+  margin-top: rem(60px);
+  .box {
+    width: 100%;
+    text-align: center;
+    .tit {
+      @include flex($display: inline-flex, $h: center, $v: center, $w: wrap) {
+        gap: var(--ncp-spacing-x2);
+      }
+      font-size: var(--ncp-font-size-14);
+      line-height: var(--ncp-line-height-20);
+      font-weight: var(--ncp-font-weight-semibold);
+      color: var(--ncp-color-foreground);
+      margin-right: var(--ncp-spacing-x2);
+    }
+  }
+}
