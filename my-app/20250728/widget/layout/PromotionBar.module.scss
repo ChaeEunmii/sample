@@ -1,0 +1,24 @@
+@use '@shared/styles/abstracts' as *;
+
+// PromotionBar
+.root {
+  display: flex;
+  align-items: center;
+  gap: var(--ncp-spacing-x6);
+  padding: var(--ncp-spacing-x8) var(--ncp-layout-padding-x);
+  border-bottom: var(--ncp-border-width-base) solid var(--ncp-color-gray-150);
+}
+.close {
+  order: -1;
+}
+.text {
+  flex: 1;
+  margin-top: 0;
+  font-size: var(--ncp-font-size-13);
+  font-weight: var(--ncp-font-weight-medium);
+}
+.favicon {
+  width: rem(40px);
+  height: rem(40px);
+  border-radius: rem(5px);
+}

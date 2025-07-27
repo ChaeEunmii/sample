@@ -1,0 +1,38 @@
+@use '@shared/styles/abstracts' as *;
+
+/* Tag */
+.root {
+  --tag-text-color: var(--ncp-color-foreground);
+  --tag-background-color: var(--ncp-color-bg-1);
+  --tag-selected-text-color: var(--ncp-color-background);
+  --tag-selected-background-color: var(--ncp-color-foreground);
+
+  height: rem(32px);
+  padding: var(--ncp-spacing-x3) var(--ncp-spacing-x6);
+  @include flex(inline-flex, center, center);
+  gap: var(--ncp-spacing-x2);
+  line-height: var(--ncp-line-height-fit);
+  color: var(--tag-text-color);
+  border-radius: var(--ncp-border-radius-max);
+  background-color: var(--tag-background-color);
+}
+
+.selected {
+  color: var(--tag-selected-text-color);
+  background-color: var(--tag-selected-background-color);
+}
+
+// variant
+.outlined {
+  --tag-text-color: var(--ncp-color-gray-700);
+  padding: var(--ncp-spacing-x2) var(--ncp-spacing-x4);
+  font-size: var(--ncp-font-size-10);
+  line-height: 1;
+  height: auto;
+  border: var(--ncp-border-width-base) solid var(--ncp-color-gray-150);
+}
+// size
+.small {
+  height: rem(28px);
+  font-size: var(--ncp-font-size-12);
+}

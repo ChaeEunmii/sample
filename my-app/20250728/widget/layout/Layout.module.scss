@@ -1,0 +1,91 @@
+@use '@shared/styles/abstracts' as *;
+
+/* Layout */
+.root {
+  --ncp-app-max-width: #{rem(552px)};
+  --ncp-app-nav-height: #{rem(67px)};
+  --ncp-button-sticky-offset: 0px;
+
+  // 네비게이션바가 있는 경우 하단 고정 버튼 오프셋 조정
+  &:has(:global(#navBar)) {
+    --ncp-button-sticky-offset: var(--ncp-app-nav-height);
+  }
+
+  min-height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  &[data-scroll-state='top'] {
+    --ncp-app-totop-display: none;
+  }
+  &[data-scroll-state='down'] {
+    --ncp-app-nav-transform: 100%;
+    --ncp-app-fab-display: none;
+    --ncp-button-sticky-offset: 0px;
+
+    &:has(:global(#navBar)) {
+      --ncp-app-shift-y: var(--ncp-app-nav-height);
+      --ncp-button-sticky-offset: 0px;
+    }
+  }
+}
+.aside {
+  display: none;
+}
+
+/* Layout : NCP */
+.wrap {
+  --ncp-layout-max-width: #{rem(552px)};
+  --ncp-layout-header-height: #{rem(52px)};
+  --ncp-layout-padding-x: 16px;
+  --ncp-layout-padding-y: 80px;
+  --ncp-layout-gutter-x: 8px;
+  --ncp-layout-gutter-x2: 16px;
+  --ncp-layout-gutter-y: 60px;
+
+  width: 100%;
+  max-width: var(--ncp-layout-max-width);
+  min-height: 100%;
+  position: relative;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  box-shadow:
+    -1px 0 0 0 var(--ncp-color-gray-150),
+    1px 0 0 0 var(--ncp-color-gray-150);
+}
+.main {
+  --ncp-main-padding-x: var(--ncp-layout-padding-x);
+  --ncp-main-padding-y: var(--ncp-layout-padding-y);
+
+  padding: 0 var(--ncp-main-padding-x);
+  display: flow-root;
+  flex: 1 0;
+
+  &.flush {
+    --ncp-main-padding-x: 0 !important;
+  }
+
+  // mode (배경색 지정)
+  &.gray {
+    background-color: var(--ncp-color-bg-1);
+  }
+}
+
+.contents {
+  flex: 1;
+  padding-bottom: var(--ncp-main-padding-y);
+  :has(> &) {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+/* Layout : Portal */
+.portal {
+  position: sticky;
+  bottom: 0;
+  z-index: 999;
+  will-change: transform;
+}

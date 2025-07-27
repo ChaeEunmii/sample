@@ -1,0 +1,19 @@
+@use '@shared/styles/abstracts' as *;
+
+// DeliveryStatusDialog
+.wrap {
+  width: 100%;
+  height: 100%;
+  display: table;
+  .api {
+    width: 100%;
+    height: 100%;
+  }
+  .noApi {
+    display: table-cell;
+    vertical-align: middle;
+    button {
+      max-width: rem(168px);
+    }
+  }
+}

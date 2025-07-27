@@ -1,0 +1,41 @@
+@use '@shared/styles/abstracts' as *;
+
+/* Layout : Header */
+.root {
+  height: var(--ncp-layout-header-height);
+  position: sticky;
+  top: 0;
+  padding-inline: var(--ncp-spacing-x8);
+  @include flex($v: center);
+  gap: var(--ncp-spacing-x4);
+  background-color: var(--ncp-color-background);
+  will-change: transform;
+  z-index: 12;
+}
+
+.title {
+  font-size: var(--ncp-font-size-18);
+  font-weight: var(--ncp-font-weight-medium);
+  @include ellipsis(1);
+}
+
+// relative 처리 XX
+.content {
+  min-width: 1px;
+  flex: 1;
+  margin-inline: var(--ncp-spacing-x4);
+
+  &:first-child {
+    margin-left: 0;
+  }
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.actions {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ncp-spacing-x8);
+}

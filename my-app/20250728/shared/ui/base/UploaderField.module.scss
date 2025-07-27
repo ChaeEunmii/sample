@@ -1,0 +1,37 @@
+@use '@shared/styles/abstracts' as *;
+
+.inputArea {
+  position: relative;
+  flex: 1;
+  width: 100%;
+}
+.clear {
+  position: absolute;
+  top: calc(50% + rem(4px));
+  right: rem(16px);
+  transform: translateY(-50%);
+  --icon-color: var(--ncp-color-gray-350);
+}
+.input {
+  width: 100% !important;
+  padding-right: rem(48px);
+  background: var(--ncp-color-backgrounds);
+}
+// variant - 파일 등록 스타일
+.upload {
+  flex-direction: column;
+  gap: var(--ncp-spacing-x8) !important;
+
+  .uploadButton {
+    width: 100% !important;
+  }
+
+  .bottombox {
+    gap: var(--ncp-spacing-x4);
+    width: 100%;
+
+    .inputArea {
+      flex: 1;
+    }
+  }
+}

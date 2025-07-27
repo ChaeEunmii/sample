@@ -1,0 +1,13 @@
+@use '@shared/styles/abstracts' as *;
+
+// ReturnStatusFlag
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.date {
+  font-size: 14px;
+  color: #000;
+}
