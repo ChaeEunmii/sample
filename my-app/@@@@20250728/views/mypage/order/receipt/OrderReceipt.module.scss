@@ -1,0 +1,39 @@
+@use '@shared/styles/abstracts' as *;
+
+/* OrderReceipt */
+.layout {
+  position: relative;
+}
+
+/* infoWrap */
+.infoWrap {
+  margin-top: var(--ncp-spacing-x16);
+}
+/* infos */
+.infos {
+  & li {
+    display: inline-block;
+    font-size: var(--ncp-font-size-12);
+    line-height: var(--ncp-line-height-16);
+    font-weight: var(--ncp-font-weight-regular);
+    color: var(--ncp-color-gray-500);
+    position: relative;
+    padding-right: rem(9px);
+    &:last-child {
+      padding-right: 0;
+      &::before {
+        display: none;
+      }
+    }
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: rem(5px);
+      width: rem(1px);
+      height: rem(8px);
+      transform: translateY(-50%);
+      background-color: var(--ncp-color-gray-150);
+    }
+  }
+}
