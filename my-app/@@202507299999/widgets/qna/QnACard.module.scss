@@ -1,0 +1,77 @@
+@use '@shared/styles/abstracts' as *;
+
+/* Review Card */
+.root {
+  position: relative;
+  padding-bottom: var(--ncp-spacing-x10);
+  border-bottom: var(--ncp-border-width-base) solid var(--ncp-color-gray-100);
+
+  &:not(.collapse):has(.answers),
+  &:last-child {
+    padding-bottom: 0;
+    border-bottom: 0;
+  }
+}
+
+.summary {
+  @include flex($h: space-between, $w: wrap);
+  padding-inline: var(--ncp-spacing-indent);
+}
+
+.info {
+  @include flex($v: center);
+  gap: var(--ncp-spacing-x2) var(--ncp-spacing-x4);
+}
+.infoItem {
+  font-size: var(--ncp-font-size-12);
+  line-height: var(--ncp-line-height-16);
+
+  &:nth-child(n + 3) {
+    @include separator(left);
+  }
+}
+
+// question
+.question {
+  @include flex($d: column);
+  gap: var(--ncp-spacing-x4);
+}
+
+.detail {
+  position: relative;
+  padding-inline: var(--ncp-spacing-indent);
+
+  &:not(:last-child) {
+    margin-bottom: var(--ncp-spacing-x4);
+  }
+}
+
+.secret {
+  --icon-color: var(--ncp-color-gray-500);
+  display: flex;
+  align-items: center;
+  gap: var(--ncp-spacing-x2);
+}
+
+// answer
+.answers {
+  margin-top: var(--ncp-spacing-x10);
+  @include flex($d: column);
+  gap: var(--ncp-spacing-x4);
+}
+.answer {
+  padding: var(--ncp-spacing-x10) var(--ncp-spacing-x8);
+  border-radius: var(--ncp-border-radius-base);
+  background-color: var(--ncp-color-bg-1);
+}
+
+// collapse 상태일 경우
+.collapse {
+  .title {
+    @include ellipsis(1);
+  }
+  .text,
+  .answers {
+    display: none;
+  }
+}

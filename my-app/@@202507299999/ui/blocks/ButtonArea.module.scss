@@ -1,0 +1,57 @@
+@use '@shared/styles/abstracts' as *;
+
+/* ButtonArea */
+.root {
+  display: flex;
+  align-items: center;
+  gap: var(--ncp-spacing-x4);
+  margin-top: var(--ncp-layout-gutter-y);
+  &:global(.ncp-align-vertical) {
+    align-items: flex-start;
+  }
+  :where(p) {
+    margin-top: 0;
+  }
+}
+
+.vertical {
+  flex-direction: column;
+}
+
+// margin top
+.mt1 {
+  margin-top: var(--ncp-spacing-x12);
+}
+.mt2 {
+  margin-top: var(--ncp-spacing-x16);
+}
+.mt3 {
+  margin-top: var(--ncp-spacing-x8);
+}
+
+// Variant
+.sticky {
+  position: sticky;
+  bottom: var(--ncp-button-sticky-offset, 0);
+  margin: 0 calc((var(--ncp-main-padding-x) * -1));
+  padding: var(--ncp-spacing-x6) var(--ncp-spacing-x8);
+  padding-bottom: calc(var(--ncp-spacing-x6) + env(safe-area-inset-bottom));
+  border-top: var(--ncp-border-width-base) solid var(--ncp-color-gray-100);
+  background-color: var(--ncp-color-background);
+  will-change: transform;
+  z-index: 11;
+  &:global(.ncp-align-vertical) {
+    gap: var(--ncp-spacing-x6);
+  }
+  &[data-sticky-state='false'] {
+    padding-bottom: var(--ncp-spacing-x6);
+  }
+}
+
+// 정렬변경
+.center {
+  justify-content: center;
+}
+.right {
+  justify-content: flex-end;
+}

@@ -1,0 +1,48 @@
+@use '@shared/styles/abstracts' as *;
+
+.root {
+  display: flex;
+  justify-content: center;
+  margin: var(--ncp-spacing-x12) 0;
+}
+.iconProcess {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.iconBox {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: rem(60px);
+  height: rem(60px);
+  background: var(--ncp-color-bg-1);
+  border-radius: var(--ncp-border-radius-max);
+
+  > img {
+    width: rem(32px);
+    height: rem(32px);
+  }
+}
+.arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: rem(60px);
+  &:last-child {
+    display: none;
+  }
+
+  .icon {
+    color: var(--ncp-color-gray-500);
+  }
+}
+
+// columns
+.columns3 {
+  max-width: rem(294px);
+}
+.columns4 {
+  max-width: rem(414px);
+}

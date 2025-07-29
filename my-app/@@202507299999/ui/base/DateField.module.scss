@@ -1,0 +1,64 @@
+@use '@shared/styles/abstracts' as *;
+
+.picker {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  position: relative;
+  height: 150px;
+  z-index: 0;
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, transparent 88%, var(--ncp-color-background) 100%),
+      linear-gradient(to bottom, transparent 88%, var(--ncp-color-background) 100%);
+    z-index: 1;
+    pointer-events: none;
+  }
+}
+
+.column {
+  position: relative;
+  text-align: center;
+  &:nth-child(1) {
+    min-width: rem(80px);
+  }
+  &:nth-child(2) {
+    min-width: rem(55px);
+  }
+  &:nth-child(3) {
+    min-width: rem(55px);
+  }
+}
+
+.scroll {
+  height: 100%;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding: 60px 0;
+  scroll-behavior: smooth;
+  overscroll-behavior: contain;
+  user-select: none;
+  overscroll-behavior: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.item {
+  height: 30px;
+  line-height: 30px;
+  scroll-snap-align: center;
+  color: var(--ncp-color-gray-450);
+  font-size: var(--ncp-font-size-16);
+  font-weight: var(--ncp-font-weight-medium);
+  transition: color 0.2s;
+
+  &.active {
+    color: var(--ncp-color-gray-900);
+    font-weight: var(--ncp-font-weight-semibold);
+  }
+}
