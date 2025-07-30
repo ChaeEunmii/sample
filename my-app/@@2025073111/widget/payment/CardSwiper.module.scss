@@ -1,0 +1,135 @@
+@use '@shared/styles/abstracts' as *;
+
+.root {
+  // 카드별 배경색상
+  --card-hyundai-bg: var(--ncp-color-foreground);
+  --card-hyundaiDepartment-bg: #064d43;
+  --card-woori-bg: #4eb8ff;
+  --card-samsung-bg: #0c4da2;
+  --card-text-color: var(--ncp-color-white);
+}
+
+//카드사별 디자인
+.hyundai {
+  background: var(--card-hyundai-bg);
+  color: var(--card-text-color);
+}
+.samsung {
+  background: var(--card-samsung-bg);
+  color: var(--card-text-color);
+}
+.hyundaiDepartment {
+  background: var(--card-hyundaiDepartment-bg);
+  color: var(--card-text-color);
+}
+.woori {
+  background: var(--card-woori-bg);
+  color: var(--card-text-color);
+}
+
+/* card : 신용카드모양 */
+.card {
+  height: auto;
+}
+.shape {
+  padding: var(--ncp-spacing-x8) var(--ncp-spacing-x8) var(--ncp-spacing-x10) var(--ncp-spacing-x8);
+  border-radius: var(--ncp-border-radius-base);
+  width: rem(260px);
+  height: rem(160px);
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  &.noCard {
+    background-color: var(--ncp-color-gray-100);
+    color: var(--ncp-color-gray-500);
+    text-align: center;
+    @include flex($d: column, $h: center);
+    gap: var(--ncp-spacing-x4);
+  }
+  &.disabled {
+    overflow: hidden;
+    & > em {
+      color: var(--ncp-color-accent-alert);
+      position: relative;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      font-size: var(--ncp-font-size-13);
+      line-height: var(--ncp-line-height-18);
+      font-weight: var(--ncp-font-weight-medium);
+      &.msgType {
+        color: var(--ncp-color-white);
+      }
+    }
+    &:has(.msgType) {
+      &::before {
+        background-color: var(--ncp-color-gray-700);
+        opacity: 0.9;
+      }
+    }
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+  }
+  .logo {
+    width: rem(94px);
+    height: rem(20px);
+    @include flex($v: center);
+    & > img {
+      display: block;
+    }
+  }
+  .cardInfo {
+    @include flex($d: column);
+    gap: var(--ncp-spacing-x2);
+  }
+}
+
+// 카드하단 선택영역
+.shapeBottom {
+  //체크박스 디자인
+  input[type='checkbox'] {
+    & + label {
+      // font-size: var(--ncp-font-size-13);
+      // line-height: var(--ncp-line-height-18);
+      color: var(--ncp-color-gray-700);
+    }
+  }
+  margin: 0 auto;
+  width: rem(260px);
+  margin-top: var(--ncp-spacing-x6);
+  @include flex($d: column);
+  gap: 12px;
+}
+
+/* 
+Swiper 기본 레이아웃 스타일 최소화
+ */
+/* Swiper 컨테이너 */
+.root {
+  display: flex;
+  overflow: hidden;
+  position: relative;
+}
+/* swiper-wrapper 역할: 슬라이드 감싸고 가로 정렬 */
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  transition-property: transform;
+  box-sizing: content-box;
+  will-change: transform;
+}
+.item {
+  &:is([class*='swiper-slide']) {
+    width: auto !important;
+  }
+}

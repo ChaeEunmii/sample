@@ -1,0 +1,111 @@
+@use '@shared/styles/abstracts' as *;
+
+/* MyOrderGroup */
+.wrap {
+  // orderItem 스타일 조정
+  .myOrder {
+    gap: 0;
+    & > li:not(:first-child) {
+      margin-top: var(--ncp-spacing-x12);
+      padding-top: var(--ncp-spacing-x12);
+      border-top: var(--ncp-border-width-base) solid var(--ncp-color-gray-100);
+    }
+    :is([class^='OrderItem_pricebox_']) {
+      margin-top: rem(-4px);
+    }
+  }
+}
+/* topSlot */
+.topSlot {
+  margin-bottom: var(--ncp-spacing-x10);
+}
+/* bottomSlot */
+.bottomSlot {
+  padding-top: var(--ncp-spacing-x12);
+  border-top: var(--ncp-border-width-base) solid var(--ncp-color-gray-100);
+}
+/* topDetail */
+.topDetail {
+  @include flex($v: center);
+  margin-bottom: var(--ncp-spacing-x10);
+  .seller {
+    flex: 1;
+  }
+  .fee {
+    flex-shrink: 0;
+    margin-top: 0;
+  }
+}
+
+/* cont */
+.cont {
+  @include flex($d: column);
+  .item {
+    border-top: 1px solid var(--ncp-color-foreground);
+    padding-top: var(--ncp-spacing-x12);
+    margin-top: var(--ncp-spacing-x12);
+    &:first-child {
+      border-top: none;
+      padding-top: 0;
+      margin-top: 0;
+    }
+  }
+}
+
+/* category */
+.category {
+  font-size: var(--ncp-font-size-16);
+  line-height: var(--ncp-line-height-22);
+  font-weight: var(--ncp-font-weight-bold);
+  color: var(--ncp-color-foreground);
+  border-bottom: var(--ncp-border-width-base) solid var(--ncp-color-foreground);
+  padding-bottom: var(--ncp-spacing-x6);
+  margin-bottom: var(--ncp-spacing-x10);
+  padding-inline: var(--ncp-spacing-indent);
+}
+
+// 도착 예정 시간 안내
+.arrival {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--ncp-spacing-x2);
+  margin-bottom: var(--ncp-spacing-x10);
+
+  p {
+    margin-top: 0;
+  }
+}
+
+/* 체험단 수량 */
+.experienceCount {
+  font-size: var(--ncp-font-size-13);
+  line-height: var(--ncp-line-height-18);
+  font-weight: var(--ncp-font-weight-regular);
+  color: var(--ncp-color-gray-500);
+  margin-top: rem(-4px);
+}
+
+/* 컨트롤영역 */
+.control {
+  width: 100%;
+  .stepper {
+    width: rem(120px);
+  }
+  input[type='text'] {
+    text-align: right;
+  }
+}
+
+/* 전체체크 영역 */
+.totalCheck {
+  width: 100%;
+  margin-bottom: var(--ncp-spacing-x10);
+}
+
+/* 플래그 영역 */
+.flags {
+  @include flex() {
+    gap: var(--ncp-spacing-x2);
+  }
+}

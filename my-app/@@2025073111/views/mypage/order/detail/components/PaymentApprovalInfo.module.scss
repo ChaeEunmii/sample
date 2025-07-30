@@ -1,0 +1,14 @@
+@use '@shared/styles/abstracts' as *;
+
+/* PaymentApprovalInfo */
+.section {
+  position: relative;
+}
+// 안내 문구
+.caution {
+  margin-top: var(--ncp-spacing-x5);
+  color: var(--ncp-color-gray-500);
+  @include flex($v: flex-start) {
+    gap: var(--ncp-spacing-x2);
+  }
+}
