@@ -1,0 +1,22 @@
+@use '@shared/styles/abstracts' as *;
+
+.root {
+  &:not(:first-child) {
+    margin-top: var(--ncp-spacing-x20);
+  }
+}
+.title {
+  @include flex(flex, $h: space-between);
+}
+.textlist {
+  --text-list-spacing: var(--ncp-spacing-x2);
+  li {
+    font-size: var(--ncp-font-size-13);
+    color: var(--ncp-color-gray-700);
+  }
+}
+.link {
+  font-size: var(--ncp-font-size-13);
+  color: var(--ncp-color-gray-500);
+  gap: 0;
+}

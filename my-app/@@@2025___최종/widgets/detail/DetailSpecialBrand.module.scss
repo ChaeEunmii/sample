@@ -1,0 +1,27 @@
+@use '@shared/styles/abstracts' as *;
+
+.root {
+  margin: 0 calc(var(--ncp-main-padding-x) * -1);
+  width: calc(100% + (calc(var(--ncp-main-padding-x) * 2)));
+  height: rem(38px);
+  background-color: var(--ncp-color-foreground);
+  @include flex(flex, $h: center, $v: center);
+  &.isChanel {
+    height: rem(42px);
+    background-color: var(--ncp-color-background);
+    border-top: rem(6px) solid var(--ncp-color-foreground);
+  }
+}
+.isBottom {
+  margin-top: var(--ncp-spacing-x20);
+  &.isChanel {
+    height: auto;
+    .image {
+      width: rem(140px);
+      height: rem(140px);
+    }
+  }
+}
+.image {
+  @include flex(flex);
+}

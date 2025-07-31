@@ -1,0 +1,27 @@
+@use '@shared/styles/abstracts' as *;
+
+/* ClubForms 공통 */
+.collapse {
+  .tit {
+    font-size: var(--ncp-font-size-16);
+    line-height: var(--ncp-line-height-22);
+    font-weight: var(--ncp-font-weight-bold);
+  }
+  :is([class^='Collapse_content']) {
+    & > :first-child {
+      margin-top: 0;
+    }
+  }
+  :is([class^='Box_root']) {
+    & > :first-child {
+      margin-top: 0;
+    }
+  }
+}
+
+/*agreement*/
+.agreement {
+  margin-block: rem(60px);
+  @include flex($d: column);
+  gap: var(--ncp-spacing-x6);
+}
