@@ -1,0 +1,10 @@
+@use '@shared/styles/abstracts' as *;
+
+// RefundAccountDialog
+.wrap {
+  padding-top: var(--ncp-spacing-x8);
+  position: relative;
+  @include flex($d: column) {
+    gap: var(--ncp-spacing-x8);
+  }
+}

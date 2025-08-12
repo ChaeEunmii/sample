@@ -1,0 +1,13 @@
+@use '@shared/styles/abstracts' as *;
+
+/* ImageViewerDialog */
+.wrap {
+  padding-top: var(--ncp-spacing-x6);
+  @include flex($d: column) {
+    gap: var(--ncp-spacing-x6);
+  }
+  .img {
+    border-radius: var(--ncp-border-radius-base);
+    overflow: hidden;
+  }
+}
