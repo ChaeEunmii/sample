@@ -1,0 +1,36 @@
+@use '@shared/styles/abstracts' as *;
+
+/* ProdReview */
+// 상단 고정영역
+.sticky {
+  position: sticky;
+  top: var(--ncp-layout-header-height);
+  z-index: 11;
+  background: var(--ncp-color-background);
+}
+
+.titBar {
+  align-items: flex-start;
+}
+
+/* btns */
+.btns {
+  text-align: center;
+  margin-block: var(--ncp-spacing-x16) rem(60px);
+}
+
+// 전체갯수 + 날짜필터
+.total {
+  margin-block: var(--ncp-spacing-x12);
+  .select {
+    :is([class^='Select_value']) {
+      justify-content: end;
+      text-align: right;
+    }
+  }
+}
+
+/* ProdReviewWrite - 작성, 수정 */
+.wrap {
+  padding-top: var(--ncp-spacing-x8);
+}

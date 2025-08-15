@@ -1,0 +1,43 @@
+@use '@shared/styles/abstracts' as *;
+
+.root {
+  position: sticky;
+  top: var(--ncp-layout-header-height);
+  background-color: var(--ncp-color-background);
+  z-index: 11;
+}
+
+.panel {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    height: 100vh;
+    background-color: var(--ncp-color-alpha-b60);
+  }
+}
+
+.depth2 {
+  position: relative;
+  background-color: var(--ncp-color-background);
+}
+.depth2Link {
+  padding: var(--ncp-spacing-x8);
+  font-weight: var(--ncp-font-weight-medium);
+  &[aria-selected='true'] {
+    color: var(--ncp-color-foreground);
+    font-weight: var(--ncp-font-weight-bold);
+  }
+}
+.depth3 {
+  position: relative;
+}
+.depth3Link {
+  padding: var(--ncp-spacing-x8) var(--ncp-spacing-x16);
+  font-size: var(--ncp-font-size-13);
+  font-weight: var(--ncp-font-weight-medium);
+}

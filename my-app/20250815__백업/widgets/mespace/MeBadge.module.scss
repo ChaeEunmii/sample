@@ -1,0 +1,14 @@
+$badge-size: (
+  'large': 32,
+  'medium': 24,
+  'small': 16,
+);
+
+.root {
+  @each $size, $value in $badge-size {
+    &[data-badge-size='#{$size}'] {
+      width: #{$value}px;
+      height: #{$value}px;
+    }
+  }
+}

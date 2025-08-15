@@ -1,0 +1,62 @@
+@use '@shared/styles/abstracts' as *;
+
+.title {
+  @include flex(flex, $h: space-between);
+}
+
+.carousel {
+  margin-top: var(--ncp-spacing-x6);
+}
+
+.slide {
+  @include flex(flex);
+  width: rem(120px);
+  align-items: stretch;
+}
+
+.branch {
+  @include flex(flex, $d: column, $v: flex-start);
+  gap: 0;
+  width: 100%;
+  padding: var(--ncp-spacing-x10) var(--ncp-spacing-x8);
+  border-radius: var(--ncp-border-radius-base);
+  border: var(--ncp-border-width-base) solid var(--ncp-color-gray-100);
+  &.active {
+    border-color: var(--ncp-color-black);
+  }
+}
+.price {
+  margin-top: var(--ncp-spacing-x2);
+}
+.flag {
+  margin-top: var(--ncp-spacing-x6);
+}
+
+// dialog
+.dialog {
+  padding-inline: var(--ncp-layout-padding-x);
+
+  .inventorys {
+    margin-top: var(--ncp-spacing-x16);
+  }
+  .table {
+    margin-top: var(--ncp-spacing-x8);
+    th {
+      background-color: var(--ncp-color-bg-1, #f7f7f7);
+    }
+    th,
+    td {
+      height: rem(44px);
+      border-right: 1px solid #efefef;
+      &:last-child {
+        border-right: 0;
+      }
+    }
+    td {
+      border-bottom: 1px solid #efefef;
+    }
+  }
+  .note {
+    margin-top: var(--ncp-spacing-x12);
+  }
+}
