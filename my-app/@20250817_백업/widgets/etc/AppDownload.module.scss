@@ -1,0 +1,14 @@
+@use '@shared/styles/abstracts' as *;
+
+.qrcode {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--ncp-spacing-x4);
+  margin-bottom: var(--ncp-spacing-x10);
+}
+
+.image {
+  width: rem(108px);
+  margin-top: rem(-10px);
+}

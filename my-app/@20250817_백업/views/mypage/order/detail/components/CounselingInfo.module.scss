@@ -1,0 +1,21 @@
+@use '@shared/styles/abstracts' as *;
+
+/* OrdererInfo */
+.section {
+  position: relative;
+}
+
+.box {
+  strong[role='heading'] {
+    width: 100%;
+  }
+  .tit {
+    @include flex($h: space-between, $w: wrap);
+    width: 100%;
+  }
+  // 우측버튼영역
+  .btn {
+    flex-shrink: 0;
+    flex-grow: 0;
+  }
+}

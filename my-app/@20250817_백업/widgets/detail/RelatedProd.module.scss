@@ -1,0 +1,13 @@
+@use '@shared/styles/abstracts' as *;
+
+.root {
+  margin-top: var(--ncp-spacing-x20);
+}
+
+.list {
+  margin-top: var(--ncp-spacing-x8);
+}
+
+.title {
+  @include flex(flex, $h: space-between);
+}

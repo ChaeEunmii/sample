@@ -1,0 +1,60 @@
+@use '@shared/styles/abstracts' as *;
+
+.root {
+  --live-card-thumb-width: #{rem(134px)};
+  --live-card-detail-padding: var(--ncp-spacing-x4) 0 0;
+
+  display: flex;
+  gap: var(--ncp-spacing-x6);
+}
+
+.thumb {
+  width: var(--live-card-thumb-width);
+  position: relative;
+  aspect-ratio: 1 / 1;
+  flex-shrink: 0;
+  border-radius: var(--ncp-border-radius-base);
+  overflow: hidden;
+}
+
+.image {
+  height: 100%;
+}
+
+.flag {
+  @include position($t: 0, $l: 0);
+}
+
+.detail {
+  position: relative;
+  padding: var(--live-card-detail-padding);
+  @include flex($v: flex-start, $d: column);
+  gap: var(--ncp-spacing-x8);
+  flex: 1;
+  z-index: 0;
+}
+.link {
+  &::after {
+    @include position(absolute, 0, 0, 0, 0, -1);
+    content: '';
+  }
+}
+.title {
+  font-weight: var(--ncp-font-weight-semibold);
+  @include ellipsis(2);
+}
+
+.separator {
+  width: rem(1px);
+  height: rem(10px);
+  margin-inline: var(--ncp-spacing-x4);
+  display: inline-block;
+  background-color: var(--ncp-color-gray-250);
+}
+
+// variant
+.vertical {
+  --live-card-thumb-width: 100%;
+  --live-card-detail-padding: 0 var(--ncp-spacing-indent);
+  flex-direction: column;
+}

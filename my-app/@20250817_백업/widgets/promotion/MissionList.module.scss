@@ -1,0 +1,47 @@
+@use '@shared/styles/abstracts' as *;
+
+.root {
+  li {
+    @include flex(flex, $v: flex-start, $h: flex-start) {
+      column-gap: var(--ncp-spacing-x6);
+    }
+    margin-top: var(--ncp-spacing-x8);
+    font-size: var(--ncp-font-size-14);
+    line-height: var(--ncp-line-height-24);
+    color: var(--ncp-color-gray-900);
+
+    &::before {
+      @include flex(flex, $v: center, $h: center);
+      margin-top: var(--ncp-spacing-x1);
+      width: rem(20px);
+      height: rem(20px);
+      font-size: var(--ncp-font-size-10);
+      line-height: var(--ncp-line-height-10);
+      font-weight: var(--ncp-font-weight-semibold);
+      color: var(--ncp-color-background);
+      background-color: var(--ncp-color-foreground);
+      border-radius: var(--ncp-border-radius-max);
+    }
+  }
+
+  &.ol {
+    counter-reset: list;
+    li {
+      &::before {
+        flex: 0 0 rem(20px);
+        counter-increment: list;
+        content: counter(list);
+      }
+    }
+  }
+  &.ul {
+    li {
+      &::before {
+        content: '';
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none'%3E%3Cpath stroke='%23fff' d='M2 6.273 4.824 9 10 4'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: center center;
+      }
+    }
+  }
+}

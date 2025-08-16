@@ -1,0 +1,107 @@
+@use '@shared/styles/abstracts' as *;
+
+.root {
+  position: relative;
+  padding-top: calc(120 / 343 * 100%);
+  // aspect-ratio: 343 / 120;
+  border-radius: var(--ncp-border-radius-base);
+  transition: padding-top var(--ncp-transition-base);
+  overflow: hidden;
+  z-index: 0;
+
+  &[data-banner-type='image'] {
+    transition: none;
+  }
+
+  &[data-banner-type='video'] {
+    --flicking-banner-max-width: 16px;
+    --flicking-banner-display: none;
+    --flicking-flag-inset: 0 auto auto 0;
+    padding-top: calc(9 / 16 * 100%);
+  }
+}
+
+.banner {
+  @include position($t: 0, $l: 0, $i: 2);
+  max-width: var(--flicking-banner-max-width, calc(314 / 343 * 100%));
+  height: 100%;
+  display: var(--flicking-banner-display, block);
+  animation: preBounce 2s linear infinite;
+  transform-origin: left center;
+  cursor: pointer;
+
+  &[data-dragging='true'] {
+    animation: none;
+  }
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  border-radius: 0 var(--ncp-border-radius-base) var(--ncp-border-radius-base) 0;
+  pointer-events: none;
+
+  & > img {
+    object-position: left center;
+  }
+}
+
+.video {
+  @include position($t: 0, $l: 0);
+  width: 100%;
+  height: 100%;
+
+  &::after {
+    @include position($t: 0, $l: 0, $r: 0, $b: 0);
+    display: var(--flicking-banner-display, block);
+    content: '';
+    background-color: var(--ncp-color-alpha-b30);
+  }
+}
+
+.flick {
+  @include position($t: 50%, $r: 0);
+  width: rem(32px);
+  height: rem(24px);
+  @include flex($v: center, $h: center);
+  color: var(--ncp-color-white);
+  transform: translate(50%, -50%);
+  border-radius: var(--ncp-border-radius-max);
+  background-color: var(--ncp-color-black);
+  overflow: hidden;
+  z-index: 1;
+}
+
+.flag {
+  position: absolute;
+  inset: var(--flicking-flag-inset, auto 0 0 auto);
+  z-index: 1;
+}
+
+.close {
+  @include position($t: 8px, $r: 8px, $i: 1);
+  color: var(--ncp-color-white);
+}
+
+.more {
+  @include position($b: 32px, $r: 10px, $i: 1);
+  height: rem(22px);
+  padding-inline: var(--ncp-spacing-x6);
+  color: var(--ncp-color-white);
+  font-weight: var(--ncp-font-weight-semibold);
+  font-size: var(--ncp-font-size-10);
+  border-radius: var(--ncp-border-radius-max);
+  background-color: var(--ncp-color-black);
+}
+
+@keyframes preBounce {
+  0% {
+    width: 100%;
+  }
+  50% {
+    width: calc(269 / 343 * 100%);
+  }
+  100% {
+    width: 100%;
+  }
+}
