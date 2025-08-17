@@ -1,0 +1,37 @@
+@use '@shared/styles/abstracts' as *;
+
+.imgBox {
+  margin-inline: calc(var(--ncp-main-padding-x) * -1);
+  aspect-ratio: 3 / 2;
+
+  @supports not (aspect-ratio: 3 / 2) {
+    &::before {
+      content: '';
+      display: block;
+      padding-top: 66.67%; /* 3:2 비율 계산 */
+    }
+  }
+
+  img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    object-fit: cover; /* 비율 유지하면서 잘라내기 */
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.infoWrap {
+  @include flex(flex, $v: center);
+  gap: var(--ncp-spacing-x6);
+}
+
+.titleBox {
+  padding: 0 var(--ncp-spacing-x1);
+}
+
+.stepper {
+  min-width: rem(121px);
+}

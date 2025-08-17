@@ -1,0 +1,23 @@
+@use '@shared/styles/abstracts' as *;
+
+.question {
+  margin-bottom: var(--ncp-spacing-x12);
+  @include flex($d: column);
+  gap: var(--ncp-spacing-x4);
+}
+
+.privacy {
+  margin-top: var(--ncp-spacing-x16);
+
+  & > [class*='Checkbox_root'] {
+    display: block;
+
+    margin-bottom: var(--ncp-spacing-x12);
+    padding-bottom: var(--ncp-spacing-x6);
+    border-bottom: var(--ncp-border-width-base) solid var(--ncp-color-gray-100);
+  }
+
+  dt {
+    color: var(--ncp-color-gray-700);
+  }
+}

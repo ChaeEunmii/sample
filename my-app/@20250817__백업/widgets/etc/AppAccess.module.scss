@@ -1,0 +1,26 @@
+@use '@shared/styles/abstracts' as *;
+
+.list {
+  max-height: calc(80dvh - 300px);
+  margin: var(--ncp-spacing-x10) 0;
+  @include scrollbar;
+  & > li:not(:first-child) {
+    margin-top: var(--ncp-spacing-x12);
+  }
+  & > li {
+    display: flex;
+    align-items: center;
+    gap: var(--ncp-spacing-x6);
+  }
+  .icon {
+    flex: 0 0 auto;
+    width: rem(40px);
+    height: rem(40px);
+  }
+  .text {
+    flex: 1;
+    :where(p) {
+      margin-top: var(--ncp-spacing-x1);
+    }
+  }
+}

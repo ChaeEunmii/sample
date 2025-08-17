@@ -1,0 +1,122 @@
+@use '@shared/styles/abstracts' as *;
+
+.root {
+  --table-th-bg: var(--ncp-color-bg-1);
+  --table-th-vertical-align: middle;
+  --table-border-width: var(--ncp-border-width-base);
+  --table-border-color: var(--ncp-color-gray-100);
+  --table-border-spacing-x: 0;
+  --table-border-spacing-y: 0;
+
+  :where(.table) {
+    width: 100%;
+    min-width: 100%;
+    table-layout: fixed;
+  }
+
+  // border-spacing으로 인해, 테이블 상하좌우 테두리 여백이 생기는 부분 방지
+  &:where(.wrapper) {
+    overflow: hidden;
+    .table {
+      width: calc(100% + (var(--table-border-spacing-x) * 2));
+      margin: calc(-1 * var(--table-border-spacing-y)) calc(-1 * var(--table-border-spacing-x));
+      border-collapse: separate;
+      border-spacing: var(--table-border-spacing-x) var(--table-border-spacing-y);
+    }
+  }
+}
+
+// 가로형 기본 스타일
+.horizontal {
+  :where(th, td) {
+    padding: var(--ncp-spacing-x6);
+    line-height: var(--ncp-line-height-20);
+    border-right: var(--table-border-width) solid var(--table-border-color);
+    &:where(:last-child) {
+      border-right: 0;
+    }
+  }
+  :where(th) {
+    font-size: var(--ncp-font-size-14);
+    line-height: var(--ncp-line-height-20);
+    font-weight: var(--ncp-font-weight-semibold);
+    text-align: center;
+    background-color: var(--table-th-bg);
+    vertical-align: var(--table-th-vertical-align);
+  }
+  :where(td) {
+    border-bottom: var(--table-border-width) solid var(--table-border-color);
+    font-size: var(--ncp-font-size-14);
+    color: var(--ncp-color-gray-700);
+    text-align: center;
+  }
+
+  &.borderless {
+    --table-border-spacing-x: 0;
+    --table-border-spacing-y: var(--ncp-spacing-x4);
+
+    th {
+      padding: var(--ncp-spacing-x5);
+    }
+    td {
+      padding: var(--ncp-spacing-x4);
+    }
+  }
+}
+
+// 세로형 기본 스타일
+.vertical {
+  border-top: var(--table-border-width) solid var(--table-border-color);
+  :where(th, td) {
+    padding: var(--ncp-spacing-x6) var(--ncp-spacing-x8);
+    border-bottom: var(--table-border-width) solid var(--table-border-color);
+    font-size: var(--ncp-font-size-13);
+    line-height: var(--ncp-line-height-22);
+  }
+  :where(th) {
+    font-weight: var(--ncp-font-weight-medium);
+    text-align: left;
+    background-color: var(--table-th-bg);
+    vertical-align: var(--table-th-vertical-align);
+  }
+  :where(td) {
+    color: var(--ncp-color-gray-700);
+  }
+
+  // variant
+  &.plain {
+    --table-th-vertical-align: top;
+    --table-border-spacing-x: var(--ncp-spacing-x10);
+    --table-border-spacing-y: var(--ncp-spacing-x8);
+
+    th,
+    td {
+      padding: 0;
+    }
+    th {
+      color: var(--ncp-color-gray-700);
+    }
+    td {
+      font-weight: var(--ncp-font-weight-medium);
+      color: var(--ncp-color-gray-900);
+    }
+  }
+}
+
+// 가로형 세로형 공통 variant
+.borderless {
+  --table-border-width: 0;
+}
+.plain {
+  --table-border-width: 0;
+  --table-th-bg: transparent;
+}
+
+// TableRow 스타일
+.tr-point {
+  td,
+  th {
+    background-color: #f5fdfc;
+    color: var(--ncp-color-accent-1);
+  }
+}
