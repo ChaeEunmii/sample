@@ -1,0 +1,10 @@
+@use '@shared/styles/abstracts' as *;
+
+/* UnmaskInfoBlock */
+.wrap {
+  background-color: var(--ncp-color-bg-1);
+  padding: var(--ncp-spacing-x10) var(--ncp-spacing-x8);
+  @include flex($h: space-between, $w: wrap) {
+    gap: var(--ncp-spacing-x5);
+  }
+}

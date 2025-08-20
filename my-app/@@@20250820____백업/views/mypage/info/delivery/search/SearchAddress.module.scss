@@ -1,0 +1,52 @@
+@use '@shared/styles/abstracts' as *;
+
+/* SearchAddress */
+.layout {
+  position: relative;
+}
+
+/*empty 높이설정*/
+.empty {
+  position: relative;
+  overflow: hidden;
+  height: rem(108px);
+}
+
+.content {
+  margin-top: var(--ncp-spacing-x12);
+}
+/*result*/
+.result {
+  margin-top: var(--ncp-spacing-x12);
+  max-height: rem(385px);
+  @include scrollbar;
+}
+.list {
+  & > li {
+    padding-top: var(--ncp-spacing-x10);
+    margin-top: var(--ncp-spacing-x10);
+    border-top: 1px solid red;
+    &:first-child {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: none;
+    }
+  }
+}
+
+.radio {
+  width: 100%;
+  align-items: center;
+  .radioItem {
+    flex: 1;
+    @include flex($d: column) {
+      gap: var(--ncp-spacing-x2);
+    }
+  }
+}
+
+.address {
+  width: 100%;
+  flex: 1;
+  @include flex($d: column);
+}
