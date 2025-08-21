@@ -1,0 +1,6 @@
+@use '@shared/styles/abstracts' as *;
+
+.saverList {
+  grid-template-columns: repeat(2, 1fr) !important;
+  padding-top: var(--ncp-spacing-x12);
+}

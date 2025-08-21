@@ -1,0 +1,17 @@
+@use '@shared/styles/abstracts' as *;
+
+// ReturnReason
+.root {
+  position: relative;
+}
+
+.img {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: var(--ncp-border-radius-base);
+  // img {
+  //   border: 1px solid red;
+  //   width: 100%;
+  //   height: 100%;
+  // }
+}

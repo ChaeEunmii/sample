@@ -1,0 +1,25 @@
+@use '@shared/styles/abstracts' as *;
+
+// FormItem
+.stack {
+  > div:last-child {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 var(--ncp-spacing-x4);
+  }
+  .input {
+    flex: 1;
+  }
+  .formButton {
+    width: rem(95px);
+    font-size: var(--ncp-font-size-14);
+
+    &:disabled {
+      color: var(--ncp-color-background);
+      background: var(--ncp-color-gray-450);
+    }
+  }
+  p {
+    flex-basis: 100%;
+  }
+}

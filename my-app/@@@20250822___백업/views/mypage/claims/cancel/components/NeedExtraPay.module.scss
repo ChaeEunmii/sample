@@ -1,0 +1,12 @@
+@use '@shared/styles/abstracts' as *;
+
+/* NeedExtraPayDialog */
+.wrap {
+  padding-top: var(--ncp-spacing-x8);
+  .pay {
+    position: relative;
+  }
+  .bottom {
+    margin-top: var(--ncp-spacing-x12);
+  }
+}

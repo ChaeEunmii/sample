@@ -1,0 +1,8 @@
+@use '@shared/styles/abstracts' as *;
+
+/* PaymentMethodSelect */
+.list {
+  @include flex($d: column) {
+    gap: var(--ncp-spacing-x4);
+  }
+}
