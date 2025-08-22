@@ -1,0 +1,13 @@
+@use '@shared/styles/abstracts' as *;
+
+/* SubscriptionStatus */
+.info {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--ncp-spacing-x3);
+  .tit {
+    font-weight: inherit;
+    @include separator($gap: var(--ncp-spacing-x3));
+  }
+}

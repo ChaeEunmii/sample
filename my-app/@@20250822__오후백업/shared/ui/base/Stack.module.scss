@@ -1,0 +1,55 @@
+@use '@shared/styles/abstracts' as *;
+
+/* Stack */
+.root {
+  --stack-gap-x: var(--ncp-spacing-x3);
+  --stack-gap-y: var(--ncp-spacing-x3);
+  --stack-flex-wrap: wrap;
+  @include flex($display: inline-flex, $v: center, $w: var(--stack-flex-wrap));
+  gap: var(--stack-gap-y) var(--stack-gap-x);
+  &.ncp-form-vertical {
+    @include flex($d: column, $v: stretch);
+  }
+}
+
+// form field stack
+.field {
+  --stack-gap-x: var(--ncp-spacing-x4);
+  --stack-gap-y: var(--ncp-spacing-x4);
+  @include flex($display: flex, $v: stretch);
+  &:not(:global(.ncp-align-vertical)) {
+    align-items: center;
+    :is([class^='Input_root']) {
+      width: min-content;
+      flex: 1;
+    }
+    :is([class^='Button_root']) {
+      flex: 0 0 auto;
+      width: rem(94px);
+      font-weight: var(--ncp-font-weight-semibold);
+      white-space: nowrap;
+    }
+  }
+  :where(p) {
+    margin-top: 0;
+  }
+  :is([class^='Select_root']) {
+    flex: 1;
+  }
+  :global(.ncp-symbol) {
+    margin: 0 calc(var(--stack-gap-x) * -1);
+  }
+}
+
+// space between
+.between {
+  @include flex(flex, space-between, center);
+  width: 100%;
+}
+
+// align right
+.end {
+  --stack-gap-x: var(--ncp-spacing-x6);
+  @include flex(flex, flex-end, center);
+  width: 100%;
+}

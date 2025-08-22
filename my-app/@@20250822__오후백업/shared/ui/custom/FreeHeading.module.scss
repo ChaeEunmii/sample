@@ -1,0 +1,13 @@
+@use '@shared/styles/abstracts' as *;
+@use 'sass:map';
+@use 'sass:list';
+
+.root {
+  position: relative;
+  display: block;
+  margin: 0;
+
+  &:where(strong) {
+    font-weight: var(--ncp-font-weight-semibold);
+  }
+}

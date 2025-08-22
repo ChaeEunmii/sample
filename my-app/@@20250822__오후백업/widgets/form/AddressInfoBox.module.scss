@@ -1,0 +1,63 @@
+@use '@shared/styles/abstracts' as *;
+
+// 배송지 영역
+.root {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: var(--ncp-spacing-x10) var(--ncp-spacing-x8);
+  background: #f9f9f9;
+  border-radius: rem(8px);
+
+  &.removePadding {
+    padding: 0;
+
+    .changeButton {
+      right: 0;
+      top: 0;
+    }
+  }
+}
+.info {
+  @include flex(flex, $v: center, $w: wrap);
+  gap: var(--ncp-spacing-x2) var(--ncp-spacing-x8);
+  padding-right: 70px;
+
+  span {
+    position: relative;
+
+    &:not(:first-child):after {
+      content: '';
+      position: absolute;
+      left: rem(-8px);
+      top: 50%;
+      width: rem(1px);
+      height: rem(12px);
+      background: var(--ncp-color-gray-150);
+      transform: translateY(-50%);
+    }
+  }
+}
+.phone {
+  flex-basis: 100%;
+  &:after {
+    display: none;
+  }
+}
+.defaultAddress,
+.detailedAddress {
+  margin-top: var(--ncp-spacing-x2);
+}
+.changeButton {
+  position: absolute;
+  right: rem(16px);
+  top: rem(20px);
+
+  &.disablePosition {
+    position: relative;
+    right: auto;
+    top: auto;
+    margin-top: var(--ncp-spacing-x8);
+    margin-left: auto;
+  }
+}

@@ -1,0 +1,12 @@
+@use '@shared/styles/abstracts' as *;
+
+/* ReviewMetrics */
+.wrap {
+  position: relative;
+  padding-bottom: var(--ncp-spacing-x14);
+}
+/* 접고 펼치기 버튼영역*/
+.more {
+  text-align: center;
+  margin-top: var(--ncp-spacing-x16);
+}

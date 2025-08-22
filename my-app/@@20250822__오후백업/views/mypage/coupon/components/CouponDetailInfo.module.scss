@@ -1,0 +1,10 @@
+@use '@shared/styles/abstracts' as *;
+
+.root {
+  margin-top: var(--ncp-spacing-x12);
+}
+
+.desc {
+  display: inline-block;
+  margin-top: var(--ncp-spacing-x2);
+}

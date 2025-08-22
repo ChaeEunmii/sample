@@ -1,0 +1,8 @@
+@use '@shared/styles/abstracts' as *;
+
+.root {
+  @include position($i: 10);
+  &:focus {
+    outline: none;
+  }
+}

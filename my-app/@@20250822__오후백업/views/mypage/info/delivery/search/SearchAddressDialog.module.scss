@@ -1,0 +1,39 @@
+@use '@shared/styles/abstracts' as *;
+
+/* SearchAddressDialog */
+.list {
+  max-height: rem(165px);
+  margin-top: var(--spacing-x4);
+  border-bottom: var(--border-width-base) solid var(--color-gray-3);
+  overflow-y: auto;
+}
+.item {
+  padding: var(--spacing-x2) 0;
+  border-top: var(--border-width-base) solid var(--color-gray-3);
+}
+.itemLink {
+  @include flex(flex, space-between, center);
+}
+.addrInfo {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  row-gap: 5px;
+  strong {
+    font-weight: var(--font-weight-light);
+  }
+}
+.choose {
+  @include flex(flex, center, flex-start, column) {
+    gap: 0;
+  }
+  border-bottom: var(--border-width-base) solid var(--color-gray-3);
+  [class*='Radio_root'] {
+    display: flex;
+    width: 100%;
+    padding: var(--spacing-x2) 0;
+    border-top: var(--border-width-base) solid var(--color-gray-3);
+  }
+}
+.chooseType {
+  min-width: rem(60px);
+}
