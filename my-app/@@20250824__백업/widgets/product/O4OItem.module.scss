@@ -1,0 +1,169 @@
+@use '@shared/styles/abstracts' as *;
+
+.root {
+  position: relative;
+  display: flex;
+  gap: var(--ncp-spacing-x4);
+}
+
+// 체크박스 제외한 영역을 묶은 div
+.itemWrap {
+  @include flex(flex, $w: nowrap);
+  position: relative;
+  flex: 1;
+  gap: var(--ncp-spacing-x6);
+}
+
+// 왼쪽: 이미지
+.left {
+  align-self: flex-start;
+  width: rem(90px);
+}
+.thumb {
+  position: relative;
+  width: rem(90px);
+  height: rem(90px);
+  border-radius: var(--ncp-border-radius-base);
+  overflow: hidden;
+
+  &.opacity {
+    position: relative;
+
+    &:before {
+      content: '';
+      position: absolute;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: #0000005c;
+    }
+  }
+}
+.thumbflag {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+}
+.thumbLabel {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: rem(34px);
+  text-align: center;
+
+  span {
+    z-index: 1;
+    color: var(--ncp-color-background) !important;
+    letter-spacing: var(--ncp-letter-spacing-base);
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.36);
+    backdrop-filter: blur(rem(8px));
+    -webkit-backdrop-filter: blur(rem(8px));
+  }
+}
+
+// 오른쪽: 상품 상세 내용 등
+.right,
+.rightWrap {
+  @include flex(flex, $d: column, $h: center, $w: wrap);
+  flex: 1;
+  gap: var(--ncp-spacing-x6);
+  .prodTitle {
+    .titleBox {
+      @include flex(flex, $v: flex-start);
+      gap: var(--ncp-spacing-x1) var(--ncp-spacing-x2);
+      .title {
+        @include ellipsis(2);
+      }
+    }
+  }
+  // 왼쪽 이미지 없는 경우
+  &.textMode {
+    align-self: flex-start;
+  }
+}
+
+.detail {
+  @include flex(flex, $d: column, $v: flex-start, $w: wrap);
+  gap: var(--ncp-spacing-x4);
+  width: 100%;
+}
+
+// 상품 가격 옆, 주문 개수 노출되는 경우
+.pricebox {
+  @include flex(flex, $v: center, $w: wrap);
+  gap: var(--ncp-spacing-x3);
+}
+.price {
+  flex-direction: row;
+  gap: var(--ncp-spacing-x2);
+
+  del {
+    display: inline-block;
+    flex-basis: auto;
+  }
+}
+
+// 버튼
+.torderButton {
+  width: auto;
+  align-self: center;
+}
+
+// 삭제 버튼
+.closeButton {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 0;
+}
+
+.quantity {
+  position: relative;
+  padding-left: 7px;
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: rem(1px);
+    height: rem(10px);
+    background: var(--ncp-color-gray-150);
+    transform: translateY(-50%);
+  }
+}
+
+// variant: store
+.store {
+  // 오른쪽: 상품 상세 내용 등
+  .right,
+  .rightWrap {
+    gap: var(--ncp-spacing-x4);
+    .prodTitle {
+      .title {
+        @include ellipsis(1);
+      }
+    }
+  }
+}
+
+// prodTitle, prodPrice 비활성화 스타일
+.disabled {
+  opacity: 0.5;
+  filter: grayscale(100%);
+}

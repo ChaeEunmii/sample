@@ -1,0 +1,117 @@
+@use '@shared/styles/abstracts' as *;
+
+.quickOrder {
+  padding-left: 0;
+  padding-right: 0;
+
+  // Dialog footer 영역
+  > div:last-child {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+// 공통
+.box {
+  padding: var(--ncp-spacing-x12) var(--ncp-spacing-x8);
+  border-top: rem(8px) solid var(--ncp-color-bg-1);
+
+  &:first-child {
+    padding-top: 0;
+    border-top: none;
+  }
+}
+
+// 상단 영역
+.topBox {
+  padding: 0 var(--ncp-spacing-x1);
+  .prodTitle {
+    @include ellipsis(1);
+  }
+  .optionBox {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ncp-spacing-x2);
+    margin-top: var(--ncp-spacing-x2);
+  }
+}
+.prodPrice {
+  margin-top: var(--ncp-spacing-x10);
+  .discountButton {
+    > span {
+      margin-right: var(--ncp-spacing-x3);
+      text-decoration: underline;
+    }
+  }
+}
+.pointForm {
+  margin-top: var(--ncp-spacing-x10);
+}
+// FormItem
+.stack {
+  > div:last-child {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 var(--ncp-spacing-x4);
+  }
+  .input {
+    flex: 1;
+  }
+  .formButton {
+    width: rem(107px);
+    font-size: var(--ncp-font-size-14);
+
+    &:disabled {
+      color: var(--ncp-color-background);
+      background: var(--ncp-color-gray-450);
+    }
+  }
+  p {
+    flex-basis: 100%;
+  }
+}
+
+// 기본 배송지 영역
+.addrBox {
+  .titleArea {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .title {
+      color: var(--ncp-color-gray-450);
+    }
+  }
+
+  P {
+    color: var(--ncp-color-gray-850);
+    & + p {
+      margin-top: var(--ncp-spacing-x2);
+    }
+  }
+}
+
+// 결제 영역
+.payBox {
+  .titleArea {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    .leftBox {
+      display: flex;
+      align-items: center;
+      gap: var(--ncp-spacing-x4);
+
+      p {
+        flex-basis: 100%;
+        margin-top: var(--ncp-spacing-x2);
+        color: var(--ncp-color-gray-850);
+      }
+    }
+  }
+  .grayBox {
+    margin-top: var(--ncp-spacing-x8);
+    padding: var(--ncp-spacing-x8);
+    background: var(--ncp-color-bg-1);
+    border-radius: var(--ncp-border-radius-base);
+  }
+}

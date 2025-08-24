@@ -1,0 +1,10 @@
+@use '@shared/styles/abstracts' as *;
+
+/* PhoneAuth */
+.stack {
+  :is([class^='Button_root']) {
+    &.btn {
+      width: rem(107px);
+    }
+  }
+}

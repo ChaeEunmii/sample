@@ -1,0 +1,16 @@
+@use '@shared/styles/abstracts' as *;
+
+/* SubscriptionSchedule */
+// 타이틀
+.title {
+  position: relative;
+  .hasTip {
+    display: inline-block;
+    position: absolute;
+    right: rem(-24px);
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: left;
+    z-index: 1;
+  }
+}

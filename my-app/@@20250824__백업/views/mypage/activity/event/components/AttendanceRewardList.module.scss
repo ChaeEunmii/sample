@@ -1,0 +1,33 @@
+@use '@shared/styles/abstracts' as *;
+
+/* AttendanceRewardList */
+.wrap {
+  position: relative;
+  .list {
+    width: 100%;
+    position: relative;
+    @include flex($d: column);
+    > li {
+      &:first-child {
+        margin-top: 0;
+        padding-top: 0;
+        border-top: none;
+      }
+      margin-top: var(--ncp-spacing-x8);
+      padding-top: var(--ncp-spacing-x8);
+      border-top: var(--ncp-border-width-base) solid var(--ncp-color-gray-100);
+      @include flex($v: center) {
+        gap: var(--ncp-spacing-x12);
+      }
+      .title {
+        flex: 1;
+        @include flex($d: column) {
+          gap: var(--ncp-spacing-x2);
+        }
+        .head {
+          line-height: var(--ncp-line-height-reading);
+        }
+      }
+    }
+  }
+}
