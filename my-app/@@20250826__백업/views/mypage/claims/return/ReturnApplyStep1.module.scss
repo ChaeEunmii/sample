@@ -1,0 +1,27 @@
+@use '@shared/styles/abstracts' as *;
+
+/* ReturnApplyStep1 */
+.layout {
+  position: relative;
+}
+
+.group {
+  @include flex($d: column) {
+    gap: var(--ncp-spacing-x12);
+  }
+}
+
+.method {
+  margin-block: var(--ncp-spacing-x16);
+}
+
+.store {
+  @include flex($d: column) {
+    gap: var(--ncp-spacing-x16);
+  }
+}
+// 택배로만 반품 가능상품
+.title {
+  position: relative;
+  width: 100%;
+}

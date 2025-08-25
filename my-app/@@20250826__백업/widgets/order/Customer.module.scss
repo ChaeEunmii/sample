@@ -1,0 +1,20 @@
+@use '@shared/styles/abstracts' as *;
+
+// controlSlot
+.stack {
+  > div:last-child {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 var(--ncp-spacing-x4);
+  }
+  .input {
+    flex: 1;
+  }
+  .formButton {
+    width: rem(107px);
+    font-size: var(--ncp-font-size-14);
+  }
+  p {
+    flex-basis: 100%;
+  }
+}

@@ -1,0 +1,49 @@
+@use '@shared/styles/abstracts' as *;
+
+.coponChangeDialog {
+  padding-left: 0;
+  padding-right: 0;
+
+  // Dialog header, footer 영역
+  > div:first-child,
+  > div:last-child {
+    padding-left: var(--ncp-spacing-x8);
+    padding-right: var(--ncp-spacing-x8);
+  }
+
+  // Dialog body 영역
+  > div:nth-child(3) {
+    width: 100%;
+    margin: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  // Dialog footer 영역
+  > div:last-child {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+// Dialog body > conent 영역
+.content {
+  padding: var(--ncp-spacing-x16) var(--ncp-spacing-x8) 0;
+}
+
+.formBox {
+  margin-top: 0;
+}
+
+// 상품 쿠폰 + 장바구니 쿠폰 합계 영역
+.totalCoupon {
+  margin-top: var(--ncp-spacing-x12);
+  padding-top: var(--ncp-spacing-x10);
+  border-top: var(--ncp-border-width-base) solid var(--ncp-color-foreground);
+}
+
+// 장바구니 쿠폰 section 영역
+.cartCoupon {
+  padding: 0;
+  border: none;
+}

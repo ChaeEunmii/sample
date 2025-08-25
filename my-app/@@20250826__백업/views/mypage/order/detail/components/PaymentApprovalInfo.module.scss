@@ -1,0 +1,21 @@
+@use '@shared/styles/abstracts' as *;
+
+/* PaymentApprovalInfo */
+.section {
+  position: relative;
+}
+// 안내 문구
+.caution {
+  margin-top: var(--ncp-spacing-x5);
+  color: var(--ncp-color-gray-500);
+  @include flex($v: flex-start) {
+    gap: var(--ncp-spacing-x2);
+  }
+}
+
+// 카드승인내역 스타일
+.appr {
+  border-top: var(--ncp-border-width-base) solid var(--ncp-color-gray-100);
+  padding-top: var(--ncp-spacing-x10);
+  margin-top: var(--ncp-spacing-x10);
+}
