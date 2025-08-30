@@ -1,0 +1,76 @@
+@use '@shared/styles/abstracts' as *;
+
+/* ManagePartnersDetail */
+.layout {
+  position: relative;
+}
+
+// 상단 정보박스
+.infoBox {
+  position: relative;
+  em {
+    color: var(--ncp-color-foreground);
+  }
+  .amount {
+    @include flex($v: center) {
+      gap: var(--ncp-spacing-x4);
+    }
+  }
+}
+
+// 카운트 박스
+.counts {
+  margin-block: var(--ncp-spacing-x5);
+  @include flex($v: center) {
+    gap: var(--ncp-spacing-x4);
+  }
+  .box {
+    flex: 1;
+    margin: 0;
+    @include flex($d: column) {
+      gap: var(--ncp-spacing-x2);
+    }
+    & > strong {
+      color: var(--ncp-color-foreground);
+    }
+  }
+}
+
+// 테이블감싸는 flush
+.flush {
+  margin-inline: calc((var(--ncp-layout-padding-x) * -1));
+  margin-top: var(--ncp-spacing-x12);
+  // flush 사용시 디자인 맞춤용
+  .custom {
+    tr {
+      td,
+      th {
+        padding-inline: var(--ncp-spacing-x3);
+        &:first-child,
+        &:first-child {
+          padding-left: var(--ncp-layout-padding-x);
+        }
+        &:last-child,
+        &:last-child {
+          padding-right: var(--ncp-layout-padding-x);
+        }
+      }
+    }
+  }
+}
+
+.tblLink {
+  @include flex($display: inline-flex) {
+    gap: 4px;
+  }
+  & > span {
+    flex: 1;
+    @include ellipsis(1);
+    word-break: break-all;
+  }
+  & > i {
+    color: var(--ncp-color-gray-500);
+    flex-shrink: 0;
+    flex-grow: 0;
+  }
+}
