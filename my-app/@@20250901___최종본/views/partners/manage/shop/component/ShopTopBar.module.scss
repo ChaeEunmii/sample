@@ -1,0 +1,15 @@
+@use '@shared/styles/abstracts' as *;
+
+/* ShopTopBar */
+.topBar {
+  &:first-child {
+    margin-top: var(--ncp-spacing-x8);
+    margin-bottom: var(--ncp-spacing-x20);
+  }
+  .info {
+    --avatar-size: #{rem(74px)};
+    @include flex($d: column) {
+      gap: var(--ncp-spacing-x8);
+    }
+  }
+}
