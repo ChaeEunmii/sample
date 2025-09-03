@@ -1,0 +1,9 @@
+@use '@shared/styles/abstracts' as *;
+
+/* JoinRegister */
+.layout {
+  position: relative;
+}
+.check {
+  margin-block: var(--ncp-spacing-x2) var(--ncp-spacing-x8);
+}

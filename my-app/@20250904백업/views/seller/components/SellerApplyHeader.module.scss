@@ -1,0 +1,13 @@
+@use '@shared/styles/abstracts' as *;
+
+/* SellerApplyHeader */
+.title {
+  position: relative;
+  margin-bottom: var(--ncp-spacing-x16);
+}
+.desc {
+  width: 100%;
+  @include flex($d: column) {
+    gap: var(--ncp-spacing-x4);
+  }
+}
