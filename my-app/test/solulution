@@ -1,0 +1,32 @@
+// 동의 상태 변경 핸들러
+const handleCheckChange = (id: string, checked: boolean) => {
+  // 1) agreeStates를 먼저 확정
+  setAgreeStates((prev) => {
+    const nextAgree = { ...prev, [id]: checked };
+
+    // 2) 그 결과를 기준으로 disabled를 동일 렌더 사이클에 계산
+    setDisabledStates((prevDisabled) => {
+      // terms-homepage 체크되면 hyundai-* 잠금 해제, 해제되면 다시 잠금
+      if (id === 'terms-homepage') {
+        const targetIds = ['hyundai-1', 'hyundai-2', 'hyundai-3', 'hyundai-4', 'hyundai-5'];
+        const nextDisabled = { ...prevDisabled };
+
+        if (checked) {
+          // 해제: 키 삭제 (false를 넣기보다 삭제가 안전)
+          targetIds.forEach((k) => {
+            if (k in nextDisabled) delete nextDisabled[k];
+          });
+        } else {
+          // 다시 잠금
+          targetIds.forEach((k) => {
+            nextDisabled[k] = true;
+          });
+        }
+        return nextDisabled;
+      }
+      return prevDisabled;
+    });
+
+    return nextAgree;
+  });
+};
