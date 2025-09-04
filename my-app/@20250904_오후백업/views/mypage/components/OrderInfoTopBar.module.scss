@@ -1,0 +1,16 @@
+@use '@shared/styles/abstracts' as *;
+
+// OrderInfoTopBar
+.infoTop {
+  padding-inline: var(--ncp-spacing-indent);
+  margin-bottom: var(--ncp-spacing-x5);
+}
+.titWrap {
+  position: relative;
+  @include flex($v: center) {
+    gap: var(--ncp-spacing-x3);
+  }
+  .tit {
+    color: var(--ncp-color-foreground);
+  }
+}

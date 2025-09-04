@@ -1,0 +1,32 @@
+@use '@shared/styles/abstracts' as *;
+
+/* PersonalSetting */
+.info {
+  margin-top: var(--ncp-spacing-x6);
+  @include flex($v: flex-start) {
+    gap: var(--ncp-spacing-x2);
+  }
+  color: var(--ncp-color-gray-500);
+}
+
+// switchBox
+.switchBox {
+  margin-block: var(--ncp-spacing-x20);
+  @include flex() {
+    gap: var(--ncp-spacing-x4);
+  }
+  .label {
+    flex: 1;
+  }
+}
+
+// field
+.field {
+  @include flex() {
+    gap: var(--ncp-spacing-x4);
+  }
+  & > * {
+    flex: 1;
+    margin-top: 0;
+  }
+}

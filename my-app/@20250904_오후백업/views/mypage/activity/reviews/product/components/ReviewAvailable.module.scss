@@ -1,0 +1,47 @@
+@use '@shared/styles/abstracts' as *;
+
+/* ReviewAvailable */
+.top {
+  position: relative;
+  margin-top: var(--ncp-spacing-x16);
+  @include flex($v: flex-start, $h: space-between) {
+    gap: var(--ncp-spacing-x6);
+  }
+  .titBar {
+    flex: 1;
+    align-items: flex-start;
+    margin-block: 0;
+  }
+  .infoBtn {
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+}
+
+/* btns */
+.btns {
+  text-align: center;
+  margin-block: var(--ncp-spacing-x16) rem(60px);
+}
+
+// 전체갯수 + 날짜필터
+.total {
+  margin-block: var(--ncp-spacing-x12);
+  .select {
+    :is([class^='Select_value']) {
+      justify-content: end;
+      text-align: right;
+    }
+  }
+}
+
+/* 접고 펼치기 버튼영역*/
+.more {
+  text-align: center;
+  margin-top: var(--ncp-spacing-x16);
+}
+
+/* ProdReviewWrite - 작성, 수정 */
+.wrap {
+  padding-top: var(--ncp-spacing-x8);
+}
