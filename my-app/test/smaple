@@ -1,0 +1,15 @@
+const HYUNDAI_IDS = ['hyundai-1','hyundai-2','hyundai-3','hyundai-4','hyundai-5'];
+
+const handleCheckChange = (id: string, checked: boolean) => {
+  if (id === 'terms-homepage') {
+    setDisabledStates(prev => {
+      const next = { ...prev };
+      HYUNDAI_IDS.forEach(k => {
+        next[k] = !checked; // 체크 안 됨 → true(비활성), 체크됨 → false(활성)
+      });
+      return next;
+    });
+  }
+
+  setAgreeStates(prev => ({ ...prev, [id]: checked }));
+};
