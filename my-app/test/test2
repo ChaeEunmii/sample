@@ -1,0 +1,64 @@
+// 최상위 전체동의 id (AGREEMENTS1의 최상위 id)
+const ALL_AGREE_ID = AGREEMENTS1.id;
+// 현대 하위 ids
+const HYUNDAI_IDS = ['hyundai-1','hyundai-2','hyundai-3','hyundai-4','hyundai-5'];
+
+// (선택) 초기 스냅샷: 전체동의 해제 시 완전 초기 상태로 복원하고 싶을 때 사용
+const initRef = useRef<{ agree: Record<string, boolean>; disabled: Record<string, boolean> }>();
+
+useEffect(() => {
+  // 지금 쓰고 있는 초기값 세팅 로직 그대로 두고…
+  // …아래 한 줄만 추가해서 스냅샷 저장
+  initRef.current = {
+    agree: {
+      'hpoint-email': true,
+      'hpoint-tm': true,
+      // 필요시 다른 초기 체크 항목 추가
+    },
+    disabled: {
+      'hpoint-email': true,
+      'hpoint-tm': true,
+      'hpoint-dm': true,
+      'hyundai-1': true,
+      'hyundai-2': true,
+      'hyundai-3': true,
+      'hyundai-4': true,
+      'hyundai-5': true,
+      // 필요시 다른 초기 비활성 항목 추가
+    },
+  };
+}, []);
+
+
+// 최종 핸들러 (AgreementGroup 수정 불필요)
+const handleCheckChange = (id: string, checked: boolean) => {
+  // 최상위 전체동의 해제 시: 초기 상태로 복원
+  if (id === ALL_AGREE_ID && !checked) {
+    if (initRef.current) {
+      setAgreeStates(initRef.current.agree);         // 초기 체크 복원
+      setDisabledStates(initRef.current.disabled);   // 초기 비활성 복원
+    } else {
+      // 스냅샷을 안 쓸 경우: 최소 복원(terms-homepage 해제 + 현대 하위 비활성화)
+      setAgreeStates((p) => ({ ...p, [ALL_AGREE_ID]: false, 'terms-homepage': false }));
+      setDisabledStates((p) => {
+        const next = { ...p };
+        HYUNDAI_IDS.forEach((k) => (next[k] = true));
+        return next;
+      });
+    }
+    return; // 공통 처리 종료
+  }
+
+  // terms-homepage 토글 시: 현대 하위 활성/비활성 동기화
+  if (id === 'terms-homepage') {
+    setDisabledStates((p) => {
+      const next = { ...p };
+      HYUNDAI_IDS.forEach((k) => (next[k] = !checked)); // checked면 활성(false), 해제면 비활성(true)
+      return next;
+    });
+  }
+
+  // 공통: 해당 항목 체크 상태 반영
+  setAgreeStates((p) => ({ ...p, [id]: checked }));
+};
+
