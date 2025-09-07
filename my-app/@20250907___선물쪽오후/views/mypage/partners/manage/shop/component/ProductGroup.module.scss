@@ -1,0 +1,11 @@
+@use '@shared/styles/abstracts' as *;
+
+/* ProductGroup */
+.root {
+  position: relative;
+}
+.titBar {
+  position: relative;
+  align-items: flex-start;
+  margin-block: 0;
+}

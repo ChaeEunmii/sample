@@ -1,0 +1,51 @@
+@use '@shared/styles/abstracts' as *;
+
+/* CarNumManage */
+.manage {
+  margin-top: var(--ncp-spacing-x20);
+  .top {
+    position: relative;
+    .tit {
+      @include flex($d: column, $v: flex-start, $h: center) {
+        gap: var(--ncp-spacing-x4);
+      }
+    }
+    .btns {
+      @include position($t: 0, $r: var(--ncp-spacing-indent));
+    }
+  }
+}
+.btns {
+  @include flex {
+    gap: var(--ncp-spacing-x8);
+  }
+}
+
+// list
+.list {
+  margin-block: var(--ncp-spacing-x8);
+  @include flex($d: column) {
+    gap: var(--ncp-spacing-x4);
+  }
+  .box {
+    margin-top: 0;
+    min-height: rem(52px);
+  }
+
+  .car {
+    flex: 1;
+    @include flex($v: center) {
+      gap: var(--ncp-spacing-x4);
+    }
+    &.editCar {
+      & > * {
+        width: 100%;
+      }
+    }
+  }
+  .side {
+    @include flex() {
+      gap: var(--ncp-spacing-x8);
+    }
+  }
+}

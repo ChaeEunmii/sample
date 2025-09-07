@@ -1,0 +1,14 @@
+@use '@shared/styles/abstracts' as *;
+
+/* MyClubMain */
+/* sticky(top) custom */
+.stickyTop {
+  position: sticky;
+  top: var(--ncp-layout-header-height);
+  margin-inline: calc((var(--ncp-layout-padding-x) * -1));
+  padding-inline: var(--ncp-layout-padding-x);
+  padding-top: var(--ncp-spacing-x8);
+  z-index: 11;
+  background: var(--ncp-color-background);
+  overflow: hidden;
+}

@@ -1,0 +1,15 @@
+@use '@shared/styles/abstracts' as *;
+
+/* RestockAlarm */
+/* 접고 펼치기 버튼영역*/
+.more {
+  text-align: center;
+  margin-top: var(--ncp-spacing-x16);
+}
+
+/*empty 높이설정*/
+.empty {
+  position: relative;
+  overflow: hidden;
+  height: rem(280px);
+}
