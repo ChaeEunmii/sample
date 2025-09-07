@@ -1,0 +1,14 @@
+@use '@shared/styles/abstracts' as *;
+
+/* SentGiftBox */
+.total {
+  position: relative;
+  margin-block: var(--ncp-spacing-x12);
+  font-size: var(--ncp-font-size-13);
+  line-height: var(--ncp-line-height-18);
+  font-weight: var(--ncp-font-weight-medium);
+  color: var(--ncp-color-gray-700);
+  strong {
+    font-weight: var(--ncp-font-weight-regular);
+  }
+}

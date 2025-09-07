@@ -1,0 +1,17 @@
+@use '@shared/styles/abstracts' as *;
+
+/* GiftBoxReceiver */
+.root {
+  position: relative;
+  @include flex($d: column) {
+    gap: var(--ncp-spacing-x30);
+  }
+}
+.bottomSlot {
+  @include flex($d: column) {
+    gap: var(--ncp-spacing-x12);
+  }
+  .btns {
+    position: relative;
+  }
+}
