@@ -1,0 +1,73 @@
+@use '@shared/styles/abstracts' as *;
+
+.root {
+  display: grid;
+  grid-template-columns: repeat(var(--prod-tiles-columns, 2), minmax(0, 1fr));
+  gap: var(--ncp-spacing-x4);
+}
+
+.tile,
+.banner {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: var(--ncp-border-radius-base);
+  overflow: hidden;
+}
+
+.link {
+  width: 100%;
+  height: 100%;
+  padding: var(--ncp-spacing-x6);
+  align-items: flex-end;
+}
+
+.image {
+  position: absolute;
+  inset: 0;
+
+  &::after {
+    @include el-pseudo(100%, max(38%, 100px), var(--prod-tiles-dimmed-display, none));
+    position: absolute;
+    bottom: 0;
+    background: var(--prod-tiles-dimmed);
+  }
+}
+
+// product
+.gem {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: min(5%, 8px) min(5%, 8px) 0 0;
+}
+.name {
+  @include ellipsis(1);
+  font-weight: var(--ncp-font-weight-regular);
+  color: var(--ncp-color-white);
+}
+
+// banner
+.banner {
+  grid-column: span var(--prod-tiles-banner-span);
+  grid-row: span var(--prod-tiles-banner-span);
+  aspect-ratio: 1;
+}
+
+// variant
+.pattern1 {
+  &:has(.name) {
+    --prod-tiles-dimmed: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.36) 100%);
+    --prod-tiles-dimmed-display: block;
+  }
+  .tile:nth-child(3n + 1) {
+    grid-column: span 2;
+  }
+}
+.pattern2 {
+  --prod-tiles-columns: 3;
+  --prod-tiles-banner-span: 2;
+
+  &:not(:has(.tile)) {
+    --prod-tiles-banner-span: 3;
+  }
+}

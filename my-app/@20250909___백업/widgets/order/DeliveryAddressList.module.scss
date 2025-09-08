@@ -1,0 +1,18 @@
+@use '@shared/styles/abstracts' as *;
+
+/* DeliveryAddressList */
+.list {
+  position: relative;
+  padding-inline: var(--ncp-spacing-x8);
+  .item {
+    position: relative;
+    border-top: 1px solid var(--ncp-color-gray-100);
+    &:first-child {
+      border-top: none;
+    }
+  }
+}
+
+.flush {
+  padding-inline: 0;
+}

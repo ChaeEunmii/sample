@@ -1,0 +1,8 @@
+@use '@shared/styles/abstracts' as *;
+
+.flag {
+  --flag-item-font-weight: var(--ncp-font-weight-semibold);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
