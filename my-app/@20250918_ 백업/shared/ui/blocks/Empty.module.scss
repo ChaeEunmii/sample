@@ -1,0 +1,26 @@
+@use '@shared/styles/abstracts' as *;
+
+/* Empty */
+.root {
+  display: flex;
+  flex-direction: column;
+  margin: var(--ncp-spacing-x16) 0;
+  text-align: center;
+}
+.buttons {
+  width: fit-content;
+  margin-inline: auto;
+  & > button {
+    min-width: rem(168px);
+  }
+}
+// variant
+.minDisplay {
+  height: rem(340px);
+  margin-top: 85px !important;
+}
+
+.inline {
+  height: rem(142px);
+  justify-content: center;
+}

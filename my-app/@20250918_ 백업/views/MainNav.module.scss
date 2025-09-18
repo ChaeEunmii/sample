@@ -1,0 +1,39 @@
+@use '@shared/styles/abstracts' as *;
+
+/* MainNav */
+.nav {
+  --mypage-name-nav-grid-columns: 2;
+
+  position: relative;
+  ul.list {
+    position: relative;
+    li.item {
+      position: relative;
+      &:not(:first-child) {
+        border-top: var(--ncp-border-width-base) solid var(--ncp-color-gray-100);
+        padding-top: rem(28px);
+        margin-top: rem(24px);
+      }
+      .depth {
+        &:not(:first-child) {
+          margin-top: var(--ncp-spacing-x4);
+        }
+        @include grid($c: var(--mypage-name-nav-grid-columns)) {
+          column-gap: var(--ncp-spacing-x8);
+        }
+        & > li {
+          > a {
+            @include flex($v: center) {
+              gap: var(--ncp-spacing-x3);
+            }
+            padding-block: var(--ncp-spacing-x8);
+            font-size: var(--ncp-font-size-14);
+            line-height: var(--ncp-line-height-20);
+            font-weight: var(--ncp-font-weight-semibold);
+            color: var(--ncp-color-gray-900);
+          }
+        }
+      }
+    }
+  }
+}

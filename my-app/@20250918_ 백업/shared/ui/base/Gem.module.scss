@@ -1,0 +1,19 @@
+@use '@shared/styles/abstracts' as *;
+
+.root {
+  --me-gem-size: #{rem(40px)};
+  @include flex($v: center, $d: column);
+  row-gap: var(--ncp-spacing-x1);
+  font-size: var(--ncp-font-size-12);
+  color: var(--ncp-color-gray-500);
+}
+.gem {
+  width: var(--me-gem-size);
+}
+
+// size
+.small {
+  --me-gem-size: #{rem(24px)};
+  flex-direction: row-reverse;
+  column-gap: var(--ncp-spacing-x2);
+}
