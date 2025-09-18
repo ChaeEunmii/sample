@@ -1,0 +1,94 @@
+@use '@shared/styles/abstracts' as *;
+
+// OrderInfoBox
+.root {
+  font-size: var(--ncp-font-size-13);
+  line-height: var(--ncp-line-height-18);
+  width: 100%;
+  background-color: var(--ncp-color-bg-3);
+  .list {
+    display: grid;
+    grid-template-columns: max-content 1fr; // dt(라벨) / dd(내용+사이드)
+    column-gap: var(--ncp-spacing-x6);
+    row-gap: var(--ncp-spacing-x4);
+    align-items: center;
+  }
+  .full {
+    grid-column: 1 / -1; // dt 없으면 dd가 두 칼럼 모두 차지
+  }
+  .title {
+    .tit {
+      position: relative;
+      color: var(--ncp-color-accent-1);
+      font-weight: var(--ncp-font-weight-semibold);
+      &::before {
+        content: '';
+        width: rem(1px);
+        height: rem(10px);
+        position: absolute;
+        right: rem(-7px);
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: var(--ncp-color-accent-1);
+        opacity: 0.25;
+      }
+    }
+  }
+  .cont {
+    flex: 1;
+    @include flex($v: center) {
+      gap: var(--ncp-spacing-x2);
+    }
+    margin-top: 0;
+    .main {
+      flex: 1;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--ncp-spacing-x2);
+      min-width: 0;
+    }
+    .side {
+      margin-left: auto; /* 우측으로 밀착 */
+      display: inline-flex;
+      align-items: center;
+      gap: var(--ncp-spacing-x2);
+    }
+  }
+  .copy {
+    color: var(--ncp-color-accent-1);
+  }
+
+  // disabled 상태스타일
+  &.disabled {
+    background-color: var(--ncp-color-bg-1);
+    .tit {
+      color: #8c8c8c;
+      &::before {
+        background-color: var(--ncp-color-gray-150);
+      }
+    }
+  }
+
+  // gray 스타일
+  &.isGray {
+    background-color: var(--ncp-color-bg-1);
+    .tit {
+      color: var(--ncp-color-gray-900);
+      &::before {
+        background-color: var(--ncp-color-gray-150);
+      }
+    }
+
+    .side {
+      color: var(--ncp-color-gray-900);
+    }
+  }
+}
+
+.side {
+  position: relative;
+  font-size: var(--ncp-font-size-12);
+  line-height: var(--ncp-line-height-16);
+  font-weight: var(--ncp-font-weight-semibold);
+  color: var(--ncp-color-accent-1);
+}
