@@ -14,23 +14,10 @@ import {
   Select,
 } from "@shared/ui";
 import { ClubTitle } from "@/views/mypage/club/myclub/components";
-import { clubPet } from "@mocks/club";
+import { clubPet, dogOptions, catOptions } from "@mocks/club";
 import styles from "./ClubForms.module.scss";
 import { ClubAgreementSection } from "@views/mypage/club/myclub/components/clubForms/ClubAgreementSection";
 import { MYCLUB_AGREEMENTS } from "@views/policy/agreements-data";
-
-const dogOptions = [
-  { value: "dog-1", label: "강아지1" },
-  { value: "dog-2", label: "강아지2" },
-  { value: "dog-3", label: "강아지3" },
-  { value: "write", label: "직접입력" },
-];
-const catOptions = [
-  { value: "cat-1", label: "고양이1" },
-  { value: "cat-2", label: "고양이2" },
-  { value: "cat-3", label: "고양이3" },
-  { value: "write", label: "직접입력" },
-];
 
 type ClubKeys = keyof typeof clubPet;
 const myClubData = clubPet;
@@ -195,7 +182,7 @@ export const JoinPetForm = ({
           value={selectVal}
           onChange={(v) => {
             if (v === "write") {
-              // 직접입력 모드 진입 (인풋 유지용 sentinel)
+              // 직접입력 모드 진입 (인풋 유지용)
               handleChildChange(index, "field")("write");
             } else {
               // 옵션 값 저장
