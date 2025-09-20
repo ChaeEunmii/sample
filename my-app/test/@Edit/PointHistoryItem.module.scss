@@ -1,0 +1,175 @@
+@use '@shared/styles/abstracts' as *;
+/* 상단이 flex면 줄바꿈 되도록 */
+.top {
+  display: flex;
+  gap: 8px;
+}
+
+.titleWrap {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+}
+
+/* 타이틀: 기본 2줄 클램프 */
+// .tit {
+//   margin: 0;
+//   min-width: 0;
+//   line-height: 20px; /* 프로젝트 라인하이트(px 권장) */
+//   overflow: hidden;
+//   display: -webkit-box;
+//   // -webkit-box-orient: vertical;
+//   // -webkit-line-clamp: 2;
+//   // white-space: normal !important; /* 어디선가 nowrap이면 해제 */
+//   @include ellipsis(2);
+// }
+.titText {
+  margin: 0;
+  min-width: 0;
+  line-height: 20px; /* 프로젝트 라인하이트(px 권장) */
+  overflow: hidden;
+  display: -webkit-box;
+  // -webkit-box-orient: vertical;
+  // -webkit-line-clamp: 2;
+  // white-space: normal !important; /* 어디선가 nowrap이면 해제 */
+  @include ellipsis(2);
+}
+
+/* ===== 클램프가 아닌 경우: 문장처럼 같은 줄에 붙이기 ===== */
+.inline {
+  display: flex;
+  align-items: baseline;
+  column-gap: 6px;
+
+  .tit {
+    /* 2줄까지 열려 있어도 내용이 짧으면 … 없음 → 자연스럽게 한 줄로 */
+    /* 별도 패딩 X (빈칸 방지) */
+  }
+  .suffixInline {
+    // white-space: nowrap;
+    color: var(--ncp-color-gray-600);
+    flex-shrink: 0;
+  }
+
+  // .suffixAbs {
+  //   @include blind;
+  // }
+
+  /* 절대배치 suffix는 측정용으로만 투명 처리 (TSX에서 opacity:0 지정) */
+}
+
+/* ===== 클램프된 경우: 둘째 줄 끝에 … 바로 옆에 suffix 붙이기 ===== */
+.clamped {
+  .tit {
+    position: relative;
+
+    /* 마지막 줄 오른쪽 'suffix 폭'만 가려서 빈칸 없이 채움 */
+    &::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: var(--suffix-w, 0px);
+      height: 20px; /* = line-height */
+      background: var(--bg, #fff); /* 부모 배경색과 동일 */
+      pointer-events: none;
+    }
+    /* 가린 자리 왼쪽에 … 표시 */
+    &::before {
+      // content: '…';
+      position: absolute;
+      right: calc(var(--suffix-w, 0px) + 2px);
+      bottom: 0;
+      pointer-events: none;
+    }
+  }
+
+  .suffixAbs {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    white-space: nowrap;
+    color: var(--ncp-color-gray-600);
+    background-color: #fff;
+  }
+}
+
+/* PointHistoryItem */
+.item {
+  --gray-info-font-size: var(--ncp-font-size-12);
+  --gray-info-line-height: var(--ncp-line-height-16);
+  --gray-info-font-weight: var(--ncp-font-weight-regular);
+  --gray-info-color: var(--ncp-color-gray-500);
+
+  @include flex($d: column);
+  gap: var(--ncp-spacing-x2);
+  padding-inline: var(--ncp-spacing-indent);
+  padding-block: var(--ncp-spacing-x12);
+  border-top: var(--ncp-border-width-base) solid var(--ncp-color-gray-100);
+  &:first-child {
+    border: none;
+  }
+  .top {
+    @include flex($v: flex-start, $h: space-between);
+    gap: var(--ncp-spacing-x8);
+    .tit,
+    .point {
+      font-size: var(--ncp-font-size-14);
+      line-height: var(--ncp-line-height-20);
+      font-weight: var(--ncp-font-weight-medium);
+    }
+  }
+  .infos {
+    @include flex($h: space-between);
+    gap: var(--ncp-spacing-x8);
+    .left {
+      @include flex($d: column);
+      gap: var(--ncp-spacing-x2);
+      /* list */
+      .list {
+        & li {
+          display: inline-block;
+          font-size: var(--gray-info-font-size);
+          line-height: var(--gray-info-line-height);
+          font-weight: var(--gray-info-font-weight);
+          color: var(--gray-info-color);
+          position: relative;
+          padding-left: rem(13px);
+          &:first-child {
+            padding-left: 0;
+            &::before {
+              display: none;
+            }
+          }
+          &::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: rem(6px);
+            width: rem(1px);
+            height: rem(10px);
+            transform: translateY(-50%);
+            background-color: var(--ncp-color-gray-150);
+          }
+        }
+      }
+    }
+    .right {
+      flex-shrink: 0;
+      flex-grow: 0;
+    }
+  }
+  .bottom {
+    @include flex($h: space-between, $v: center);
+    flex-wrap: wrap;
+  }
+  .theMoney {
+    margin-left: auto;
+  }
+  .txt {
+    font-size: var(--gray-info-font-size);
+    line-height: var(--gray-info-line-height);
+    font-weight: var(--gray-info-font-weight);
+    color: var(--gray-info-color);
+  }
+}
