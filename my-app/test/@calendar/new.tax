@@ -1,6 +1,24 @@
 import ReactCalendar from "react-calendar"; // 달력 컴포넌트
 import type { TileArgs as CalendarTileProperties } from "react-calendar"; // tileDisabled 등에 넘어오는 { date, view } 타입
 
+
+
+// 예약 가능 날짜 목록 (샘플)
+const availableDays = ['2025-09-25', '2025-09-27', '2025-09-30'];
+
+// 날짜 → YYYY-MM-DD 문자열
+const toKey = (d: Date) =>
+  `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+
+<ReactCalendar
+  ...
+  // 예약 가능 목록에 없으면 비활성화
+  tileDisabled={({ date }) => !availableDays.includes(toKey(date))}
+/>
+
+
+
+
 ...
 
 <ReactCalendar
