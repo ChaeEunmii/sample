@@ -1,0 +1,37 @@
+// 예약 가능 날짜 목록 (샘플)
+const availableDays = ['2025-09-25', '2025-09-27', '2025-09-30'];
+
+// 날짜 → 문자열 키 변환
+const toKey = (d: Date) =>
+  `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+
+<Calendar
+  value={selectedDate}
+  onChange={setSelectedDate}
+  minDate={minDate}
+  maxDate={maxDate}
+  // 👉 예약 가능 목록만 선택 가능
+  tileDisabled={({ date }) => !availableDays.includes(toKey(date))}
+/>
+
+
+
+or
+
+
+
+// 예약 가능 날짜 샘플
+const availableDays = ['2025-09-25', '2025-09-27', '2025-09-30'];
+
+// 날짜를 문자열 키로 변환
+const toKey = (d: Date) =>
+  `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+
+<Calendar
+  ...
+  tileDisabled={({ date, view }) =>
+    view === 'month' && !availableDays.includes(toKey(date))
+  }
+/>
+
+
