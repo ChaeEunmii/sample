@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Icon } from "@shared/ui";
-import ReactCalendar from "react-calendar";
+import ReactCalendar, { CalendarTileProperties } from "react-calendar";
 import styles from "./Calendar.module.scss";
 import clsx from "clsx";
 
@@ -18,6 +18,7 @@ interface SingleCalendarProps {
   minDate?: Date;
   maxDate?: Date;
   className?: string;
+  tileDisabled?: (args: CalendarTileProperties) => boolean;
 }
 
 // 날짜 범위 선택용 인터페이스 (임시로 정의)
@@ -29,6 +30,7 @@ interface RangeCalendarProps {
   minDate?: Date;
   maxDate?: Date;
   className?: string;
+  tileDisabled?: (args: CalendarTileProperties) => boolean;
 }
 
 type CalendarProps = SingleCalendarProps | RangeCalendarProps;
@@ -42,6 +44,7 @@ export const Calendar = (props: CalendarProps) => {
     minDate,
     maxDate,
     className,
+    tileDisabled,
   } = props;
 
   const [view, setView] = useState<"month" | "year" | "decade" | "century">(
@@ -105,6 +108,7 @@ export const Calendar = (props: CalendarProps) => {
       minDetail="decade"
       maxDate={maxDate}
       minDate={minDate}
+      tileDisabled={tileDisabled}
     />
   );
 };
