@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { Icon } from "@shared/ui";
-import ReactCalendar, { CalendarTileProperties } from "react-calendar";
+import ReactCalendar from "react-calendar";
+import type { TileArgs as CalendarTileProperties } from "react-calendar";
 import styles from "./Calendar.module.scss";
 import clsx from "clsx";
 
