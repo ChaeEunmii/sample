@@ -1,3 +1,26 @@
+// 예약 가능 날짜 목록 (Date 객체 배열)
+const availableDates = [
+  new Date(2025, 8, 25), // 2025-09-25
+  new Date(2025, 8, 27), // 2025-09-27
+  new Date(2025, 8, 30), // 2025-09-30
+];
+
+<ReactCalendar
+  ...
+  // 목록에 없는 날짜는 비활성화
+  tileDisabled={({ date }) =>
+    !availableDates.some(
+      d =>
+        d.getFullYear() === date.getFullYear() &&
+        d.getMonth() === date.getMonth() &&
+        d.getDate() === date.getDate()
+    )
+  }
+/>
+
+
+
+
 import ReactCalendar from "react-calendar"; // 달력 컴포넌트
 import type { TileArgs as CalendarTileProperties } from "react-calendar"; // tileDisabled 등에 넘어오는 { date, view } 타입
 
