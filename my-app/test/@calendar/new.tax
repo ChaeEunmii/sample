@@ -1,3 +1,15 @@
+import ReactCalendar from "react-calendar"; // 달력 컴포넌트
+import type { TileArgs as CalendarTileProperties } from "react-calendar"; // tileDisabled 등에 넘어오는 { date, view } 타입
+
+...
+
+<ReactCalendar
+  ...
+  tileDisabled={tileDisabled} // true 반환 시 해당 날짜 비활성화
+/>
+
+
+
 import ReactCalendar from "react-calendar";
 import type { TileArgs as CalendarTileProperties } from "react-calendar";
 
