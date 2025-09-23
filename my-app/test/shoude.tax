@@ -1,0 +1,136 @@
+// 기존 check 타입에 옵션만 추가
+/** 체크 정보 */
+check?: {
+  isSelected: boolean;
+  onChange: (brandId: string, isSelected: boolean) => void;
+  disabled?: boolean; // 추가
+};
+
+
+{check && (
+  <Checkbox
+    checked={check.isSelected}
+    disabled={check.disabled} // 추가
+    onChange={(e) => check.onChange(id, e.target.checked)}
+    onClick={(e) => e.stopPropagation()} // 이벤트 버블링 방지
+    label="상품 선택"
+    hideLabel
+    className={styles.checkbox}
+  />
+)}
+
+
+
+{check && (
+  <Checkbox
+    checked={check.isSelected}
+    disabled={check.disabled} // 추가
+    onChange={(e) => check.onChange(id, e.target.checked)}
+    onClick={(e) => e.stopPropagation()} // 이벤트 버블링 방지
+    label="상품 선택"
+    hideLabel
+    className={styles.checkbox}
+  />
+)}
+
+
+const CardTag = ({ id, href, check, className, children }: CardTagProps) => {
+  if (href) {
+    return (
+      <Link href={href} type="block" className={className}>
+        {children}
+      </Link>
+    );
+  }
+
+  if (check) {
+    const isDisabled = !!check.disabled; // ✅
+    return (
+      <div
+        className={className}
+        role="button"
+        tabIndex={isDisabled ? -1 : 0}     // ✅ disabled면 포커스 제거
+        aria-pressed={check.isSelected}
+        aria-disabled={isDisabled}         // ✅ 접근성 표시
+        aria-label="상품 선택"
+        onClick={() => {
+          if (!isDisabled) check.onChange(id, !check.isSelected); // ✅ 가드
+        }}
+        onKeyDown={(e) => {                 // ✅ 키보드 선택도 가드
+          if (isDisabled) return;
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            check.onChange(id, !check.isSelected);
+          }
+        }}
+      >
+        {children}
+      </div>
+    );
+  }
+
+  return <div className={className}>{children}</div>;
+};
+
+
+----- list
+// 두 번째 인자로 disabled 신호를 받게 확장
+const getCheckProps = (productId: string, disabled?: boolean) => {
+  if (!selection) return undefined;
+  const isSelected = selection.selectedIds.includes(productId);
+
+  return {
+    isSelected,
+    disabled, // 전달
+    onChange: (productId: string, isSelected: boolean) =>
+      selection.onChange(productId, isSelected),
+  };
+};
+
+
+
+const renderCard = (product: ProdCardItemProps, idx: number) => {
+  const showWishlist = mode === "wishlist";
+  const showCheckbox = mode === "select";
+
+  const wishlistProps = showWishlist ? getWishlistProps(product.id) : undefined;
+
+  // product.check?.disabled 값을 그대로 흘려보냄
+  const checkProps = showCheckbox
+    ? getCheckProps(product.id, product.check?.disabled)
+    : undefined;
+
+  // ...생략 (기존 로직 동일)
+
+  return (
+    <ProdCard
+      key={product.id || idx}
+      type={cardType}
+      variant={cardVariant}
+      size={cardSize}
+      titleLine={titleLine}
+      {...productProps}
+      gem={wishlistProps}
+      check={checkProps}                // ✅ 여기로 disabled가 반영됨
+      flagSlot={product.flagSlot}
+      caption={resolvedCaption}
+      contSlot={contSlot?.(product, idx)}
+    />
+  );
+};
+
+
+
+---view
+// 필요 시 일부 아이템을 선택불가로 표시하고 싶다면
+const AddProductData: ProdCardProps[] = mockProductCardList.map((item) => ({
+  ...item,
+  href: "", // 전체영역 선택
+  // 예시 조건: 품절은 선택 비활성화
+  ...(item.isSoldOut
+    ? { check: { isSelected: false, onChange: () => {}, disabled: true } }
+    : {}),
+}));
+
+
+
