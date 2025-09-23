@@ -1,0 +1,62 @@
+@use '@shared/styles/abstracts' as *;
+
+.root {
+  position: relative;
+  padding: var(--ncp-spacing-x12) var(--ncp-spacing-x8);
+  color: var(--ncp-color-background);
+  text-align: center;
+  border-radius: var(--ncp-border-radius-base);
+  background-color: var(--ncp-color-foreground);
+  overflow: hidden;
+}
+
+.timer {
+  align-items: center;
+}
+
+.title {
+  margin-top: var(--ncp-spacing-x8);
+  @include ellipsis(1, 1.5, true);
+}
+
+.subtitle {
+  margin-top: var(--ncp-spacing-x1);
+  display: block;
+  font-size: var(--ncp-font-size-13);
+  font-weight: var(--ncp-font-weight-medium);
+  @include ellipsis(1, 1.5, true);
+}
+
+.thumb {
+  position: relative;
+}
+
+.detail {
+  padding: var(--ncp-spacing-x8) var(--ncp-spacing-x8) calc(rem(32px) + var(--ncp-spacing-x20));
+  @include flex($d: column);
+  gap: var(--ncp-spacing-x4);
+}
+
+.brand {
+  margin-bottom: var(--ncp-spacing-x1);
+  display: block;
+  font-weight: var(--ncp-font-weight-semibold);
+  @include ellipsis(1, 1.5, true);
+}
+
+.button {
+  @include position($l: 50%, $b: var(--ncp-spacing-x12));
+  transform: translateX(-50%);
+}
+
+// variant
+.product {
+  padding: 0;
+  color: inherit;
+  background-color: var(--ncp-color-background);
+
+  .timer {
+    position: absolute;
+    inset: auto 0 0;
+  }
+}

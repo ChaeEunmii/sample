@@ -1,0 +1,109 @@
+@use '@shared/styles/abstracts' as *;
+
+.root {
+  --banner-border-radius: var(--ncp-border-radius-base);
+  position: relative;
+
+  &.flush {
+    --banner-border-radius: unset;
+    margin-inline: calc(var(--ncp-main-padding-x) * -1);
+  }
+}
+
+.inside {
+  --banner-dimmed: linear-gradient(0deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 145px);
+  --banner-dimmed-display: block;
+
+  aspect-ratio: var(--banner-ratio);
+  color: var(--ncp-color-white);
+  overflow: hidden;
+
+  .detail {
+    @include position($t: 0, $l: 0, $r: 0, $i: 1);
+    margin-top: calc(16 / 9 * 100%);
+    padding: var(--ncp-spacing-x12) var(--ncp-spacing-x8);
+    transform: translateY(-100%) translateZ(0);
+    -webkit-backface-visibility: hidden;
+    -webkit-transform: translateY(-100%) translateZ(0);
+  }
+}
+
+// Brand
+.brand {
+  @include flex($v: center);
+  gap: var(--ncp-spacing-x3);
+}
+.brandImg {
+  width: rem(20px);
+  height: rem(20px);
+  flex-shrink: 0;
+  border-radius: var(--ncp-border-radius-max);
+}
+.brandName {
+  @include ellipsis(1);
+}
+
+// Thumbnail
+.thumb {
+  position: relative;
+  aspect-ratio: 9 / 16;
+  border-radius: var(--banner-border-radius);
+  overflow: hidden;
+}
+
+.video {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+
+  &::after {
+    @include position(absolute, 0, 0, 0, 0, 1);
+    display: var(--banner-dimmed-display, none);
+    content: '';
+    background: var(--banner-dimmed);
+    -webkit-backface-visibility: hidden;
+    -webkit-transform: translateZ(0);
+  }
+}
+
+.flag {
+  @include position($t: 0, $l: 0, $i: 1);
+
+  & > :first-child {
+    font-weight: var(--ncp-font-weight-semibold);
+  }
+
+  .liveDot {
+    width: rem(5px);
+    height: rem(5px);
+    margin-right: var(--ncp-spacing-x2);
+    border-radius: var(--ncp-border-radius-max);
+    background-color: currentColor;
+  }
+}
+
+// detail
+.detail {
+  margin-top: var(--ncp-spacing-x6);
+  padding-inline: var(--ncp-spacing-indent);
+  @include flex($d: column);
+  gap: var(--ncp-spacing-x4);
+}
+
+// product
+.product {
+  margin-top: var(--ncp-spacing-x6);
+
+  &[class*='boxed'] {
+    @include position($t: 0, $l: var(--ncp-spacing-x6), $r: var(--ncp-spacing-x6), $i: 1);
+    margin-top: calc(16 / 9 * 100% - var(--ncp-spacing-x6));
+    transform: translateY(-100%);
+  }
+}
+
+// size
+.small {
+  .detail {
+    padding: var(--ncp-spacing-x8) var(--ncp-spacing-x6);
+  }
+}
