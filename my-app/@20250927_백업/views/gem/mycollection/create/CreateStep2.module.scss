@@ -1,0 +1,50 @@
+@use '@shared/styles/abstracts' as *;
+
+/* CreateStep2 */
+/* sticky(top) custom */
+.stickyTop {
+  position: sticky;
+  top: var(--ncp-layout-header-height);
+  margin-inline: calc((var(--ncp-layout-padding-x) * -1));
+  padding-inline: var(--ncp-layout-padding-x);
+  padding-top: var(--ncp-spacing-x8);
+  // padding-bottom: var(--ncp-spacing-x10);
+  z-index: 11;
+  background: var(--ncp-color-background);
+  overflow: hidden;
+  .tabs {
+    padding-inline: var(--ncp-layout-padding-x);
+    > div {
+      padding: 0 var(--ncp-layout-padding-x);
+      margin-bottom: 0;
+      margin-inline: 0;
+    }
+  }
+}
+
+/* count */
+.count {
+  width: 100%;
+  text-align: center;
+  font-size: var(--ncp-font-size-14);
+  line-height: var(--ncp-line-height-20);
+  font-weight: var(--ncp-font-weight-medium);
+  margin-bottom: var(--ncp-spacing-x4);
+  > em {
+    font-size: var(--ncp-font-size-13);
+    line-height: var(--ncp-line-height-18);
+    font-weight: var(--ncp-font-weight-regular);
+    margin-left: var(--ncp-spacing-x2);
+  }
+  &.noSelected {
+    > em {
+      color: var(--ncp-color-gray-500);
+    }
+  }
+  & + .btns {
+    margin-top: 0;
+    width: 100%;
+    @include flex();
+    gap: var(--ncp-spacing-x4);
+  }
+}

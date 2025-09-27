@@ -1,0 +1,78 @@
+@use '@shared/styles/abstracts' as *;
+
+.root {
+  @include flex($d: column);
+  gap: var(--ncp-spacing-x12);
+}
+// image
+.image {
+  border-radius: var(--ncp-border-radius-base);
+  background-color: var(--ncp-color-gray-100);
+}
+.defaultImg {
+  @include flex($v: center, $h: center);
+
+  > [class*='image'] {
+    --image-width: 167px;
+    --image-height: auto;
+    max-width: 90%;
+    opacity: 0.12;
+  }
+}
+.type1 {
+  aspect-ratio: 343 / 256;
+}
+.type2 {
+  aspect-ratio: 343 / 439;
+}
+
+// details
+.title {
+  @include flex($h: space-between);
+}
+
+.brand {
+  min-width: 0;
+  padding-inline: var(--ncp-spacing-indent);
+  @include flex($d: column);
+  gap: var(--ncp-spacing-x1);
+}
+
+.name {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ncp-spacing-x2);
+}
+
+.buttons {
+  margin-top: var(--ncp-spacing-x8);
+  @include flex($v: center);
+  gap: var(--ncp-spacing-x8);
+  font-size: var(--ncp-font-size-12);
+}
+
+.chatLink {
+  padding-block: var(--ncp-spacing-x4);
+  justify-content: space-between;
+
+  & + .chatLink {
+    margin-top: var(--ncp-spacing-x4);
+  }
+}
+
+.shops {
+  @include flex($d: column);
+  gap: var(--ncp-spacing-x16);
+}
+.shop {
+  @include flex($v: center);
+  gap: var(--ncp-spacing-x3);
+
+  & > :first-child {
+    flex-shrink: 0;
+    @include separator($gap: var(--ncp-spacing-x3));
+  }
+  & > p {
+    margin-top: 0;
+  }
+}

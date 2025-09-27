@@ -1,0 +1,217 @@
+@use '@shared/styles/abstracts' as *;
+
+/* Select */
+.root {
+  --select-height: #{rem(44px)};
+  --select-font-size: var(--ncp-font-size-13);
+  --select-options-gap: var(--ncp-spacing-x4);
+  --select-option-height: #{rem(34px)};
+  --select-scroll-line: 4.5; // 스크롤 줄 개수
+  --select-max-height: calc(
+    (var(--select-option-height) + var(--select-options-gap)) * var(--select-scroll-line)
+  ); // 옵션 n개 이상 스크롤
+
+  position: relative;
+  height: var(--select-height);
+  font-size: var(--select-font-size);
+  line-height: var(--ncp-line-height-18);
+  background-color: var(--ncp-color-background);
+}
+.combobox {
+  position: relative;
+  @include flex(flex, flex-start, center) {
+    gap: var(--ncp-spacing-x4);
+  }
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+
+  .value {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: var(--ncp-spacing-x2);
+    font-weight: var(--ncp-font-weight-medium);
+    @include ellipsis(2);
+  }
+  .placeholder {
+    color: var(--ncp-color-gray-500);
+    font-weight: var(--ncp-font-weight-regular);
+  }
+  .expired {
+    color: var(--ncp-color-accent-alert);
+  }
+}
+.listbox {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  border: var(--ncp-border-width-base) solid var(--ncp-color-gray-900);
+  border-radius: var(--ncp-border-radius-base);
+  background-color: var(--ncp-color-background);
+  z-index: 5;
+}
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--select-options-gap);
+  max-height: var(--select-max-height);
+  @include scrollbar;
+}
+.option {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  min-height: var(--select-option-height);
+  cursor: pointer;
+
+  &.disabled {
+    color: var(--ncp-color-gray-500);
+    cursor: default;
+  }
+}
+
+// label style
+.label {
+  color: var(--ncp-color-gray-700);
+  & + .value {
+    justify-content: flex-end;
+  }
+}
+
+// Size
+.large {
+  --select-height: #{rem(52px)};
+  --select-font-size: var(--ncp-font-size-14);
+  --select-line-height: var(--ncp-line-height-20);
+}
+
+// Variant
+.default {
+  --select-listbox-padding-bottom: var(--ncp-spacing-x6);
+  .combobox {
+    padding: var(--ncp-spacing-x2) var(--ncp-spacing-x8);
+    border: var(--ncp-border-width-base) solid var(--ncp-color-gray-150);
+    border-radius: var(--ncp-border-radius-base);
+    &.disabled {
+      color: var(--ncp-color-gray-500);
+      border-color: var(--ncp-color-gray-150);
+      background-color: var(--ncp-color-bg-2);
+      cursor: default;
+
+      .expired {
+        color: var(--ncp-color-gray-500);
+      }
+    }
+    &.invalid {
+      border-color: var(--ncp-color-accent-alert);
+    }
+  }
+  .listbox {
+    top: 0;
+    padding: var(--select-height) var(--ncp-spacing-x8) var(--select-listbox-padding-bottom);
+
+    &[data-placement='top'] {
+      top: auto;
+      bottom: 0;
+      padding-block: var(--select-listbox-padding-bottom) var(--select-height);
+    }
+  }
+  &.active {
+    .combobox {
+      border-color: transparent;
+      outline: 0;
+      z-index: 6;
+    }
+  }
+  .option {
+    @include flex($h: space-between, $v: center);
+    gap: var(--ncp-spacing-x6);
+  }
+  .option[aria-selected='true'] {
+    font-weight: var(--ncp-font-weight-medium);
+  }
+  &.large {
+    --list-box-padding-bottom: var(--ncp-spacing-x8);
+  }
+}
+
+// ghost 스타일은 높이 고정으로 처리 (변경 필요한 경우 추후 수정)
+.ghost {
+  --select-height: #{rem(24px)};
+  --select-font-size: var(--ncp-font-size-14);
+  --select-line-height: var(--ncp-line-height-20);
+  --select-scroll-line: 3.5;
+  display: inline-flex;
+  min-width: rem(92px);
+  .value {
+    font-weight: var(--ncp-font-weight-semibold);
+  }
+  .listbox {
+    top: calc(100% + var(--ncp-spacing-x4));
+    padding: var(--ncp-spacing-x6) var(--ncp-spacing-x8);
+    opacity: 0;
+
+    &[data-placement] {
+      opacity: 1;
+    }
+    &[data-placement='top'] {
+      top: auto;
+      bottom: calc(100% + var(--ncp-spacing-x4));
+    }
+  }
+  .option[aria-selected='true'] {
+    font-weight: var(--ncp-font-weight-semibold);
+  }
+}
+
+// 콘텐츠를 밀고 펼쳐지는 props
+.collapse {
+  height: auto;
+  .combobox {
+    height: var(--select-height);
+  }
+  .listbox {
+    position: relative;
+    margin-top: calc(var(--select-height) * -1);
+  }
+}
+
+/* Select태그 사용시 */
+.useNative {
+  .native {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    padding: var(--ncp-spacing-x2) var(--ncp-spacing-x8);
+    background: transparent;
+    border-radius: var(--ncp-border-radius-base);
+    border: none;
+    color: inherit;
+    font: inherit;
+    line-height: inherit;
+    cursor: pointer;
+    font-weight: var(--ncp-font-weight-medium);
+    outline: 0;
+
+    /* 네이티브 외형 제거 */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+  .combobox {
+    &.focused {
+      outline: 0;
+      border-color: var(--ncp-color-gray-900);
+      z-index: 6;
+    }
+  }
+  .arrow {
+    position: absolute;
+    right: 16px;
+    pointer-events: none;
+  }
+}

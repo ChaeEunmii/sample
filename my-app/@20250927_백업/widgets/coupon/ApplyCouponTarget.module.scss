@@ -1,0 +1,11 @@
+@use '@shared/styles/abstracts' as *;
+
+.flushBody {
+  --ncp-main-padding-x: var(--ncp-spacing-x8);
+  padding: var(--ncp-main-padding-x) var(--ncp-main-padding-x) var(--ncp-layout-gutter-y) !important;
+}
+
+.flushTabs {
+  margin-left: calc(var(--ncp-layout-padding-x) * -1);
+  margin-right: calc(var(--ncp-layout-padding-x) * -1);
+}

@@ -1,0 +1,38 @@
+@use '@shared/styles/abstracts' as *;
+
+/* HashTag */
+.root {
+  width: 100%;
+  position: relative;
+  display: block;
+  overflow: hidden;
+  padding-inline: var(--ncp-spacing-indent);
+}
+
+// 해시태그 텍스트 + 구분선
+.hashTag {
+  font-size: var(--ncp-font-size-13);
+  line-height: var(--ncp-line-height-18);
+  font-weight: var(--ncp-font-weight-regular);
+  color: var(--ncp-color-gray-900);
+  display: inline;
+
+  // 각 항목 뒤에 세로 구분선
+  &:not(:last-child)::after {
+    content: '';
+    display: inline-block;
+    width: rem(1px);
+    height: rem(10px);
+    margin-inline: var(--ncp-spacing-x3);
+    background-color: var(--ncp-color-gray-150);
+  }
+}
+
+/* 말줄임 처리 */
+.line1 {
+  white-space: nowrap;
+  @include ellipsis(1);
+}
+.line2 {
+  @include ellipsis(2);
+}

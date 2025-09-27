@@ -1,0 +1,202 @@
+@use '@shared/styles/abstracts' as *;
+@use 'sass:list';
+
+// prettier-ignore
+$text-styles: (
+  1: (13, 18),
+  2: (16, 22),
+  3: (20, 26),
+);
+
+.root {
+  --banner-border-radius: var(--ncp-border-radius-base);
+  position: relative;
+  z-index: 0;
+
+  &.flush {
+    --banner-border-radius: unset;
+    --banner-detail-padding-x: var(--ncp-layout-padding-x);
+    margin-inline: calc(var(--ncp-main-padding-x) * -1);
+  }
+
+  // 이미지 비율
+  &[data-ratio='square'] {
+    --banner-ratio: 1 / 1;
+  }
+
+  &[data-ratio='landscape'] {
+    --banner-ratio: 3 / 2;
+  }
+
+  &[data-ratio='portrait'] {
+    --banner-ratio: 4 / 5;
+  }
+
+  &[data-ratio='portrait2'] {
+    --banner-ratio: 3 / 4;
+  }
+
+  &[data-ratio='tall'] {
+    --banner-ratio: 4 / 6;
+  }
+}
+.inside {
+  --banner-dimmed: linear-gradient(0deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 168px);
+  --banner-dimmed-display: block;
+  --banner-text-align-y: flex-end;
+  --banner-subtitle-color: var(--ncp-color-alpha-w80);
+  --banner-description-color: var(--ncp-color-alpha-w80);
+  --banner-emblem-position: static;
+
+  aspect-ratio: var(--banner-ratio);
+  color: var(--ncp-color-white);
+  border-radius: var(--banner-border-radius);
+  overflow: hidden;
+
+  .detail {
+    position: absolute;
+    inset: 0;
+    padding: var(--ncp-spacing-x12) var(--ncp-spacing-x8);
+    justify-content: var(--banner-text-align-y);
+    color: var(--ncp-color-white);
+    -webkit-backface-visibility: hidden;
+    -webkit-transform: translateZ(0);
+    z-index: 1;
+  }
+}
+
+.centered {
+  --banner-dimmed: var(--ncp-color-alpha-b30);
+  --banner-text-align-y: center;
+}
+
+.link {
+  height: 100%;
+}
+
+// Brand
+.brand {
+  @include flex($v: center);
+  gap: var(--ncp-spacing-x3);
+}
+.brandImg {
+  width: rem(24px);
+  height: rem(24px);
+  border-radius: var(--ncp-border-radius-max);
+}
+
+// Thumbnail
+.thumb {
+  position: relative;
+  aspect-ratio: var(--banner-ratio);
+  border-radius: var(--banner-border-radius);
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+
+  &:has(video) {
+    border-radius: 0 !important;
+  }
+
+  &::after {
+    @include position(absolute, 0, 0, 0, 0, 1);
+    display: var(--banner-dimmed-display, none);
+    content: '';
+    background: var(--banner-dimmed);
+    -webkit-backface-visibility: hidden;
+    -webkit-transform: translateZ(0);
+  }
+}
+
+// Detail
+.detail {
+  padding: var(--ncp-spacing-x8)
+    calc(var(--banner-detail-padding-x, 0px) + var(--ncp-spacing-indent)) 0;
+  @include flex($d: column);
+  gap: var(--ncp-spacing-x4);
+
+  &.in1 {
+    padding-block: 0 var(--ncp-spacing-x18);
+  }
+  &.in2 {
+    padding-block: 0 52px;
+  }
+  &.out1 {
+    padding-top: var(--ncp-spacing-x3);
+  }
+  &.out2 {
+    padding-top: var(--ncp-spacing-x4);
+  }
+}
+.caption {
+  font-weight: var(--ncp-font-weight-medium);
+  @include ellipsis(1);
+}
+
+.desc {
+  margin-top: 0;
+  color: var(--banner-description-color, var(--ncp-color-gray-900));
+  @include ellipsis(2);
+}
+
+.tag {
+  @include ellipsis(1, 1.5, true);
+}
+// Flag
+.ad {
+  @include position($t: 0, $r: 0, $i: 2);
+}
+.flag {
+  padding-top: var(--ncp-spacing-x2);
+}
+.nametag {
+  @include position($t: 0, $l: 0, $i: 2);
+}
+
+// emblem
+.emblem {
+  position: var(--banner-emblem-position, absolute);
+  left: var(--ncp-spacing-x4);
+  bottom: var(--ncp-spacing-x4);
+  z-index: 2;
+}
+
+// gem
+.gem {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: min(5%, 8px) min(5%, 8px) 0 0;
+  z-index: 1;
+}
+
+// variant
+.boxed {
+  border-radius: var(--ncp-border-radius-base);
+  background-color: var(--ncp-color-background);
+  overflow: hidden;
+
+  .thumb {
+    border-radius: unset;
+  }
+
+  .detail {
+    padding: var(--ncp-spacing-x8) var(--ncp-spacing-x6);
+  }
+}
+
+// size
+.small {
+  --banner-title-font-size: var(--ncp-font-size-15);
+
+  &.inside {
+    --banner-subtitle-color: var(--ncp-color-white);
+  }
+  .detail {
+    padding: var(--ncp-spacing-x8) var(--ncp-spacing-x6);
+    gap: var(--ncp-spacing-x1);
+  }
+}

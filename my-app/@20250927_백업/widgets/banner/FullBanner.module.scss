@@ -1,0 +1,7 @@
+.image {
+  margin-inline: calc(var(--ncp-main-padding-x) * -1);
+
+  &:has(video) {
+    border-radius: unset;
+  }
+}

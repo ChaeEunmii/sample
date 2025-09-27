@@ -1,0 +1,151 @@
+'use client';
+
+import { useState, useRef, useEffect } from 'react';
+import { useModalOverlay } from '@shared/hooks';
+import { Container, Contents } from '@widgets/layout/Container';
+import { Tabs, Icon, Link } from '@shared/ui';
+import { ProdCardList } from '@widgets/product';
+// import { SearchFilters } from '@views/search/SearchFilters';
+// import { ResultTitle } from '@views/search/result/ResultTitle';
+// import { sortProducts, filterItems, mockFilterData } from '@/mocks/search';
+
+// 스타일
+import clsx from 'clsx';
+import styles from './ConceptRsvp.module.scss';
+
+// 임시 데이터
+// import { mockCategoryLinks } from '@mocks/category';
+import { mockProdBanner } from '@mocks/product';
+
+const tabData = [
+  {
+    label: '카테고리',
+    subTabs: [{ label: '카테고리' }, { label: '카테고리' }, { label: '카테고리' }],
+  },
+  {
+    label: '카테고리',
+    subTabs: [{ label: '카테고리' }, { label: '카테고리' }, { label: '카테고리' }],
+  },
+];
+
+// 카테고리 텍스트 배너
+const mockCategoryLinks = Array.from({ length: 7 }, (_, i) => ({
+  title: `중카테고리${i > 0 ? i + 1 : ''}`,
+  subtitle: `중카테고리${i > 0 ? i + 1 : ''}`,
+  href: '#',
+}));
+
+export default function ConceptRsvpProductsSub() {
+  const [activeCategory, setActiveCategory] = useState('중카테고리');
+  const [isNavOpen, setIsNavOpen] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const tabsRef = useRef<HTMLDivElement>(null);
+  const rootRef = useRef<HTMLDivElement>(null);
+
+  const activeTab = tabData[activeIndex];
+  const subtabData = activeTab.subTabs;
+
+  const handleToggle = () => {
+    setIsNavOpen(!isNavOpen);
+  };
+
+  const onClose = () => {
+    setIsNavOpen(false);
+  };
+
+  const handleCategorySelect = (categoryTitle: string) => {
+    setActiveCategory(categoryTitle);
+    setIsNavOpen(false);
+  };
+
+  const { overlayProps, modalProps } = useModalOverlay({
+    isOpen: isNavOpen,
+    onClose,
+    isDismissable: true,
+    parentDepth: 2,
+  });
+
+  useEffect(() => {
+    if (tabsRef.current && rootRef.current) {
+      const tabsHeight = tabsRef.current.offsetHeight;
+      rootRef.current.style.setProperty('--category-tabs-height', `${tabsHeight}px`);
+    }
+  }, [activeIndex, subtabData.length]);
+
+  //위시리스트
+  const [wishlistIds, setWishlistIds] = useState<(string | number)[]>(['case-1', 'case-3']);
+
+  const handleWishlistToggle = (productId: string | number, isActive: boolean) => {
+    setWishlistIds((prev) =>
+      isActive ? [...new Set([...prev, productId])] : prev.filter((id) => id !== productId)
+    );
+  };
+
+  return (
+    <Container
+      showBack
+      type="store"
+      title={
+        <Link href="#" title="카테고리 선택" className={styles.trigger} onClick={handleToggle}>
+          {activeCategory}
+          <Icon name={isNavOpen ? 'arrowUp' : 'arrowDown'} className={styles.navIcon} />
+        </Link>
+      }
+      content={
+        isNavOpen && (
+          <div className={styles.popover} {...overlayProps}>
+            <ul className={styles.nav} {...modalProps}>
+              {mockCategoryLinks.map((category, index) => (
+                <li key={index}>
+                  <Link
+                    href={category.href}
+                    className={clsx(styles.navLink, {
+                      [styles.navActive]: activeCategory === category.title,
+                    })}
+                    onClick={() => handleCategorySelect(category.title)}
+                  >
+                    {category.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )
+      }
+    >
+      <Contents className={styles.root} ref={rootRef}>
+        <div className={styles.tabs} ref={tabsRef}>
+          <Tabs
+            variant="divid"
+            data={tabData.map(({ label }) => ({ label }))}
+            onTabChange={(index) => setActiveIndex(index)}
+          />
+
+          {subtabData.length > 0 && (
+            <Tabs
+              variant="texts"
+              textActiveType="none"
+              data={subtabData}
+              className={styles.subtab}
+            />
+          )}
+        </div>
+        <p>공통 검색필터 영역</p>
+        {/* <SearchFilters filters={filterItems} filterData={mockFilterData} />
+          <ResultTitle
+            count={2}
+            options={sortProducts}
+            value={sortValue}
+            onChange={setSortValue}
+            showSort={products.length > 1}
+          /> */}
+        {/* 상품 목록 */}
+        <ProdCardList
+          data={mockProdBanner}
+          columns={2}
+          wishlist={{ activeIds: wishlistIds, onToggle: handleWishlistToggle }}
+        />
+      </Contents>
+    </Container>
+  );
+}
