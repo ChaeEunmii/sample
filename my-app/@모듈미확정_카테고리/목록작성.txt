@@ -1,0 +1,34 @@
+** 퍼블목록
+{
+      '모듈 순위': null,
+      '모듈 ID': 'CO_TP_LI_08',
+      전시타입: '식품 카테고리 상품 리스트 모듈 (식품전문관 HOME 노출)',
+      FILE: '/widgets/display/CO_TP_LI_08.tsx',
+      PATH: '/display?component=CO_TP_LI_08',
+      작업자: '채은미',
+      상태: 'waiting',
+      완료일: '2025-09-29',
+      최종수정일: null,
+      비고: '확인',
+    },
+
+
+
+
+**코드
+
+case 'CO_TP_LI_08':
+        return (
+          <>
+            <CO_TP_LI_08
+              title="EXCLUSIVE OFFERS"
+              subtitle="신규 런칭 최저가 특가 타임딜"
+              moreUrl="#"
+              categoryTabs={mockCategoryFilterTabs}
+              data={mockProdBanner.slice(0, 4)}
+              onCategoryChange={(mid, sub, det, sort) => {
+                console.log('카테고리 변경됨:', { mid, sub, det, sort });
+              }}
+            />
+          </>
+        );

@@ -1,0 +1,7 @@
+const detTabs = [{ label: '전체' }, ...Array(3).fill({ label: '세카테고리' })];
+const subTabs = [...Array(6).fill({ label: '소카테고리', detTabs }), { label: '소카테고리' }];
+
+export const mockCategoryFilterTabs = [
+  // { label: '중카테고리' }, // 첫 번째: subTabs 없는경우
+  ...Array(5).fill({ label: '중카테고리', subTabs }),
+];
