@@ -1,7 +1,0 @@
-.root {
-  --flex-gutter: var(--ncp-spacing-x4);
-
-  display: flex;
-  gap: var(--flex-gutter) var(--flex-row-gap, var(--flex-gutter));
-  flex-wrap: var(--flex-wrap, wrap);
-}

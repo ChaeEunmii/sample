@@ -1,6 +1,0 @@
-@use '@shared/styles/abstracts' as *;
-
-.textBanner {
-  @include flex(flex, $v: flex-start);
-  gap: var(--ncp-spacing-x2);
-}

@@ -1,8 +1,0 @@
-@use '@shared/styles/abstracts' as *;
-
-/* SubscriptionItem */
-.slot {
-  @include flex($d: column) {
-    gap: var(--ncp-spacing-x4);
-  }
-}

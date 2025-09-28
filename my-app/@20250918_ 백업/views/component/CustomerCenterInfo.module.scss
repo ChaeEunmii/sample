@@ -1,9 +1,0 @@
-@use '@shared/styles/abstracts' as *;
-
-.centerItem {
-  padding: 0 var(--ncp-spacing-x1);
-}
-
-.infoArea {
-  @include flex($h: space-between, $v: center);
-}

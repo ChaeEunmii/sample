@@ -1,6 +1,0 @@
-@use '@shared/styles/abstracts' as *;
-
-.title {
-  margin-top: var(--ncp-spacing-x20);
-  @include flex(flex, $h: space-between);
-}
