@@ -1,0 +1,52 @@
+@use '@shared/styles/abstracts' as *;
+
+.root {
+  --timeline-item-circle-size: #{rem(7px)};
+  --timeline-item-circle-color: var(--ncp-color-gray-500);
+  --timeline-line-color: var(--ncp-color-gray-100);
+
+  position: relative;
+  @include flex($d: column);
+
+  .item {
+    position: relative;
+    padding-left: rem(20px);
+    padding-bottom: var(--ncp-spacing-x12); // 아이템 간격 패딩으로 부여
+
+    // 왼쪽 타임라인 회색
+    &::before {
+      content: '';
+      width: rem(1px);
+      height: 100%;
+      position: absolute;
+      top: rem(15px);
+      left: rem(3px);
+      background-color: var(--timeline-line-color);
+    }
+    &:first-child::before {
+      top: rem(13px);
+    }
+    &:last-child::before {
+      display: none;
+    }
+
+    // 공통 after (원형 표시)
+    &:first-child::after {
+      top: rem(4px);
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      top: rem(6px);
+      left: 0;
+      width: var(--timeline-item-circle-size);
+      height: var(--timeline-item-circle-size);
+      border-radius: 50%;
+      background-color: var(--timeline-item-circle-color);
+      box-shadow: 0 0 0 rem(2px) var(--ncp-color-background);
+    }
+    &.active {
+      --timeline-item-circle-color: var(--ncp-color-accent-1);
+    }
+  }
+}
