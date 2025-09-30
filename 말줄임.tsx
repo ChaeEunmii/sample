@@ -5,7 +5,7 @@ type Props = {
   body: string;    // 본문
   suffix: string;  // 가변 고정문구 (길이 가변)
   className?: string;
-};
+}; 
 
 export default function TwoLineSuffixLite({ head, body, suffix, className }: Props) {
   const hostRef = useRef<HTMLParagraphElement>(null);
