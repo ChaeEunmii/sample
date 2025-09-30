@@ -1,0 +1,61 @@
+@use '@shared/styles/abstracts' as *;
+
+/* ParkingTicketUse */
+.checks {
+  @include flex($d: column) {
+    gap: var(--ncp-spacing-x8);
+  }
+  margin-top: var(--ncp-spacing-x12);
+  .agreeTit {
+    flex: 1;
+  }
+  em {
+    font-weight: var(--ncp-font-weight-regular);
+    color: var(--ncp-color-gray-900);
+  }
+  i {
+    color: var(--ncp-color-gray-500);
+  }
+}
+.manage {
+  margin-top: var(--ncp-spacing-x20);
+  .top {
+    position: relative;
+    .tit {
+      @include flex($d: column, $v: flex-start, $h: center) {
+        gap: var(--ncp-spacing-x4);
+      }
+    }
+    .btns {
+      @include position($t: 0, $r: var(--ncp-spacing-indent));
+    }
+  }
+}
+.btns {
+  @include flex {
+    gap: var(--ncp-spacing-x8);
+  }
+}
+
+/*numberList*/
+.numberList {
+  margin-block: var(--ncp-spacing-x8);
+  @include flex($d: column) {
+    gap: var(--ncp-spacing-x4);
+  }
+  .box {
+    margin-top: 0;
+    min-height: rem(52px);
+  }
+
+  .car {
+    @include flex($v: center) {
+      gap: var(--ncp-spacing-x4);
+    }
+  }
+  .side {
+    @include flex() {
+      gap: var(--ncp-spacing-x8);
+    }
+  }
+}

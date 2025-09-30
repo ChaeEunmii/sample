@@ -1,0 +1,65 @@
+@use '@shared/styles/abstracts' as *;
+
+.flag {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--ncp-spacing-x3);
+  height: rem(24px);
+  padding: 0 var(--ncp-spacing-x3);
+  background-color: var(--ncp-color-alpha-b70);
+  border-bottom-right-radius: var(--ncp-border-radius-s);
+}
+
+.rank {
+  min-width: rem(15px);
+  color: var(--ncp-color-white);
+  font-size: var(--ncp-font-size-12);
+  font-weight: var(--ncp-font-weight-medium);
+  line-height: var(--ncp-line-height-fit);
+  text-align: center;
+}
+
+.change {
+  @include flex(flex, center, center);
+  gap: var(--ncp-spacing-x2);
+  min-width: rem(22px);
+  color: var(--ncp-color-gray-450);
+  font-size: var(--ncp-font-size-10);
+  font-weight: var(--ncp-font-weight-medium);
+  &::before {
+    vertical-align: middle;
+  }
+  &.up::before {
+    content: '상승';
+    width: 0;
+    height: 0;
+    border-left: 3px solid transparent;
+    border-right: 3px solid transparent;
+    border-bottom: 4px solid currentColor;
+    @include text-hidden;
+  }
+  &.down::before {
+    content: '하락';
+    width: 0;
+    height: 0;
+    border-left: 3px solid transparent;
+    border-right: 3px solid transparent;
+    border-top: 4px solid currentColor;
+    @include text-hidden;
+  }
+  &.same {
+    @include text-hidden;
+  }
+  &.same::before {
+    content: '동일';
+    width: 6px;
+    height: 1px;
+    background-color: currentColor;
+  }
+  &.new::before {
+    content: 'NEW';
+  }
+}

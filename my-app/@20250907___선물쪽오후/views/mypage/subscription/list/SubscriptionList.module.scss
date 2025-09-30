@@ -1,0 +1,18 @@
+@use '@shared/styles/abstracts' as *;
+
+/* SubscriptionDetail */
+.layout {
+  position: relative;
+}
+
+// 상단 고정영역
+.sticky {
+  position: sticky;
+  top: var(--ncp-layout-header-height);
+  margin-inline: calc((var(--ncp-layout-padding-x) * -1));
+  padding-inline: var(--ncp-layout-padding-x);
+  z-index: 11;
+  background: var(--ncp-color-background);
+  overflow: hidden;
+  margin-bottom: var(--ncp-spacing-x16);
+}

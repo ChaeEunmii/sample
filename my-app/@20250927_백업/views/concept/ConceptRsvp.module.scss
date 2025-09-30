@@ -1,0 +1,101 @@
+@use '@shared/styles/abstracts' as *;
+
+// ConceptRsvp
+// 상단 고정영역
+.sticky {
+  position: sticky;
+  top: var(--ncp-layout-header-height);
+  margin-inline: calc((var(--ncp-layout-padding-x) * -1));
+  z-index: 11;
+  background: var(--ncp-color-background);
+  overflow: hidden;
+  padding-top: var(--ncp-spacing-x8);
+  .topTabs {
+    margin-inline: 0;
+    > div {
+      padding: 0 var(--ncp-layout-padding-x);
+      margin-bottom: 0;
+      margin-inline: 0;
+    }
+  }
+}
+// 타이틀
+.title {
+  margin-top: var(--ncp-spacing-x12);
+  @include flex($v: flex-start, $h: space-between) {
+    gap: var(--ncp-spacing-x4);
+    .tit {
+      font-size: var(--ncp-font-size-22);
+      line-height: var(--ncp-line-height-28);
+      font-weight: var(--ncp-font-weight-bold);
+      @include flex($v: flex-end) {
+        gap: var(--ncp-spacing-x3);
+      }
+      .tip {
+        display: inline;
+      }
+    }
+  }
+}
+// ------- CategoryDepth2.tsx
+.root {
+  position: relative;
+  padding-top: var(--ncp-spacing-x8);
+}
+// 헤더 메뉴
+.popover {
+  position: absolute;
+  inset: var(--ncp-layout-header-height) 0 0 0;
+  height: calc(var(--layout-vh, 1vh) * 100 - var(--ncp-layout-header-height));
+  background-color: var(--ncp-color-alpha-b30);
+}
+.nav {
+  --category-nav-columns: 3;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(var(--category-nav-columns), 1fr);
+  width: 100%;
+  border: solid var(--ncp-color-gray-100);
+  border-width: var(--ncp-border-width-base) 0;
+  background-color: var(--ncp-color-background);
+  & > li {
+    border-bottom: var(--ncp-border-width-base) solid var(--ncp-color-gray-100);
+    margin-bottom: calc(var(--ncp-border-width-base) * -1);
+    &:nth-child(-n + 2)::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      height: 100%;
+      width: var(--ncp-border-width-base);
+      background-color: var(--ncp-color-gray-100);
+    }
+  }
+}
+.navLink {
+  width: 100%;
+  justify-content: center;
+  height: rem(48px);
+  color: var(--ncp-color-gray-500);
+  font-weight: var(--ncp-font-weight-medium);
+}
+.navActive {
+  color: var(--ncp-color-foreground);
+  font-weight: var(--ncp-font-weight-semibold);
+}
+
+// 상단 탭영역(sticky)
+.tabs {
+  position: sticky;
+  top: var(--ncp-layout-header-height);
+  z-index: 11;
+  margin-top: calc(var(--ncp-spacing-x8) * -1);
+  margin-inline: calc(var(--ncp-main-padding-x) * -1);
+  padding-top: var(--ncp-spacing-x8);
+  padding-inline: var(--ncp-main-padding-x);
+  background-color: var(--ncp-color-background);
+}
+.subtab {
+  margin-block: calc(var(--ncp-spacing-x12) * -1) var(--ncp-spacing-x12);
+  padding: var(--ncp-spacing-x5) 0;
+  background: var(--ncp-color-bg-1);
+}

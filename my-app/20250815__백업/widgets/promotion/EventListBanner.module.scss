@@ -1,0 +1,77 @@
+@use '@shared/styles/abstracts' as *;
+
+.box {
+  @include flex(flex, $h: space-between, $v: center);
+  margin-top: var(--ncp-spacing-x12);
+  + .box {
+    margin-top: var(--ncp-spacing-x4);
+  }
+}
+
+.card {
+  @include flex(flex, $h: space-between, $v: center);
+  width: 100%;
+  margin-top: var(--ncp-spacing-x12);
+  column-gap: var(--ncp-spacing-x16);
+  &:not(:first-child) {
+    border-top: var(--ncp-border-width-base) solid var(--ncp-color-gray-100);
+    padding-top: var(--ncp-spacing-x12);
+  }
+
+  /** 왼쪽 영역 */
+  .left {
+    display: grid;
+    grid-template-columns: rem(64px) 1fr;
+    column-gap: var(--ncp-spacing-x6);
+    row-gap: var(--ncp-spacing-x1);
+    .image {
+      grid-row: 1 / 4;
+    }
+    .dates {
+      padding-top: var(--ncp-spacing-x1);
+      @include flex(flex, $v: center) {
+        gap: var(--ncp-spacing-x2);
+      }
+    }
+  }
+
+  /** 오른쪽 영역 */
+  .right {
+    p:not(:first-child) {
+      margin-top: var(--ncp-spacing-x2);
+    }
+  }
+
+  .title {
+    @include ellipsis(2);
+  }
+
+  /** type-result */
+  &-result {
+    text-align: left;
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: 1fr rem(80px);
+    row-gap: var(--ncp-spacing-x1);
+    .date {
+      grid-row: 2 / 3;
+      padding-top: var(--ncp-spacing-x1);
+    }
+    .resultDate {
+      grid-row: 3 / 4;
+    }
+    .badge {
+      justify-content: flex-end;
+    }
+  }
+}
+
+.moreViewButton {
+  margin-top: var(--ncp-spacing-x16);
+  text-align: center;
+}
+
+/** dialog */
+.winnerTable {
+  margin-top: var(--ncp-spacing-x16);
+}

@@ -1,0 +1,162 @@
+@use '@shared/styles/abstracts' as *;
+
+// a11y
+.ncp-blind {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+}
+
+// font color
+.ncp-color-primary {
+  color: var(--ncp-color-foreground) !important;
+}
+.ncp-color-point {
+  color: var(--ncp-color-accent-1) !important;
+}
+.ncp-color-alert {
+  color: var(--ncp-color-accent-alert) !important;
+}
+.ncp-color-gray1 {
+  color: var(--ncp-color-gray-900) !important;
+}
+.ncp-color-gray2 {
+  color: var(--ncp-color-gray-700) !important;
+}
+.ncp-color-gray3 {
+  color: var(--ncp-color-gray-500) !important;
+}
+.ncp-color-white {
+  color: var(--ncp-color-background) !important;
+}
+.ncp-color-black {
+  color: var(--ncp-color-foreground) !important;
+}
+
+// font weight
+.ncp-weight-regular {
+  font-weight: var(--ncp-font-weight-regular) !important;
+}
+.ncp-weight-medium {
+  font-weight: var(--ncp-font-weight-medium) !important;
+}
+.ncp-weight-semibold {
+  font-weight: var(--ncp-font-weight-semibold) !important;
+}
+.ncp-weight-bold {
+  font-weight: var(--ncp-font-weight-bold) !important;
+}
+
+// alignment
+.ncp-text-left {
+  text-align: left !important;
+}
+.ncp-text-center {
+  text-align: center !important;
+}
+.ncp-text-right {
+  text-align: right !important;
+}
+.ncp-align-start {
+  justify-content: flex-start !important;
+}
+.ncp-align-center {
+  justify-content: center !important;
+}
+.ncp-align-end {
+  justify-content: flex-end !important;
+}
+.ncp-align-vertical {
+  flex-direction: column !important;
+}
+.ncp-align-slef-start {
+  align-self: flex-start !important;
+}
+.ncp-align-fitted > * {
+  flex: 1 1 0 !important;
+}
+
+// spacer
+.ncp-mt-x1 {
+  margin-top: var(--ncp-spacing-x1) !important;
+}
+.ncp-mt-xxs {
+  margin-top: var(--ncp-spacing-x2) !important;
+}
+.ncp-mt-xs {
+  margin-top: var(--ncp-spacing-x4) !important;
+}
+.ncp-mt-x6 {
+  margin-top: var(--ncp-spacing-x6) !important;
+}
+.ncp-mt-s {
+  margin-top: var(--ncp-spacing-x8) !important;
+}
+.ncp-mt-x10 {
+  margin-top: var(--ncp-spacing-x10) !important;
+}
+.ncp-mt-m {
+  margin-top: var(--ncp-spacing-x12) !important;
+}
+.ncp-mt-l {
+  margin-top: var(--ncp-spacing-x16) !important;
+}
+.ncp-mt-xl {
+  margin-top: var(--ncp-spacing-x20) !important;
+}
+.ncp-mt-xxl {
+  margin-top: var(--ncp-spacing-x30) !important;
+}
+.ncp-mt-x0 {
+  margin-top: 0 !important;
+}
+.ncp-mb-x0 {
+  margin-bottom: 0 !important;
+}
+.ncp-mb-x6 {
+  margin-bottom: var(--ncp-spacing-x6) !important;
+}
+.ncp-ml-xs {
+  margin-left: var(--ncp-spacing-x2) !important;
+}
+.ncp-ml-s {
+  margin-left: var(--ncp-spacing-x4) !important;
+}
+.ncp-ml-m {
+  margin-left: var(--ncp-spacing-x6) !important;
+}
+.ncp-ml-auto {
+  margin-left: auto;
+}
+.ncp-mr-xxs {
+  margin-right: var(--ncp-spacing-x2) !important;
+}
+.ncp-mr-auto {
+  margin-right: auto;
+}
+
+// width size
+.ncp-w-auto {
+  width: auto !important;
+}
+.ncp-w-full {
+  width: 100% !important;
+}
+.ncp-w-grow {
+  flex-grow: 1 !important;
+}
+
+// symbol(입력요소 사이의 기호 표시)
+.ncp-symbol {
+  @include flex(flex, center, center);
+  width: rem(16px);
+  text-align: center;
+}
+
+// modal 영역 ios 관성스크롤 제거
+[class*='overlay'] {
+  overscroll-behavior: none;
+}

@@ -1,0 +1,53 @@
+@use '@shared/styles/abstracts' as *;
+
+.root {
+  --table-th-bg: var(--ncp-color-bg-1);
+  --table-border-width: var(--ncp-border-width-base);
+  --table-border-color: var(--ncp-color-gray-100);
+  width: 100%;
+  table-layout: fixed;
+
+  // 가로형 기본 스타일
+  &:where(.horizontal) {
+    :where(th, td) {
+      padding: var(--ncp-spacing-x6);
+      line-height: var(--ncp-line-height-20);
+      border-right: var(--table-border-width) solid var(--table-border-color);
+      &:where(:last-child) {
+        border-right: 0;
+      }
+    }
+    :where(th) {
+      font-size: var(--ncp-font-size-14);
+      line-height: var(--ncp-line-height-20);
+      font-weight: var(--ncp-font-weight-semibold);
+      text-align: center;
+      background-color: var(--table-th-bg);
+    }
+    :where(td) {
+      border-bottom: var(--table-border-width) solid var(--table-border-color);
+      font-size: var(--ncp-font-size-14);
+      color: var(--ncp-color-gray-700);
+      text-align: center;
+    }
+  }
+
+  // 세로형 기본 스타일
+  &:where(.vertical) {
+    border-top: var(--table-border-width) solid var(--table-border-color);
+    :where(th, td) {
+      padding: var(--ncp-spacing-x6) var(--ncp-spacing-x8);
+      border-bottom: var(--table-border-width) solid var(--table-border-color);
+      font-size: var(--ncp-font-size-13);
+      line-height: var(--ncp-line-height-22);
+    }
+    :where(th) {
+      font-weight: var(--ncp-font-weight-medium);
+      text-align: left;
+      background-color: var(--table-th-bg);
+    }
+    :where(td) {
+      color: var(--ncp-color-gray-700);
+    }
+  }
+}

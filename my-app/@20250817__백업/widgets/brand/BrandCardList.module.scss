@@ -1,0 +1,10 @@
+@use '@shared/styles/abstracts' as *;
+
+/* BrandCardList */
+.root {
+  margin-top: var(--ncp-spacing-x12);
+
+  &:first-child {
+    margin-top: 0;
+  }
+}

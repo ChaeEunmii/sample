@@ -1,0 +1,68 @@
+@use '@shared/styles/abstracts' as *;
+
+/* Vote */
+.root {
+  position: relative;
+}
+
+.info {
+  margin-top: var(--ncp-spacing-x4);
+  padding-inline: var(--ncp-spacing-indent);
+  @include flex($v: center);
+  column-gap: var(--ncp-spacing-x4);
+  color: var(--ncp-color-gray-500);
+  font-size: var(--ncp-font-size-12);
+
+  & > :not(:last-child) {
+    @include separator;
+  }
+}
+
+.button {
+  width: 100%;
+  height: rem(52px);
+  padding: var(--ncp-spacing-x8);
+  text-align: left;
+  font-weight: var(--ncp-font-weight-medium);
+  border: var(--ncp-border-width-base) solid var(--ncp-color-gray-150);
+  border-radius: var(--ncp-border-radius-base);
+}
+
+.result {
+  --vote-progress-color: var(--ncp-color-gray-150);
+
+  width: 100%;
+  height: rem(48px);
+  position: relative;
+  border-radius: var(--ncp-border-radius-base);
+  background-color: var(--ncp-color-bg-1);
+  overflow: hidden;
+  z-index: 0;
+}
+
+.content {
+  height: 100%;
+  position: relative;
+  padding-inline: var(--ncp-spacing-x8);
+  @include flex($v: center, $h: space-between);
+  z-index: 1;
+}
+
+.progress {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  background-color: var(--vote-progress-color);
+}
+
+// highest result
+.highest {
+  --vote-progress-color: var(--ncp-color-foreground);
+}
+.masked {
+  position: absolute;
+  inset: 0;
+  color: var(--ncp-color-background);
+}

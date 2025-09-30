@@ -1,0 +1,17 @@
+@use '@shared/styles/abstracts' as *;
+
+/* AllCardList */
+.root {
+  position: relative;
+  .box {
+    position: relative;
+  }
+}
+
+// 카드안에 체크박스
+.checkbox {
+  position: absolute;
+  top: var(--ncp-spacing-x4);
+  left: var(--ncp-spacing-x4);
+  z-index: 2;
+}

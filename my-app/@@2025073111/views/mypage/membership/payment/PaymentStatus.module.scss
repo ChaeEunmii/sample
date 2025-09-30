@@ -1,0 +1,50 @@
+@use '@shared/styles/abstracts' as *;
+
+/* PaymentStatus */
+.title {
+  margin-bottom: 0;
+  & + * {
+    margin-top: var(--ncp-spacing-x12);
+  }
+}
+.titInfo {
+  font-size: var(--ncp-font-size-13);
+  line-height: var(--ncp-line-height-18);
+  color: var(--ncp-color-gray-700);
+}
+.btns {
+  text-align: right;
+  margin-top: var(--ncp-spacing-x2);
+}
+.bottom {
+  text-align: right;
+  margin-top: var(--ncp-spacing-x12);
+}
+
+/* layout */
+.state {
+  flex: 1;
+  @include flex($d: column);
+  gap: var(--ncp-spacing-x2);
+  & > :where(p:not(:first-child)) {
+    margin-top: var(--ncp-spacing-x2);
+  }
+}
+.stack {
+  flex: 1;
+  @include flex($d: column);
+  gap: var(--ncp-spacing-x6);
+}
+.col {
+  flex: 1;
+  @include flex($h: space-between, $v: center);
+}
+
+/*cancelInfo*/
+.cancelInfo {
+  margin-block: rem(90px);
+  font-size: var(--ncp-font-size-14);
+  line-height: var(--ncp-line-height-24);
+  font-weight: var(--ncp-font-weight-medium);
+  text-align: center;
+}

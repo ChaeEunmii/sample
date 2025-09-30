@@ -1,0 +1,23 @@
+@use '@shared/styles/abstracts' as *;
+
+// CheckGiftBox
+.wrap {
+  position: relative;
+  @include flex($d: column) {
+    gap: var(--ncp-spacing-x8);
+  }
+  .tit {
+    @include flex($h: space-between) {
+      gap: var(--ncp-spacing-x4);
+    }
+    font-size: var(--ncp-font-size-14);
+    line-height: var(--ncp-line-height-20);
+    font-weight: var(--ncp-font-weight-semibold);
+    color: var(--ncp-color-foreground);
+  }
+  .cont {
+    @include flex($d: column) {
+      gap: var(--ncp-spacing-x4);
+    }
+  }
+}

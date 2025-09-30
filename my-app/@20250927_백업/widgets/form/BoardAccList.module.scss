@@ -1,0 +1,177 @@
+@use '@shared/styles/abstracts' as *;
+
+/* BoardAccList */
+.root {
+  position: relative;
+}
+.content {
+  position: relative;
+}
+.accVars {
+  --accordion-control-font-size: var(--ncp-font-size-15);
+  --accordion-control-height: auto;
+  :is([class*='Accordion_control']) {
+    min-height: rem(62px);
+    padding-block: var(--ncp-spacing-x10);
+  }
+}
+
+.more {
+  margin-top: var(--ncp-spacing-x16);
+  text-align: center;
+}
+
+.title {
+  padding-inline: var(--ncp-spacing-indent);
+  @include flex($d: column) {
+    gap: var(--ncp-spacing-x4);
+  }
+  .tit {
+    @include flex($v: center) {
+      gap: var(--ncp-spacing-x2);
+      .head {
+        flex: 1;
+        @include ellipsis(1);
+        word-break: break-all;
+      }
+    }
+  }
+}
+
+.contentBottom {
+  position: relative;
+  width: 100%;
+  margin-top: var(--ncp-spacing-x12);
+}
+
+.filesSec {
+  margin-block: rem(34px) var(--ncp-spacing-x6);
+  @include flex($d: column) {
+    gap: var(--ncp-spacing-x6);
+  }
+  .files {
+    @include flex($d: column) {
+      gap: var(--ncp-spacing-x4);
+    }
+    .file {
+      width: 100%;
+      border: var(--ncp-border-width-base) solid var(--ncp-color-gray-150);
+      border-radius: var(--ncp-border-radius-base);
+      font-size: var(--ncp-font-size-14);
+      line-height: var(--ncp-line-height-20);
+      font-weight: var(--ncp-font-weight-medium);
+      color: var(--ncp-color-gray-900);
+      padding: var(--ncp-spacing-x8);
+      text-align: left;
+      word-break: break-all;
+      @include flex($h: space-between) {
+        gap: var(--ncp-spacing-x4);
+      }
+    }
+  }
+}
+// 에디터 등록 대응
+.cont {
+  --acc-cont-gap-spacing: #{rem(16px)};
+  --acc-cont-p-spacing: #{rem(8px)};
+  --acc-cont-list-spacing: var(--ncp-spacing-x2);
+
+  font-size: var(--ncp-font-size-14);
+  line-height: var(--ncp-line-height-reading);
+  font-weight: var(--ncp-font-weight-regular);
+  color: var(--ncp-color-gray-900);
+  & :first-child {
+    margin-top: 0;
+  }
+
+  p {
+    padding-inline: var(--ncp-spacing-indent);
+    margin-block: var(--acc-cont-p-spacing);
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+  ul {
+    --acc-cont-list-bullet: '\2022';
+    --acc-cont-list-bullet-width: #{rem(10px)};
+    margin-block: var(--acc-cont-gap-spacing);
+    &:first-child {
+      margin-top: 0;
+    }
+    li {
+      margin-top: var(--acc-cont-list-spacing);
+      padding-left: var(--acc-cont-list-bullet-width);
+      &:first-child {
+        margin-top: 0;
+      }
+      &::before {
+        content: var(--acc-cont-list-bullet);
+        width: var(--acc-cont-list-bullet-width);
+        color: inherit;
+        font-size: inherit;
+        margin-left: calc(var(--acc-cont-list-bullet-width) * -1);
+        display: inline-block;
+      }
+    }
+  }
+  table {
+    width: 100%;
+    min-width: rem(342px);
+    table-layout: auto;
+    border-collapse: collapse;
+    th:not(:last-child),
+    td:not(:last-child) {
+      border-right: var(--ncp-border-width-base) solid var(--ncp-color-gray-100);
+    }
+    th,
+    td {
+      height: rem(47px);
+      padding: var(--ncp-spacing-x6) var(--ncp-spacing-x8);
+      text-align: center;
+      font-size: var(--ncp-font-size-13);
+      line-height: var(--ncp-line-height-22);
+    }
+    th {
+      font-weight: var(--ncp-font-weight-medium);
+      color: var(--ncp-color-gray-900);
+      background: var(--ncp-color-bg-1);
+      white-space: nowrap;
+    }
+    td {
+      font-weight: var(--ncp-font-weight-regular);
+      color: var(--ncp-color-gray-700);
+      border-bottom: var(--ncp-border-width-base) solid var(--ncp-color-gray-100);
+    }
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-block: var(--ncp-spacing-x12);
+    border-radius: var(--ncp-border-radius-base);
+    object-fit: var(--image-object-fit, cover);
+  }
+}
+
+.scrollX {
+  max-width: 100%;
+  margin-bottom: -10px;
+  padding-bottom: 8px;
+  -webkit-overflow-scrolling: touch;
+  overflow-x: auto;
+  overflow-y: hidden;
+  &::-webkit-scrollbar {
+    width: rem(2px);
+    height: rem(2px);
+  }
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--ncp-color-gray-150);
+    border-radius: var(--ncp-border-radius-max);
+  }
+  &::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+}

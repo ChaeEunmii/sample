@@ -1,0 +1,16 @@
+@use '@shared/styles/abstracts' as *;
+
+// Dialog body > conent 영역
+.content {
+  padding-top: var(--ncp-spacing-x16);
+}
+.privacyList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ncp-spacing-x20);
+  padding: 0 var(--ncp-spacing-x1);
+}
+.title,
+.foreground {
+  color: var(--ncp-color-foreground);
+}

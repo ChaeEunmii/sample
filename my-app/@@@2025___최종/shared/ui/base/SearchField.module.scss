@@ -1,0 +1,83 @@
+@use '@shared/styles/abstracts' as *;
+
+.root {
+  position: relative;
+  .input {
+    // 기본 스타일
+  }
+  // 드롭다운
+  .dropdown {
+    position: absolute;
+    width: 100%;
+    border: var(--ncp-border-width-base) solid var(--ncp-color-gray-900);
+    border-top: none;
+    border-radius: 0 0 var(--ncp-border-radius-base) var(--ncp-border-radius-base);
+    background-color: var(--ncp-color-background);
+    padding-block: var(--ncp-spacing-x4) var(--ncp-spacing-x8);
+    padding-inline: var(--ncp-spacing-x8) var(--ncp-spacing-x3);
+    z-index: 10;
+    .droplist {
+      width: 100%;
+      max-height: rem(160px);
+      overflow-y: auto;
+      @include scrollbar();
+    }
+
+    .dropdownItem {
+      padding-block: var(--ncp-spacing-x4);
+      cursor: pointer;
+      font-size: var(--ncp-font-size-13);
+      line-height: var(--ncp-line-height-18);
+      font-weight: var(--ncp-font-weight-regular);
+      margin-top: var(--ncp-spacing-x4);
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+  }
+  .selected {
+    //이미선택된 경우
+    pointer-events: none;
+    opacity: 0.6;
+  }
+
+  .nodata {
+    padding-inline: 0 var(--ncp-spacing-x5);
+    .nodataText {
+      margin-bottom: var(--ncp-spacing-x12);
+    }
+  }
+
+  .highlight {
+    background: none;
+    font-weight: var(--ncp-font-weight-semibold);
+  }
+}
+// 선택된 버튼들
+.addItems {
+  @include flex($w: wrap);
+  gap: var(--ncp-spacing-x4);
+  margin-top: var(--ncp-spacing-x4);
+  .tag {
+    @include flex($v: center, $w: wrap);
+    gap: rem(6px);
+    height: rem(32px);
+    border-radius: var(--ncp-border-radius-max);
+    background-color: var(--ncp-color-bg-2);
+    padding: var(--ncp-spacing-x3) var(--ncp-spacing-x6);
+    font-size: var(--ncp-font-size-13);
+    line-height: var(--ncp-line-height-18);
+    font-weight: var(--ncp-font-weight-regular);
+    color: var(--ncp-color-foreground);
+    .remove {
+      margin-left: rem(6px);
+      background: transparent;
+      border: none;
+      color: var(--ncp-color-foreground);
+      cursor: pointer;
+      font-size: var(--ncp-font-size-13);
+      line-height: var(--ncp-line-height-18);
+      font-weight: var(--ncp-font-weight-bold);
+    }
+  }
+}

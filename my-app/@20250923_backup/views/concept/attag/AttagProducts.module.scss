@@ -1,0 +1,10 @@
+@use '@shared/styles/abstracts' as *;
+
+// AttagProducts
+// 상단 고정영역
+.sticky {
+  position: sticky;
+  top: var(--ncp-layout-header-height);
+  z-index: 11;
+  background: var(--ncp-color-background);
+}

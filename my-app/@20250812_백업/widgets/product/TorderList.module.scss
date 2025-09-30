@@ -1,0 +1,15 @@
+@use '@shared/styles/abstracts' as *;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ncp-spacing-x16);
+}
+
+// gap
+.gap8 {
+  gap: var(--ncp-spacing-x4);
+}
+.gap16 {
+  gap: var(--ncp-spacing-x8);
+}

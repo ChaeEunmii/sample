@@ -1,0 +1,45 @@
+@use '@shared/styles/abstracts' as *;
+
+.root {
+  @include flex($d: column);
+  gap: var(--ncp-spacing-x4);
+}
+
+.item {
+  @include flex($d: column);
+  gap: var(--ncp-spacing-x2);
+}
+
+.oneLineInfo {
+  @include flex($v: center);
+  gap: var(--ncp-spacing-x3);
+
+  .title {
+    @include ellipsis(1);
+    word-break: break-all;
+  }
+}
+
+.line {
+  position: relative;
+  padding-left: 7px;
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: rem(1px);
+    height: rem(10px);
+    background: var(--ncp-color-gray-150);
+    transform: translateY(-50%);
+  }
+}
+
+// gap
+.gap4 {
+  gap: var(--ncp-spacing-x2);
+
+  .item {
+    gap: var(--ncp-spacing-x1);
+  }
+}

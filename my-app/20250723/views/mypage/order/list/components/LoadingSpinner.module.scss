@@ -1,0 +1,27 @@
+@use '@shared/styles/abstracts' as *;
+
+/* LoadingSpinner */
+.loading {
+  --loading-spinner-bg: #efefef;
+  --loading-spinner-line: #222222;
+  width: 100%;
+  text-align: center;
+
+  .spinner {
+    display: inline-block;
+    width: rem(32px);
+    height: rem(32px);
+    margin: 0 auto;
+    border: 2px solid var(--loading-spinner-bg);
+    border-top-color: var(--loading-spinner-line);
+    border-right-color: var(--loading-spinner-line);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

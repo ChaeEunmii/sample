@@ -1,0 +1,15 @@
+@use '@shared/styles/abstracts' as *;
+
+/* CalendarNav */
+.root {
+  position: relative;
+  margin-block: var(--ncp-spacing-x8);
+  @include flex($v: center, $h: center) {
+    gap: var(--ncp-spacing-x2);
+  }
+  .txt {
+    font-size: var(--ncp-font-size-20);
+    line-height: var(--ncp-line-height-26);
+    font-weight: var(--ncp-font-weight-semibold);
+  }
+}

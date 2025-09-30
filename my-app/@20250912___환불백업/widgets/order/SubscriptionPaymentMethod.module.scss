@@ -1,0 +1,17 @@
+@use '@shared/styles/abstracts' as *;
+
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: rem(63px);
+  height: rem(39px);
+  border-radius: var(--ncp-border-radius-s);
+
+  > img {
+    max-width: rem(34px);
+  }
+
+  background: var(--brand-bg, #000000);
+  color: var(--brand-text, #ffffff);
+}

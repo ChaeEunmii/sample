@@ -1,0 +1,7 @@
+@use '@shared/styles/abstracts' as *;
+
+.image {
+  margin-top: var(--ncp-spacing-x6);
+  border-radius: var(--ncp-border-radius-base);
+  overflow: hidden;
+}

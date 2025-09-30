@@ -1,0 +1,17 @@
+@use '@shared/styles/abstracts' as *;
+
+// CostInfoSection
+.root {
+  position: relative;
+}
+
+// marginTop
+.marginTop1 {
+  margin-top: rem(16px);
+}
+.marginTop2 {
+  margin-top: rem(24px);
+}
+.marginTop3 {
+  margin-top: rem(32px);
+}

@@ -1,0 +1,23 @@
+@use '@shared/styles/abstracts' as *;
+
+.root {
+  position: relative;
+  overflow: hidden;
+  display: block;
+}
+.image {
+  width: var(--image-width, 100%);
+  height: var(--image-height, 100%);
+  object-fit: var(--image-object-fit, cover);
+}
+
+/* radius */
+.radius-0 {
+  border-radius: 0;
+}
+.radius-1 {
+  border-radius: var(--ncp-border-radius-s);
+}
+.radius-2 {
+  border-radius: var(--ncp-border-radius-base);
+}

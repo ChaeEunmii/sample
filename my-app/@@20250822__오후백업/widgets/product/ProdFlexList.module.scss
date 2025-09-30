@@ -1,0 +1,12 @@
+@use '@shared/styles/abstracts' as *;
+
+.root {
+  @include grid(
+    $c: var(--prod-flex-list-columns),
+    $gap: var(--ncp-spacing-x12) var(--ncp-spacing-x4)
+  );
+  justify-items: center;
+}
+.x1 {
+  max-width: calc(50% - var(--ncp-spacing-x4));
+}

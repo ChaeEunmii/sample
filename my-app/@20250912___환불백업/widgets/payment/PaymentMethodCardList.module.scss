@@ -1,0 +1,65 @@
+@use '@shared/styles/abstracts' as *;
+
+/* PaymentMethodCardList */
+.list {
+  @include flex($d: column) {
+    gap: var(--ncp-spacing-x4);
+  }
+  &.view {
+    gap: 0;
+    .item {
+      padding-block: rem(24px);
+      border-top: var(--ncp-border-width-base) solid var(--ncp-color-gray-100);
+      &:first-child {
+        padding-top: 0;
+        border-top: none;
+      }
+    }
+  }
+}
+
+// view 모드 일경우 사이드슬롯
+.viewSlot {
+  @include flex($v: center) {
+    gap: var(--ncp-spacing-x8);
+  }
+  // 컨트롤 영역
+  .ctrl {
+    position: relative;
+    .openBtn {
+      color: var(--ncp-color-gray-500);
+    }
+    .listBox {
+      border: var(--ncp-border-width-base) solid var(--ncp-color-gray-150);
+      background-color: var(--ncp-color-background);
+      border-radius: var(--ncp-border-radius-base);
+      padding: var(--ncp-spacing-x8);
+      // 위치 이동
+      position: absolute;
+      top: var(--ncp-spacing-x16);
+      right: 0;
+      z-index: 1;
+      width: rem(120px);
+    }
+    .options {
+      @include flex($d: column);
+      gap: rem(16px);
+      .option {
+        min-height: rem(20px);
+        font-size: var(--ncp-font-size-14);
+        line-height: var(--ncp-line-height-20);
+        color: var(--ncp-color-foreground);
+        cursor: pointer;
+        & button {
+          border: none;
+          background: none;
+          width: 100%;
+          height: 100%;
+          padding: 0;
+          margin: 0;
+          text-align: left;
+        }
+      }
+    }
+  }
+}

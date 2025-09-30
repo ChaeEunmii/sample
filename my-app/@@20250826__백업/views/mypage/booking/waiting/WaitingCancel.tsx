@@ -1,0 +1,68 @@
+'use client';
+import { TitleArea, Text, Button, ButtonArea, Stack, Heading } from '@/shared/ui';
+import { Container, Contents } from '@/widgets/layout/Container';
+import { ReservedInfo } from '@/widgets/o4o';
+// 스타일
+import styles from './Waiting.module.scss';
+
+export const WaitingCancel = () => {
+  // ✅ 등록 정보 임시 데이터
+  const mockUpcomingInfo = [
+    {
+      title: '입장 인원',
+      content: '2명',
+    },
+    {
+      title: '등록자정보',
+      content: '김*대',
+    },
+    {
+      title: '연락처',
+      content: '010-****-7221',
+    },
+  ];
+
+  return (
+    <Container title="웨이팅 취소" showBack>
+      <Contents>
+        <TitleArea
+          title="웨이팅이 취소되었습니다"
+          subTitle={
+            <span className={styles.locationInfo}>
+              <Text as="span">크리스탈제이드</Text>
+              <Text as="span" color="gray2">
+                무역센터점 6F
+              </Text>
+            </span>
+          }
+          level="2"
+        />
+        {/* 웨이팅 현황 */}
+        <div className={styles.canceled}>
+          <Stack type="between">
+            {/* 폰트 사이즈 28이라서 heading에 사이즈 추가 해야 하는지 확인 필요 */}
+            <Heading as="strong" weight="bold" className={styles.queue}>
+              <Text as="span">101</Text> 번째
+            </Heading>
+          </Stack>
+          <Text weight="semibold" indent>
+            웨이팅번호 1234번
+          </Text>
+        </div>
+        <Text weight="medium" indent>
+          2025.11.11 15:30 취소
+        </Text>
+        {/* 등록 정보 */}
+        <ReservedInfo data={mockUpcomingInfo} />
+      </Contents>
+      <ButtonArea type="sticky">
+        <Button size="large">목록으로</Button>
+        <Button variant="primary" size="large">
+          웨이팅 가능 매장보기
+        </Button>
+      </ButtonArea>
+    </Container>
+  );
+};
+
+WaitingCancel.displayName = 'WaitingCancel';

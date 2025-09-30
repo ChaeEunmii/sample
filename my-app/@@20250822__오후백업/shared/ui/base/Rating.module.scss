@@ -1,0 +1,16 @@
+@use '@shared/styles/abstracts' as *;
+
+.root {
+  @include flex($display: inline-flex, $v: center);
+  gap: var(--ncp-spacing-x2);
+  font-size: var(--ncp-font-size-12);
+  line-height: var(--ncp-line-height-16);
+}
+
+// separator
+.leftSeparator {
+  @include separator(left);
+}
+.rightSeparator {
+  @include separator(right);
+}

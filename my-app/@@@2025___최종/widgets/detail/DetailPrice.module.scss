@@ -1,0 +1,267 @@
+@use '@shared/styles/abstracts' as *;
+
+.root {
+  position: relative;
+  @include flex(flex, $d: column);
+  padding-top: var(--ncp-spacing-x10);
+  row-gap: var(--ncp-spacing-x2);
+  &.auction {
+    padding-top: var(--ncp-spacing-x8);
+    row-gap: 0;
+  }
+}
+.smallPrices {
+  @include flex(inline-flex, $v: center);
+  gap: var(--ncp-spacing-x2);
+}
+.reduction {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ncp-spacing-x2);
+  width: 100%;
+  margin-bottom: var(--ncp-spacing-x2);
+}
+.discount {
+  color: var(--ncp-color-accent-alert);
+}
+.original {
+  color: var(--ncp-color-gray-500);
+  text-decoration-line: line-through;
+}
+.prevSale {
+  color: var(--ncp-color-gray-700);
+}
+.prevSaleNotice {
+  color: var(--ncp-color-gray-500);
+}
+.subtext,
+.unitPrice {
+  flex-basis: 100%;
+  color: var(--ncp-color-gray-500);
+}
+.priceCouponWrap {
+  @include flex(flex, $h: space-between, $v: flex-end);
+}
+.prices {
+  @include flex(inline-flex, $v: center) {
+    gap: var(--ncp-spacing-x2);
+  }
+  &.hasOriginal {
+    flex-wrap: wrap;
+    .original {
+      width: 100%;
+    }
+  }
+}
+.auctionPrices {
+  @include flex(flex, $d: column) {
+    gap: var(--ncp-spacing-x2);
+  }
+  .current {
+    > span {
+      font-size: var(--ncp-font-size-14);
+      font-weight: var(--ncp-font-weight-semibold);
+      padding-right: var(--ncp-spacing-x2);
+    }
+  }
+  .increaseWrap {
+    @include flex(flex, $v: center) {
+      gap: var(--ncp-spacing-x4);
+    }
+  }
+}
+.rafflePrice {
+  margin-top: var(--ncp-spacing-x8);
+  > span {
+    font-size: var(--ncp-font-size-14);
+    font-weight: var(--ncp-font-weight-semibold);
+    padding-right: var(--ncp-spacing-x2);
+  }
+}
+.couponButton {
+  width: fit-content;
+}
+.salePeriod {
+  @include flex(flex, $v: center);
+  gap: var(--ncp-spacing-x2);
+  color: var(--ncp-color-accent-1);
+}
+
+// 옥션 & 래플
+.remainEndTime {
+  font-size: var(--ncp-font-size-24);
+}
+.tbodyOverlay {
+  position: relative;
+}
+
+.tableBlur {
+  filter: blur(10px);
+  pointer-events: none;
+  user-select: none;
+}
+
+.endOverlayCell {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9;
+  pointer-events: auto;
+  text-align: center;
+  vertical-align: middle;
+  height: 100%;
+  padding: 0;
+  border: none;
+}
+.endOverlayContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 120px;
+  font-weight: bold;
+  font-size: 1.3rem;
+  color: #444;
+  pointer-events: auto;
+  width: 100%;
+  height: 100%;
+  p + p {
+    margin-top: var(--ncp-spacing-x2);
+  }
+}
+.bidders {
+  margin-top: var(--ncp-spacing-x12);
+  .tableHeading {
+    margin-bottom: var(--ncp-spacing-x6);
+    @include flex(flex, $v: center, $h: space-between) {
+      gap: var(--ncp-spacing-x5);
+    }
+  }
+  .nowUpate {
+    @include flex(flex, $v: center) {
+      gap: var(--ncp-spacing-x5);
+    }
+  }
+  th,
+  td {
+    font-size: var(--ncp-font-size-13);
+    line-height: var(--ncp-line-height-18);
+  }
+  th {
+    font-weight: var(--ncp-font-weight-medium);
+  }
+  td {
+    color: var(--ncp-color-gray-500);
+    &:last-child {
+      border-bottom: var(--ncp-border-width-base) solid var(--ncp-color-gray-100);
+      &.cell-time {
+        padding-bottom: var(--table-border-spacing-y);
+      }
+    }
+    &.cell-id {
+      text-align: left;
+    }
+    &.cell-time {
+      padding: 0;
+    }
+  }
+  .empty {
+    height: rem(138px);
+    color: var(--ncp-color-gray-900);
+  }
+  .first {
+    td {
+      color: var(--ncp-color-foreground);
+      font-weight: var(--ncp-font-weight-medium);
+    }
+  }
+}
+.schedule {
+  margin-block: var(--ncp-spacing-x16) var(--ncp-spacing-x10);
+  padding-bottom: var(--ncp-spacing-x10);
+  border-bottom: var(--ncp-border-width-base) solid var(--ncp-color-gray-100);
+  @include flex(flex, $v: center) {
+    gap: var(--ncp-spacing-x6);
+  }
+  .label {
+    width: rem(68px);
+  }
+
+  &.perchase {
+    .label {
+      width: rem(80px);
+    }
+  }
+}
+.biddingBox {
+  .title {
+    @include flex(flex, $v: center, $h: space-between);
+    margin-bottom: var(--ncp-spacing-x8);
+    padding-bottom: var(--ncp-spacing-x8);
+    border-bottom: var(--ncp-border-width-base) solid var(--ncp-color-gray-150);
+    p {
+      margin-top: 0;
+    }
+  }
+  dl {
+    @include flex(flex, $d: column) {
+      gap: var(--ncp-spacing-x8);
+    }
+    .row {
+      @include flex(flex, $v: center) {
+        gap: var(--ncp-spacing-x6);
+      }
+    }
+    dt {
+      width: rem(68px);
+      font-size: var(--ncp-font-size-13);
+      line-height: var(--ncp-line-height-18);
+      color: var(--ncp-color-gray-700);
+    }
+    dd {
+      font-size: var(--ncp-font-size-13);
+      line-height: var(--ncp-line-height-18);
+      color: var(--ncp-color-gray-900);
+    }
+  }
+}
+.winnerBox {
+  margin-top: var(--ncp-spacing-x8);
+}
+
+// 딜 상품
+.dealInfo {
+  p {
+    margin-top: 0;
+  }
+}
+.dealEndTime {
+  span {
+    color: var(--ncp-color-accent-1);
+  }
+}
+.dealInfo {
+  @include flex(flex, $v: center, $h: space-between);
+}
+.progress {
+  position: relative;
+  width: 100%;
+  height: rem(4px);
+  margin-top: var(--ncp-spacing-x4);
+  background-color: var(--ncp-color-bg-1);
+  border-radius: var(--ncp-border-radius-base);
+
+  .progressFill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: var(--ncp-color-accent-1);
+    border-radius: var(--ncp-border-radius-base);
+  }
+}
+.DealPrice {
+  margin-top: var(--ncp-spacing-x10);
+}

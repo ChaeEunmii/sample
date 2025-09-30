@@ -1,0 +1,10 @@
+@use '@shared/styles/abstracts' as *;
+
+.offline {
+  margin-top: var(--ncp-spacing-x16);
+  .cont {
+    margin-top: var(--ncp-spacing-x8);
+    @include flex($d: column);
+    gap: var(--ncp-spacing-x8);
+  }
+}

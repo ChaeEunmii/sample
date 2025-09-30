@@ -1,0 +1,15 @@
+@use '@shared/styles/abstracts' as *;
+
+/* 약관 */
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ncp-spacing-x8);
+  padding: var(--ncp-spacing-x10) var(--ncp-layout-padding-x);
+  border-top: rem(8px) solid var(--ncp-color-bg-1);
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+}

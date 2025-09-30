@@ -1,0 +1,9 @@
+@use '@shared/styles/abstracts' as *;
+
+/* 개인통관고유부호 */
+.code {
+  margin-left: var(--ncp-spacing-x4);
+}
+.codeButton {
+  margin-top: var(--ncp-spacing-x12);
+}

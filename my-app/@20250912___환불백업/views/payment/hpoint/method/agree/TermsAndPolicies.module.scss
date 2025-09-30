@@ -1,0 +1,11 @@
+@use '@shared/styles/abstracts' as *;
+
+/* AgreeAndRegister */
+.layout {
+  position: relative;
+}
+
+// 약관목록
+.list {
+  margin-top: var(--ncp-spacin-x16);
+}

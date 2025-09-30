@@ -1,0 +1,16 @@
+@use '@shared/styles/abstracts' as *;
+
+// Dialog body > footer 영역
+.locationArea {
+  padding: var(--ncp-spacing-x6) var(--ncp-spacing-x1);
+}
+.telInfo {
+  margin-top: var(--ncp-spacing-x3);
+
+  dt,
+  dd {
+    font-size: var(--ncp-font-size-14);
+    font-weight: var(--ncp-font-weight-regular);
+    color: var(--ncp-color-gray-900);
+  }
+}

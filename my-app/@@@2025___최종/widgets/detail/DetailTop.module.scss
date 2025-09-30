@@ -1,0 +1,183 @@
+@use '@shared/styles/abstracts' as *;
+
+.barcodeBtn {
+  margin-top: var(--ncp-spacing-x10);
+}
+.barCodeDialog {
+  .dialogBody {
+    padding-bottom: 0;
+  }
+  .wrap {
+    @include flex(flex, $d: column);
+    height: 100%;
+    width: 100%;
+  }
+  .note {
+    flex-shrink: 0;
+    margin-top: var(--ncp-spacing-x8);
+  }
+  .barcodeArea {
+    flex: 1 1 0;
+    min-height: 0;
+    min-width: 0;
+  }
+  .barcodeArea {
+    flex: 1 1 0;
+    @include flex(flex, $v: center, $h: center);
+    min-height: 0;
+    min-width: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .innerArea {
+    @include flex(flex, $v: center, $h: center);
+    width: 100%;
+    height: 80%;
+    max-width: 100%;
+    max-height: 100%;
+    gap: var(--ncp-spacing-x6);
+    overflow: hidden;
+  }
+
+  .image {
+    display: block;
+    height: 100%;
+    width: auto;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+  .number {
+    writing-mode: vertical-rl;
+    color: var(--ncp-color-gray-350);
+    max-height: 100%;
+    max-width: rem(30px);
+  }
+}
+
+.brandWrap {
+  @include flex(flex, space-between, center);
+  padding: var(--ncp-spacing-x6) var(--ncp-main-padding-x);
+  border-bottom: 1px solid var(--ncp-color-bg-1);
+  margin: 0 calc(var(--ncp-main-padding-x) * -1);
+  width: calc(100% + (calc(var(--ncp-main-padding-x) * 2)));
+
+  .info {
+    @include flex(inline-flex, $v: center);
+  }
+
+  .icons {
+    @include flex(inline-flex, $v: center);
+    column-gap: var(--ncp-spacing-x2);
+  }
+
+  .brand {
+    font-size: var(--ncp-font-size-12);
+    font-weight: var(--ncp-font-weight-medium);
+  }
+
+  .branch {
+    padding-left: var(--ncp-spacing-x4);
+    color: var(--ncp-color-gray-700);
+  }
+  .prdNo {
+    position: relative;
+    @include flex(inline-flex, $v: center);
+    padding-left: var(--ncp-spacing-x6);
+    &::before {
+      position: absolute;
+      content: '';
+      left: var(--ncp-spacing-x3);
+      height: rem(10px);
+      border-right: var(--ncp-border-width-base) solid var(--ncp-color-gray-150);
+    }
+  }
+
+  .share {
+    margin: 0;
+  }
+}
+
+.soldoutText {
+  margin-top: var(--ncp-spacing-x8);
+}
+
+.saleDate {
+  margin-top: var(--ncp-spacing-x8);
+  @include flex;
+  gap: var(--ncp-spacing-x4);
+}
+
+.title {
+  margin-top: var(--ncp-spacing-x8);
+  font-weight: var(--ncp-font-weight-medium);
+}
+.shortDesc {
+  &.prod-food {
+    margin-top: var(--ncp-spacing-x2);
+    color: var(--ncp-color-gray-500);
+  }
+}
+.benefits {
+  margin-top: 12px;
+}
+.stockCount {
+  margin-top: var(--ncp-spacing-x8);
+
+  span {
+    padding-left: var(--ncp-spacing-x2);
+    color: var(--ncp-color-gray-900);
+  }
+}
+.period {
+  margin-top: var(--ncp-spacing-x4);
+  @include flex(flex, $v: center);
+  gap: var(--ncp-spacing-x2);
+  color: var(--ncp-color-accent-1);
+}
+.applyPeriod {
+  margin-top: var(--ncp-spacing-x4);
+  @include flex(flex, $v: center);
+  gap: var(--ncp-spacing-x2);
+  color: var(--ncp-color-accent-1);
+}
+.review {
+  margin-top: var(--ncp-spacing-x10);
+  @include flex(inline-flex, $v: center);
+  row-gap: var(--ncp-spacing-x2);
+  .rating {
+    margin-left: var(--ncp-spacing-x2);
+  }
+  .divider {
+    margin-inline: var(--ncp-spacing-x4);
+    width: 1px;
+    height: var(--ncp-spacing-x5);
+    background-color: var(--ncp-color-gray-150);
+  }
+  .reviewButton {
+    font-size: inherit;
+    line-height: inherit;
+  }
+}
+.ownCardDisabled {
+  border-radius: var(--ncp-border-radius-base);
+  background-color: var(--ncp-color-bg-1);
+  padding: var(--ncp-spacing-x10) var(--ncp-spacing-x8);
+}
+.noticeList {
+  margin-top: var(--ncp-spacing-x8);
+}
+
+.liveDate {
+  @include flex(flex, $h: space-between);
+  margin-top: var(--ncp-spacing-x8);
+  .link {
+    gap: 0;
+  }
+  .text {
+    padding-left: var(--ncp-spacing-x4);
+  }
+}
+.liveAlramButton {
+  width: fit-content;
+}

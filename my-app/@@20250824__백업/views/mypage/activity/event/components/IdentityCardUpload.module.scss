@@ -1,0 +1,10 @@
+@use '@shared/styles/abstracts' as *;
+
+/* IdentityCardUpload */
+.wrap {
+  position: relative;
+  width: 100%;
+}
+.box {
+  margin-block: var(--ncp-spacing-x6);
+}

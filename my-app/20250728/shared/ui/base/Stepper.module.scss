@@ -1,0 +1,36 @@
+@use '@shared/styles/abstracts' as *;
+
+/* Stepper */
+.root {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: rem(9px) var(--ncp-spacing-x5);
+  font-size: var(--ncp-font-size-14);
+  font-weight: var(--ncp-font-weight-bold);
+  background-color: var(--ncp-color-background);
+  border: var(--ncp-border-width-base) solid var(--ncp-color-gray-150);
+  border-radius: var(--ncp-border-radius-base);
+  &.disabled {
+    background: var(--ncp-color-bg-2);
+  }
+}
+.control {
+  margin: 0;
+  padding: 0;
+  &:disabled {
+    &:before,
+    &:after {
+      background: var(--ncp-color-gray-500);
+    }
+  }
+}
+.value {
+  flex: 1;
+  width: rem(27px);
+  text-align: center;
+  font-weight: var(--ncp-font-weight-bold);
+  &:disabled {
+    color: var(--ncp-color-gray-500);
+  }
+}

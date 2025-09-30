@@ -1,0 +1,10 @@
+@use '@shared/styles/abstracts' as *;
+
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.giftForm {
+  margin-top: var(--ncp-spacing-x12);
+}

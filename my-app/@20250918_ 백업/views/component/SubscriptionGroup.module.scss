@@ -1,0 +1,16 @@
+@use '@shared/styles/abstracts' as *;
+
+/* SubscriptionGroup*/
+.section {
+  @include flex($d: column) {
+    gap: var(--ncp-spacing-x12);
+  }
+}
+// 상단정보
+.top {
+  position: relative;
+}
+// 하단내용
+.bottom {
+  position: relative;
+}

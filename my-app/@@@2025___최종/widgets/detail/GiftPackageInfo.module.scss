@@ -1,0 +1,85 @@
+@use '@shared/styles/abstracts' as *;
+
+.root {
+  margin-top: var(--ncp-spacing-x20);
+  @include flex(flex, $d: column);
+  row-gap: var(--ncp-spacing-x20);
+}
+
+.texts {
+  p {
+    margin-top: var(--ncp-spacing-x2);
+  }
+}
+
+.gift {
+  @include flex(flex, $d: column);
+  + .gift {
+    margin-top: var(--ncp-spacing-x12);
+  }
+}
+
+.itemlist {
+  @include flex(flex, $d: column);
+  gap: var(--ncp-spacing-x4);
+  margin-top: var(--ncp-spacing-x8);
+
+  &.package {
+    @include grid($c: var(--grid-columns, 2), $gap: var(--ncp-spacing-x4));
+  }
+
+  li {
+    @include flex(flex, $v: center);
+    gap: var(--ncp-spacing-x6);
+
+    .img {
+      width: rem(64px);
+      aspect-ratio: 1 / 1;
+      border-radius: var(--ncp-border-radius-base);
+    }
+
+    p {
+      margin-top: 0;
+    }
+  }
+}
+
+.moreBtn {
+  padding-top: var(--ncp-spacing-x4);
+  width: 100%;
+  justify-content: center;
+}
+
+.viewBtn {
+  align-self: flex-end;
+  margin-top: var(--ncp-spacing-x4);
+}
+
+.promoNote {
+  margin-top: var(--ncp-spacing-x8);
+
+  li {
+    margin-top: var(--ncp-spacing-x3);
+  }
+}
+
+.noteBox {
+  margin-top: var(--ncp-spacing-x8);
+  padding: var(--ncp-spacing-x8);
+  border-radius: var(--ncp-border-radius-base);
+  background-color: var(--ncp-color-bg-1);
+
+  li {
+    margin-top: var(--ncp-spacing-x3);
+  }
+}
+
+.packageNote {
+  margin-top: var(--ncp-spacing-x8);
+}
+
+.ended {
+  span {
+    text-decoration: line-through;
+  }
+}

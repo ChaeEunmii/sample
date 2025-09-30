@@ -1,0 +1,75 @@
+@use '@shared/styles/abstracts' as *;
+
+/* 개인통관고유부호 조회 결과 (L) */
+.codeResult {
+  padding-left: 0;
+  padding-right: 0;
+
+  // Dialog header, footer 영역
+  > div:first-child,
+  > div:last-child {
+    padding-left: var(--ncp-spacing-x8);
+    padding-right: var(--ncp-spacing-x8);
+  }
+
+  // Dialog body 영역
+  > div:nth-child(3) {
+    width: 100%;
+    padding-right: 0;
+  }
+
+  // Dialog footer 영역
+  > div:last-child {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+// Dialog body > conent 영역
+.content {
+  padding-top: var(--ncp-spacing-x16);
+}
+.box {
+  position: relative;
+  padding-left: var(--ncp-spacing-x8);
+  padding-right: var(--ncp-spacing-x8);
+  padding-bottom: var(--ncp-spacing-x16);
+
+  & + .box {
+    padding-top: var(--ncp-spacing-x20);
+
+    &:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: rem(8px);
+      background: var(--ncp-color-bg-1);
+    }
+  }
+}
+// 조회정보
+.formInfo {
+  gap: var(--ncp-spacing-x8);
+}
+// 조회결과 > input
+.resultInput {
+  color: var(--ncp-color-gray-900);
+  border-color: transparent;
+  input {
+    font-weight: var(--ncp-font-weight-semibold);
+  }
+  // [case] 조회 실패
+  &.searchFail {
+    background: #fff2f4;
+    input {
+      text-align: center;
+      color: #ff0000;
+    }
+  }
+}
+// 관세청에서 발급/확인하기 버튼
+.confirmButton {
+  margin-top: var(--ncp-spacing-x6);
+}

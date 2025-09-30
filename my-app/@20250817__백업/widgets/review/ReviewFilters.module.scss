@@ -1,0 +1,31 @@
+@use '@shared/styles/abstracts' as *;
+
+.photo {
+  margin-right: auto;
+  @include flex($v: center);
+  gap: var(--ncp-spacing-x4);
+}
+
+.reset {
+  position: absolute;
+  top: var(--ncp-spacing-x20);
+  right: var(--ncp-spacing-x8);
+}
+
+.tags {
+  margin-block: var(--ncp-spacing-x8) var(--ncp-spacing-x12);
+}
+
+.options {
+  @include flex($d: column);
+  gap: var(--ncp-spacing-x4);
+
+  [class*='Checkbox_root'] {
+    margin-left: auto;
+    padding-inline: var(--ncp-spacing-indent);
+  }
+}
+.persona {
+  @include flex($d: column);
+  gap: var(--ncp-spacing-x8);
+}

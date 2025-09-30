@@ -1,0 +1,67 @@
+@use '@shared/styles/abstracts' as *;
+
+.root {
+  --countdown-separator-size: inherit;
+  --countdown-number-font-size: inherit;
+  --countdown-number-font-weight: var(--ncp-font-weight-regular);
+  --countdown-number-line-height: var(--ncp-line-height-fit);
+
+  padding-inline: var(--ncp-spacing-indent);
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--ncp-spacing-x4);
+}
+.time {
+  display: flex;
+  align-items: flex-end;
+  column-gap: var(--ncp-spacing-x2);
+}
+.unit {
+  @include flex($v: center, $d: column);
+  gap: var(--ncp-spacing-x2);
+}
+.separator {
+  font-size: var(--countdown-separator-size);
+  font-weight: var(--countdown-number-font-weight);
+  line-height: var(--countdown-number-line-height);
+}
+.number {
+  font-size: var(--countdown-number-font-size);
+  font-weight: var(--countdown-number-font-weight);
+  line-height: var(--countdown-number-line-height);
+}
+
+.accent {
+  color: var(--ncp-color-accent-1);
+  background: none;
+}
+// variant
+.display1,
+.display2 {
+  --countdown-separator-size: var(--ncp-font-size-20);
+  --countdown-number-font-size: #{rem(44px)};
+  --countdown-number-font-weight: var(--ncp-font-weight-bold);
+  --countdown-number-line-height: #{rem(38px)};
+}
+.display1 {
+  min-height: 155px;
+  padding-bottom: var(--ncp-spacing-x10);
+  justify-content: flex-end;
+  align-items: center;
+  color: var(--ncp-color-white);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.3) 100%);
+}
+
+.inline {
+  --countdown-number-font-size: var(--ncp-font-size-12);
+  min-height: rem(32px);
+  padding: var(--ncp-spacing-x4);
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  column-gap: var(--ncp-spacing-x3);
+  color: var(--ncp-color-white);
+  background-color: rgba(0, 0, 0, 0.36);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}

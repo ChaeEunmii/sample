@@ -1,0 +1,35 @@
+@use '@shared/styles/abstracts' as *;
+
+/* ScheduleTotal */
+// statusFlag
+.statusFlag {
+  @include flex($v: center) {
+    gap: var(--ncp-spacing-x3);
+  }
+  .info {
+    position: relative;
+    @include flex();
+    font-size: var(--ncp-font-size-14);
+    line-height: var(--ncp-line-height-20);
+    font-weight: var(--ncp-font-weight-semibold);
+    & > li {
+      color: var(--ncp-color-gray-900);
+      &:not(:first-child)::before {
+        content: '/';
+        display: inline-block;
+        margin-inline: var(--ncp-spacing-x2);
+      }
+    }
+  }
+}
+
+// 타이틀
+.title {
+  position: relative;
+  .tip {
+    position: absolute;
+    right: rem(-20px);
+    top: rem(10px);
+    text-align: left;
+  }
+}

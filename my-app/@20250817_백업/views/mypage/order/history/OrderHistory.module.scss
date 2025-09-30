@@ -1,0 +1,50 @@
+@use '@shared/styles/abstracts' as *;
+
+/* OrderHistory */
+.layout {
+  position: relative;
+}
+.tit {
+  margin-block: var(--ncp-spacing-x8);
+}
+.list {
+  @include flex($d: column) {
+    gap: var(--ncp-spacing-x4);
+  }
+  margin-block: var(--ncp-spacing-x8);
+  & > li {
+    .link {
+      @include flex($d: column, $v: flex-start) {
+        gap: var(--ncp-spacing-x2);
+      }
+      width: 100%;
+      padding-block: var(--ncp-spacing-x10);
+      padding-inline: var(--ncp-spacing-x8);
+      border: var(--ncp-border-width-base) solid var(--ncp-color-gray-150);
+      border-radius: var(--ncp-border-radius-s);
+      .head {
+        font-size: var(--ncp-font-size-14);
+        line-height: var(--ncp-line-height-20);
+        font-weight: var(--ncp-font-weight-semibold);
+        color: var(--ncp-color-gray-700);
+      }
+      & > span {
+        font-size: var(--ncp-font-size-13);
+        line-height: var(--ncp-line-height-18);
+        font-weight: var(--ncp-font-weight-regular);
+        color: var(--ncp-color-gray-700);
+      }
+      // active 시 디자인
+      &:active {
+        border-color: var(--ncp-color-foreground);
+        .head {
+          color: var(--ncp-color-foreground);
+        }
+        & > span {
+          font-weight: var(--ncp-font-weight-medium);
+          color: var(--ncp-color-foreground);
+        }
+      }
+    }
+  }
+}

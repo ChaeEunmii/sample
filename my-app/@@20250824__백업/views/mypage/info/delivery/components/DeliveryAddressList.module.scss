@@ -1,0 +1,7 @@
+@use '@shared/styles/abstracts' as *;
+
+/* DeliveryAddressList */
+.list {
+  position: relative;
+  padding-inline: var(--ncp-spacing-x8);
+}

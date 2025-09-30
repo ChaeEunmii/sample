@@ -1,0 +1,61 @@
+@use '@shared/styles/abstracts' as *;
+
+.root {
+  --avatar-size-width: #{rem(20px)};
+  --avatar-size-height: #{rem(20px)};
+  --avatar-border-radius: var(--ncp-border-radius-max);
+  --avatar-border-width: var(--ncp-border-width-base);
+  --avatar-border-color: transparent;
+  --avatar-background-color: var(--ncp-color-gray-100);
+
+  flex-grow: 0;
+  flex-shrink: 0;
+  display: inline-flex;
+  overflow: hidden;
+  width: var(--avatar-size-width);
+  height: var(--avatar-size-height);
+  border-radius: var(--avatar-border-radius);
+  border-color: var(--avatar-border-color);
+  background-color: var(--avatar-background-color);
+  .image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+// size
+.size1 {
+  --avatar-size-width: #{rem(20px)};
+  --avatar-size-height: #{rem(20px)};
+}
+.size2 {
+  --avatar-size-width: #{rem(24px)};
+  --avatar-size-height: #{rem(24px)};
+}
+.size3 {
+  --avatar-size-width: #{rem(50px)};
+  --avatar-size-height: #{rem(50px)};
+}
+.size4 {
+  --avatar-size-width: #{rem(60px)};
+  --avatar-size-height: #{rem(60px)};
+}
+
+// initial
+.initial {
+  --avatar-background-color: var(--ncp-color-white);
+  align-items: center;
+  justify-content: center;
+  font-size: var(--ncp-font-size-20);
+  font-weight: 700;
+  line-height: var(--ncp-line-height-26);
+  color: var(--ncp-color-gray-450);
+}
+
+// variant
+.brand {
+  --avatar-border-color: var(--ncp-color-gray-100);
+  border-width: var(--avatar-border-width);
+  border-style: solid;
+}

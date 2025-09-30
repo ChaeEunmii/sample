@@ -1,0 +1,52 @@
+@use '@shared/styles/abstracts' as *;
+
+.root {
+  margin-block: var(--ncp-spacing-x16);
+  border: 1px solid var(--ncp-color-gray-150);
+  border-radius: var(--ncp-border-radius-base);
+  overflow: hidden;
+}
+.button {
+  @include flex(flex, $h: space-between);
+  border-color: var(--ncp-color-gray-150);
+  border-width: 1px 0 0 0;
+  font-size: var(--ncp-font-size-13);
+  font-weight: var(--ncp-font-weight-regular);
+  color: var(--ncp-color-gray-900);
+  border-radius: 0 0 var(--ncp-border-radius-base);
+}
+
+// info
+.info {
+  padding: var(--ncp-spacing-x10) var(--ncp-spacing-x8);
+  background: var(--ncp-color-bg-1);
+
+  .title {
+    @include flex(flex, $v: flex-start);
+    column-gap: var(--ncp-spacing-x3);
+    p {
+      margin-top: 0;
+    }
+  }
+  .date {
+    margin-top: var(--ncp-spacing-x6);
+  }
+}
+
+// dialog
+.dialog {
+  margin-block: var(--ncp-spacing-x16) var(--ncp-spacing-x20);
+
+  .info {
+    border: 1px solid var(--ncp-color-gray-150);
+    border-radius: var(--ncp-border-radius-base);
+    overflow: hidden;
+  }
+
+  .note {
+    margin-top: var(--ncp-spacing-x20);
+    padding: var(--ncp-spacing-x8);
+    background-color: var(--ncp-color-bg-1);
+    border-radius: var(--ncp-border-radius-base);
+  }
+}

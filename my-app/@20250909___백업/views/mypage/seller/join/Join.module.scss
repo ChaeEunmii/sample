@@ -1,0 +1,93 @@
+@use '@shared/styles/abstracts' as *;
+
+/* Join */
+.layout {
+  position: relative;
+}
+
+// JoinStep3
+.check {
+  margin-block: var(--ncp-spacing-x2) var(--ncp-spacing-x8);
+}
+
+// JoinStep1
+.desc {
+  @include flex($v: center) {
+    gap: var(--ncp-spacing-x2);
+  }
+  margin-top: var(--ncp-spacing-x12);
+}
+.chips {
+  --chip-min-width: 100%;
+  --chip-min-height: auto;
+  --chip-gap: var(--ncp-spacing-x4);
+  margin-top: var(--ncp-spacing-x8);
+  label {
+    padding: var(--ncp-spacing-x10) var(--ncp-spacing-x8);
+  }
+  .chipCont {
+    flex: 1;
+    width: 100%;
+    text-align: left;
+    .head {
+      @include flex($display: inline-flex, $v: center) {
+        gap: var(--ncp-spacing-x4);
+      }
+    }
+    .boxTit {
+      font-size: var(--ncp-font-size-13);
+      line-height: var(--ncp-line-height-18);
+      font-weight: var(--ncp-font-weight-semibold);
+      color: var(--ncp-color-gray-900);
+      margin-top: var(--ncp-spacing-x8);
+    }
+    .box {
+      margin-top: var(--ncp-spacing-x4);
+    }
+    // 구비 서류 안내 목록
+    .docsList {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--ncp-spacing-x4) var(--ncp-spacing-x8);
+      & > li {
+        font-size: var(--ncp-font-size-13);
+        line-height: var(--ncp-line-height-18);
+        font-weight: var(--ncp-font-weight-regular);
+        color: var(--ncp-color-accent-1);
+      }
+    }
+  }
+}
+
+// JoinStep1 꾸밈용 체크아이콘(aria-hidden)
+.chips {
+  // 기본 아이콘
+  .icon {
+    flex: 0 0 auto;
+    display: inline-flex;
+    position: relative;
+    // inset: rem(-1px);
+    width: rem(16px);
+    height: rem(16px);
+    border: var(--ncp-border-width-base) solid var(--ncp-color-gray-150);
+    border-radius: var(--ncp-border-radius-xs);
+    background-color: var(--ncp-color-background);
+  }
+  input[type='radio']:checked + label .icon,
+  input[type='checkbox']:checked + label .icon {
+    background: currentColor;
+    border-color: currentColor;
+  }
+
+  input[type='radio']:checked + label .icon::before,
+  input[type='checkbox']:checked + label .icon::before {
+    content: '';
+    position: absolute;
+    inset: rem(-1px);
+    mask-image: #{icon('checkbox')};
+    mask-position: 50% 0;
+    mask-repeat: no-repeat;
+    mask-size: contain;
+    background-color: var(--ncp-color-background);
+  }
+}

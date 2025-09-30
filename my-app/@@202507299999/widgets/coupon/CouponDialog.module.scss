@@ -1,0 +1,15 @@
+@use '@shared/styles/abstracts' as *;
+
+.note {
+  margin-top: var(--ncp-spacing-x12);
+  font-size: var(--ncp-font-size-13);
+  > li {
+    margin-top: var(--ncp-spacing-x2);
+  }
+}
+
+.coupons {
+  margin-top: var(--ncp-spacing-x16);
+  @include flex(flex, $d: column);
+  gap: var(--ncp-spacing-x8);
+}

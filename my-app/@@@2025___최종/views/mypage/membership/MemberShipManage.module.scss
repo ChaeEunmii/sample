@@ -1,0 +1,73 @@
+@use '@shared/styles/abstracts' as *;
+
+/* MemberShipManage */
+.layout {
+  position: relative;
+}
+.tooltip {
+  width: rem(230px);
+}
+
+/* benefitsStack */
+.benefitsStack {
+  @include flex($d: column);
+  gap: var(--ncp-spacing-x4);
+  margin-top: var(--ncp-spacing-x10);
+  &:first-child {
+    margin-top: 0;
+  }
+  & > li {
+    background-color: var(--ncp-color-bg-1);
+    border-radius: var(--ncp-border-radius-base);
+    padding: var(--ncp-spacing-x8);
+    @include flex($v: center, $w: wrap, $h: space-between);
+    gap: var(--ncp-spacing-x4);
+    .heading {
+      font-size: var(--ncp-font-size-13);
+      line-height: var(--ncp-line-height-18);
+      font-weight: var(--ncp-font-weight-medium);
+    }
+    .cont {
+      @include flex($display: inline-flex, $v: baseline);
+      gap: var(--ncp-spacing-x2);
+      .numb {
+        font-size: var(--ncp-font-size-18);
+        line-height: var(--ncp-line-height-24);
+        font-weight: var(--ncp-font-weight-semibold);
+      }
+      .unit {
+        font-size: var(--ncp-font-size-12);
+        line-height: var(--ncp-line-height-16);
+        font-weight: var(--ncp-font-weight-semibold);
+      }
+    }
+  }
+}
+.linkList {
+  @include flex($d: column);
+  gap: var(--ncp-spacing-x16);
+  margin-block: var(--ncp-spacing-x12);
+  & > li {
+    a {
+      @include flex($h: space-between);
+      font-size: var(--ncp-font-size-15);
+      line-height: var(--ncp-line-height-22);
+      font-weight: var(--ncp-font-weight-semibold);
+    }
+  }
+}
+//아코디언
+.accord {
+  margin-block: var(--ncp-spacing-x12);
+}
+.tit {
+  font-size: var(--ncp-font-size-16);
+  line-height: var(--ncp-line-height-22);
+  font-weight: var(--ncp-font-weight-bold);
+}
+
+//확인해주세요 리스트
+.infos {
+  @include flex($d: column);
+  gap: var(--ncp-spacing-x8);
+}

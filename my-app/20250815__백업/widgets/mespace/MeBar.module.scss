@@ -1,0 +1,55 @@
+@use '@shared/styles/abstracts' as *;
+
+@mixin meBar {
+  height: rem(52px);
+  padding: var(--ncp-spacing-x6);
+  align-items: center;
+  column-gap: var(--ncp-spacing-x3);
+  color: var(--ncp-color-white);
+  line-height: var(--ncp-line-height-fit);
+  border-radius: var(--ncp-border-radius-base);
+  background-color: var(--ncp-color-alpha-b60);
+}
+
+.root {
+  position: relative;
+
+  &:not(:has(.link)) {
+    display: flex;
+    @include meBar;
+  }
+  p {
+    margin-top: 0;
+  }
+}
+
+.link {
+  @include meBar;
+}
+
+.tag {
+  @include separator($color: var(--ncp-color-gray-700), $gap: var(--ncp-spacing-x3));
+  @include flex($v: center);
+  gap: var(--ncp-spacing-x3);
+}
+
+.title {
+  min-width: 0;
+  @include ellipsis(1);
+  flex: 1;
+}
+
+:is(.review, .owned, .vote) {
+  margin-right: calc(var(--ncp-spacing-x2) * -1);
+}
+
+.review {
+  @include flex($v: center);
+  gap: var(--ncp-spacing-x2);
+}
+
+.owned {
+  display: flex;
+  gap: var(--ncp-spacing-x3);
+  font-size: var(--ncp-font-size-13);
+}

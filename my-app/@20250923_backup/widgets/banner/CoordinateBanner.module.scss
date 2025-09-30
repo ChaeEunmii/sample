@@ -1,0 +1,80 @@
+@use '@shared/styles/abstracts' as *;
+
+.banner {
+  position: relative;
+  height: 100%;
+  @include flex(flex, space-between, flex-start, column);
+}
+.cont {
+  flex: 0 0 auto;
+}
+.imageWrap {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--ncp-border-radius-base);
+  overflow: hidden;
+
+  &.openPop {
+    .coordinate {
+      width: rem(20px);
+      height: rem(20px);
+    }
+  }
+
+  .overflow {
+    &::before {
+      position: absolute;
+      inset: 0;
+      content: '';
+      background-color: var(--ncp-color-alpha-b50);
+      z-index: 1;
+    }
+  }
+
+  .rest {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: var(--ncp-color-white);
+    transform: translate(-50%, -50%);
+    z-index: 1;
+  }
+}
+.coordinate {
+  position: absolute;
+  top: var(--item-y, 0);
+  left: var(--item-x, 0);
+  transform: translate(-50%, -50%);
+  width: rem(24px);
+  height: rem(24px);
+  background: none;
+  border: none;
+  border-radius: 50%;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.itemImageList {
+  margin-top: var(--ncp-spacing-x16);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: var(--ncp-spacing-x4);
+}
+.popover {
+  @include flex(flex, center, center) {
+    gap: var(--ncp-spacing-x3);
+  }
+  background: var(--ncp-color-alpha-b60);
+  border-radius: var(--ncp-border-radius-base);
+  padding: var(--ncp-spacing-x4);
+  width: rem(128px);
+  .image {
+    flex-shrink: 0;
+    width: rem(50px);
+    height: rem(50px);
+    border-radius: var(--ncp-border-radius-s);
+  }
+  .title {
+    margin-top: 0;
+    @include ellipsis(3);
+  }
+}

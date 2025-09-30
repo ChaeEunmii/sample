@@ -1,0 +1,26 @@
+@use '@shared/styles/abstracts' as *;
+
+// GemNav
+.nav {
+  padding-inline: var(--ncp-layout-padding-x);
+  margin-bottom: var(--ncp-spacing-x12);
+  .list {
+    @include flex();
+    gap: rem(20px);
+  }
+  .item {
+    line-height: var(--ncp-line-height-fit);
+    .link {
+      font-size: var(--ncp-font-size-18);
+      line-height: var(--ncp-line-height-24);
+      font-weight: var(--ncp-font-weight-bold);
+      color: var(--ncp-color-gray-350);
+      gap: var(--ncp-spacing-x3);
+    }
+    &.active {
+      .link {
+        color: var(--ncp-color-foreground);
+      }
+    }
+  }
+}

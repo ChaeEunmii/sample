@@ -1,0 +1,93 @@
+@use '@shared/styles/abstracts' as *;
+
+/* Input */
+.root {
+  position: relative;
+  @include flex(flex, flex-start, center) {
+    gap: var(--ncp-spacing-x6);
+  }
+  width: 100%;
+  height: rem(44px);
+  padding: 0 var(--ncp-spacing-x8);
+  font-size: var(--ncp-font-size-13);
+  line-height: var(--ncp-line-height-18);
+  border: var(--ncp-border-width-base) solid var(--ncp-color-gray-150);
+  border-radius: var(--ncp-border-radius-base);
+  background-color: var(--ncp-color-background);
+  cursor: text;
+}
+.field {
+  flex: 1;
+  width: 1%;
+  height: 100%;
+  outline: 0;
+  font-weight: var(--ncp-font-weight-medium);
+  &:focus {
+    touch-action: pan-x;
+  }
+}
+.clear {
+  --icon-color: var(--ncp-color-gray-350);
+}
+.reveal {
+  --icon-color: var(--ncp-color-gray-500);
+}
+
+// State
+.focused:not(:has(input:read-only)) {
+  border-color: var(--ncp-color-gray-900);
+}
+.disabled {
+  color: var(--ncp-color-gray-500);
+  border-color: var(--ncp-color-gray-150);
+  background-color: var(--ncp-color-bg-2);
+  .label {
+    cursor: default;
+  }
+  /* IOS disabled 구버전 텍스트 흐려지는 현상 대응 */
+  input[disabled] {
+    opacity: 1;
+    color: var(--ncp-color-gray-500);
+    -webkit-text-fill-color: var(--ncp-color-gray-500);
+  }
+}
+.invalid {
+  border-color: var(--ncp-color-accent-alert);
+}
+.readonly {
+  color: var(--ncp-color-gray-700);
+  border-color: var(--ncp-color-gray-150);
+  background-color: var(--ncp-color-bg-1);
+}
+
+// label style
+.label {
+  color: var(--ncp-color-gray-700);
+  & + .field {
+    text-align: right;
+  }
+}
+
+// Size
+.large {
+  height: rem(52px);
+  font-size: var(--ncp-font-size-14);
+  line-height: var(--ncp-line-height-20);
+}
+
+// Variant
+.plain {
+  border: none;
+  background-color: transparent;
+}
+
+// 클릭 이벤트 요소로 사용할때 마우스 포인터 변경
+.clickable {
+  &,
+  .field {
+    cursor: pointer;
+  }
+  .field:read-only {
+    pointer-events: none;
+  }
+}

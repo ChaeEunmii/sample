@@ -1,0 +1,24 @@
+@use '@shared/styles/abstracts' as *;
+
+/* BrandProdList */
+.root {
+  @include flex($d: column);
+  gap: var(--ncp-spacing-x20);
+  margin-top: var(--ncp-spacing-x12);
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+// 상품 타이틀 접근성 숨김처리
+.titleHidden {
+  :is([class^='ProdCard_root']) {
+    gap: 0;
+  }
+  :is([class^='ProdTitle_root']) {
+    @include blind();
+    & + * {
+      margin-top: 0;
+    }
+  }
+}

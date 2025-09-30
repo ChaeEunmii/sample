@@ -1,0 +1,160 @@
+@use '@shared/styles/abstracts' as *;
+
+.overlay {
+  --drawer-collapse-transform: translateY(100%);
+  --drawer-padding-y: var(--ncp-spacing-x16)
+    calc(var(--ncp-spacing-x8) + env(safe-area-inset-bottom));
+  --drawer-border-radius: var(--ncp-border-radius-l) var(--ncp-border-radius-l) 0 0;
+  --drawer-action-pos-top: 0;
+  --drawer-action-pos-bottom: unset;
+
+  width: 100%;
+  height: calc(var(--layout-vh, 1vh) * 100);
+  @include position($p: absolute, $l: 0, $b: 0, $i: 10);
+  @include flex($v: flex-end);
+  overflow: hidden;
+
+  &:focus-visible {
+    outline: none;
+  }
+
+  &[data-placement='top'] {
+    --drawer-collapse-transform: translateY(-100%);
+    --drawer-padding-y: 0 var(--ncp-spacing-x16);
+    --drawer-border-radius: 0 0 var(--ncp-border-radius-l) var(--ncp-border-radius-l);
+    --drawer-action-pos-top: unset;
+    --drawer-action-pos-bottom: 0;
+    --drawer-collapse-rotate: 180deg;
+    align-items: flex-start;
+
+    &:has(.drag, .collapse) {
+      --drawer-padding-y: 0 var(--ncp-spacing-x24);
+    }
+  }
+}
+.dimmed {
+  position: absolute;
+  inset: 0;
+  background-color: var(--ncp-color-alpha-dim);
+  pointer-events: none;
+}
+.root {
+  width: 100%;
+  max-height: var(--drawer-height, calc(100% - var(--ncp-layout-header-height)));
+  padding-block: var(--drawer-padding-y);
+  padding-inline: var(--ncp-spacing-x8);
+  @include flex($d: column);
+  transform: var(--drawer-collapse-transform);
+  transition: transform var(--ncp-transition-base);
+  border-radius: var(--drawer-border-radius);
+  background-color: var(--ncp-color-background);
+
+  &[data-state='show'] {
+    --drawer-collapse-transform: translateY(0);
+  }
+}
+
+// header
+.header {
+  padding-bottom: var(--ncp-spacing-x8);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  column-gap: var(--ncp-spacing-x4);
+}
+.desc {
+  width: 100%;
+  color: var(--ncp-color-gray-700);
+}
+.close {
+  @include position($r: var(--ncp-spacing-x8));
+}
+
+// content
+.body {
+  flex: 1;
+  padding-top: var(--ncp-spacing-x6);
+  overflow-x: hidden;
+  @include scrollbar;
+  & > :first-child {
+    margin-top: 0 !important;
+  }
+}
+
+// footer
+.footer {
+  padding: var(--ncp-spacing-x6) var(--ncp-spacing-x8) 0;
+  margin-top: var(--ncp-spacing-x8);
+  margin-inline: calc(var(--ncp-spacing-x8) * -1);
+  display: flex;
+  gap: var(--ncp-spacing-x4);
+  border-top: var(--ncp-border-width-base) solid var(--ncp-color-gray-150);
+}
+
+// drag handle
+.drag {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: var(--drawer-action-pos-top);
+  bottom: var(--drawer-action-pos-bottom);
+  padding-block: var(--ncp-spacing-x6);
+
+  &::after {
+    @include el-pseudo(40px, 4px);
+    margin-inline: auto;
+    border-radius: var(--ncp-border-radius-max);
+    background-color: var(--ncp-color-gray-250);
+  }
+}
+
+// collapse button
+.collapse {
+  position: absolute;
+  left: 50%;
+  top: var(--drawer-action-pos-top);
+  bottom: var(--drawer-action-pos-bottom);
+  padding: var(--ncp-spacing-x6) var(--ncp-spacing-x8);
+  transform: translateX(-50%) rotate(var(--drawer-collapse-rotate, 0));
+  text-align: center;
+
+  &::after {
+    @include el-pseudo(rem(40px), rem(8px));
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='8' viewBox='0 0 40 8' fill='none'%3E%3Cpath d='M37.8261 0.509812C38.5811 0.420825 39.2953 0.916761 39.4638 1.67485C39.6322 2.43295 39.1952 3.18479 38.4735 3.42387L38.3251 3.46391L19.9999 7.53618L1.67472 3.46391L1.52628 3.42387C0.80465 3.18479 0.367639 2.43295 0.53605 1.67485C0.704514 0.916762 1.41878 0.420826 2.17375 0.509812L2.32511 0.536179L19.9999 4.46391L37.6747 0.536179L37.8261 0.509812Z' fill='%23CFCFCF'/%3E%3C/svg%3E")
+      no-repeat center / contain;
+  }
+
+  // &::before,
+  // &::after {
+  //   @include el-pseudo(19px, 3px, inline-block);
+  //   border-radius: var(--ncp-border-radius-max);
+  //   background-color: var(--ncp-color-gray-250);
+  // }
+  // &::before {
+  //   transform: rotate(15deg) translate(1.5px, -50%);
+  // }
+  // &::after {
+  //   transform: rotate(-15deg) translate(-1.5px, -50%);
+  // }
+}
+
+// dimSlot (딤 영역 슬롯)
+.hasDimSlot {
+  @include flex(flex, $d: column, $h: space-between);
+  .body {
+    flex: 0 0 auto;
+  }
+}
+.dimSlot {
+  position: relative;
+  @include flex(flex, center, flex-end);
+  width: 100%;
+  height: 100%;
+  padding-bottom: var(--ncp-spacing-x40);
+  opacity: 0;
+  transition: opacity var(--ncp-transition-base);
+
+  &[data-state='show'] {
+    opacity: 1;
+  }
+}

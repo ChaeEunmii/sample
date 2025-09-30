@@ -1,0 +1,11 @@
+@use '@shared/styles/abstracts' as *;
+
+// RadioGroup
+.cashReceipt {
+  margin-top: var(--ncp-spacing-x12);
+  margin-bottom: var(--ncp-spacing-x8);
+}
+// checkbox
+.useNext {
+  margin-top: var(--ncp-spacing-x8);
+}

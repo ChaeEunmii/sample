@@ -1,0 +1,75 @@
+@use '@shared/styles/abstracts' as *;
+
+/* Grid */
+
+// prettier-ignore
+$display-margin-top: (
+  1: var(--ncp-spacing-x8),
+  2: var(--ncp-spacing-x12),
+  3: var(--ncp-spacing-x16),
+  4: var(--ncp-spacing-x20),
+  5: var(--ncp-spacing-x24),
+  6: var(--ncp-layout-gutter-y),
+);
+
+.root {
+  --grid-columns: 1;
+  --grid-gutter: var(--ncp-spacing-x4);
+  --grid-item-align: stretch;
+
+  @include grid($c: var(--grid-columns));
+  column-gap: var(--grid-gutter);
+  row-gap: var(--grid-row-gap, var(--grid-gutter));
+
+  &.autofit {
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(
+        calc(
+          (
+              min(100vw, var(--ncp-layout-max-width)) - (var(--ncp-main-padding-x) * 2) -
+                ((var(--grid-columns) - 1) * var(--grid-gutter))
+            ) /
+            var(--grid-columns)
+        ),
+        1fr
+      )
+    );
+  }
+
+  &.flush {
+    margin-inline: calc(var(--ncp-main-padding-x) * -1);
+  }
+
+  // align
+  &.left {
+    justify-items: left;
+  }
+  &.center {
+    justify-items: center;
+  }
+  &.right {
+    justify-items: right;
+  }
+}
+
+@each $key, $value in $display-margin-top {
+  .mt#{$key} {
+    margin-top: $value;
+  }
+}
+
+.item {
+  grid-column: span var(--grid-span, 1);
+  align-self: var(--grid-item-align);
+
+  &.top {
+    --grid-item-align: start;
+  }
+  &.center {
+    --grid-item-align: center;
+  }
+  &.bottom {
+    --grid-item-align: end;
+  }
+}

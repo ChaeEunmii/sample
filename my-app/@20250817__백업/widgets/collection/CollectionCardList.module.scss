@@ -1,0 +1,11 @@
+@use '@shared/styles/abstracts' as *;
+
+/* CollectionCardList */
+.root {
+  @include flex($d: column);
+  gap: var(--ncp-spacing-x8);
+  margin-top: var(--ncp-spacing-x12);
+  &:first-child {
+    margin-top: 0;
+  }
+}

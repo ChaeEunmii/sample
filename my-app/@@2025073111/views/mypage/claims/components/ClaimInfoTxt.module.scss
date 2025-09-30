@@ -1,0 +1,9 @@
+@use '@shared/styles/abstracts' as *;
+
+/* ClaimInfoTxt */
+.info {
+  margin-bottom: var(--ncp-spacing-x12);
+  @include flex() {
+    gap: var(--ncp-spacing-x2);
+  }
+}

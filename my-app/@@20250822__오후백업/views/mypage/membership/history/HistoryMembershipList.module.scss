@@ -1,0 +1,28 @@
+@use '@shared/styles/abstracts' as *;
+
+/* MembershipHistory */
+.layout {
+  padding-top: rem(15px);
+}
+.history {
+  @include flex($v: center);
+  gap: rem(8px);
+  .tit {
+    font-size: var(--ncp-font-size-16);
+    line-height: var(--ncp-line-height-22);
+    font-weight: var(--ncp-font-weight-bold);
+  }
+  .infos {
+    @include flex();
+    gap: rem(8px);
+    & > li {
+      font-size: var(--ncp-font-size-13);
+      line-height: var(--ncp-line-height-18);
+      font-weight: var(--ncp-font-weight-regular);
+      color: var(--ncp-color-gray-500);
+    }
+  }
+}
+.infobox {
+  position: relative;
+}

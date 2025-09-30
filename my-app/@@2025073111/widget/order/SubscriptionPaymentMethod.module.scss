@@ -1,0 +1,34 @@
+@use '@shared/styles/abstracts' as *;
+
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: rem(63px);
+  height: rem(39px);
+  border-radius: var(--ncp-border-radius-s);
+
+  > img {
+    max-width: rem(34px);
+  }
+
+  // 카드별 배경색상
+  --card-hyundai-bg: var(--ncp-color-foreground);
+  --card-hyundaiDepartment-bg: #064d43;
+  --card-woori-bg: #4eb8ff;
+  --card-samsung-bg: #0c4da2;
+}
+
+//카드사별 디자인
+.hyundai {
+  background: var(--card-hyundai-bg);
+}
+.samsung {
+  background: var(--card-samsung-bg);
+}
+.hyundaiDepartment {
+  background: var(--card-hyundaiDepartment-bg);
+}
+.woori {
+  background: var(--card-woori-bg);
+}

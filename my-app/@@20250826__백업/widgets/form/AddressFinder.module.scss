@@ -1,0 +1,52 @@
+@use '@shared/styles/abstracts' as *;
+
+/* AddressFinder */
+.root {
+  position: relative;
+}
+.content {
+  margin-top: var(--ncp-spacing-x12);
+}
+/*result*/
+.result {
+  margin-top: var(--ncp-spacing-x12);
+  max-height: rem(385px);
+  @include scrollbar;
+}
+.list {
+  & > li {
+    padding-block: var(--ncp-spacing-x10);
+    border-top: 1px solid var(--ncp-color-gray-100);
+    &:first-child {
+      padding-top: 0;
+      border-top: none;
+    }
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
+}
+
+.radio {
+  width: 100%;
+  align-items: center;
+  .radioItem {
+    flex: 1;
+    @include flex($d: column) {
+      gap: var(--ncp-spacing-x2);
+    }
+  }
+}
+
+.address {
+  width: 100%;
+  flex: 1;
+  @include flex($d: column);
+}
+
+/*empty 높이설정*/
+.empty {
+  position: relative;
+  overflow: hidden;
+  height: rem(108px);
+}

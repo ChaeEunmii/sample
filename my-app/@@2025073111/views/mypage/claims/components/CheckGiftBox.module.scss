@@ -1,0 +1,14 @@
+@use '@shared/styles/abstracts' as *;
+
+// CheckGiftBox
+.wrap {
+  position: relative;
+  @include flex($d: column) {
+    gap: var(--ncp-spacing-x8);
+  }
+  .tit {
+    @include flex($h: space-between) {
+      gap: var(--ncp-spacing-x4);
+    }
+  }
+}

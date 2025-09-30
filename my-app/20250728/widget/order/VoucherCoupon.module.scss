@@ -1,0 +1,28 @@
+@use '@shared/styles/abstracts' as *;
+
+// 공통 박스
+.box:not(:nth-child(1)) {
+  margin-top: var(--ncp-spacing-x16);
+}
+
+// 상단 영역
+.topbox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ncp-spacing-x8);
+}
+
+// FormArea
+.formbox {
+  gap: var(--ncp-spacing-x8);
+  margin-top: var(--ncp-spacing-x10);
+}
+
+// 받는 분 추가하기
+.buttonbox {
+  text-align: center;
+  .addButton {
+    margin-top: var(--ncp-spacing-x12);
+  }
+}

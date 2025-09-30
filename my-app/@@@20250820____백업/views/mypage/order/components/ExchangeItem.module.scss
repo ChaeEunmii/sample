@@ -1,0 +1,15 @@
+@use '@shared/styles/abstracts' as *;
+
+// ExchangeItemDrawer
+.drawer {
+  max-height: 80%;
+}
+.info {
+  position: relative;
+  @include flex($d: column) {
+    gap: rem(20px);
+  }
+}
+.cont {
+  margin-top: var(--ncp-spacing-x8);
+}

@@ -1,0 +1,10 @@
+@use '@shared/styles/abstracts' as *;
+
+// CancelReason
+.root {
+  position: relative;
+}
+
+.info {
+  margin-top: var(--ncp-spacing-x8);
+}

@@ -1,0 +1,26 @@
+@use '@shared/styles/abstracts' as *;
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ncp-spacing-x12);
+}
+.giftDesc {
+  @include ellipsis(2);
+}
+
+.grayBox {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ncp-spacing-x1);
+  padding: var(--ncp-spacing-x8);
+  background: var(--ncp-color-bg-1);
+  border-radius: var(--ncp-border-radius-base);
+  > p {
+    margin-top: 0;
+  }
+}
+
+.giftItemList {
+  margin-bottom: 0;
+}

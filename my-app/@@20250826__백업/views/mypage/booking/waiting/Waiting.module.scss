@@ -1,0 +1,41 @@
+@use '@shared/styles/abstracts' as *;
+
+// 새로고침(임시)
+.refresh {
+  @include flex(flex, $v: center, $h: center);
+  height: rem(146px);
+  margin-inline: calc(var(--ncp-main-padding-x) * -1);
+  font-weight: var(--ncp-font-weight-medium);
+  font-size: 40px;
+  color: var(--ncp-color-accent-alert);
+  background: #ff000036;
+}
+
+// 지점 정보
+.locationInfo {
+  @include flex(flex, $v: center);
+  gap: var(--ncp-spacing-x3);
+  span {
+    &:not(:last-child) {
+      @include separator();
+    }
+  }
+}
+
+// 웨이팅 순서
+.queue {
+  font-size: 28px;
+  font-weight: var(--ncp-font-weight-bold);
+}
+
+// 유의사항
+.noti {
+  @include flex(flex, $v: flex-start);
+  gap: var(--ncp-spacing-x2);
+  margin-top: var(--ncp-spacing-x20);
+}
+
+// 웨이팅 취소
+.canceled {
+  color: var(--ncp-color-gray-250);
+}

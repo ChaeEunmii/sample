@@ -1,0 +1,11 @@
+@use '@shared/styles/abstracts' as *;
+
+/* ApplyPartners */
+.img {
+  position: relative;
+}
+.cont {
+  width: 100%;
+  padding-inline: var(--ncp-layout-padding-x);
+  padding-top: var(--ncp-spacing-x8);
+}

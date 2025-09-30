@@ -1,0 +1,85 @@
+@use '@shared/styles/abstracts' as *;
+
+/* MainUserInfo */
+// 상단정보
+.info {
+  margin-top: var(--ncp-spacing-x16);
+  @include flex($d: column) {
+    gap: var(--ncp-spacing-x8);
+  }
+  .my {
+    @include flex($d: column) {
+      gap: var(--ncp-spacing-x4);
+    }
+  }
+  .state {
+    @include flex($v: center);
+    gap: var(--ncp-spacing-x3);
+    & :not(:last-child) {
+      @include separator($gap: var(--ncp-spacing-x3));
+    }
+  }
+  .gradeImg {
+    img {
+      width: auto;
+      height: rem(24px);
+    }
+  }
+}
+
+// 미스페이스 정보
+.meInfo {
+  margin-top: var(--ncp-spacing-x12);
+  position: relative;
+  .link {
+    @include flex($v: center);
+  }
+  .left {
+    flex: 1;
+    @include flex($v: center) {
+      gap: var(--ncp-spacing-x8);
+    }
+    .thumb {
+      position: relative;
+      line-height: var(--ncp-line-height-fit);
+      display: inline-block;
+      .avatar {
+        --avatar-size: #{rem(40px)};
+      }
+      .badge {
+        position: absolute;
+        right: rem(-2px);
+        bottom: rem(-2px);
+      }
+    }
+    .name {
+      @include ellipsis(2);
+    }
+  }
+  .gemInfo {
+    flex-shrink: 0;
+    flex-grow: 0;
+    @include flex($v: center) {
+      gap: var(--ncp-spacing-x1);
+    }
+    font-size: var(--ncp-font-size-13);
+    line-height: var(--ncp-line-height-18);
+    font-weight: var(--ncp-font-weight-medium);
+    color: var(--ncp-color-gray-700);
+    .icon {
+      color: var(--ncp-color-gray-500);
+    }
+  }
+}
+//박스
+.box {
+  margin-top: var(--ncp-spacing-x12);
+  display: flex;
+  gap: var(--ncp-spacing-x4);
+  & + .box {
+    margin-top: var(--ncp-spacing-x4);
+  }
+  & > * {
+    flex: 1;
+  }
+}

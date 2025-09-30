@@ -1,0 +1,45 @@
+@use '@shared/styles/abstracts' as *;
+
+.root {
+  margin: 0 calc(var(--ncp-main-padding-x) * -1);
+  width: calc(100% + (calc(var(--ncp-main-padding-x) * 2)));
+  @include flex(flex, $h: center, $v: center);
+}
+.image {
+  @include flex(flex);
+}
+
+// style1 (검정색바탕 + 흰색로고)
+.style1 {
+  height: rem(38px);
+  background-color: var(--ncp-color-foreground);
+  .image {
+    height: rem(16px);
+  }
+}
+
+// style2 (흰색바탕 + 로고일반)
+.style2 {
+  height: rem(52px);
+  background-color: var(--ncp-color-background);
+  .image {
+    height: rem(28px);
+  }
+}
+
+// 샤넬
+.chanel {
+  height: rem(42px);
+  background-color: var(--ncp-color-background);
+  border-top: rem(6px) solid var(--ncp-color-foreground);
+  .image {
+    height: rem(12px);
+  }
+  &.isBottom {
+    height: auto;
+    .image {
+      width: rem(140px);
+      height: rem(140px);
+    }
+  }
+}

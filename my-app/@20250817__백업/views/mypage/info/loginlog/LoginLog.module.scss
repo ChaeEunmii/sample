@@ -1,0 +1,23 @@
+@use '@shared/styles/abstracts' as *;
+
+/* LoginLog */
+
+// 더보기
+.more {
+  text-align: center;
+  margin-block: var(--ncp-spacing-x16) rem(60px);
+}
+
+// 전체갯수 + 날짜필터
+.total {
+  margin-block: var(--ncp-spacing-x12);
+  .select {
+    :is([class^='Select_value']) {
+      justify-content: end;
+      text-align: right;
+    }
+  }
+  em {
+    font-weight: var(--ncp-font-weight-regular);
+  }
+}

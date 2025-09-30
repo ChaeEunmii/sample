@@ -1,0 +1,15 @@
+@use '@shared/styles/abstracts' as *;
+
+/* CancelStep1 */
+.info {
+  column-gap: var(--ncp-spacing-x10);
+}
+
+// 체크목록 조합
+.checks {
+  @include flex($d: column);
+  gap: var(--ncp-spacing-x8);
+  .check {
+    gap: var(--ncp-spacing-x8);
+  }
+}

@@ -1,0 +1,77 @@
+// 상품 이미지 샘플 데이터
+export const mockProdImage = {
+  src: '/images/dummy/@sample_product_01.png',
+  alt: '네이비 캐시미어 니트 스웨터 착용 이미지',
+};
+// 유저 이미지 샘플 데이터
+export const mockUserImage = {
+  src: '/images/dummy/@sample_people_01.png',
+  alt: '김맑음',
+};
+
+// 파트너스 샵 상단바 샘플 데이터
+export const mockShopTopInfo = {
+  id: 'user-1',
+  name: '일이삼사오육칠팔구십일이삼',
+  image: mockUserImage,
+};
+
+// 상품 카드 샘플 데이터1
+export const mockProdCard1 = {
+  href: '#',
+  image: mockProdImage,
+  brand: '프레데릭 말',
+  title: '[프레데릭 말] 포트레이트 오브 어 레이디 50ml',
+  price: {
+    current: 123456789,
+  },
+  emblem: '퍼프데이',
+  badge: 'N+N',
+};
+
+// 카드 배열1
+export const mockProdCards1 = [
+  // 일반 상품
+  { ...mockProdCard1, id: 'prod-1' },
+  { ...mockProdCard1, id: 'prod-2' },
+  { ...mockProdCard1, id: 'prod-3' },
+  { ...mockProdCard1, id: 'prod-4' },
+  { ...mockProdCard1, id: 'prod-5' },
+  { ...mockProdCard1, id: 'prod-6' },
+];
+
+// 카드 배열1
+export const sections = [
+  {
+    title: '너무 더울 땐 필수, 선풍기',
+    subtitle: '시원한 바람~~',
+    products: mockProdCards1,
+  },
+  {
+    title: 'BEST SELLERS',
+    subtitle: '지금 가장 잘 팔리는 상품',
+    products: mockProdCards1,
+  },
+  {
+    title: 'WEEKLY DEALS',
+    subtitle: '이번주 한정 타임세일',
+    products: mockProdCards1,
+  },
+];
+
+// 카드 배열2
+export const mockProdCards2 = [
+  // 일반 상품
+  { ...mockProdCard1, id: 'prod-1', href: '' },
+  { ...mockProdCard1, id: 'prod-2', href: '' },
+  { ...mockProdCard1, id: 'prod-3', href: '' },
+  {
+    ...mockProdCard1,
+    id: 'prod-4',
+    href: '',
+    brand: 'ss 곰곰',
+    title: '곰곰 히히',
+  },
+  { ...mockProdCard1, id: 'prod-5', href: '' },
+  { ...mockProdCard1, id: 'prod-6', href: '' },
+];

@@ -1,0 +1,81 @@
+@use '@shared/styles/abstracts' as *;
+
+.root {
+  margin-top: var(--ncp-spacing-x16);
+}
+.thumb {
+  border-radius: var(--ncp-border-radius-base);
+  overflow: hidden;
+
+  &.dimed {
+    position: relative;
+
+    &:before {
+      content: '';
+      position: absolute;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--ncp-color-alpha-b30);
+    }
+
+    .thumbLabel {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: rem(34px);
+      text-align: center;
+
+      span {
+        z-index: 1;
+        color: var(--ncp-color-background) !important;
+        letter-spacing: var(--ncp-letter-spacing-base);
+      }
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.36);
+        backdrop-filter: blur(rem(8px));
+        -webkit-backdrop-filter: blur(rem(8px));
+      }
+    }
+  }
+}
+.imgBox {
+  aspect-ratio: 375 / 228;
+
+  @supports not (aspect-ratio: 375 / 228) {
+    &::before {
+      content: '';
+      display: block;
+      padding-top: 60.8%;
+    }
+  }
+
+  img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    object-fit: cover; /* 비율 유지하면서 잘라내기 */
+    width: 100%;
+    height: 100%;
+  }
+}
+.storeTitle {
+  @include flex(flex, $v: center);
+  gap: var(--ncp-spacing-x3);
+  margin-top: var(--ncp-spacing-x8);
+  padding: 0 var(--ncp-spacing-x1);
+}

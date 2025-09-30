@@ -1,0 +1,12 @@
+@use '@shared/styles/abstracts' as *;
+
+/* ExchangeApplyStep1 */
+.layout {
+  position: relative;
+}
+
+.group {
+  @include flex($d: column) {
+    gap: var(--ncp-spacing-x12);
+  }
+}

@@ -1,0 +1,16 @@
+@use '@shared/styles/abstracts' as *;
+
+/* MyReviewList */
+.list {
+  position: relative;
+  .item {
+    &:first-child {
+      padding-top: 0;
+      margin-top: 0;
+      border-top: none;
+    }
+    margin-top: var(--ncp-spacing-x12);
+    padding-top: var(--ncp-spacing-x12);
+    border-top: var(--ncp-border-width-base) solid var(--ncp-color-gray-100);
+  }
+}

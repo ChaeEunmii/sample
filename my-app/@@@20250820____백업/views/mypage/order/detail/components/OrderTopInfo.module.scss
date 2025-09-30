@@ -1,0 +1,11 @@
+@use '@shared/styles/abstracts' as *;
+
+/* OrderTopInfo */
+.topInfo {
+  margin-block: var(--ncp-spacing-x8) var(--ncp-spacing-x12);
+}
+
+.bottomSlot {
+  position: relative;
+  margin-top: var(--ncp-spacing-x8);
+}

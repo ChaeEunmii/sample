@@ -1,0 +1,9 @@
+@use '@shared/styles/abstracts' as *;
+
+/* ScheduleBoxList */
+.root {
+  position: relative;
+  @include flex($d: column) {
+    gap: var(--ncp-spacing-x8);
+  }
+}

@@ -1,0 +1,8 @@
+@use '@shared/styles/abstracts' as *;
+
+// 하단 Tip
+.couponTip {
+  position: absolute;
+  left: var(--ncp-spacing-x8);
+  top: -20px;
+}

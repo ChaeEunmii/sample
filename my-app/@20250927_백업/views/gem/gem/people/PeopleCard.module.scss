@@ -1,0 +1,64 @@
+@use '@shared/styles/abstracts' as *;
+
+/* PeopleCard */
+.peopleItem {
+  background: var(--ncp-color-background);
+  border-radius: var(--ncp-border-radius-base);
+  padding: var(--ncp-spacing-x8);
+  position: relative;
+  &:has(.gem) .thumb {
+    padding-right: rem(32px);
+  }
+  .thumb {
+    @include flex();
+    gap: var(--ncp-spacing-x8);
+  }
+  .gem {
+    position: absolute;
+    right: rem(16px);
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .people {
+    flex: 1;
+    @include flex($d: column, $h: center);
+    gap: var(--ncp-spacing-x2);
+  }
+  .peopleName {
+    font-size: var(--ncp-font-size-15);
+    line-height: var(--ncp-line-height-22);
+    font-weight: var(--ncp-font-weight-semibold);
+    color: var(--ncp-color-foreground);
+    @include flex($v: center);
+    flex-wrap: wrap;
+    gap: rem(6px);
+  }
+  .peopleInfos {
+    & > li {
+      display: inline-block;
+      position: relative;
+      font-size: var(--ncp-font-size-13);
+      line-height: var(--ncp-line-height-18);
+      font-weight: var(--ncp-font-weight-medium);
+      color: var(--ncp-color-gray-500);
+      & + li {
+        padding-left: var(--ncp-spacing-x5);
+      }
+      &:first-child {
+        &::before {
+          display: none;
+        }
+      }
+      &::before {
+        content: '';
+        width: rem(2px);
+        height: rem(2px);
+        position: absolute;
+        top: 50%;
+        left: rem(4px);
+        margin-top: rem(-1px);
+        background-color: var(--ncp-color-gray-500);
+      }
+    }
+  }
+}
