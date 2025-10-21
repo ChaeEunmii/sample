@@ -1,0 +1,73 @@
+@use '@shared/styles/abstracts' as *;
+
+/* PaymentInfo */
+.section {
+  position: relative;
+}
+// 하단 총 결제금액 영역
+.bottom {
+  margin-top: var(--ncp-spacing-x10);
+  padding-top: var(--ncp-spacing-x10);
+  border-top: var(--ncp-border-width-base) solid var(--ncp-color-gray-100);
+}
+
+// 타이틀우측 가로선
+.titleLine {
+  position: relative;
+  padding-right: var(--ncp-spacing-x6);
+  &::before {
+    content: '';
+    width: rem(1px);
+    height: rem(10px);
+    background-color: var(--ncp-color-gray-150);
+    position: absolute;
+    top: 50%;
+    right: rem(6px);
+    transform: translateY(-50%);
+  }
+}
+
+// 계약금 잔금박스
+.box {
+  background-color: var(--ncp-color-bg-3);
+}
+
+// 상세영역 (-)
+.detail {
+  margin-top: var(--ncp-spacing-x4);
+}
+
+// 안내 문구 영역
+.caution {
+  padding-inline: var(--ncp-spacing-indent);
+  margin-top: var(--ncp-spacing-x4);
+  color: var(--ncp-color-gray-500);
+  @include flex($v: flex-start) {
+    gap: var(--ncp-spacing-x2);
+  }
+}
+
+// 디테일정보 목록 영역추가
+.fields {
+  margin-top: var(--ncp-spacing-x4);
+  @include flex($d: column) {
+    gap: var(--ncp-spacing-x4);
+  }
+  .fieldWrap {
+    @include flex($h: space-between) {
+      gap: var(--ncp-spacing-x4);
+    }
+    & > :last-child {
+      flex-grow: 0;
+      flex-shrink: 0;
+    }
+  }
+}
+.detailInfo {
+  margin-top: var(--ncp-spacing-x2);
+}
+
+// infoList
+.infoList {
+  margin-top: var(--ncp-spacing-x4);
+}

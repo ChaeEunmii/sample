@@ -1,0 +1,52 @@
+@use '@shared/styles/abstracts' as *;
+
+/* RefundInfo */
+.section {
+  position: relative;
+}
+// 총 환불금액
+.bottom {
+  margin-top: var(--ncp-spacing-x10);
+  padding-top: var(--ncp-spacing-x10);
+  border-top: var(--ncp-border-width-base) solid var(--ncp-color-gray-100);
+  .total {
+    & + .desc {
+      margin-top: var(--ncp-spacing-x8);
+    }
+  }
+  &:first-child {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+  }
+}
+
+// 여백 초기화
+.noPadding {
+  padding: 0;
+  :is([class^='Section_titleArea']) {
+    padding-top: 0;
+  }
+}
+
+// 디테일정보 목록 영역추가
+.fields {
+  margin-top: var(--ncp-spacing-x4);
+  @include flex($d: column) {
+    gap: var(--ncp-spacing-x4);
+  }
+  .fieldWrap {
+    @include flex($h: space-between) {
+      gap: var(--ncp-spacing-x4);
+    }
+    & > :last-child {
+      flex-grow: 0;
+      flex-shrink: 0;
+    }
+  }
+}
+
+// infoList
+.infoList {
+  margin-top: var(--ncp-spacing-x4);
+}

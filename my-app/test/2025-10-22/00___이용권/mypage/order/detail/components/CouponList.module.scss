@@ -1,0 +1,115 @@
+@use '@shared/styles/abstracts' as *;
+
+/* CouponList */
+.section {
+  position: relative;
+}
+// 목록
+.list {
+  @include flex($d: column) {
+    gap: var(--ncp-spacing-x16);
+  }
+}
+
+// 내용
+.content {
+  margin-top: var(--ncp-spacing-x6);
+  @include flex($d: column) {
+    gap: var(--ncp-spacing-x2);
+  }
+  .info {
+    @include flex($v: center);
+    column-gap: var(--ncp-spacing-x4);
+    & > :not(:last-child) {
+      @include separator;
+    }
+  }
+}
+
+/* 하단 쿠폰들영역 */
+.bottom {
+  position: relative;
+}
+
+// 쿠폰들
+.coupons {
+  position: relative;
+  margin-top: var(--ncp-spacing-x12);
+  & > .numberItem {
+    &:first-child {
+      margin-top: 0;
+    }
+    margin-top: var(--ncp-spacing-x12);
+  }
+}
+
+// 하단버튼 구성
+.btns {
+  margin-top: var(--ncp-spacing-x6);
+}
+
+// 쿠폰 아이템
+.conponItem {
+  @include flex($d: column) {
+    gap: var(--ncp-spacing-x2);
+  }
+  .topInfo {
+    @include flex($v: center, $h: space-between) {
+      gap: var(--ncp-spacing-x2);
+    }
+    .title {
+      position: relative;
+      @include flex($v: center) {
+        gap: var(--ncp-spacing-x2);
+      }
+      .label,
+      .check {
+        font-size: var(--ncp-font-size-13);
+        line-height: var(--ncp-line-height-18);
+        font-weight: var(--ncp-font-weight-regular);
+        color: var(--ncp-color-gray-700);
+      }
+      .check {
+        line-height: var(--ncp-line-height-20);
+        &.checkDisabled {
+          .checkLabel {
+            opacity: 0.5;
+          }
+        }
+      }
+    }
+  }
+  .number {
+    @include flex($v: center) {
+      gap: var(--ncp-spacing-x2);
+    }
+  }
+}
+
+// 유효기간 영역
+.range {
+  @include flex($v: center);
+  gap: var(--ncp-spacing-x3);
+  color: var(--ncp-color-foreground);
+  padding-inline: var(--ncp-spacing-indent);
+  & > *:not(:last-child) {
+    @include separator($gap: var(--ncp-spacing-x3));
+  }
+}
+
+// 안내문구 영역
+.infoSec {
+  margin-top: var(--ncp-spacing-x12);
+  padding-top: var(--ncp-spacing-x12);
+  border-top: var(--ncp-border-width-base) solid var(--ncp-color-gray-100);
+}
+
+// 플래그들 정보
+.flags {
+  margin-top: var(--ncp-spacing-x3);
+}
+
+// 비활성화 스타일
+.disabled {
+  opacity: 0.5;
+}
