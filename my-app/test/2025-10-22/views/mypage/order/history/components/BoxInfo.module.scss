@@ -1,0 +1,13 @@
+@use '@shared/styles/abstracts' as *;
+
+/* TableOrderStoreInfo */
+// 상단정보
+.top {
+  position: relative;
+}
+
+.info {
+  @include flex($d: column) {
+    gap: var(--ncp-spacing-x2);
+  }
+}

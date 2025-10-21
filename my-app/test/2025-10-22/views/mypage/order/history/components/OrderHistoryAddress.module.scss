@@ -1,0 +1,20 @@
+@use '@shared/styles/abstracts' as *;
+
+/* OrderHistoryAddress*/
+.box {
+  position: relative;
+}
+// 상단정보
+.top {
+  position: relative;
+}
+
+// 추가 연락처
+.addNumber {
+  @include flex() {
+    gap: var(--ncp-spacing-x3);
+  }
+  & .tit {
+    @include separator(right, $gap: var(--ncp-spacing-x3));
+  }
+}
