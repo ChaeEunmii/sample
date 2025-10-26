@@ -1,0 +1,107 @@
+@use '@shared/styles/abstracts' as *;
+
+/* ReceiverInfo */
+.section {
+  position: relative;
+}
+
+.tit {
+  font-size: var(--ncp-font-size-14);
+  line-height: var(--ncp-line-height-20);
+  font-weight: var(--ncp-font-weight-semibold);
+}
+
+//location
+.location {
+  @include flex($w: wrap, $v: center, $h: space-between) {
+    gap: var(--ncp-spacing-x4);
+  }
+  .name {
+    flex: 1;
+    font-size: var(--ncp-font-size-14);
+    line-height: var(--ncp-line-height-20);
+    font-weight: var(--ncp-font-weight-semibold);
+  }
+  .btns {
+    @include flex($w: wrap, $v: center) {
+      gap: var(--ncp-spacing-x4);
+    }
+    > button {
+      height: rem(24px);
+      i:before {
+        background-color: var(--ncp-color-gray-450);
+      }
+    }
+  }
+}
+//pickup
+.pickup {
+  margin-top: var(--ncp-spacing-x8);
+  .infoBox {
+    margin-top: var(--ncp-spacing-x6);
+  }
+  .change {
+    margin-top: var(--ncp-spacing-x4);
+  }
+}
+//공통보더
+.bottom {
+  margin-top: var(--ncp-spacing-x16);
+}
+
+//bottom
+.bottom {
+  position: relative;
+}
+
+// info
+.info {
+  flex: 1;
+  @include flex($h: space-between) {
+    gap: var(--ncp-spacing-x2);
+  }
+  .list {
+    @include flex($w: wrap);
+    & > li {
+      position: relative;
+      padding-right: var(--ncp-spacing-x6);
+      &:not(:last-child)::before {
+        content: '';
+        width: rem(1px);
+        height: rem(8px);
+        background: var(--ncp-color-gray-150);
+        position: absolute;
+        top: 50%;
+        right: rem(6px);
+        transform: translateY(-50%);
+      }
+    }
+    .name {
+      color: var(--ncp-color-foreground);
+      font-weight: var(--ncp-font-weight-semibold);
+    }
+  }
+}
+
+// tip
+.tip {
+  position: absolute;
+  left: 0;
+  top: rem(-12px);
+}
+
+// maskingBtn
+.maskingBtn {
+  flex-shrink: 0;
+}
+
+// box
+.box {
+  position: relative;
+  margin-top: 0;
+}
+
+// 거절메시지
+.reject {
+  margin-top: var(--ncp-spacing-x2);
+}

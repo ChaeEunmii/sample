@@ -1,0 +1,14 @@
+@use '@shared/styles/abstracts' as *;
+
+/* OrderDetail */
+.layout {
+  position: relative;
+}
+
+/* remoteTopInfo */
+.remoteTopInfo {
+  margin-block: var(--ncp-spacing-x8);
+  @include flex($d: column) {
+    gap: var(--ncp-spacing-x10);
+  }
+}

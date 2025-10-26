@@ -1,0 +1,57 @@
+@use '@shared/styles/abstracts' as *;
+
+/* OrderHistoryAddress*/
+.box {
+  position: relative;
+}
+// 상단정보
+.top {
+  position: relative;
+}
+
+// 추가 연락처
+.addNumber {
+  @include flex() {
+    gap: var(--ncp-spacing-x3);
+  }
+  & .tit {
+    @include separator(right, $gap: var(--ncp-spacing-x3));
+  }
+}
+
+// 주소
+.defaultAddress,
+.detailedAddress {
+  margin-top: var(--ncp-spacing-x2);
+}
+
+// 기본정보
+.info {
+  @include flex(flex, $v: center, $w: wrap);
+  gap: var(--ncp-spacing-x2) var(--ncp-spacing-x8);
+  padding-right: 70px;
+
+  span {
+    position: relative;
+
+    &:not(:first-child):after {
+      content: '';
+      position: absolute;
+      left: rem(-8px);
+      top: 50%;
+      width: rem(1px);
+      height: rem(12px);
+      background: var(--ncp-color-gray-150);
+      transform: translateY(-50%);
+    }
+  }
+}
+.phone {
+  flex-basis: 100%;
+  &:after {
+    display: none;
+  }
+}
+.addPhone {
+  margin-top: var(--ncp-spacing-x2);
+}
