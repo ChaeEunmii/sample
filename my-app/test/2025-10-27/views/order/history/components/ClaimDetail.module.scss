@@ -1,0 +1,12 @@
+@use '@shared/styles/abstracts' as *;
+
+/* 
+  과거주문내역조회 - 취소,반품,교환 상세(L) 공통스타일
+  ClaimCancelDialog,
+  ClaimReturnDialog,
+  ClaimExchangeDialog
+*/
+.product {
+  margin-top: var(--ncp-spacing-x6);
+  border-bottom: none;
+}
