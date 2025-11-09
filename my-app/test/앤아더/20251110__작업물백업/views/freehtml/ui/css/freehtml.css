@@ -1,0 +1,689 @@
+@charset "UTF-8";
+
+/** 변수 사용 : color, font-size, font-family **/
+:root {
+}
+
+/** public */
+[data-page-type='free'] {
+  min-height: 100%;
+}
+
+/** heading */
+[data-page-type='free'] [class*='heading'] {
+  font-family: var(--heading-family, var(--font-family-serif));
+  font-size: var(--heading-size, var(--font-size-22));
+  font-weight: var(--heading-weight, var(--font-weight-bold));
+  word-break: keep-all;
+}
+.heading1 {
+  --heading-size: var(--font-size-16);
+}
+.heading2 {
+  --heading-size: var(--font-size-18);
+}
+.heading3 {
+  --heading-size: var(--font-size-22);
+}
+.heading4 {
+  --heading-size: var(--font-size-24);
+}
+
+/** paragraph */
+[data-page-type='free'] [class*='paragraph'] {
+  hyphens: auto;
+  word-break: keep-all;
+  font-size: var(--text-size, var(--font-size-12));
+  color: var(--text-color, currentColor);
+  font-family: var(--text-family, var(--font-family-base));
+}
+.paragraph1 {
+  --text-size: var(--font-size-12);
+}
+.paragraph2 {
+  --text-size: var(--font-size-14);
+}
+.paragraph3 {
+  --text-size: var(--font-size-16);
+}
+.paragraph4 {
+  --text-size: var(--font-size-18);
+}
+.paragraph-list [class*='paragraph'] {
+  margin-block: 20px;
+}
+
+/** 기존 사용되던 반응형 타이틀 클래스 **/
+.q-mega,
+[data-page-type='free'] [class*='heading'].q-mega,
+[data-page-type='free'] [class*='paragraph'].q-mega {
+  font-size: var(--font-size-16);
+  font-family: var(--font-family-serif);
+  font-weight: var(--font-weight-bold);
+}
+@media (min-width: 768px) {
+  .q-mega,
+  [data-page-type='free'] [class*='heading'].q-mega,
+  [data-page-type='free'] [class*='paragraph'].q-mega {
+    font-size: var(--font-size-18);
+  }
+}
+@media (min-width: 1025px) {
+  .q-mega,
+  [data-page-type='free'] [class*='heading'].q-mega,
+  [data-page-type='free'] [class*='paragraph'].q-mega {
+    font-size: var(--font-size-22);
+  }
+}
+
+/* font-size */
+.fs12 {
+  font-size: var(--font-size-12) !important;
+}
+.fs14 {
+  font-size: var(--font-size-14) !important;
+}
+.fs16 {
+  font-size: var(--font-size-16) !important;
+}
+.fs18 {
+  font-size: var(--font-size-18) !important;
+}
+.fs20 {
+  font-size: var(--font-size-20) !important;
+}
+.fs22 {
+  font-size: var(--font-size-22) !important;
+}
+.fs24 {
+  font-size: var(--font-size-24) !important;
+}
+
+/** align */
+.txtl {
+  text-align: left !important;
+}
+.txtc {
+  text-align: center !important;
+}
+.txtr {
+  text-align: right !important;
+}
+
+/** color */
+.black {
+  --text-color: var(--color-black);
+}
+.white {
+  --text-color: var(--color-white);
+}
+.gray3 {
+  --text-color: var(--color-gray-3);
+}
+.gray6 {
+  --text-color: var(--color-gray-6);
+}
+.gray7 {
+  --text-color: var(--color-gray-7);
+}
+
+/* weight */
+.regular {
+  font-weight: 400 !important;
+}
+.bold {
+  font-weight: 700 !important;
+}
+
+/** font-family */
+.font-base {
+  font-family: var(--font-family-base) !important;
+}
+.font-serif {
+  font-family: var(--font-family-serif) !important;
+}
+
+/* 기타 */
+.w100 {
+  width: 100%;
+}
+.h100 {
+  height: 100%;
+}
+.a-image {
+  width: 100%;
+}
+.no-underline {
+  text-decoration: unset !important;
+}
+.mgAuto {
+  margin: 0 auto;
+}
+.my30 {
+  margin-block: 30px;
+}
+.my40 {
+  margin-block: 40px;
+}
+
+/** 이미지 */
+.imgCont {
+  max-width: 100%;
+}
+.imgCont > a {
+  display: block;
+}
+.imgCont img {
+  max-width: 100%;
+}
+
+/** ---------- 아코디언 ---------- */
+.accordion {
+  display: grid;
+  grid-template-rows: min-content 0fr;
+}
+.accordion.active {
+  grid-template-rows: min-content 1fr;
+}
+.accordion .trigger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 15px 0;
+  border-top: 1px solid var(--color-gray-3);
+  font-weight: 400;
+  font-size: var(--font-size-12);
+  line-height: 1.2;
+  text-transform: none;
+}
+.accordion .contArea {
+  padding-block: var(--content-padding, 0);
+  overflow: hidden;
+}
+.accordion,
+.accordion[data-animation='true'] {
+  transition: all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1); /* var(--transition-base) */
+}
+.accordion .contArea.active {
+  --content-padding: 10px;
+}
+.accordion .icon {
+  min-width: 10px;
+}
+.accordion .icon {
+  width: 10px;
+  height: 5px;
+  display: inline-block;
+  position: relative;
+}
+.accordion .icon span {
+  position: absolute;
+  top: 0;
+  width: 6px;
+  height: 1px;
+  display: inline-block;
+  background-color: #000;
+  transition: all 0.1s ease;
+}
+.accordion .icon span:first-child {
+  left: 0;
+  transform: rotate(45deg);
+}
+.accordion .icon span:last-child {
+  right: 0;
+  transform: rotate(-45deg);
+}
+
+.accordion .icon.open span:first-child {
+  transform: rotate(-45deg);
+}
+.accordion .icon.open span:last-child {
+  transform: rotate(45deg);
+}
+.accordion-group {
+  position: relative;
+}
+.accordion [class^='paragraph'] {
+  width: 100%;
+  margin: 24px 0;
+  font-size: var(--font-size-12);
+  line-height: 17px !important;
+}
+.accordion:last-child .trigger {
+  border-bottom: 1px solid var(--color-gray-3);
+}
+
+/** ---------- grid ---------- */
+.free-gridBox {
+  display: grid;
+  gap: 8px;
+}
+.free-gridBox.no-gap {
+  gap: 0;
+}
+.free-gridBox.third {
+  grid-template-columns: repeat(1, 1fr);
+}
+.free-gridBox.fourth {
+  grid-template-columns: repeat(2, 1fr);
+}
+/* grid- pc */
+@media (min-width: 768px) {
+  .free-gridBox.half {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .free-gridBox.third {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .free-gridBox.fourth {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/** ---------- cta ---------- */
+.cta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+.cta > button {
+  flex: 1;
+  cursor: pointer;
+  outline: none;
+}
+
+/* ---------- btn -----*/
+.free-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  text-align: center;
+  font-size: var(--font-size-13);
+  font-weight: var(--font-weight-regular);
+  background-color: transparent;
+}
+.free-btn.outlined {
+  border: 1px solid var(--color-black);
+}
+.free-btn.filled {
+  border: 1px solid var(--color-black);
+  background-color: var(--color-black);
+  color: var(--color-white);
+  font-weight: var(--font-weight-bold);
+}
+.free-btn.filled:not(:disabled):hover {
+  background-color: var(--color-gray-7) !important;
+}
+
+/* ---------- a-link ---------- */
+.a-link {
+  color: var(--color-black);
+}
+.a-link.has-underline {
+  border-bottom: 1px solid var(--color-gray-6);
+}
+.a-link.has-underline:hover {
+  border-bottom: 1px solid var(--color-gray-4);
+}
+[class*='paragraph'] .a-link {
+  border-bottom: 1px solid #5d5d5d;
+}
+/* a-link + boxed*/
+.a-link.boxed {
+  margin-top: 16px;
+  text-align: center;
+  text-decoration: none;
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-12);
+  color: var(--color-black);
+  background: var(--color-white);
+  width: 160px;
+  border: 1px solid var(--color-black);
+  padding: 12px 24px 12px 24px;
+  line-height: var(--line-height-fit);
+  cursor: pointer;
+}
+@media (min-width: 1025px) {
+  .a-link.boxed {
+    margin-top: 40px;
+    margin-bottom: 0px;
+  }
+}
+
+/* ---------- banner ---------- */
+.free-banner {
+  position: relative;
+  width: 100%;
+  max-width: 1024px;
+  display: block;
+  margin: auto;
+  background-image: url(/images/freehtml/materials/bg_materials_01.jpg);
+  padding: 20px 20px;
+  background-size: auto;
+  background-position-y: center;
+  text-align: center;
+}
+.free-banner .free-banner--cont {
+  background-color: #fff;
+  padding: 30px;
+}
+.free-banner .free-banner--cont .heading4 {
+  font-size: 18px;
+  line-height: 23px;
+  color: var(--color-black);
+  font-weight: 700;
+  text-align: center;
+  background: var(--color-white);
+  width: 100%;
+  margin: auto;
+  padding-bottom: 30px;
+}
+@media (min-width: 768px) {
+  .free-banner {
+    padding: 56px 56px;
+  }
+}
+@media (min-width: 1024px) {
+  .free-banner .free-banner--cont .heading4 {
+    font-size: 24px;
+    line-height: 32px;
+  }
+}
+@media only screen and (min-width: 1400px) {
+  .free-banner {
+    margin-left: 55px;
+  }
+}
+
+/* ---------- tile ----------*/
+.free-tile {
+  color: var(--color-black);
+  position: relative;
+  width: 100%;
+  vertical-align: top;
+  position: relative;
+}
+.free-tile .text-inside-image {
+  background-color: #ffffff;
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  margin: 24px 16px;
+  height: auto;
+  width: calc(100% - 32px);
+  padding: 18px 16px;
+  z-index: 1;
+}
+@media (min-width: 1024px) {
+  .free-tile .text-inside-image {
+    margin: 40px 28px;
+    padding: 20px 24px;
+    width: calc(100% - 56px);
+  }
+}
+
+/* ---------- 멀티히어로 ----------*/
+.free-multiHero {
+  position: relative;
+  margin: 4px;
+  clear: both;
+}
+.free-multiHero .image-container {
+  display: block;
+}
+.free-multiHero .image-container a {
+  display: block;
+}
+.free-multiHero .image-container .image-pc {
+  display: block;
+}
+.free-multiHero .image-container .image-mo {
+  display: none;
+}
+.free-multiHero .image-container img {
+  display: block;
+  width: 100%;
+}
+.free-multiHero .image-container video {
+  display: block;
+  width: 100%;
+}
+.free-multiHero .image-container .vimeo-pc {
+  padding-top: 56.25%;
+  position: relative;
+}
+.free-multiHero .image-container .vimeo-mo {
+  padding-top: 140%;
+  position: relative;
+}
+.free-multiHero .image-container .vimeo {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+.free-multiHero .content-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+.free-multiHero .content-container.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.free-multiHero .content-container .text-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 0 32px;
+  color: #fff;
+}
+.free-multiHero .content-container.center .text-container {
+  text-align: center;
+}
+.free-multiHero .content-container .bodyText {
+  font-size: 14px;
+  line-height: 1.2;
+  letter-spacing: 0.56px;
+  font-family: 'Monument Grotesk Semi Mono', 'NotoSansKR';
+}
+.free-multiHero .content-container .heading {
+  font-size: 60px;
+  line-height: 1.2;
+  font-family: 'Stories Serif', 'Noto Serif KR';
+  font-weight: 400;
+}
+.free-multiHero .cta-container {
+  display: flex;
+  gap: 16px;
+  margin-top: 8px;
+  padding: 0 32px;
+  justify-content: center;
+}
+.free-multiHero .cta-container .cta {
+  display: inline-flex;
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.3;
+  padding: 10px 32px 8px;
+  color: #000;
+  background-color: #fff;
+  border-radius: 2px;
+  font-family: 'Monument Grotesk Semi Mono', 'NotoSansKR';
+}
+@media (max-width: 768px) {
+  .free-multiHero .image-container .image-pc {
+    display: none;
+  }
+
+  .free-multiHero .image-container .image-mo {
+    display: block;
+  }
+
+  .free-multiHero .content-container .heading {
+    font-size: 32px;
+  }
+
+  .free-multiHero .cta-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* ---------- 텍스트히어로 ----------*/
+.free-textHero {
+  padding-block: 30px 30px;
+  padding-inline: var(--spacing-x1);
+  clear: both;
+}
+.free-textHero .hero-item {
+  display: block;
+  margin: var(--spacing-x4);
+  font-size: var(--font-size-14);
+  text-align: center;
+}
+.free-textHero .hero-heading {
+  font-size: var(--font-size-22);
+  font-family: var(--font-family-serif);
+  font-weight: var(--font-weight-bold);
+}
+
+/* ---------- 영역 ----------*/
+.free-section.has-bg {
+  background: #f9f9f9;
+  margin-top: 64px;
+}
+.free-section {
+  padding-block: 38px;
+  text-align: center;
+}
+.free-section .free-textBox {
+  text-align: center;
+  margin: 0 auto;
+}
+.free-section.align-top {
+  padding-top: 0;
+  padding-bottom: 27px;
+}
+@media (min-width: 1025px) {
+  .free-section {
+    padding: 72px 0;
+  }
+  .free-section.align-top {
+    padding-bottom: 24px;
+  }
+}
+[data-page-type='free'] .free-section .free-textBox [class*='heading'] {
+  position: relative;
+  display: block;
+  margin: 0;
+}
+[data-page-type='free'] .free-section .free-textBox [class*='heading'] + [class*='paragraph'] {
+  margin-top: 20px;
+  /* padding: 0px 20px; */
+}
+
+/* ---------- 기본 텍스트박스 (타이틀+설명) ---------- */
+.free-textBox {
+  text-align: center;
+  margin: 0 auto;
+}
+.free-textBox > [class*='heading'] {
+  margin: 32px 0 20px;
+}
+@media (min-width: 768px) {
+  .free-textBox > [class*='heading'] {
+    margin-bottom: 24px;
+  }
+}
+@media (min-width: 1025px) {
+  .free-textBox > [class*='heading'] {
+    margin-bottom: 40px;
+  }
+}
+
+/** ---------- 로고 중앙으로 정렬 클래스 ---------- **/
+@media (min-width: 1025px) {
+  .u-align-to-logo,
+  .free-section.align-to-logo {
+    position: relative;
+    transform: translateX(-50%);
+    left: calc(50% - 96.5px);
+  }
+}
+
+/** -------------------- 화면 레이아웃 구성 -------------------- **/
+.free-layout {
+  position: relative;
+  width: 100%;
+}
+.free-layout .free-layout--narrow {
+  margin: 0 auto;
+}
+@media (min-width: 768px) {
+  .free-section .free-textBox,
+  .free-layout .free-layout--narrow {
+    width: 66.66667%;
+    padding-right: 4px;
+    padding-left: 4px;
+  }
+}
+@media (min-width: 1025px) {
+  .free-section .free-textBox,
+  .free-layout .free-layout--narrow {
+    width: 55%;
+    padding-right: 4px;
+    padding-left: 4px;
+  }
+}
+
+/* @include tablet */
+@container (min-width: 768px) {
+}
+/* @include laptop */
+@container (min-width: 1024px) {
+}
+
+/** -------------------- 스타일 지정 -------------------- **/
+/** tablet upper case **/
+@container (min-width: 768px) {
+  [data-page-type='free'] {
+  }
+  [data-render-type='mobile'] {
+    display: none !important;
+  }
+}
+
+/** mobile only **/
+@container (max-width: 767px) {
+  [data-render-type='desktop'] {
+    display: none !important;
+  }
+}
+
+@supports not (container-type: inline-size) {
+  @media screen and (min-width: 768px) {
+  }
+}
+
+/** -------------------- 화면별 CSS 정의 -------------------- **/
+/* 소재 */
+.gridBox--denim .imgCont {
+  padding-top: 140%;
+  position: relative;
+  overflow: hidden;
+}
+.gridBox--denim .imgCont .a-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
