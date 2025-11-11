@@ -1,0 +1,10 @@
+@use '@shared/styles/abstracts' as *;
+
+/* DeliveryStep */
+.layout {
+  position: relative;
+}
+// 라디오그룹 상단여백 컨트롤
+.rdo {
+  margin-top: var(--ncp-spacing-x8);
+}

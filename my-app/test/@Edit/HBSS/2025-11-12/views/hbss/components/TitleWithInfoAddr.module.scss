@@ -1,0 +1,45 @@
+@use '@shared/styles/abstracts' as *;
+
+/* TitleWithInfoAddr */
+.address {
+  @include flex($d: column) {
+    gap: var(--ncp-spacing-x2);
+  }
+}
+
+.addressEmpty {
+  position: relative;
+}
+
+/* 상단정보 */
+.topInfo {
+  @include flex() {
+    gap: var(--ncp-spacing-x2);
+  }
+  .name {
+    flex: 1;
+  }
+  .btns {
+    flex-shrink: 0;
+    flex-grow: 0;
+  }
+}
+
+/* 버튼 영역*/
+.btns {
+  @include flex($h: flex-end) {
+    gap: var(--ncp-spacing-x2);
+  }
+}
+
+/* 요청사항 영역 */
+.note {
+  margin-top: var(--ncp-spacing-x10);
+}
+
+/* 받으시는 분 영역 박스*/
+.receiver {
+  & + * {
+    margin-top: var(--ncp-spacing-x8);
+  }
+}

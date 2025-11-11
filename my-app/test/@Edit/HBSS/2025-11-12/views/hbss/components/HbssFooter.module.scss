@@ -1,0 +1,12 @@
+@use '@shared/styles/abstracts' as *;
+
+/* HbssFooter */
+.root {
+  position: relative;
+  border-top: 1px solid var(--ncp-color-gray-100);
+  min-height: rem(70px);
+  @include flex($h: center, $v: center);
+  img.logo {
+    width: rem(120px);
+  }
+}

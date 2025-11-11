@@ -1,0 +1,17 @@
+@use '@shared/styles/abstracts' as *;
+
+/* MobileCheckStep */
+.layout {
+  position: relative;
+}
+// 라디오그룹 상단여백 컨트롤
+.rdo {
+  margin-top: var(--ncp-spacing-x8);
+  --radio-group-gap: var(--ncp-spacing-x8);
+}
+
+// 안내 강조 텍스트
+.accentTxt {
+  font-weight: var(--ncp-font-weight-regular);
+  color: var(--ncp-color-gray-900);
+}

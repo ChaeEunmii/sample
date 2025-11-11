@@ -1,0 +1,22 @@
+@use '@shared/styles/abstracts' as *;
+
+/* TitleWithInfoProd */
+// 상품명 항목
+.product {
+  @include flex($d: column) {
+    gap: var(--ncp-spacing-x2);
+  }
+  .prdName {
+    @include ellipsis(2);
+  }
+}
+// 정보들
+.infos {
+  @include flex($v: center);
+  column-gap: var(--ncp-spacing-x4);
+  color: var(--ncp-color-gray-500);
+  font-size: var(--ncp-font-size-12);
+  & > :not(:last-child) {
+    @include separator;
+  }
+}

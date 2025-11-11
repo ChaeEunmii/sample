@@ -1,0 +1,38 @@
+@use '@shared/styles/abstracts' as *;
+
+/* TitleWithInfo */
+.root {
+  position: relative;
+}
+
+// box
+.box {
+  margin-top: var(--ncp-spacing-x4);
+}
+
+// contTopSlot
+.contTopSlot {
+  margin-top: var(--ncp-spacing-x4);
+}
+
+// bottomSlot
+.bottom {
+  margin-top: var(--ncp-spacing-x8);
+}
+
+// margin top
+.mt0 {
+  margin-top: 0;
+}
+.mt1 {
+  margin-top: var(--ncp-spacing-x8);
+}
+.mt2 {
+  margin-top: var(--ncp-spacing-x12);
+}
+.mt3 {
+  margin-top: var(--ncp-spacing-x16);
+}
+.mt4 {
+  margin-top: var(--ncp-spacing-x20);
+}

@@ -1,0 +1,44 @@
+@use '@shared/styles/abstracts' as *;
+
+/* Steps */
+.root {
+  display: flex;
+  justify-content: space-between;
+  // margin-block: var(--ncp-spacing-x8) var(--ncp-spacing-x16);
+  background-color: var(--ncp-color-gray-100);
+  height: rem(2px);
+  & + :is([class*='TitleArea']) {
+    margin-top: var(--ncp-spacing-x16);
+  }
+}
+.item {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.completed,
+.active {
+  background-color: var(--ncp-color-foreground);
+}
+
+// 추가 test
+.test {
+  margin-block: var(--ncp-spacing-x8) var(--ncp-spacing-x16);
+  @include flex() {
+    gap: 16px;
+    align-items: center;
+  }
+  .root {
+    flex: 1;
+  }
+}
+.count {
+  font-size: var(--ncp-font-size-13);
+  line-height: var(--ncp-line-height-18);
+  font-weight: var(--ncp-font-weight-medium);
+  color: var(--ncp-color-gray-500);
+  & > em {
+    color: var(--ncp-color-gray-900);
+  }
+}

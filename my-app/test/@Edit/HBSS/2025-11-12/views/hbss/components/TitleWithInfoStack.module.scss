@@ -1,0 +1,41 @@
+@use '@shared/styles/abstracts' as *;
+
+/* TitleWithInfoStack */
+.root {
+  position: relative;
+  @include flex($d: column);
+}
+
+// margin top
+.mt0 {
+  margin-top: 0;
+}
+.mt1 {
+  margin-top: var(--ncp-spacing-x8);
+}
+.mt2 {
+  margin-top: var(--ncp-spacing-x12);
+}
+.mt3 {
+  margin-top: var(--ncp-spacing-x16);
+}
+.mt4 {
+  margin-top: var(--ncp-spacing-x20);
+}
+
+// gap
+.gap0 {
+  gap: 0;
+}
+.gap1 {
+  gap: var(--ncp-spacing-x8);
+}
+.gap2 {
+  gap: var(--ncp-spacing-x12);
+}
+.gap3 {
+  gap: var(--ncp-spacing-x16);
+}
+.gap4 {
+  gap: var(--ncp-spacing-x20);
+}
