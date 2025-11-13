@@ -1,0 +1,39 @@
+@use '@shared/styles/abstracts' as *;
+
+/* MobileCheckStep */
+.layout {
+  position: relative;
+}
+// 라디오그룹 상단여백 컨트롤
+.rdo {
+  margin-top: var(--ncp-spacing-x8);
+  --radio-group-gap: var(--ncp-spacing-x8);
+}
+
+// 안내 강조 텍스트
+.accentTxt {
+  font-weight: var(--ncp-font-weight-medium);
+  color: var(--ncp-color-gray-900);
+}
+
+// TIS 이미지 영역
+.imgZone {
+  margin-top: var(--ncp-spacing-x16);
+  @include flex($v: center, $h: center);
+  width: 100%;
+  text-align: center;
+  min-height: rem(190px);
+}
+
+// Drawer열리는 약관동의
+.agreeCheck {
+  margin-top: var(--ncp-spacing-x8);
+  @include flex($h: space-between) {
+    gap: var(--ncp-spacing-x8);
+  }
+  .agreeDetail {
+    flex-shrink: 0;
+    flex-grow: 0;
+    color: var(--ncp-color-gray-500);
+  }
+}

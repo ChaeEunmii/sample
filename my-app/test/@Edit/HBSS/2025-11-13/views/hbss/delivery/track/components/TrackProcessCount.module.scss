@@ -1,0 +1,99 @@
+@use '@shared/styles/abstracts' as *;
+
+/* TrackProcessCount */
+.root {
+  position: relative;
+}
+
+// 프로세스
+.process {
+  position: relative;
+  width: 80%;
+  min-width: rem(343px);
+  margin: 0 auto;
+  @include flex($h: space-between, $v: flex-start);
+  .arrow {
+    color: var(--ncp-color-gray-500);
+    position: relative;
+    top: rem(20px);
+  }
+  & > li {
+    flex: 1;
+    position: relative;
+    @include flex($d: column, $h: center, $v: center) {
+      gap: var(--ncp-spacing-x4);
+    }
+    .arrowItem {
+      position: relative;
+      flex: 0 0 0;
+    }
+    .mark {
+      @include flex($display: inline-flex, $v: center, $h: center);
+      width: rem(52px);
+      height: rem(52px);
+      color: var(--ncp-color-gray-500);
+      font-size: var(--ncp-font-size-10);
+      line-height: var(--ncp-line-height-fit);
+      font-weight: var(--ncp-font-weight-semibold);
+      position: relative;
+      top: rem(1px);
+      .icon {
+        font-size: var(--ncp-font-size-32);
+      }
+      .arrow {
+        color: var(--ncp-color-gray-500);
+      }
+    }
+    .tit {
+      text-align: center;
+      font-size: var(--ncp-font-size-12);
+      line-height: var(--ncp-line-height-16);
+      font-weight: var(--ncp-font-weight-medium);
+      color: var(--ncp-color-gray-500);
+      text-align: center;
+    }
+    &.active {
+      .mark {
+        border-radius: var(--ncp-border-radius-max);
+        background-color: var(--ncp-color-foreground);
+        color: var(--ncp-color-background);
+      }
+      .tit {
+        color: var(--ncp-color-gray-900);
+      }
+    }
+    .count {
+      position: absolute;
+      top: rem(-4px);
+      right: rem(-8px);
+      font-size: var(--ncp-font-size-10);
+      line-height: var(--ncp-line-height-fit);
+      font-weight: var(--ncp-font-weight-medium);
+      background-color: var(--ncp-color-gray-100);
+      border-radius: var(--ncp-border-radius-max);
+      min-width: rem(28px);
+      height: rem(14px);
+      @include flex($display: inline-flex, $h: center, $v: center);
+    }
+  }
+  // 4컬럼 짜리 프로세스 경우 스타일 (type="receiver")
+  &.receiver {
+    .arrow {
+      top: rem(26px);
+    }
+    & > li {
+      .mark {
+        width: rem(60px);
+        height: rem(60px);
+      }
+    }
+  }
+}
+
+// margin-block 설정
+.margin1 {
+  margin-block: var(--ncp-spacing-x16);
+}
+.margin2 {
+  margin-block: var(--ncp-spacing-x12) var(--ncp-spacing-x20);
+}

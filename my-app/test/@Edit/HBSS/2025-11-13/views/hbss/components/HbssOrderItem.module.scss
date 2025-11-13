@@ -1,0 +1,47 @@
+@use '@shared/styles/abstracts' as *;
+
+/* HbssOrderItem */
+.root {
+  position: relative;
+}
+
+// 타이틀영역
+.title {
+  position: relative;
+  &.titleLined {
+    padding-bottom: var(--ncp-spacing-x6);
+    border-bottom: var(--ncp-border-width-base) solid var(--ncp-color-black);
+    & + .box {
+      margin-top: var(--ncp-spacing-x10);
+    }
+  }
+  & + .box {
+    margin-top: var(--ncp-spacing-x8);
+  }
+}
+
+// 박스정보 영역
+.box {
+  position: relative;
+  margin-top: 0;
+  @include flex($d: column) {
+    gap: var(--ncp-spacing-x3);
+  }
+}
+
+// 오더아이템
+.orders {
+  margin-top: var(--ncp-spacing-x10);
+}
+
+// 상세데이터 영역
+.detail {
+  margin-top: rem(-8px);
+}
+// 갯수 스타일
+.quantity {
+  font-size: var(--ncp-font-size-13);
+  line-height: var(--ncp-line-height-18);
+  font-weight: var(--ncp-font-weight-regular);
+  color: var(--ncp-color-gray-500);
+}

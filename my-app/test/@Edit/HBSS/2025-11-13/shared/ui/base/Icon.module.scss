@@ -1,0 +1,72 @@
+@use '@shared/styles/abstracts' as *;
+@use 'sass:map';
+@use 'sass:list';
+
+/* Icon */
+.root {
+  @include flex(inline-flex, center, center);
+  color: var(--icon-color, inherit);
+  font-size: var(--icon-size, rem(20px));
+  vertical-align: middle;
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 1em;
+    aspect-ratio: 1;
+    background-color: currentColor;
+    mask-image: var(--icon-mask-image);
+    mask-size: contain;
+    mask-position: var(--icon-mask-position, center);
+    mask-repeat: no-repeat;
+  }
+}
+
+$icon-size: (
+  xsmall: 12,
+  small: 16,
+  medium: 20,
+  large: 24,
+);
+
+// 예외처리 (background-image 처리 해야되는 아이콘)
+$bg-icons: gpsCircle, callCircle, addCircle, deleteBg, voteFill, reviewFill, bookmarkFill, pinBg,
+  folderBg;
+
+// Name
+@each $name, $sizes in $icons {
+  $first-size: list.nth(map.keys($sizes), 1);
+  $fallback-path: map.get($sizes, $first-size);
+
+  // 기본 클래스
+  .#{$name} {
+    @if list.index($bg-icons, $name) {
+      &::before {
+        mask-image: unset;
+        background-color: transparent;
+        background-image: url('#{$fallback-path}');
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+    } @else {
+      --icon-mask-image: url('#{$fallback-path}');
+    }
+  }
+
+  // 각 사이즈별 modifier
+  @each $size-name, $size-value in $icon-size {
+    $path: map.get($sizes, $size-value);
+    @if $path {
+      .#{$name}.#{$size-name} {
+        --icon-mask-image: url('#{$path}');
+      }
+    }
+  }
+}
+
+// Size (icon-size 기반 생성)
+@each $size-name, $size-value in $icon-size {
+  .#{$size-name} {
+    --icon-size: #{rem($size-value * 1px)};
+  }
+}

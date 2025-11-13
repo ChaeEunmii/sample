@@ -1,0 +1,23 @@
+@use '@shared/styles/abstracts' as *;
+
+/* InformationBox */
+.root {
+  position: relative;
+}
+
+// margin top
+.mt0 {
+  margin-top: 0;
+}
+.mt1 {
+  margin-top: var(--ncp-spacing-x8);
+}
+.mt2 {
+  margin-top: var(--ncp-spacing-x12);
+}
+.mt3 {
+  margin-top: var(--ncp-spacing-x16);
+}
+.mt4 {
+  margin-top: var(--ncp-spacing-x20);
+}

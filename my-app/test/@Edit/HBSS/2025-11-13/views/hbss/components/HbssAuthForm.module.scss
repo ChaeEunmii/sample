@@ -1,0 +1,13 @@
+@use '@shared/styles/abstracts' as *;
+
+/* HbssAuthForm */
+.root {
+  position: relative;
+}
+.stack {
+  :is([class^='Button_root']) {
+    &.btn {
+      width: rem(108px);
+    }
+  }
+}

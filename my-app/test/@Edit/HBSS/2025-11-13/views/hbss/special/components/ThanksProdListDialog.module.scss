@@ -1,0 +1,26 @@
+@use '@shared/styles/abstracts' as *;
+
+/* ThanksProdListDialog */
+// 로고영역
+.logo {
+  margin-top: var(--ncp-spacing-x8);
+  text-align: center;
+  @include flex($d: column, $v: center, $h: center);
+  min-height: rem(60px);
+  // background-color: var(--ncp-color-bg-3);
+  .img {
+    height: rem(60px);
+    margin: 0 auto;
+    img {
+      width: auto;
+    }
+  }
+}
+// 중간 안내박스 영역
+.box {
+  margin-top: var(--ncp-spacing-x12);
+}
+// 하단선물이미지 영역
+.image {
+  margin-top: var(--ncp-spacing-x12);
+}

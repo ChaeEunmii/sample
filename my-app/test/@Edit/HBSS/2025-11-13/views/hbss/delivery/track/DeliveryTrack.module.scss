@@ -1,0 +1,34 @@
+@use '@shared/styles/abstracts' as *;
+
+/* DeliveryTrack */
+.layout {
+  position: relative;
+}
+
+// 배송조회 테이블 내용 스타일
+.trackTbl {
+  table {
+    tbody {
+      td {
+        cursor: pointer;
+      }
+    }
+    .arrowTxt {
+      @include flex($h: space-between) {
+        gap: var(--ncp-spacing-x2);
+      }
+      line-height: var(--ncp-line-height-18);
+      text-align: right;
+      .txt {
+        @include flex($v: center) {
+          gap: var(--ncp-spacing-x4);
+        }
+      }
+    }
+    /* row focus */
+    .rowClickable:has(td:focus-visible) td {
+      outline: 2px solid var(--color-primary, #333);
+      outline-offset: -1px;
+    }
+  }
+}

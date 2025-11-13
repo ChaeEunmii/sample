@@ -1,0 +1,43 @@
+@use '@shared/styles/abstracts' as *;
+
+/* MobileRemote */
+.layout {
+  position: relative;
+}
+// 전체체크박스
+.allAgree {
+  margin-block: var(--ncp-spacing-x16);
+  --checkbox-label-font-size: var(--ncp-font-size-16);
+}
+// 동의 항목들
+.agrees {
+  // margin-top: var(--ncp-spacing-x16);
+  @include flex($d: column) {
+    gap: var(--ncp-spacing-x20);
+  }
+  .group {
+    position: relative;
+    .box {
+      margin-top: 0;
+      .infos {
+        position: Relative;
+      }
+    }
+    .tit {
+      & + .box {
+        margin-top: var(--ncp-spacing-x8);
+      }
+    }
+    .bottom {
+      margin-top: var(--ncp-spacing-x8);
+      .infoText {
+        margin-top: var(--ncp-spacing-x8);
+      }
+    }
+  }
+}
+
+// 받으시는분 1명 감싸는 div (step3, step4 공유)
+.receiver {
+  position: relative;
+}
