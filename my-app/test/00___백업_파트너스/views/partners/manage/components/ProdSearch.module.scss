@@ -1,0 +1,84 @@
+@use '@shared/styles/abstracts' as *;
+
+/* ProdSearch */
+// 검색
+.clear {
+  --icon-color: var(--ncp-color-gray-350);
+}
+.search {
+  margin-block: var(--ncp-spacing-x8) var(--ncp-spacing-x12);
+}
+
+// 필터 숨김시 상품목록 상단여백
+.category {
+  &.hideSort {
+    & + .list {
+      margin-top: 0;
+    }
+  }
+}
+
+// Select 테스트
+.searchWrap {
+  --test-sample-select-radius: var(--ncp-border-radius-s);
+
+  margin-block: var(--ncp-spacing-x8) var(--ncp-spacing-x12);
+  box-shadow: inset 0 0 0 var(--ncp-border-width-base) var(--ncp-color-gray-150);
+  border-radius: var(--ncp-border-radius-base);
+  background-color: var(--ncp-color-background);
+  padding-inline: var(--ncp-spacing-x8);
+  // height: rem(52px);
+
+  @include flex($v: center) {
+    gap: var(--ncp-spacing-x6);
+  }
+  input {
+    padding-inline: 0;
+  }
+
+  [class*='Input_root'] {
+    padding-inline: 0;
+  }
+  .search {
+    margin-block: 0;
+  }
+  .select {
+    --select-height: #{rem(28px)};
+    --select-option-height: #{rem(28px)};
+    max-width: rem(150px);
+    [class*='Select_combobox'] {
+      & > i {
+        --icon-size: #{rem(12px)};
+      }
+
+      padding-inline: var(--ncp-spacing-x5);
+      white-space: nowrap;
+      [class*='Select_value'] {
+        font-size: var(--ncp-font-size-12);
+        line-height: var(--ncp-line-height-16);
+      }
+    }
+    [class*='Select_listbox'] {
+      border-radius: var(--test-sample-select-radius);
+      padding-inline: var(--ncp-spacing-x5);
+      font-size: var(--ncp-font-size-12);
+      line-height: var(--ncp-line-height-16);
+      [class*='Select_option'] {
+        gap: rem(2px);
+      }
+    }
+    [role='combobox'] {
+      border-color: var(--ncp-color-gray-900);
+      &[aria-expanded='true'] {
+        outline: 0;
+        border-bottom: none;
+        border-radius: var(--test-sample-select-radius) var(--test-sample-select-radius) 0 0;
+      }
+      border-radius: var(--test-sample-select-radius);
+    }
+  }
+  .fieldDrawer {
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+}

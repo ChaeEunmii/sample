@@ -1,0 +1,39 @@
+@use '@shared/styles/abstracts' as *;
+
+/* ApplyPartnersForm */
+.img {
+  position: relative;
+}
+.cont {
+  width: 100%;
+  padding-inline: var(--ncp-layout-padding-x);
+  padding-top: var(--ncp-spacing-x8);
+}
+
+// 동의
+.checks {
+  @include flex($d: column) {
+    gap: var(--ncp-spacing-x8);
+  }
+  margin-top: var(--ncp-spacing-x12);
+  .agreeTit {
+    flex: 1;
+  }
+  em {
+    font-weight: var(--ncp-font-weight-regular);
+    color: var(--ncp-color-gray-900);
+  }
+  i {
+    color: var(--ncp-color-gray-500);
+  }
+}
+
+.prefix {
+  position: relative;
+  top: rem(1px);
+  font-weight: var(--ncp-font-weight-medium);
+}
+.snsInput {
+  margin-top: var(--ncp-spacing-x4);
+  gap: rem(2px);
+}

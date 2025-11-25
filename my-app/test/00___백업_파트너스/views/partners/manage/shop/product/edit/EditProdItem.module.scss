@@ -1,0 +1,15 @@
+@use '@shared/styles/abstracts' as *;
+
+/* EditProdItem */
+.layout {
+  position: relative;
+  padding-top: var(--ncp-spacing-x8);
+}
+
+// 삭제 버튼
+.delete {
+  position: absolute;
+  top: rem(7px);
+  right: rem(7px);
+  z-index: 1;
+}

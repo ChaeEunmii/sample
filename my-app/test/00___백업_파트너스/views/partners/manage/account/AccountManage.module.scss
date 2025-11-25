@@ -1,0 +1,16 @@
+@use '@shared/styles/abstracts' as *;
+
+/* AccountManage */
+.layout {
+  position: relative;
+}
+
+// FormArea안에 type="field" Stack 영역
+.stack {
+  margin-top: var(--ncp-spacing-x4);
+  :is([class^='Button_root']) {
+    &.btn {
+      width: rem(116px);
+    }
+  }
+}
