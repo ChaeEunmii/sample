@@ -1,0 +1,14 @@
+/* 개발자도구에서 안찍힘 */
+.cos-seo-wrapper {
+  margin-bottom: 0 !important;
+  margin-bottom: 0;
+  margin-top: 0 !important;
+  margin-top: 0;
+  padding-bottom: 0;
+  padding-top: 0;
+  width: 100% !important;
+}
+.cos-seo-title {
+  margin-bottom: 15px !important;
+  margin-top: 30px !important;
+}
