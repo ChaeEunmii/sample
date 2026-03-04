@@ -1,0 +1,205 @@
+<template>
+  <div class="guide-wrapper">
+    <header class="guide-header">
+      <div class="guide-inner">
+        <div class="header-content">
+          <h1 class="title">
+            현대백화점 NCP :: <span>더현대닷컴 퍼블리싱 작업 현황</span>
+          </h1>
+          <div class="stats">
+            <span class="stat-item">전체: <strong>{{ stats.total }}</strong>건</span>
+            <span class="stat-item stat-waiting">
+              진행대기: <strong>{{ stats.waiting }}</strong>건 ({{ getPercentage(stats.waiting) }}%)
+            </span>
+            <span class="stat-item stat-progress">
+              진행중: <strong>{{ stats.progress }}</strong>건 ({{ getPercentage(stats.progress) }}%)
+            </span>
+            <span class="stat-item stat-completed">
+              완료: <strong>{{ stats.completed }}</strong>건 ({{ getPercentage(stats.completed) }}%)
+            </span>
+            <span class="stat-item stat-removed">
+              제외: <strong>{{ stats.removed }}</strong>건 ({{ getPercentage(stats.removed) }}%)
+            </span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <nav class="guide-nav">
+      <p class="notice">⚠️ 2025.10.20 기준으로 이 저장소는 최신본이 아닙니다.</p>
+      <div class="guide-inner">
+        <div class="nav-tabs">
+          <button
+            v-for="(name, key) in navTabNames"
+            :key="key"
+            :class="['nav-tab', { active: selectedNav === key }]"
+            @click="handleTabChange(key)"
+          >
+            {{ name }}
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <div class="guide-container">
+      <div class="guide-inner">
+        <div class="guide-content">
+          <div v-if="selectedNav === 'common'" class="guide-notice">
+            <p>📝 공통 가이드는 Storybook을 실행하세요.</p>
+            <p><code>&gt; npm run storybook</code></p>
+          </div>
+          
+          <p class="completion-rate">진행률: {{ currentCompletionRate }}</p>
+          
+          <table class="table">
+            <thead>
+              <tr>
+                <th class="col-num">No.</th>
+                <th 
+                  v-for="(column, index) in columns" 
+                  :key="index"
+                  :class="{ 'col-file': column === 'FILE', 'col-memo': column === '비고' }"
+                >
+                  {{ column }}
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr 
+                v-for="(page, index) in currentData.pages" 
+                :key="index" 
+                :class="{ 'row-removed': page['상태'] === 'removed' }"
+              >
+                <td>{{ index + 1 }}</td>
+                <td 
+                  v-for="(column, colIndex) in columns" 
+                  :key="colIndex"
+                  :class="{ 'col-file': column === 'FILE', 'col-memo': column === '비고' }"
+                >
+                  <template v-if="column === '상태'">
+                    <span :class="['status-badge', statusStyle[page[column]]]">
+                      {{ statusText[page[column]] }}
+                    </span>
+                  </template>
+                  
+                  <template v-else-if="column === 'PATH'">
+                    <a :href="page[column] || '#'" class="path-link" target="_blank" rel="noopener noreferrer">
+                      {{ page[column] }}
+                    </a>
+                  </template>
+
+                  <template v-else>
+                    {{ page[column] || '' }}
+                  </template>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { ref, computed, onMounted, watch } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
+import { pageData, navTabNames } from './pageData';
+
+// 라우터 설정
+const route = useRoute();
+const router = useRouter();
+
+// 상태 관리
+const selectedNav = ref(route.query.tab || 'common');
+
+// 데이터 계산
+const currentData = computed(() => pageData[selectedNav.value]);
+const columns = computed(() => Object.keys(currentData.value.pages[0]));
+
+// 상태별 스타일/텍스트 매핑
+const statusStyle = {
+  completed: 'status-completed',
+  progress: 'status-progress',
+  waiting: 'status-waiting',
+  removed: 'status-removed',
+};
+
+const statusText = {
+  completed: '완료',
+  progress: '진행중',
+  waiting: '대기',
+  removed: '제외',
+};
+
+const weights = {
+  completed: 1,
+  progress: 0.5,
+  waiting: 0,
+  removed: 0,
+};
+
+// 통계 계산
+const allPages = computed(() => Object.values(pageData).flatMap((data) => [...data.pages]));
+
+const stats = computed(() => {
+  const pages = allPages.value;
+  return {
+    total: pages.length,
+    waiting: pages.filter((p) => p['상태'] === 'waiting').length,
+    progress: pages.filter((p) => p['상태'] === 'progress').length,
+    completed: pages.filter((p) => p['상태'] === 'completed').length,
+    removed: pages.filter((p) => p['상태'] === 'removed').length,
+  };
+});
+
+const getPercentage = (count) => {
+  return stats.value.total ? ((count / stats.value.total) * 100).toFixed(1) : '0.0';
+};
+
+// 현재 탭 진행률 계산
+const currentCompletionRate = computed(() => {
+  const pages = currentData.value.pages;
+  const weightedCompleted = pages.reduce((acc, page) => {
+    return acc + (weights[page['상태']] || 0);
+  }, 0);
+  const totalPages = pages.length;
+  return `${weightedCompleted}/${totalPages} (${((weightedCompleted / totalPages) * 100).toFixed(1)}%)`;
+});
+
+// 이벤트 핸들러
+const handleTabChange = (nav) => {
+  selectedNav.value = nav;
+  router.push({ query: { tab: nav } });
+};
+
+// URL 변경 감지 (뒤로가기 대응)
+watch(() => route.query.tab, (newTab) => {
+  if (newTab) selectedNav.value = newTab;
+});
+</script>
+
+<style lang="scss" scoped>
+/* 기존 CodingList.module.scss 내용을 여기에 붙여넣으세요. */
+/* .statusCompleted -> .status-completed 와 같이 클래스명 형식을 맞춰주시면 됩니다. */
+
+.guide-wrapper {
+  // 스타일 정의...
+}
+
+.status-badge {
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  &.status-completed { background-color: #e6f7ff; color: #1890ff; }
+  &.status-progress { background-color: #f6ffed; color: #52c41a; }
+  &.status-waiting { background-color: #fff7e6; color: #fa8c16; }
+  &.status-removed { background-color: #f5f5f5; color: #8c8c8c; }
+}
+
+.row-removed {
+  background-color: #fafafa;
+  text-decoration: line-through;
+  color: #bfbfbf;
+}
+</style>
