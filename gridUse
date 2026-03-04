@@ -1,0 +1,17 @@
+<template>
+  <AppGrid tag="section" gap="2rem">
+    
+    <AppGridItem tag="main" col="8" tab="12">
+      <Content />
+    </AppGridItem>
+
+    <AppGridItem tag="aside" col="4" tab="12">
+      <Sidebar />
+    </AppGridItem>
+
+    <AppGridItem v-for="i in 3" :key="i" col="4" mob="12">
+      <Card />
+    </AppGridItem>
+
+  </AppGrid>
+</template>
